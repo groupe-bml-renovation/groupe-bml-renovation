@@ -177,22 +177,20 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="hidden md:flex items-center space-x-6 flex-1 justify-center">
           <button
             onClick={() => handleNavigation('home')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'home'
+            className={`text-sm font-medium transition-colors ${currentPage === 'home'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             Accueil
           </button>
 
           <button
             onClick={() => handleNavigation('a-propos')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'a-propos'
+            className={`text-sm font-medium transition-colors ${currentPage === 'a-propos'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             À Propos
           </button>
@@ -336,55 +334,50 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('financement')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'financement'
+            className={`text-sm font-medium transition-colors ${currentPage === 'financement'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             Financement
           </button>
 
           <button
             onClick={() => handleNavigation('realisations')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'realisations'
+            className={`text-sm font-medium transition-colors ${currentPage === 'realisations'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             Réalisations
           </button>
 
           <button
             onClick={() => handleNavigation('blog')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'blog'
+            className={`text-sm font-medium transition-colors ${currentPage === 'blog'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             Blog
           </button>
 
           <button
             onClick={() => handleNavigation('faq')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'faq'
+            className={`text-sm font-medium transition-colors ${currentPage === 'faq'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             FAQ
           </button>
 
           <button
             onClick={() => handleNavigation('contact')}
-            className={`text-sm font-medium transition-colors ${
-              currentPage === 'contact'
+            className={`text-sm font-medium transition-colors ${currentPage === 'contact'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
-            }`}
+              }`}
           >
             Contact
           </button>
@@ -438,11 +431,10 @@ const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Menu Dropdown */}
       <div
         ref={mobileMenuRef}
-        className={`md:hidden transition-all duration-300 ease-in-out overflow-x-hidden ${
-          isMobileMenuOpen
+        className={`md:hidden transition-all duration-300 ease-in-out overflow-x-hidden ${isMobileMenuOpen
             ? 'max-h-[calc(100vh-5rem)] opacity-100 border-t border-slate-200 overflow-y-auto'
             : 'max-h-0 opacity-0 overflow-hidden'
-        } scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-slate-50`}
+          } scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-slate-50`}
         style={{
           WebkitOverflowScrolling: 'touch',
           overscrollBehavior: 'contain'
@@ -473,11 +465,10 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="px-6 py-4 bg-white space-y-4 pb-8 w-full overflow-x-hidden">
           <button
             onClick={() => handleNavigation('home')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'home'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'home'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             Accueil
           </button>
@@ -609,66 +600,60 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('financement')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'financement'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'financement'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             Financement
           </button>
 
           <button
             onClick={() => handleNavigation('realisations')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'realisations'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'realisations'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             Réalisations
           </button>
 
           <button
             onClick={() => handleNavigation('a-propos')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'a-propos'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'a-propos'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             À Propos
           </button>
 
           <button
             onClick={() => handleNavigation('blog')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'blog'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'blog'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             Blog
           </button>
 
           <button
             onClick={() => handleNavigation('faq')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'faq'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'faq'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             FAQ
           </button>
 
           <button
             onClick={() => handleNavigation('contact')}
-            className={`block w-full text-left transition-colors py-2 ${
-              currentPage === 'contact'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'contact'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
-            }`}
+              }`}
           >
             Contact
           </button>

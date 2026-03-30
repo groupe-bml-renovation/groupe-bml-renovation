@@ -24,6 +24,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -33,6 +34,7 @@ body {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -94,6 +96,7 @@ div[role="dialog"].fixed.inset-0.pointer-events-none {
 }
 
 @media (max-width: 768px) {
+
   .burst-right,
   .burst-left,
   [class*="burst"] {

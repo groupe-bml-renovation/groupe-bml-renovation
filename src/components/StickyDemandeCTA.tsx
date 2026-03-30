@@ -59,9 +59,8 @@ export default function StickyDemandeCTA({ currentPage = 'home', onNavigate, isG
 
   return (
     <div
-      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-fit px-4 transition-all duration-300 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
+      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-fit px-4 transition-all duration-300 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
     >
       <GradientCTAButton onClick={handleClick} size="sm">
         <div className="flex flex-col items-start leading-tight">

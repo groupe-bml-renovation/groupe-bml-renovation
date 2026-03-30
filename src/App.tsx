@@ -49,6 +49,8 @@ import MentionsLegales from './pages/MentionsLegales';
 import ForumConverter from './pages/ForumConverter';
 import DevenirFranchisePage from './pages/DevenirFranchise';
 import { LazyLoadingBoundary } from './components/LazyLoadingBoundary';
+import PageLoader from './components/PageLoader';
+import NotreSecteur from './components/NotreSecteur';
 
 const Navigation = lazy(() => import('./components/Navigation'));
 const StickyDemandeCTA = lazy(() => import('./components/StickyDemandeCTA'));
@@ -318,9 +320,11 @@ function App() {
         <SocialProofBannerGrenoble />
         <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
 
+        <NotreSecteur />
+
         <LazyLoadingBoundary delay={isGrenoble ? 1200 : 500}>
           <ServicesTabbedCarousel
-            onNavigate={!isGrenoble ? handleNavigate : () => {}}
+            onNavigate={!isGrenoble ? handleNavigate : () => { }}
             headerText="NOS SERVICES"
             title="Quels types de travaux recherchez-vous ?"
             description="Explorez nos services adaptés à vos besoins spécifiques"
@@ -397,6 +401,7 @@ function App() {
 
   return (
     <div className="w-full overflow-x-hidden">
+      <PageLoader />
       <Suspense fallback={null}>
         <Navigation
           currentPage={currentPage}

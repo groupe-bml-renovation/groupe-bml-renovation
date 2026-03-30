@@ -11,8 +11,15 @@ export default function EbookPresentationSection() {
   };
 
   return (
-    <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 pt-8 sm:pt-12 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full relative overflow-hidden px-4 md:px-8 lg:px-12 xl:px-16 py-16 sm:py-24 bg-slate-50">
+      {/* Mesh Gradient Background Elements */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-300 mix-blend-multiply filter blur-[100px] opacity-70 animate-blob"></div>
+        <div className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-teal-200 mix-blend-multiply filter blur-[120px] opacity-60 animate-blob" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-32 left-[20%] w-[60%] h-[60%] rounded-full bg-sky-200 mix-blend-multiply filter blur-[150px] opacity-50 animate-blob" style={{ animationDelay: '4s' }}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Book Image */}
           <motion.div
