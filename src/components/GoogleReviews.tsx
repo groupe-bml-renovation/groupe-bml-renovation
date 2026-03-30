@@ -53,7 +53,7 @@ const GoogleReviews: React.FC = () => {
   const mobileColumn = testimonials;
 
   return (
-    <section className="bg-white my-10 relative pt-8">
+    <section className="bg-white mt-16 md:mt-24 mb-10 relative pt-8">
       <div className="container z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

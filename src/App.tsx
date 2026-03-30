@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { trackPageView, trackNavigation } from './lib/analytics';
 import { generateGrenobleSeoSchemas } from './lib/seo-grenoble-schema';
 import HeroSection from './components/ui/hero-section';
+import PartnerCarouselOnly from './components/PartnerCarouselOnly';
 import { heroConfigs } from './data/hero-config';
 import { BMLRenovationHero } from './components/hero-gallery-demo';
 import Amenagement from './components/Amenagement';
@@ -317,6 +318,7 @@ function App() {
           reviewLink={selectedHeroConfig.reviewLink}
           primaryHeading={selectedHeroConfig.primaryHeading}
         />
+        <PartnerCarouselOnly />
         <SocialProofBannerGrenoble />
         <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
 

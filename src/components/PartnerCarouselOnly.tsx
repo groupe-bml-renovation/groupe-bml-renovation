@@ -32,62 +32,48 @@ export default function PartnerCarouselOnly() {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="py-3 bg-transparent overflow-hidden"
+      className="py-5 bg-white border-y border-gray-100/50 overflow-hidden"
     >
-      <div className="w-full relative overflow-hidden flex items-center justify-center group">
+      <div className="w-full relative overflow-hidden flex items-center justify-center">
         <div className="relative z-10 w-full flex items-center justify-center overflow-hidden">
           <div
             ref={scrollContainerRef}
-            className="scroll-container w-full max-w-5xl overflow-x-auto scrollbar-hide"
-            style={{ scrollBehavior: 'smooth', maxWidth: '100%' }}
+            className="scroll-container w-full overflow-x-auto scrollbar-hide"
+            style={{ scrollBehavior: 'smooth' }}
           >
             <div
-              className="infinite-scroll flex gap-4 w-max"
+              className="infinite-scroll flex gap-12 md:gap-20 w-max px-10 items-center"
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
             >
-              <div className="flex gap-4 animate-scroll">
+              <div className="flex gap-12 md:gap-20 animate-scroll items-center">
                 {defaultPartners.map((partner, index) => (
-                  <div key={`set1-${index}`} className="flex-shrink-0 w-36 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-2 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-                    <div className="h-16 flex items-center justify-center mb-2">
-                      <img
-                        src={partner.logoUrl}
-                        alt={partner.name}
-                        className="h-12 w-auto object-contain hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    {partner.description && (
-                      <p className="text-center text-[10px] md:text-xs font-medium text-gray-700 leading-tight">
-                        {partner.description}
-                      </p>
-                    )}
+                  <div key={`set1-${index}`} className="flex-shrink-0 flex items-center justify-center">
+                    <img
+                      src={partner.logoUrl}
+                      alt={partner.name}
+                      className="h-10 md:h-14 w-auto hover:scale-110 transition-all duration-500 cursor-pointer object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 ))}
               </div>
-              <div className="flex gap-4 animate-scroll" aria-hidden="true">
+              <div className="flex gap-12 md:gap-20 animate-scroll items-center" aria-hidden="true">
                 {defaultPartners.map((partner, index) => (
-                  <div key={`set2-${index}`} className="flex-shrink-0 w-36 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-2 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-                    <div className="h-16 flex items-center justify-center mb-2">
-                      <img
-                        src={partner.logoUrl}
-                        alt={partner.name}
-                        className="h-12 w-auto object-contain hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    {partner.description && (
-                      <p className="text-center text-[10px] md:text-xs font-medium text-gray-700 leading-tight">
-                        {partner.description}
-                      </p>
-                    )}
+                  <div key={`set2-${index}`} className="flex-shrink-0 flex items-center justify-center">
+                    <img
+                      src={partner.logoUrl}
+                      alt={partner.name}
+                      className="h-10 md:h-14 w-auto hover:scale-110 transition-all duration-500 cursor-pointer object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 ))}
               </div>
