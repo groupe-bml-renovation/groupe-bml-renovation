@@ -1,6 +1,6 @@
 export const heroConfigs = {
   bmlRenovation: {
-    videoUrl: "https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/0113.mp4",
+    videoUrl: "/videos/hero-video.mp4",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
     mainHeadlineLineBreak: "et Appartement",
@@ -11,7 +11,7 @@ export const heroConfigs = {
     reviewLink: "https://www.google.com/maps/place/Groupe+BML+Rénovation+tout+corps+d'état/@45.1625113,5.7109925,706m/data=!3m1!1e3!4m8!3m7!1s0x478af55e7fcef2a9:0x7fb9ce66faf8e6b9!8m2!3d45.1625075!4d5.7135674!9m1!1b1!16s%2Fg%2F11ylpx2hyc?entry=ttu&g_ep=EgoyMDI1MTExMS4wIKXMDSoASAFQAw%3D%3D"
   },
   grenoble: {
-    videoUrl: "https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/0113.mp4",
+    videoUrl: "/videos/hero-video.mp4",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
     mainHeadlineLineBreak: "et Appartement",

@@ -60,7 +60,7 @@ const InteractiveSelector2 = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center bg-white font-sans text-slate-900 px-4 py-8"> 
+    <div className="relative flex flex-col items-center justify-center bg-white font-sans text-slate-900 px-4 py-4"> 
       {/* Options Container */}
       <div className="options flex w-full max-w-[95vw] md:max-w-[900px] min-w-0 md:min-w-[600px] h-[250px] md:h-[450px] lg:h-[500px] mx-0 items-stretch overflow-hidden relative">
         {options.map((option, index) => (

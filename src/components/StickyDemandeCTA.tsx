@@ -13,25 +13,11 @@ const SCROLL_THRESHOLD = 400;
 
 export default function StickyDemandeCTA({ currentPage = 'home', onNavigate, isGrenoble = false }: StickyDemandeCTAProps) {
   const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleScroll = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const scrollPosition = window.scrollY;
-        setIsVisible(scrollPosition > SCROLL_THRESHOLD);
-      }, 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
+    // Force visibility to true at all times as requested
+    setIsVisible(true);
   }, []);
 
   const handleClick = () => {

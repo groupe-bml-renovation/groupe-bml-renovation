@@ -206,9 +206,9 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
   };
 
   return (
-    <section className="w-full pt-8 md:pt-12 pb-16 md:pb-20 bg-white overflow-hidden">
-      <div className="mb-12">
-        <div className="text-center mb-12 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <section className="w-full pt-8 md:pt-12 pb-8 md:pb-10 bg-white overflow-hidden">
+      <div className="mb-6">
+        <div className="text-center mb-8 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <span className="text-[#38bdf8] text-sm font-semibold uppercase tracking-wide">
             {headerText}
           </span>
@@ -223,7 +223,7 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
         </div>
 
         {showTabs && (
-          <div className="flex gap-2 justify-center mb-12 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex gap-2 justify-center mb-6 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
             <motion.button
               initial={false}
               animate={{
