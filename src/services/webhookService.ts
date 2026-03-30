@@ -2,7 +2,7 @@ export interface WebhookPayload {
   [key: string]: any;
 }
 
-const WEBHOOK_URL = import.meta.env.VITE_MAKE_WEBHOOK_URL;
+const WEBHOOK_URL = import.meta.env.VITE_MAKE_WEBHOOK_URL || 'https://hook.eu1.make.com/c7uq11eapapdstqfpb7artotf7qd857r';
 const WEBHOOK_TIMEOUT = 5000;
 
 function isWebhookConfigured(): boolean {
