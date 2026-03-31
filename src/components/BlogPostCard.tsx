@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import type { BlogPost } from '../services/blogService';
+import { OptimizedImage } from './OptimizedImage';
 
 interface BlogPostCardProps {
   post: BlogPost;
 }
 
 export default function BlogPostCard({ post }: BlogPostCardProps) {
+// ... rest of component ...
   const publishedDate = post.published_at ? new Date(post.published_at).toLocaleDateString('fr-FR', {
     year: 'numeric',
     month: 'long',
@@ -26,10 +28,11 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
       >
         {post.featured_image_url && (
           <div className="relative overflow-hidden h-48 bg-gray-200">
-            <img
+            <OptimizedImage
               src={post.featured_image_url}
               alt={post.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
             />
           </div>
         )}

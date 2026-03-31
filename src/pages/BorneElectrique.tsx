@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface BorneElectriqueProps {
   onBack: () => void;
@@ -89,10 +90,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Installation borne électrique - Véhicule électrique ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -100,10 +102,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Installation borne électrique - Véhicule électrique ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -197,10 +200,11 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1600490819528-42405785433a?w=1600&q=80"
             alt="Installation borne électrique pour véhicules électriques"
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -258,10 +262,11 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2069"
                 alt="Installation wallbox borne électrique"
                 className="w-full h-[450px] object-cover"
+                loading="lazy"
               />
             </motion.div>
           </div>

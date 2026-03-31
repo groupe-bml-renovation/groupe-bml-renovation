@@ -108,10 +108,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img.url}
                     alt={img.alt}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -119,10 +120,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img.url}
                     alt={img.alt}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -167,10 +169,11 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1672139664252-9e56a5c79ca6?w=1600&q=80"
             alt="Espace Verre et Vitrages"
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -241,10 +244,11 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1660361339525-643f7d6eed6b?w=1200&q=80"
                 alt="Espace Verre"
                 className="w-full h-[450px] object-cover"
+                loading="lazy"
               />
             </motion.div>
           </div>

@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Pen } from 'lucide-react';
 import { GradientCTAButton } from './ui/gradient-cta-button';
+import { prefetchPage } from '../lib/prefetch';
+import OptimizedImage from './OptimizedImage';
 
 interface NavigationProps {
   currentPage: string;
@@ -17,6 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({
   setIsMobileMenuOpen
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isGrenoble = location.pathname.includes('/grenoble');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
@@ -102,15 +105,32 @@ const Navigation: React.FC<NavigationProps> = ({
     setOpenDropdown(null);
     setMobileOpenDropdown(null);
 
-    if (['appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'plomberie', 'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'].includes(page)) {
+    const spaRoutes = [
+      'appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 
+      'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 
+      'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 
+      'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'plomberie', 
+      'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 
+      'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'
+    ];
+
+    if (spaRoutes.includes(page)) {
       const prefix = isGrenoble ? '/grenoble' : '';
-      window.location.href = `${prefix}/${page}`;
+      navigate(`${prefix}/${page}`);
+      window.scrollTo(0, 0);
     } else if (page === 'home') {
-      const prefix = isGrenoble ? '/grenoble' : '';
-      window.location.href = prefix || '/';
+      const prefix = isGrenoble ? '/grenoble' : '/';
+      navigate(prefix);
+      window.scrollTo(0, 0);
     } else {
       onNavigate(page);
     }
+  };
+
+  const handlePrefetch = (page: string) => {
+    const prefix = isGrenoble ? '/grenoble' : '';
+    const path = page === 'home' ? (prefix || '/') : `${prefix}/${page}`;
+    prefetchPage(path);
   };
 
   const handleCtaClick = () => {
@@ -167,16 +187,18 @@ const Navigation: React.FC<NavigationProps> = ({
           onClick={() => handleNavigation('home')}
           className="hover:opacity-80 transition-opacity flex items-center flex-shrink-0 md:-ml-4 -ml-2"
         >
-          <img
+          <OptimizedImage
             src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png"
             alt="Groupe BML Rénovation - Expert Travaux & Rénovation"
-            className="h-[5rem] w-auto object-contain"
+            className="h-[5rem] w-auto"
+            priority={true}
           />
         </button>
 
         <div className="hidden md:flex items-center space-x-6 flex-1 justify-center">
           <button
             onClick={() => handleNavigation('home')}
+            onMouseEnter={() => handlePrefetch('home')}
             className={`text-sm font-medium transition-colors ${currentPage === 'home'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -187,6 +209,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('a-propos')}
+            onMouseEnter={() => handlePrefetch('a-propos')}
             className={`text-sm font-medium transition-colors ${currentPage === 'a-propos'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -221,6 +244,15 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('boutiques-bureaux');
                       } else {
                         handleNavigation('services');
+                      }
+                    }}
+                    onMouseEnter={() => {
+                      if (item === 'Appartements') {
+                        handlePrefetch('appartements');
+                      } else if (item === 'Maisons et villas') {
+                        handlePrefetch('maisons-et-villas');
+                      } else if (item === 'Boutiques et Bureaux') {
+                        handlePrefetch('boutiques-bureaux');
                       }
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
@@ -271,6 +303,20 @@ const Navigation: React.FC<NavigationProps> = ({
                       } else {
                         handleNavigation('services');
                       }
+                    }}
+                    onMouseEnter={() => {
+                      const mapping: Record<string, string> = {
+                        'Salons': 'salons',
+                        'Cuisines': 'cuisines',
+                        'Chambres': 'chambres',
+                        'Salles de bain': 'salles-de-bain',
+                        'Salles de bain PMR': 'salles-de-bain-pmr',
+                        'Aménagement': 'amenagement',
+                        'Terrasse bois': 'terrasse-bois',
+                        'Espace Verre': 'espace-verre',
+                        'Installation piscine': 'piscine'
+                      };
+                      if (mapping[item]) handlePrefetch(mapping[item]);
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
                   >
@@ -334,6 +380,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('financement')}
+            onMouseEnter={() => handlePrefetch('financement')}
             className={`text-sm font-medium transition-colors ${currentPage === 'financement'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -344,6 +391,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('realisations')}
+            onMouseEnter={() => handlePrefetch('realisations')}
             className={`text-sm font-medium transition-colors ${currentPage === 'realisations'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -354,6 +402,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('blog')}
+            onMouseEnter={() => handlePrefetch('blog')}
             className={`text-sm font-medium transition-colors ${currentPage === 'blog'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -364,6 +413,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('faq')}
+            onMouseEnter={() => handlePrefetch('faq')}
             className={`text-sm font-medium transition-colors ${currentPage === 'faq'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -374,6 +424,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('contact')}
+            onMouseEnter={() => handlePrefetch('contact')}
             className={`text-sm font-medium transition-colors ${currentPage === 'contact'
                 ? 'text-[#38bdf8]'
                 : 'text-gray-700 hover:text-[#38bdf8]'
@@ -465,7 +516,7 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="px-6 py-4 bg-white space-y-4 pb-8 w-full overflow-x-hidden">
           <button
             onClick={() => handleNavigation('home')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'home'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'home'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}
@@ -476,7 +527,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div>
             <button
               onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'renovation' ? null : 'renovation')}
-              className="flex items-center justify-between w-full text-left transition-colors py-2 text-slate-600 hover:text-slate-800"
+              className="flex items-center justify-between w-full text-left transition-colors py-3 border-b border-slate-100 text-slate-600 hover:text-slate-800"
             >
               Rénovation
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenDropdown !== 'renovation' && mobileOpenDropdown !== null ? '' : 'rotate-180'}`} />
@@ -497,7 +548,7 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('services');
                       }
                     }}
-                    className="block w-full text-left py-1 text-sm text-slate-500 hover:text-[#38bdf8]"
+                    className="block w-full text-left py-2 md:py-1 text-base md:text-sm text-slate-500 hover:text-[#38bdf8]"
                   >
                     {item}
                   </button>
@@ -509,7 +560,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div>
             <button
               onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'espaces' ? null : 'espaces')}
-              className="flex items-center justify-between w-full text-left transition-colors py-2 text-slate-600 hover:text-slate-800"
+              className="flex items-center justify-between w-full text-left transition-colors py-3 border-b border-slate-100 text-slate-600 hover:text-slate-800"
             >
               Espaces
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenDropdown !== 'espaces' && mobileOpenDropdown !== null ? '' : 'rotate-180'}`} />
@@ -554,7 +605,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div>
             <button
               onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'metiers' ? null : 'metiers')}
-              className="flex items-center justify-between w-full text-left transition-colors py-2 text-slate-600 hover:text-slate-800"
+              className="flex items-center justify-between w-full text-left transition-colors py-3 border-b border-slate-100 text-slate-600 hover:text-slate-800"
             >
               Métiers
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenDropdown !== 'metiers' && mobileOpenDropdown !== null ? '' : 'rotate-180'}`} />
@@ -589,7 +640,7 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('services');
                       }
                     }}
-                    className="block w-full text-left py-1 text-sm text-slate-500 hover:text-[#38bdf8]"
+                    className="block w-full text-left py-2 md:py-1 text-base md:text-sm text-slate-500 hover:text-[#38bdf8]"
                   >
                     {item}
                   </button>
@@ -600,7 +651,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('financement')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'financement'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'financement'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}
@@ -610,7 +661,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('realisations')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'realisations'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'realisations'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}
@@ -620,7 +671,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('a-propos')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'a-propos'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'a-propos'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}
@@ -630,7 +681,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('blog')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'blog'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'blog'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}
@@ -640,7 +691,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('faq')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'faq'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'faq'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}
@@ -650,7 +701,7 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('contact')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'contact'
+            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'contact'
                 ? 'text-[#38bdf8] font-medium'
                 : 'text-slate-600 hover:text-slate-800'
               }`}

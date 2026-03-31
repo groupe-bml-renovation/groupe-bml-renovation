@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Euro } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface ProjectCardProps {
   title: string;
@@ -34,11 +35,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className={`flex flex-col gap-5 ${onClick ? 'cursor-pointer' : ''}`}>
         {/* Image with overlaid badges */}
         <div className="relative h-64 md:h-72 rounded-[1.75rem] overflow-hidden shadow-sm group-hover:shadow-lg transition-shadow duration-500">
-          <img
+          <OptimizedImage
             src={image}
             alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            decoding="async"
+            className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="lazy"
           />
 
           {/* Subtle overlay on hover */}

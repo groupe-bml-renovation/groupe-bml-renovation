@@ -3,11 +3,13 @@ import { CheckCircle, Briefcase, Award, Zap, DollarSign, Users } from 'lucide-re
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { FooterSection } from '../components/footer-section';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface DevenirArtisanPartenairePageProps {
   onBack: () => void;
   onNavigate?: (page: string) => void;
 }
+// ... rest of imports and types ...
 
 const DevenirArtisanPartenairePage: React.FC<DevenirArtisanPartenairePageProps> = ({ onBack, onNavigate = onBack }) => {
   const benefits = [
@@ -249,10 +251,11 @@ const DevenirArtisanPartenairePage: React.FC<DevenirArtisanPartenairePageProps> 
             viewport={{ once: true }}
             className="relative h-96 lg:h-full min-h-96 rounded-2xl overflow-hidden shadow-2xl"
           >
-            <img
+            <OptimizedImage
               src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251128_1127_Laptop%20Screen%20Display_remix_01kb4zxxaheg0tqme6tkqwt94y.png"
               alt="Interface de gestion des projets de rénovation maison pour artisan rénovation et travaux de rénovation"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
           </motion.div>

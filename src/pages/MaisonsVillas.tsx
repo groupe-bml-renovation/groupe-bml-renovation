@@ -5,8 +5,10 @@ import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 const createSeoSchema = (isGrenoble: boolean) => ({
+// ... rest of schema ...
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Groupe BML Rénovation',
@@ -128,10 +130,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation ${index + 1} - Travaux de rénovation maison et bâtiment`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -139,10 +142,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation ${index + 1} - Travaux de rénovation maison et bâtiment`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -192,10 +196,11 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
             alt={isGrenoble ? 'Rénovation maison à Grenoble - Extensions et travaux maison' : 'Rénovation maison complète - Travaux de rénovation intérieure et extérieure'}
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>

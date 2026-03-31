@@ -61,12 +61,26 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="preload" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png" as="image" fetchpriority="high" />
   <title>Rénovation de maison à Grenoble | Groupe BML Rénovation</title>
   <meta name="description"
     content="Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.">
 
-  <!-- ContentSquare User Experience Analytics -->
-  <script src="https://t.contentsquare.net/uxa/0c29eb0c283d1.js"></script>
+  <!-- ContentSquare User Experience Analytics (Deferred) -->
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const script = document.createElement('script');
+        script.src = "https://t.contentsquare.net/uxa/0c29eb0c283d1.js";
+        script.async = true;
+        document.head.appendChild(script);
+      }, 4000);
+    });
+  </script>
+
+  <style id="critical-path-css">
+    .hero-bg-dark { background-color: #0f172a; }
+  </style>
 </head>
 
 <body style="width: 100%; max-width: 100vw; overflow-x: hidden;">

@@ -1,11 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Clock, Shield, Sparkles, Ruler, Hammer, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import GEOSummary from '../components/GEOSummary';
+import FAQSection from '../components/FAQSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface CuisinesRenovationProps {
   onBack: () => void;
@@ -103,10 +106,11 @@ const ImageCarousel = () => {
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <img
+                      <OptimizedImage
                         src={media}
-                        alt={`Travaux de rénovation maison cuisine ${imgIndex + 1} - Rénovation maison complète par artisan rénovation`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        alt={`Travaux de rénovation maison cuisine ${imgIndex + 1}`}
+                        className="w-full h-full hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
                       />
                     )}
                   </div>
@@ -126,79 +130,62 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
   const isGrenoble = location.pathname.includes('/grenoble');
 
   const scrollToContactForm = () => {
-    navigate('/?scrollTo=contact-form');
+    const basePath = isGrenoble ? '/grenoble' : '/';
+    navigate(`${basePath}?scrollTo=contact-form`);
   };
+
+  const seoData = isGrenoble ? {
+    title: 'Rénovation de Cuisine à Grenoble | Devis Gratuit 24h | Groupe BML',
+    description: 'Besoin d\'une nouvelle cuisine à Grenoble ou Isère ? Groupe BML : conception 3D, agencement sur mesure et pose complète. Artisans qualifiés RGE, garantie décennale, devis sous 24h.',
+    keywords: 'rénovation cuisine grenoble, cuisiniste grenoble, installation cuisine isère, plan de travail sur mesure grenoble, prix rénovation cuisine grenoble',
+    ogTitle: 'Rénovation de Cuisine Haut de Gamme à Grenoble | BML',
+    twitterTitle: 'Rénovation Cuisine Grenoble | Groupe BML',
+  } : {
+    title: 'Rénovation de Cuisine Complète | Entreprise Rénovation Haut de Gamme | BML',
+    description: 'Expert en rénovation de cuisine clé en main. Conception, plomberie, électricité et pose de mobilier haut de gamme. Finitions de prestige et interlocuteur unique pour tout votre chantier.',
+    keywords: 'rénovation cuisine, cuisine haut de gamme, aménagement cuisine sur mesure, entreprise rénovation prestige, coût rénovation cuisine complete',
+    ogTitle: 'Rénovation de Cuisine de Prestige | Entreprise BML',
+    twitterTitle: 'Rénovation Cuisine Haute Gamme | BML',
+  };
+
+  const faqItems = [
+    {
+      question: isGrenoble ? "Quel est le prix moyen d'une rénovation de cuisine à Grenoble ?" : "Quel budget prévoir pour une rénovation de cuisine complete ?",
+      answer: "Le coût d'une rénovation de cuisine varie entre 1500€ et 5000€ par m² selon les matériaux choisis (granit, quartz, bois massif) et l'électroménager. Nous proposons des solutions adaptées à chaque budget avec un devis transparent."
+    },
+    {
+      question: "Combien de temps durent les travaux de cuisine ?",
+      answer: "Pour une rénovation totale incluant plomberie et électricité, prévoyez entre 10 et 20 jours ouvrés. Nous minimisons les nuisances pour que vous puissiez retrouver votre usage quotidien rapidement."
+    },
+    {
+      question: "Proposez-vous une conception 3D avant travaux ?",
+      answer: "Oui, nous réalisons des plans 2D/3D pour vous aider à visualiser votre futur espace et optimiser l'ergonomie (triangle d'activité, rangements intelligents)."
+    },
+    {
+      question: "Gérez-vous également la pose de l'électroménager ?",
+      answer: "Absolument. Nous installons et raccordons l'ensemble de votre équipement (four, plaques, hotte, lave-vaisselle) selon les normes de sécurité en vigueur."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Rénovation Cuisines à Grenoble | Travaux de Rénovation Complète | Groupe BML' : 'Rénovation Maison Cuisines | Travaux de Rénovation Complète | Entreprise BML'}</title>
-        <meta name="description" content={isGrenoble ? "Rénovation cuisines à Grenoble et Isère. Travaux de rénovation complète de cuisines par Groupe BML. Agencement sur mesure, plans de travail, électroménager. Devis gratuit." : "Rénovation maison et travaux de rénovation complète de cuisines. Entreprise de rénovation spécialisée en rénovation intérieure et extérieure. Artisan rénovation maison, peintre en bâtiment. Coût et prix rénovation compétitifs. Devis gratuit."} />
-        <meta name="keywords" content={isGrenoble ? "rénovation cuisines Grenoble, rénovation cuisine Isère, agencement cuisine Grenoble, rénovation maison Grenoble, travaux rénovation Grenoble, entreprise rénovation cuisine, devis cuisine gratuit, cuisine sur mesure Grenoble" : "rénovation maison, renovation maison, rénover une maison, rénovation, rénovations, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de rénovation maison, entreprise de rénovation, travaux maison, rénovation maison complète, rénovation maison ancienne, coût rénovation maison, prix rénovation maison, rénovation intérieure, rénovation extérieure, travaux de peinture bâtiment, artisan rénovation maison, entreprise bâtiment rénovation"} />
-        <meta name="geo.region" content={isGrenoble ? "FR-38" : undefined} />
-        <meta name="geo.placename" content={isGrenoble ? "Grenoble" : undefined} />
-        <meta property="og:title" content={isGrenoble ? "Rénovation Cuisines à Grenoble | Travaux de Rénovation Complète | Groupe BML" : "Rénovation Maison Cuisines | Travaux de Rénovation Complète | Groupe BML"} />
-        <meta property="og:description" content={isGrenoble ? "Rénovation cuisines à Grenoble. Agencement sur mesure, plans de travail, électroménager. Entreprise spécialisée en travaux de rénovation intérieure." : "Entreprise de rénovation spécialisée en travaux de rénovation maison complète. Rénovation intérieure et extérieure, cuisine, artisan rénovation."} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={isGrenoble ? "Rénovation Cuisines à Grenoble | Travaux de Rénovation BML" : "Rénovation Maison Cuisines | Travaux de Rénovation BML"} />
-        <meta name="twitter:description" content={isGrenoble ? "Rénovation cuisines à Grenoble et Isère. Agencement sur mesure, devis gratuit." : "Travaux de rénovation complète : rénovation maison, rénovation intérieure, extérieure. Peintre en bâtiment, artisan rénovation maison."} />
-        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/cuisines" : "https://groupe-bml-renovation.fr/cuisines"} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation",
-            "description": isGrenoble ? "Entreprise de rénovation à Grenoble spécialisée en rénovation complète de cuisines, agencement sur mesure, travaux tous corps d'état" : "Entreprise de rénovation spécialisée en rénovation maison complète, travaux de rénovation intérieure et extérieure, peinture en bâtiment",
-            "url": "https://groupe-bml-renovation.fr",
-            "telephone": "+33",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "FR",
-              ...(isGrenoble && { "addressLocality": "Grenoble", "addressRegion": "Isère" })
-            },
-            "areaServed": isGrenoble ? "Grenoble, Isère" : "France",
-            "service": [
-              {
-                "@type": "Service",
-                "name": isGrenoble ? "Rénovation Cuisines à Grenoble" : "Rénovation Maison Complète",
-                "description": isGrenoble ? "Rénovation complète de cuisines à Grenoble avec agencement sur mesure, plans de travail, électroménager" : "Travaux de rénovation maison complète incluant rénovation intérieure et extérieure"
-              },
-              {
-                "@type": "Service",
-                "name": "Agencement et Design Intérieur",
-                "description": isGrenoble ? "Conception et agencement cuisines personnalisées à Grenoble" : "Rénovation maison ancienne et moderne, rénovation maison prix et coût compétitifs"
-              },
-              {
-                "@type": "Service",
-                "name": "Installation Électroménager",
-                "description": "Installation professionnelle d'électroménager encastrable et équipements"
-              },
-              {
-                "@type": "Service",
-                "name": "Plomberie et Électricité",
-                "description": "Services de plomberie et électricité aux normes pour rénovation cuisines"
-              },
-              {
-                "@type": "Service",
-                "name": "Plans de Travail",
-                "description": "Fourniture et pose de plans de travail sur mesure"
-              },
-              {
-                "@type": "Service",
-                "name": "Finitions",
-                "description": "Carrelage, crédences, peinture et finitions haut de gamme"
-              }
-            ]
-          })}
-        </script>
+        <title>{seoData.title}</title>
+        <meta name="description" content={seoData.description} />
+        <meta name="keywords" content={seoData.keywords} />
+        <meta property="og:title" content={seoData.ogTitle} />
+        <meta name="twitter:title" content={seoData.twitterTitle} />
+        {isGrenoble && <meta name="geo.region" content="FR-38" />}
+        <link rel="canonical" href={window.location.href} />
       </Helmet>
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pb-12" aria-label="Section de rénovation maison cuisines - Travaux de rénovation complète">
+
+      <section className="relative h-screen flex items-center justify-center overflow-hidden pb-12">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=80"
-            alt="Rénovation maison cuisines - Travaux de rénovation complète par entreprise de rénovation"
-            className="w-full h-full object-cover"
+            alt={isGrenoble ? "Rénovation de cuisines à Grenoble" : "Rénovation de cuisines haut de gamme"}
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -210,15 +197,30 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide capitalize">
-              Rénovations de<br />cuisines{isGrenoble && <span> à Grenoble</span>}
+              Cuisines<br />{isGrenoble ? 'à Grenoble' : 'sur mesure'}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? 'Transformez votre cuisine à Grenoble' : 'Créez la cuisine de vos rêves'}
+              L'alliance de l'ergonomie et du design d'exception
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto" />
           </motion.div>
         </div>
       </section>
+
+      <GEOSummary
+        title={isGrenoble 
+          ? "Expert en rénovation de cuisine à Grenoble et Isère" 
+          : "L'excellence de la cuisine sur mesure clé en main"}
+        summary={isGrenoble 
+          ? "Nous créons des cuisines modernes et fonctionnelles adaptées au style de vie grenoblois. Un seul interlocuteur pour gérer les plombiers, électriciens et poseurs, avec une garantie de livraison aux dates convenues." 
+          : "De la conception architecturale à la pose finale, nous réalisons votre cuisine de prestige. Matériaux nobles, domotique intégrée et finitions artisanales pour transformer votre espace culinaire en pièce maîtresse de votre habitat."}
+        points={[
+          { icon: Zap, text: "Conception 3D et optimisation d'espace" },
+          { icon: Clock, text: "Travaux planifiés et délais garantis" },
+          { icon: Shield, text: "Assurance décennale et expertise TCE" },
+          { icon: Hammer, text: "Pose d'électroménager et finitions" }
+        ]}
+      />
 
       <section className="pt-8 pb-8 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -233,28 +235,21 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
               </span>
 
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                <span className="text-[#38bdf8] font-normal">Créer la cuisine</span>{' '}
-                <span className="text-slate-900">qui correspond</span><br />
-                <span className="text-slate-900">à vos envies{isGrenoble && ' à Grenoble'}.</span>
+                <span className="text-[#38bdf8] font-normal">Votre cuisine</span>{' '}
+                <span className="text-slate-900">{isGrenoble ? 'à Grenoble' : 'clé en main'}</span><br />
+                <span className="text-slate-900">qui correspond à vos envies.</span>
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Transformez votre cuisine en un espace fonctionnel et esthétique,
-                parfaitement adapté à vos habitudes culinaires et vos moments de partage en famille.
-                {isGrenoble && ' À Grenoble, Groupe BML Rénovation conçoit des cuisines sur mesure pour les résidents de la métropole.'}
+                <strong>Réponse directe :</strong> Groupe BML réalise votre rénovation de cuisine complète en gérant 100% du chantier (démolition, réseaux, mobilier). Nous créons un espace ergonomique avec des matériaux durables et esthétiques.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                <strong>Groupe BML Rénovation</strong> vous accompagne dans la <strong>rénovation
-                complète</strong> de votre cuisine{isGrenoble && ' à Grenoble et en Isère'}. Notre équipe <strong>vous conseille et vous
-                accompagne</strong> dans le choix des matériaux, des équipements et de l'agencement pour créer l'espace culinaire idéal.
+                <strong>Groupe BML Rénovation{isGrenoble && ' à Grenoble'}</strong> vous propose une approche personnalisée : îlot central, meubles suspendus, éclairage indirect. Nous transformons votre vieille cuisine en un espace moderne et chaleureux.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed">
-                Que vous souhaitiez créer une cuisine moderne et équipée, installer un îlot central,
-                optimiser l'espace de rangement ou créer une cuisine ouverte sur le salon, nos experts en rénovation
-                {isGrenoble && ' grenoblois'} mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui transforme
-                votre cuisine en un lieu à la fois pratique et convivial.
+                Notre savoir-faire couvre le <strong>raccordement gaz et électrique</strong>, la <strong>pose de crédence</strong> en verre ou carrelage, et l'ajustage millimétré de vos plans de travail en granit, bois ou corian.
               </p>
             </motion.div>
 
@@ -288,20 +283,20 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
               <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                RÉNOVATION CUISINES
+                NOS EXPERTISES
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                Transformer votre<br />espace culinaire{isGrenoble && <span className="text-slate-900"> à Grenoble</span>}
+                Transformer votre<br />espace culinaire
               </h2>
 
               <p className="text-base text-[#4a5568] leading-relaxed mb-6">
-                Groupe BML Rénovation tout corps d'état conçoit et réalise des rénovations complètes de cuisines{isGrenoble && ' à Grenoble et en Isère'}. De l'étude de conception à la réalisation, nos équipes vous accompagnent tout au long de votre projet personnalisé pour créer un espace harmonieux qui allie fonctionnalité et esthétisme.
+                Chaque cuisine que nous rénovons{isGrenoble && ' en Isère'} est unique. Nous portons une attention particulière à la <strong>ventilation (VMC)</strong> et à la <strong>sécurité électrique</strong> indispensable pour vos nouveaux équipements.
               </p>
 
               <p className="text-base text-[#4a5568] leading-relaxed">
-                Notre approche globale garantit une prise en charge complète de votre projet : analyse de vos besoins et de vos habitudes culinaires, conseils en aménagement et ergonomie, recommandations sur les équipements, l'électroménager et les finitions, et suivi rigoureux de chaque étape de réalisation{isGrenoble && ' dans la région grenobloise'}.
+                Du style industriel au minimalisme contemporain, nous vous aidons à harmoniser carrelage au sol, peinture murale et façade de meubles pour un rendu impeccable.
               </p>
             </div>
 
@@ -319,27 +314,23 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
                   <ul className="space-y-2 text-sm text-[#4a5568]">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation complète de cuisine</span>
+                      <span>Ouverture de cloison pour cuisine américaine</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Installation d'îlots centraux</span>
+                      <span>Pose d'îlots centraux avec évier intégré</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Création de cuisines ouvertes</span>
+                      <span>Mise aux normes plomberie et électricité</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Optimisation des rangements</span>
+                      <span>Installation d'électroménager encastrable</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Installation d'électroménager</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Plans de travail sur mesure</span>
+                      <span>Plans de travail sur mesure (Granit, Quartz, Bois)</span>
                     </li>
                   </ul>
                 </div>
@@ -349,28 +340,27 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                       <Check className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Pourquoi nous choisir ?</h3>
                   </div>
-                  <p className="text-base text-[#4a5568] leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous propose une expertise complète en rénovation de cuisines, que ce soit pour créer un espace contemporain et high-tech ou une cuisine chaleureuse et conviviale parfaitement adaptée à votre mode de vie.
+                  <p className="text-sm text-[#4a5568] leading-relaxed">
+                    Groupe BML est un <strong>contractant général</strong> certifié. Nous assumons l'entière responsabilité du projet, vous garantissant un chantier sans stress et un résultat durable. Notre expertise{isGrenoble && ' locale à Grenoble'} nous permet de réagir rapidement pour toute visite technique.
                   </p>
                 </div>
               </div>
 
-<div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
+              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Prêt à Démarrer Votre Projet {isGrenoble && '? à Grenoble'}
+                  Prêt à Démarrer Votre Projet ?
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
-                  Notre équipe d'experts est à votre écoute pour transformer votre cuisine{isGrenoble && ' à Grenoble et en Isère'}.
+                  Notre équipe d'experts est à votre écoute pour transformer votre cuisine.
                 </p>
                 <p className="text-base mb-8 opacity-90">
-                  Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé.
+                  Contactez-nous aujourd'hui pour un devis gratuit et personnalisé.
                 </p>
                 <button
                   onClick={scrollToContactForm}
                   className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  aria-label="Demander un devis gratuit pour travaux de rénovation maison - Rénovation maison complète par entreprise de rénovation"
                 >
                   <Phone className="w-5 h-5" />
                   Demander un devis gratuit
@@ -381,159 +371,10 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
-            <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                COMPÉTENCES
-              </span>
-
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                Notre savoir-faire à<br />votre service{isGrenoble && <span className="text-[#38bdf8]"> à Grenoble</span>}
-              </h2>
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la rénovation complète de cuisines{isGrenoble && ' à Grenoble et en Isère'}. Notre expertise couvre tous les aspects de la transformation : conception d'agencement sur mesure, installation d'îlots centraux, pose de plans de travail nobles, optimisation de l'éclairage LED, installation d'électroménager encastrable, création de rangements intelligents, plomberie et électricité aux normes, et finitions haut de gamme.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisines modernes et équipées</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisines ouvertes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisines avec îlot central</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisinettes et kitchenettes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisines professionnelles</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Métiers</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Plans de travail sur mesure</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Meubles et rangements</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Électroménager encastrable</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Plomberie et robinetterie</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Électricité et éclairage LED</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Carrelage et crédences</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
-                  <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Étude et conception 3D</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Conseils aménagement</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Coordination tous corps d'état</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Installation équipements</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Gestion projet clés en main</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8 bg-white" aria-label={isGrenoble ? "Devis gratuit rénovation cuisine Grenoble - Rénovation Isère" : "Devis gratuit rénovation maison - Artisan rénovation et entreprise bâtiment rénovation"}>
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Inspiré par Nos Rénovations de Cuisines {isGrenoble && '? à Grenoble'}
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              {isGrenoble ? 'À Grenoble et en Isère, chaque cuisine que nous rénovons devient un véritable espace de vie convivial et fonctionnel.' : 'Chaque cuisine que nous créons devient un véritable espace de vie convivial et fonctionnel.'}
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              Créons ensemble votre cuisine idéale{isGrenoble && ' à Grenoble'} avec des équipements modernes, un agencement optimisé et un devis gratuit personnalisé.
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-              aria-label="Obtenir un devis pour rénovation maison complète - Prix et coût rénovation maison - Peintre en bâtiment et travaux de rénovation"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
-          </div>
-        </div>
-      </section>
+      <FAQSection 
+        title={isGrenoble ? "FAQ Rénovation Cuisine Grenoble" : "FAQ Rénovation Cuisine"} 
+        items={faqItems}
+      />
 
       <PartnersSection />
 

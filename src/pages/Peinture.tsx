@@ -5,6 +5,7 @@ import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface PeintureProps {
   onBack: () => void;
@@ -106,10 +107,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Travaux de Peinture ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -117,10 +119,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Travaux de Peinture ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -218,10 +221,11 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
       </div>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1634822929331-ee4dc2c97fc4?w=1600&q=80"
             alt="Travaux de Peinture"
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -302,10 +306,11 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1678762200388-51e11225d4de?w=1200&q=80"
                 alt="Travaux de Peinture"
                 className="w-full h-[450px] object-cover"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -586,7 +591,6 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
       </section>
 
       <PartnersSection
-        subtitle={isGrenoble ? "PARTENAIRES PEINTURE À GRENOBLE" : "NOS PARTENAIRES FOURNISSEURS"}
         title="Nos Partenaires"
         description={isGrenoble ? "À Grenoble, Groupe BML Rénovation collabore avec les plus grands fabricants de peinture professionnelle pour garantir la qualité et la durabilité de vos travaux de peinture." : "Groupe BML Rénovation collabore avec les plus grands fabricants de peinture professionnelle pour garantir la qualité et la durabilité de vos travaux de peinture."}
         partners={[

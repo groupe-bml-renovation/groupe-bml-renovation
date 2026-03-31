@@ -36,7 +36,7 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
   {
     categoryLabel: 'Nos partenaires qualifiés',
     mainHeadline: {
-      prefix: 'UNE ÉQUIPE D\'EXPERTS',
+      prefix: 'L\'EXCELLENCE DE LA RÉNOVATION FRANÇAISE',
       highlight: 'À VOTRE SERVICE',
     },
     imageUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-10-13_at_12.53.51_eskjdi.jpg',
@@ -57,10 +57,11 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
       'Technicien spécialisé travaillant sur les revêtements muraux et finitions à Grenoble',
     ],
     paragraphs: [
-      'Chaque membre de notre équipe est sélectionné pour son **savoir-faire**, sa **rigueur** et son **sens du travail bien fait**.',
-      'Nos partenaires intervenant à Grenoble et en Isère sont tous **expérimentés** et partagent la même **exigence d\'excellence** ainsi que le même **engagement envers la satisfaction du client**.',
-      'Ils interviennent avec **soin**, **précision** et **respect des délais**, dans un souci permanent de **qualité et de sécurité**.',
-      'Leur **expertise**, alliée à une **approche humaine et attentive**, fait de Groupe BML Rénovation un **partenaire de confiance** pour tous vos projets grenoblois, des plus simples aux plus ambitieux.',
+      'Depuis plus de 10 ans, nous accompagnons les propriétaires dans leurs projets de rénovation complète.',
+      'Notre approche \'clé en main\' coordonne architectes, artisans et chefs de projet pour transformer vos espaces avec une exigence de finition haut de gamme.',
+      'Chaque membre de notre équipe est sélectionné pour son savoir-faire, sa rigueur et son sens du travail.',
+      'Nos partenaires sont tous expérimentés et partagent la même exigence d\'excellence ainsi que le même engagement envers la satisfaction du client.',
+      'Leur expertise, alliée à une approche humaine et attentive, fait de notre entreprise un partenaire de confiance pour tous vos projets, des plus simples aux plus ambitieux.',
     ],
   },
   {
@@ -113,7 +114,7 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
   {
     categoryLabel: 'Nos partenaires qualifiés',
     mainHeadline: {
-      prefix: 'Une équipe d\'experts',
+      prefix: 'L\'excellence de la rénovation française',
       highlight: 'à votre service',
     },
     imageUrl: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -136,9 +137,11 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
     reverseLayout: false,
     showCTA: true,
     paragraphs: [
+      'Depuis plus de 10 ans, nous accompagnons les propriétaires dans leurs projets de rénovation complète.',
+      'Notre approche \'clé en main\' coordonne architectes, artisans et chefs de projet pour transformer vos espaces avec une exigence de finition haut de gamme.',
       'Chaque membre de notre équipe est sélectionné pour son savoir-faire, sa rigueur et son sens du travail.',
       'Nos partenaires à Grenoble et en Isère sont tous expérimentés et partagent la même exigence d\'excellence ainsi que le même engagement envers la satisfaction du client.',
-      'Leur expertise, alliée à une approche humaine et attentive, fait de notre entreprise un partenaire de confiance pour tous vos projets grenoblois, des plus simples aux plus ambitieux.',
+      'Leur expertise, alliée à une approche humaine et attentive, fait de notre entreprise un partenaire de confiance pour tous vos projets, des plus simples aux plus ambitieux.',
     ],
   },
 ];

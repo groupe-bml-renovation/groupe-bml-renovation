@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Clock, Shield, Sparkles, Ruler } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import GEOSummary from '../components/GEOSummary';
+import FAQSection from '../components/FAQSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface SallesDeBainProps {
   onBack: () => void;
@@ -77,10 +79,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation salle de bain ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -88,10 +91,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation salle de bain ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -114,22 +118,41 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
   };
 
   const seoData = isGrenoble ? {
-    title: 'Rénovation Salles de Bain à Grenoble | Isère | Groupe BML',
-    description: 'Rénovation complète de salles de bain à Grenoble, Isère. Travaux de rénovation intérieure, douche italienne, sanitaires. Artisans qualifiés. Devis gratuit.',
-    keywords: 'rénovation salles de bain Grenoble, rénovation salle de bain Isère, travaux rénovation Grenoble, douche italienne Grenoble, rénovation salle de bain PMR Grenoble, rénovation intérieure Grenoble',
-    ogTitle: 'Rénovation Salles de Bain à Grenoble | Groupe BML',
-    ogDescription: 'Experts en rénovation de salles de bain à Grenoble et Isère. Solutions complètes, artisans qualifiés, devis gratuit.',
-    twitterTitle: 'Rénovation Salles de Bain à Grenoble | Groupe BML',
-    twitterDescription: 'Rénovation complète de salles de bain à Grenoble. Devis gratuit et sans engagement.',
+    title: 'Rénovation Salles de Bain à Grenoble | Devis Gratuit | Groupe BML',
+    description: 'Expert en rénovation de salle de bain à Grenoble et Isère. Douche à l\'italienne, sanitaires modernes, aménagement PMR. Artisans certifiés, interlocuteur unique, devis précis sous 24h.',
+    keywords: 'rénovation salle de bain grenoble, installateur douche italienne grenoble, travaux plomberie grenoble, salle de bain pmr isère, prix rénovation salle de bain grenoble',
+    ogTitle: 'Rénovation de Salle de Bain Haute Qualité à Grenoble | BML',
+    ogDescription: 'Transformez votre salle de bain à Grenoble avec nos experts. Design moderne et finitions haut de gamme.',
+    twitterTitle: 'Rénovation SDB Grenoble | Groupe BML',
+    twitterDescription: 'Votre projet de salle de bain à Grenoble clé en main. Contactez-nous dès aujourd\'hui.',
   } : {
-    title: 'Rénovation Maison Salles de Bain | Travaux Rénovation Intérieure | Entreprise BML',
-    description: 'Rénovation maison - Salle de bain complète par entreprise de rénovation BML. Travaux rénovation intérieure, douche italienne, sanitaires. Artisan rénovation qualifié. Devis gratuit.',
-    keywords: 'rénovation maison, rénovation salle de bain, travaux de rénovation maison, entreprise de rénovation, rénovation intérieure, rénovation maison complète, artisan rénovation maison, entreprise bâtiment rénovation, travaux maison, renovation maison, rénover une maison',
-    ogTitle: 'Rénovation Maison Salle de Bain | Entreprise de Rénovation Maison Complète',
-    ogDescription: 'Travaux de rénovation maison - Salle de bain complète et rénovation intérieure. Entreprise bâtiment rénovation avec artisans qualifiés.',
-    twitterTitle: 'Rénovation Maison Salle de Bain | Travaux Rénovation Intérieure',
-    twitterDescription: 'Entreprise de rénovation maison - Rénovation salle de bain, travaux intérieur et artisan rénovation qualifié.',
+    title: 'Rénovation de Salle de Bain Complète | Entreprise Rénovation Haut de Gamme | BML',
+    description: 'Spécialiste de la rénovation de salle de bain clé en main. Douche à l\'italienne, carrelage, plomberie et agencement sur mesure. Finitions de prestige et interlocuteur unique pour tout votre projet.',
+    keywords: 'rénovation salle de bain, rénovation douche italienne, aménagement salle de bain, entreprise rénovation prestige, salle de bain haut de gamme, coût rénovation salle de bain',
+    ogTitle: 'Rénovation Salle de Bain de Prestige | Entreprise BML',
+    ogDescription: 'Création d\'espaces de bien-être et de détente sur mesure. Expertise globale en rénovation de salle de bain.',
+    twitterTitle: 'Rénovation Salle de Bain Haute Gamme | BML',
+    twitterDescription: 'Entreprise de rénovation spécialisée en salles de bain d\'exception. Devis gratuit.',
   };
+
+  const faqItems = [
+    {
+      question: isGrenoble ? "Combien coûte une rénovation de salle de bain à Grenoble ?" : "Quel est le budget moyen pour une rénovation de salle de bain ?",
+      answer: "Le budget pour une rénovation de salle de bain varie généralement entre 800€ et 2500€ par m², selon la complexité des travaux et la gamme des matériaux (carrelage, sanitaires, mobilier). Nous fournissons un devis détaillé après une visite technique gratuite."
+    },
+    {
+      question: "Quelle est la durée moyenne des travaux ?",
+      answer: "Pour une rénovation complète (plomberie, carrelage, électricité, sanitaires), il faut compter entre 7 et 15 jours ouvrés. Ce délai inclut le temps de séchage nécessaire pour garantir une étanchéité parfaite."
+    },
+    {
+      question: "Gérez-vous l'intégralité du projet (plomberie, carrelage, etc.) ?",
+      answer: "Oui, nous sommes une entreprise 'tout corps d'état'. Nous coordonnons l'ensemble des artisans : plombiers, carreleurs, électriciens et menuisiers. Vous n'avez qu'un seul interlocuteur (votre chef de projet)."
+    },
+    {
+      question: "Réalisez-vous des salles de bain PMR (accessibles) ?",
+      answer: "Absolument. Nous sommes experts dans l'adaptation de logements pour les personnes à mobilité réduite : remplacement de baignoire par douche extra-plate, installation de barres de maintien, parois sécurisées et rangements ergonomiques."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -145,10 +168,11 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=1920&q=80"
-            alt="Rénovation de Salles de Bain"
+            alt={isGrenoble ? "Rénovation de Salles de Bain à Grenoble" : "Rénovation de Salles de Bain"}
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -163,12 +187,27 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               {isGrenoble ? 'Salles de bain Grenoble' : 'Salles de bain'}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              Créez votre espace de bien-être et de détente
+              Créez votre espace de bien-être et de détente personnalisé
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto" />
           </motion.div>
         </div>
       </section>
+
+      <GEOSummary
+        title={isGrenoble 
+          ? "L'essentiel de votre rénovation salle de bain à Grenoble" 
+          : "L'essentiel de notre prestation salle de bain haut de gamme"}
+        summary={isGrenoble 
+          ? "Un interlocuteur unique à Grenoble pour piloter tous les corps de métier (plomberie, carrelage, électricité). Nous garantissons une installation soignée, rapide et certifiée pour votre appartement ou maison en Isère." 
+          : "Nous transformons votre salle de bain en un espace de prestige. De la conception 3D à la touche finale, nos artisans experts réalisent votre douche à l'italienne et vos rangements sur mesure avec une finition irréprochable."}
+        points={[
+          { icon: Clock, text: "Chantier livré entre 7 et 15 jours" },
+          { icon: Shield, text: "Garantie décennale sur l'étanchéité" },
+          { icon: Sparkles, text: "Matériaux premium et design exclusif" },
+          { icon: Ruler, text: "Prise de côtes et devis détaillés gratuits" }
+        ]}
+      />
 
       <section className="pt-8 pb-8 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -183,28 +222,21 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               </span>
 
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                <span className="text-[#38bdf8] font-normal">Travaux de rénovation maison</span>{' '}
-                <span className="text-slate-900">qui allie confort</span><br />
-                <span className="text-slate-900">et élégance.</span>
+                <span className="text-[#38bdf8] font-normal">Votre salle de bain</span>{' '}
+                <span className="text-slate-900">{isGrenoble ? 'à Grenoble' : 'clé en main'}</span><br />
+                <span className="text-slate-900">qui allie confort et élégance.</span>
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Transformez votre salle de bain {isGrenoble && 'à Grenoble '}en un véritable espace de bien-être et de détente,
-                alliant fonctionnalité moderne, confort optimal et design raffiné pour votre quotidien.
+                <strong>Réponse directe :</strong> Groupe BML gère votre rénovation complète {isGrenoble && 'en Isère '}en un temps record, avec une attention maximale sur l'étanchéité et le design.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                <strong>Groupe BML Rénovation {isGrenoble && 'à Grenoble et en Isère '}</strong> vous accompagne dans la <strong>rénovation
-                complète</strong> de votre salle de bain. <strong>Notre équipe vous conseille et vous
-                accompagne</strong> dans le choix des équipements, des matériaux et de l'agencement pour créer l'espace idéal.
+                <strong>Groupe BML Rénovation {isGrenoble && 'à Grenoble et en Isère '}</strong> vous propose une solution globale pour transformer votre pièce d'eau. <strong>Nous pilotons chaque étape</strong> pour vous éviter de coordonner plusieurs entreprises : de la dépose de l'ancien carrelage à l'installation de votre nouvelle robinetterie.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed">
-                Que vous souhaitiez installer une douche à l'italienne, moderniser votre installation sanitaire,
-                optimiser l'espace disponible ou créer une salle de bain PMR accessible,
-                nos experts en rénovation mettent leur savoir-faire à votre service pour réaliser un projet
-                sur mesure qui transforme votre salle de bain en un havre de paix où design et praticité
-                se rencontrent harmonieusement.
+                Qu'il s'agisse d'une <strong>douche à l'italienne moderne</strong>, d'une <strong>salle de bain PMR adaptée</strong> ou d'un <strong>espace compact optimisé</strong>, notre savoir-faire vous garantit un résultat durable et esthétique.
               </p>
             </motion.div>
 
@@ -214,10 +246,11 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1260&q=80"
-                alt="Rénovation de Salle de Bain"
+                alt={isGrenoble ? "Expertise rénovation salle de bain Grenoble" : "Expertise rénovation salle de bain"}
                 className="w-full h-[450px] object-cover"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -235,20 +268,20 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
               <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                RÉNOVATION SALLES DE BAIN
+                NOS EXPERTISES
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                Rénovation intérieure<br />maison complète
+                Rénovation totale<br />de salle d'eau
               </h2>
 
               <p className="text-base text-[#4a5568] leading-relaxed mb-6">
-                Groupe BML Rénovation {isGrenoble && 'basée à Grenoble et intervenant en Isère, '} tout corps d'état conçoit et réalise des rénovations complètes de salles de bain. De l'étude de conception à la réalisation, nos équipes vous accompagnent tout au long de votre projet personnalisé pour créer un espace fonctionnel et esthétique qui répond à vos besoins quotidiens.
+                Chaque détail compte : du choix du receveur à la couleur des joints. Nous vous conseillons sur les <strong>matériaux antidérapants</strong>, l'<strong>étanchéité sous carrelage (SPEC)</strong> et l'<strong>optimisation des arrivées d'eau</strong>.
               </p>
 
               <p className="text-base text-[#4a5568] leading-relaxed">
-                Notre approche globale garantit une prise en charge complète de votre projet : analyse de vos besoins en matière de confort et d'accessibilité, conseils en aménagement et optimisation de l'espace, recommandations sur les équipements sanitaires, le carrelage et l'éclairage, et suivi rigoureux de chaque étape de réalisation pour un résultat impeccable.
+                Notre approche {isGrenoble && 'à Grenoble '}inclut le respect strict des normes de sécurité électrique (volumes de salle de bain) et l'installation d'une ventilation efficace pour éviter toute condensation.
               </p>
             </div>
 
@@ -261,32 +294,32 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                         <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Votre projet</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos interventions</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-[#4a5568]">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation complète de salle de bain</span>
+                       <span className="text-[#38bdf8]">–</span>
+                      <span>Pose de carrelage grand format & faïence</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Douche à l'italienne</span>
+                      <span>Création de douches à l'italienne maçonnées</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Installation sanitaire moderne</span>
+                      <span>Installation de colonnes de douche thermostatiques</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Carrelage et faïence</span>
+                      <span>Mise en place de meubles suspendus sur mesure</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Meubles vasques et rangements</span>
+                      <span>Éclairage LED d'ambiance et sécurité</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Salle de bain PMR accessible</span>
+                      <span>Adaptation complète accès PMR</span>
                     </li>
                   </ul>
                 </div>
@@ -296,15 +329,15 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                       <Check className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Pourquoi nous choisir ?</h3>
                   </div>
                   <p className="text-sm text-[#4a5568] leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous propose une expertise complète en rénovation de salles de bain, que ce soit pour créer un espace contemporain épuré ou une salle de bain familiale chaleureuse parfaitement adaptée à votre mode de vie.
+                    Groupe BML vous libère des contraintes techniques. En tant que <strong>contractant général</strong>, nous assumons la responsabilité totale du chantier. Une salle de bain rénovée par nos soins, c'est l'assurance d'un projet sans fuite, sans retard et avec une valeur immobilière décuplée.
                   </p>
                 </div>
               </div>
 
-<div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
+              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Prêt à Démarrer Votre Projet ?
                 </h2>
@@ -327,158 +360,10 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
-            <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                COMPÉTENCES
-              </span>
-
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                Entreprise de rénovation<br />bâtiment artisans qualifiés
-              </h2>
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                Groupe BML Rénovation {isGrenoble && 'à Grenoble et en Isère '} Tout Corps D'état possède une solide expérience dans la rénovation complète de salles de bain. Notre expertise couvre tous les aspects de la transformation : installation de douches à l'italienne, pose de baignoires et sanitaires, carrelage et faïence, plomberie moderne, ventilation VMC, éclairage LED, menuiserie sur mesure, et solutions d'accessibilité PMR pour un espace adapté à tous.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Salles de bain complètes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Salles d'eau compactes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Salles de bain PMR</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Suites parentales avec salle de bain</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>WC séparés</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Métiers</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Plomberie et sanitaires</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Carrelage et faïence</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Électricité et éclairage LED</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Ventilation VMC</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Menuiserie et meubles vasques</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Étanchéité et isolation</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
-                  <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Étude et conception 3D</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Conseils aménagement</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Coordination multi-corps d'état</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Solutions accessibilité PMR</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Gestion clés en main</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8 bg-white">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {isGrenoble ? 'Rénovation Salles de Bain à Grenoble' : 'Rénovation Maison - Artisan Rénovation Bâtiment'}
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              Chaque salle de bain que nous réalisons {isGrenoble && 'à Grenoble '}allie design moderne, confort optimal et fonctionnalité intelligente.
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              Transformons ensemble votre salle de bain {isGrenoble && 'à Grenoble '}en un espace de bien-être unique avec un devis gratuit et personnalisé.
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
-          </div>
-        </div>
-      </section>
+      <FAQSection 
+        title={isGrenoble ? "FAQ Rénovation Salle de Bain Grenoble" : "FAQ Rénovation Salle de Bain"} 
+        items={faqItems}
+      />
 
       <PartnersSection />
 

@@ -36,7 +36,7 @@ export const renovationSectionsConfig: SectionContent[] = [
   {
     categoryLabel: 'Nos partenaires qualifiés',
     mainHeadline: {
-      prefix: 'UNE ÉQUIPE D\'EXPERTS',
+      prefix: 'L\'EXCELLENCE DE LA RÉNOVATION FRANÇAISE',
       highlight: 'À VOTRE SERVICE',
     },
     imageUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-10-13_at_12.53.51_eskjdi.jpg',
@@ -56,10 +56,11 @@ export const renovationSectionsConfig: SectionContent[] = [
       'Technicien qualifié travaillant sur des finitions et revêtements muraux',
     ],
     paragraphs: [
-      'Chaque membre de notre équipe est sélectionné pour son **savoir-faire**, sa **rigueur** et son **sens du travail bien fait**.',
-      'Nos partenaires sont tous **expérimentés** et partagent la même **exigence d\'excellence** ainsi que le même **engagement envers la satisfaction du client**.',
-      'Ils interviennent avec **soin**, **précision** et **respect des délais**, dans un souci permanent de **qualité et de sécurité**.',
-      'Leur **expertise**, alliée à une **approche humaine et attentive**, fait de Groupe BML Rénovation un **partenaire de confiance** pour tous vos projets, des plus simples aux plus ambitieux.',
+      'Depuis plus de 10 ans, nous accompagnons les propriétaires dans leurs projets de rénovation complète.',
+      'Notre approche \'clé en main\' coordonne architectes, artisans et chefs de projet pour transformer vos espaces avec une exigence de finition haut de gamme.',
+      'Chaque membre de notre équipe est sélectionné pour son savoir-faire, sa rigueur et son sens du travail.',
+      'Nos partenaires sont tous expérimentés et partagent la même exigence d\'excellence ainsi que le même engagement envers la satisfaction du client.',
+      'Leur expertise, alliée à une approche humaine et attentive, fait de notre entreprise un partenaire de confiance pour tous vos projets, des plus simples aux plus ambitieux.',
     ],
   },
   {
@@ -76,7 +77,7 @@ export const renovationSectionsConfig: SectionContent[] = [
       'Nos compétences couvrent :',
       'Notre équipe, composée de **75 partenaires qualifiés**, œuvre chaque jour avec **rigueur** et **passion** pour garantir la **qualité** et la **durabilité** de chaque réalisation.',
       'Nos **architectes** et **décorateurs d\'intérieur** vous accompagnent à chaque étape du projet : étude des plans, choix des matériaux, organisation des volumes, sélection des teintes et finitions.',
-      'Chaque détail est pensé pour créer un intérieur à votre image, **harmonieux**, **pratique** et **intemporel**.',
+      'Chaque detail est pense pour créer un intérieur à votre image, **harmonieux**, **pratique** et **intemporel**.',
     ],
     features: [
       { text: 'Peinture et revêtements muraux (papier peint, enduits décoratifs, etc.)' },
@@ -110,7 +111,7 @@ export const renovationSectionsConfig: SectionContent[] = [
   {
     categoryLabel: 'Nos partenaires qualifiés',
     mainHeadline: {
-      prefix: 'Une équipe d\'experts',
+      prefix: 'L\'excellence de la rénovation française',
       highlight: 'à votre service',
     },
     imageUrl: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -133,6 +134,8 @@ export const renovationSectionsConfig: SectionContent[] = [
     reverseLayout: false,
     showCTA: true,
     paragraphs: [
+      'Depuis plus de 10 ans, nous accompagnons les propriétaires dans leurs projets de rénovation complète.',
+      'Notre approche \'clé en main\' coordonne architectes, artisans et chefs de projet pour transformer vos espaces avec une exigence de finition haut de gamme.',
       'Chaque membre de notre équipe est sélectionné pour son savoir-faire, sa rigueur et son sens du travail.',
       'Nos partenaires sont tous expérimentés et partagent la même exigence d\'excellence ainsi que le même engagement envers la satisfaction du client.',
       'Leur expertise, alliée à une approche humaine et attentive, fait de notre entreprise un partenaire de confiance pour tous vos projets, des plus simples aux plus ambitieux.',

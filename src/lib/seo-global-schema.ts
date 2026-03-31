@@ -12,10 +12,16 @@ export const generateGlobalSeoSchemas = () => {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': 'https://groupe-bml-renovation.fr/#organization',
     name: 'Groupe BML Rénovation',
     alternateName: 'BML Rénovation',
     url: 'https://groupe-bml-renovation.fr',
-    logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
+      width: '512',
+      height: '512'
+    },
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+33756915997',
@@ -23,14 +29,24 @@ export const generateGlobalSeoSchemas = () => {
       areaServed: 'FR',
       availableLanguage: 'French'
     },
-    sameAs: socialLinks
+    sameAs: socialLinks,
+    foundingDate: '2014',
+    description: 'Entreprise de rénovation haut de gamme opérant à Grenoble et dans toute la France. Spécialiste de la rénovation de maisons et appartements clés en main.',
+    knowsAbout: [
+      'Rénovation immobilière',
+      'Architecture d\'intérieur',
+      'Maîtrise d\'œuvre',
+      'Rénovation énergétique',
+      'Design d\'espace'
+    ]
   };
 
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
+    '@id': 'https://groupe-bml-renovation.fr/#localbusiness',
     name: 'Groupe BML Rénovation',
-    description: 'Expert en rénovation complète d’appartements et de maisons depuis 10 ans. Travaux de rénovation clé en main, intérieure et extérieure partout en France.',
+    description: 'Expert en rénovation complète d’appartements et de maisons depuis plus de 10 ans. Travaux de rénovation clé en main avec interlocuteur unique, artisans qualifiés RGE et garantie décennale.',
     url: 'https://groupe-bml-renovation.fr',
     telephone: '+33756915997',
     address: {
@@ -46,7 +62,7 @@ export const generateGlobalSeoSchemas = () => {
       longitude: 5.7031
     },
     image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
-    priceRange: '$$$',
+    priceRange: '€€€',
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -64,14 +80,23 @@ export const generateGlobalSeoSchemas = () => {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.8',
-      reviewCount: '127'
-    }
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1'
+    },
+    brand: {
+      '@id': 'https://groupe-bml-renovation.fr/#organization'
+    },
+    hasCertification: [
+      'Qualibat RGE',
+      'Garantie Décennale'
+    ]
   };
 
   const serviceCatalogSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Services de Rénovation Complète',
+    name: 'Rénovation de Maison et Appartement Clé en Main',
     provider: {
       '@id': 'https://groupe-bml-renovation.fr/#organization'
     },
@@ -79,9 +104,10 @@ export const generateGlobalSeoSchemas = () => {
       '@type': 'Country',
       name: 'France'
     },
+    description: 'Solutions de rénovation globale : conception, pilotage de chantier et réalisation tous corps d\'état.',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Catalogue de Rénovation',
+      name: 'Catalogue de Rénovation Haut de Gamme',
       itemListElement: [
         {
           '@type': 'OfferCatalog',
@@ -91,41 +117,38 @@ export const generateGlobalSeoSchemas = () => {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Rénovation Maison'
+                name: 'Rénovation Complète Maison',
+                description: 'Transformation intégrale de villas et maisons anciennes.'
               }
             },
             {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Rénovation Appartement'
+                name: 'Rénovation Appartement',
+                description: 'Rénovation d\'appartements haussmanniens et contemporains.'
               }
             }
           ]
         },
         {
           '@type': 'OfferCatalog',
-          name: 'Rénovation Technique',
+          name: 'Rénovation Spécialisée',
           itemListElement: [
             {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Plomberie & Chauffage'
+                name: 'Rénovation de Salle de Bain',
+                description: 'Création d\'espaces bien-être et douches à l\'italienne.'
               }
             },
             {
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Électricité'
-              }
-            },
-            {
-              '@type': 'Offer',
-              itemOffered: {
-                '@type': 'Service',
-                name: 'Peinture & Revêtements'
+                name: 'Rénovation de Cuisine',
+                description: 'Conception et pose de cuisines sur mesure.'
               }
             }
           ]
@@ -140,3 +163,4 @@ export const generateGlobalSeoSchemas = () => {
     serviceCatalogSchema
   };
 };
+

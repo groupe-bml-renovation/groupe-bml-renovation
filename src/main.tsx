@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import NotFound from './components/NotFound.tsx';
+import { registerSW } from 'virtual:pwa-register';
+
+// Register service worker for instant loading/offline support
+registerSW({ immediate: true });
 import { measureComponentRenderTime } from './lib/web-vitals';
 import Appartements from './components/Appartements.tsx';
 import MaisonsVillas from './pages/MaisonsVillas.tsx';

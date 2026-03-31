@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface SalonsProps {
   onBack: () => void;
@@ -90,10 +91,11 @@ const ImageCarousel = () => {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <img
+                    <OptimizedImage
                       src={media}
                       alt={`Rénovation salon ${index + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                   )}
                 </div>
@@ -112,10 +114,11 @@ const ImageCarousel = () => {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <img
+                    <OptimizedImage
                       src={media}
                       alt={`Rénovation salon ${index + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                   )}
                 </div>
@@ -141,21 +144,22 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? 'Rénovation Salons Grenoble - Groupe BML Rénovation' : 'Rénovation Salons - Groupe BML Rénovation'}</title>
-        <meta name="description" content={isGrenoble ? 'Rénovation complète de salons à Grenoble. Création d\'espaces ouverts, cheminées, parquets, éclairage LED. Experts en rénovation intérieure à Grenoble et région. Devis gratuit.' : 'Rénovation complète de salons à Grenoble et région. Création d\'espaces ouverts, cheminées, parquets, éclairage LED. Ambiance chaleureuse et élégante. Devis gratuit.'} />
+        <meta name="description" content={isGrenoble ? 'Rénovation complète de salons à Grenoble. Création d\'espaces ouverts, cheminées, parquets, éclairage LED. Experts en rénovation intérieure à Grenoble et région. Devis gratuit.' : 'Rénovation complète de salons à Grenoble and région. Création d\'espaces ouverts, cheminées, parquets, éclairage LED. Ambiance chaleureuse et élégante. Devis gratuit.'} />
         {isGrenoble && <meta name="keywords" content="rénovation salon Grenoble, rénovation intérieur Grenoble, rénovation maison Grenoble, aménagement salon Grenoble" />}
         <link rel="canonical" href={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/salons' : 'https://groupe-bml-renovation.fr/salons'} />
         <meta property="og:title" content={isGrenoble ? 'Rénovation Salons Grenoble - Groupe BML' : 'Rénovation Salons - Groupe BML Rénovation'} />
-        <meta property="og:description" content={isGrenoble ? 'Rénovation complète de salons à Grenoble. Devis gratuit.' : 'Rénovation complète de salons à Grenoble et région. Devis gratuit.'} />
+        <meta property="og:description" content={isGrenoble ? 'Rénovation complète de salons à Grenoble. Devis gratuit.' : 'Rénovation complète de salons à Grenoble and région. Devis gratuit.'} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/salons' : 'https://groupe-bml-renovation.fr/salons'} />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1920&q=80"
             alt="Rénovation de Salons"
-            className="w-full h-full object-cover"
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>

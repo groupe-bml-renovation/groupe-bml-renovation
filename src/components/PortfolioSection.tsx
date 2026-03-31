@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 export default function PortfolioSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -179,10 +180,10 @@ export default function PortfolioSection() {
         <div className="relative bg-gradient-to-b from-blue-50 to-white rounded-2xl overflow-hidden">
           <div className="relative w-full h-96 sm:h-[500px] lg:h-[600px] overflow-hidden bg-gray-200">
             <div className="absolute inset-0 transition-opacity duration-500 opacity-100">
-              <img
+              <OptimizedImage
                 src={currentImage}
                 alt={`Rénovation ${activeCategory} - Projet BML Rénovation - Image ${currentSlide + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full"
                 loading="lazy"
               />
             </div>

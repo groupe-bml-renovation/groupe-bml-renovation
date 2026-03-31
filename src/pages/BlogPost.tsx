@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import { FooterSection } from '../components/footer-section';
 import BlogPostCard from '../components/BlogPostCard';
 import { getBlogPostBySlug, getRelatedBlogPosts, type BlogPost } from '../services/blogService';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -95,10 +96,11 @@ export default function BlogPostPage() {
             transition={{ duration: 0.6 }}
             className="mb-8 rounded-xl overflow-hidden h-96 bg-gray-200"
           >
-            <img
+            <OptimizedImage
               src={post.featured_image_url}
               alt={post.title}
               className="w-full h-full object-cover"
+              priority={true}
             />
           </motion.div>
         )}

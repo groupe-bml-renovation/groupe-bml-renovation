@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface RevêtementsSolsProps {
   onBack: () => void;
@@ -67,10 +68,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Revêtements de sols ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -78,10 +80,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Revêtements de sols ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -105,10 +108,11 @@ const RevêtementsSols: React.FC<RevêtementsSolsProps> = ({ onBack }) => {
     <div className="min-h-screen bg-white">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1600&q=80"
             alt="Revêtements de Sols"
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -149,7 +153,7 @@ const RevêtementsSols: React.FC<RevêtementsSolsProps> = ({ onBack }) => {
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Redonnez vie à vos intérieurs avec nos solutions de revêtements de sols professionnels,
+                Redonnez vie à vos intérieurs with nos solutions de revêtements de sols professionnels,
                 alliant esthétique moderne, confort acoustique et durabilité exceptionnelle grâce à des matériaux de première qualité.
               </p>
 
@@ -172,10 +176,11 @@ const RevêtementsSols: React.FC<RevêtementsSolsProps> = ({ onBack }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80"
                 alt="Revêtements de Sols"
                 className="w-full h-[450px] object-cover"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -413,7 +418,8 @@ const RevêtementsSols: React.FC<RevêtementsSolsProps> = ({ onBack }) => {
             </div>
           </div>
         </div>
-      </section>    </div>
+      </section>
+    </div>
   );
 };
 

@@ -10,6 +10,7 @@ import ServicesTabbedCarousel from '../components/ServicesTabbedCarousel';
 import { ProjectProcessGallery } from '../components/ProjectProcessGallery';
 import { ProjectHighlightSection } from '../components/ProjectHighlightSection';
 import { galleryImagesConfig } from '../data/gallery-images-config';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 const ProjetRenovationBureau: React.FC = () => {
   const navigate = useNavigate();
@@ -32,10 +33,11 @@ const ProjetRenovationBureau: React.FC = () => {
 
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%20Hero%20-%20After.png"
             alt="Projet Rénovation Bureau"
             className="w-full h-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-900/60 to-slate-900/70" />
         </div>

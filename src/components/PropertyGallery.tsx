@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface PropertyGalleryProps {
   onCtaClick?: () => void;
@@ -19,34 +20,38 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-max">
           <div className="md:row-span-2 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/3935333/pexels-photo-3935333.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Pool aerial view"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
           </div>
 
           <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Modern building facade"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
           </div>
 
           <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Wooden deck"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
           </div>
 
           <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 group">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Pool and garden"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             <button
@@ -62,26 +67,29 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
           </div>
 
           <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Interior room"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
           </div>
 
           <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/1439227/pexels-photo-1439227.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Modern kitchen"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
           </div>
 
           <div className="md:row-span-2 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <img
+            <OptimizedImage
               src="https://images.pexels.com/photos/1909657/pexels-photo-1909657.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Luxury bathroom"
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              loading="lazy"
             />
           </div>
         </div>

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { CheckCircle, Award, Users, Clock, Shield, Star, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface AProposPageProps {
   onBack: () => void;
@@ -314,10 +315,11 @@ const AProposPage: React.FC<AProposPageProps> = ({ onBack, onNavigate }) => {
                   {milestone.description}
                 </p>
                 {milestone.image && (
-                  <img
+                  <OptimizedImage
                     src={milestone.image}
                     alt={milestone.title}
                     className="w-full rounded-xl mt-6 shadow-md"
+                    loading="lazy"
                   />
                 )}
               </motion.div>

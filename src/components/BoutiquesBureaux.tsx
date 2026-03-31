@@ -5,6 +5,7 @@ import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from './footer-section';
 import PartnersSection from './PartnersSection';
+import { OptimizedImage } from './OptimizedImage';
 
 interface BoutiquesBureauxProps {
   onBack: () => void;
@@ -82,10 +83,10 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               ))}
@@ -93,10 +94,10 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               ))}
@@ -104,10 +105,10 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set3-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               ))}
@@ -142,10 +143,11 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80"
             alt="Rénovation Boutiques et Bureaux"
-            className="w-full h-full object-cover"
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -204,12 +206,13 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl"
+              className="relative rounded-xl overflow-hidden shadow-2xl h-[450px]"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
                 alt="Rénovation Boutique et Bureau"
-                className="w-full h-[450px] object-cover"
+                className="w-full h-full"
+                loading="lazy"
               />
             </motion.div>
           </div>

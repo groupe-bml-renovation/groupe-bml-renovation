@@ -11,7 +11,7 @@ export default function UnifiedContactForm() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-14 sm:mb-16 lg:mb-20"
+          className="text-center mb-8 sm:mb-12 lg:mb-20"
         >
           <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
@@ -43,7 +43,7 @@ export default function UnifiedContactForm() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl border-2 border-gray-200 hover:border-[#38bdf8] p-10 sm:p-12 lg:p-16 transition-all duration-300 flex flex-col max-w-4xl mx-auto w-full"
+          className="bg-white rounded-2xl border-2 border-gray-200 hover:border-cyan-400 p-6 sm:p-10 lg:p-16 transition-all duration-300 flex flex-col max-w-4xl mx-auto w-full shadow-sm"
         >
           <DemandDevisForm />
         </motion.div>

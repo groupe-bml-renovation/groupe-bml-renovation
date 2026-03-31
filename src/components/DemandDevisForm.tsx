@@ -98,9 +98,9 @@ export default function DemandDevisForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="space-y-8"
+        className="space-y-6 md:space-y-8"
       >
-        <div className="space-y-6">
+        <div className="space-y-5 md:space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Type de travaux souhaitez ? <span className="text-red-500">*</span>
@@ -314,7 +314,7 @@ export default function DemandDevisForm() {
         </p>
       </motion.div>
 
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
         {renderFormContent()}
 
         {errorMessage && (

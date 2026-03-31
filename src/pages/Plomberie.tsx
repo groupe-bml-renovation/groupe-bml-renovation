@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 interface PlomberieProps {
   onBack: () => void;
@@ -96,10 +97,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation maison - Travaux de rénovation intérieure et plomberie ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -107,10 +109,11 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Rénovation maison - Travaux de rénovation intérieure et plomberie ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -231,10 +234,11 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1761330440311-16e160cad236?w=1920&q=80"
-            alt="Travaux de rénovation maison - Plomberie et installations sanitaires pour rénovation intérieure"
-            className="w-full h-full object-cover"
+            alt="Travaux de rénovation maison - Plomberie et installations sanitaires for rénovation intérieure"
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -249,7 +253,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
               Travaux de<br />plomberie{isGrenoble && <span> à Grenoble</span>}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Plomberie professionnelle à Grenoble - Installations fiables et interventions rapides" : "Des installations fiables et des interventions rapides pour votre confort"}
+              {isGrenoble ? "Plomberie professionnelle à Grenoble - Installations fiables et interventions rapides" : "Des installations fiables et des interventions rapides for votre confort"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto" />
           </motion.div>
@@ -284,20 +288,20 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-base text-[#4a5568] leading-relaxed mb-4">
                 {isGrenoble
-                  ? "À Grenoble et en Isère, Groupe BML Rénovation vous offre des solutions de plomberie fiables et durables. Garantissez la qualité de vos installations sanitaires avec des interventions professionnelles qui allient expertise technique et service de proximité."
-                  : "Garantissez la fiabilité et la durabilité de vos installations sanitaires avec des interventions professionnelles qui allient expertise technique et qualité de service."}
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation vous offre des solutions de plomberie fiables et durables. Garantissez la qualité de vos installations sanitaires avec des interventions professionnelles qui allient expertise technique and service de proximité."
+                  : "Garantissez la fiabilité and la durabilité de vos installations sanitaires avec des interventions professionnelles qui allient expertise technique and qualité de service."}
               </p>
 
               <p className="text-base text-[#4a5568] leading-relaxed mb-4">
                 <strong>{isGrenoble ? "Groupe BML Rénovation à Grenoble" : "Groupe BML Rénovation"}</strong> vous accompagne dans tous vos <strong>travaux
-                de plomberie</strong>. Notre équipe {isGrenoble && "grenobloise"} <strong>vous conseille et vous
-                accompagne</strong> dans l'installation, la réparation et l'entretien de vos équipements sanitaires.
+                de plomberie</strong>. Notre équipe {isGrenoble && "grenobloise"} <strong>vous conseille and vous
+                accompagne</strong> dans l'installation, la réparation and l'entretien de vos équipements sanitaires.
               </p>
 
               <p className="text-base text-[#4a5568] leading-relaxed">
                 {isGrenoble
-                  ? "À Grenoble, que vous souhaitiez moderniser votre salle de bain, installer un nouveau système de chauffage, réparer une fuite urgente ou optimiser votre réseau de distribution d'eau, nos plombiers professionnels en Isère mettent leur expertise à votre service pour réaliser des installations conformes et durables qui améliorent votre confort au quotidien."
-                  : "Que vous souhaitiez moderniser votre salle de bain, installer un nouveau système de chauffage, réparer une fuite urgente ou optimiser votre réseau de distribution d'eau, nos plombiers professionnels mettent leur expertise à votre service pour réaliser des installations conformes et durables qui améliorent votre confort au quotidien."}
+                  ? "À Grenoble, que vous souhaitiez moderniser votre salle de bain, installer un nouveau système de chauffage, réparer une fuite urgente ou optimiser votre réseau de distribution d'eau, nos plombiers professionnels en Isère mettent leur expertise à votre service for réaliser des installations conformes and durables qui améliorent votre confort au quotidien."
+                  : "Que vous souhaitiez moderniser votre salle de bain, installer un nouveau système de chauffage, réparer une fuite urgente ou optimiser votre réseau de distribution d'eau, nos plombiers professionnels mettent leur expertise à votre service for réaliser des installations conformes and durables qui améliorent votre confort au quotidien."}
               </p>
             </motion.div>
 
@@ -307,10 +311,11 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.unsplash.com/flagged/photo-1600002368144-444430d3f3ca?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
                 alt="Expert en rénovation maison - Entreprise de rénovation spécialisée en travaux de rénovation intérieure"
-                className="w-full h-[450px] object-cover"
+                className="w-full h-[450px]"
+                loading="lazy"
               />
             </motion.div>
           </div>

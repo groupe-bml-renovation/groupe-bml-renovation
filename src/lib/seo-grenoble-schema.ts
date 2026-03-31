@@ -1,165 +1,97 @@
 export const generateGrenobleSeoSchemas = () => {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: 'Groupe BML Rénovation',
-    description: 'Rénovation maison et appartement à Grenoble en Isère - 300+ projets réalisés, 10 ans d\'expérience. Devis gratuit, disponibilité sous 24h. Expert rénovation clé en main pour particuliers et petits commerces.',
-    url: 'https://groupe-bml-renovation.fr',
-    telephone: '+33438526787',
+    '@type': 'HomeAndConstructionBusiness',
+    '@id': 'https://groupe-bml-renovation.fr/grenoble/#localbusiness',
+    name: 'Groupe BML Rénovation Grenoble',
+    description: 'Expert en rénovation complète maison et appartement à Grenoble (38). Plus de 10 ans d\'expérience, 300+ chantiers réalisés en Isère. Interlocuteur unique, devis gratuit 24h, garantie décennale et certification RGE.',
+    url: 'https://groupe-bml-renovation.fr/grenoble',
+    telephone: '+33756915997',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Grenoble',
+      streetAddress: '5 Av. Paul Verlaine',
       addressLocality: 'Grenoble',
       addressRegion: 'Isère',
-      postalCode: '38000',
+      postalCode: '38100',
       addressCountry: 'FR'
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 45.1885,
-      longitude: 5.7245
+      latitude: 45.1607,
+      longitude: 5.7031
     },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00'
+      }
+    ],
     serviceArea: [
-      {
-        '@type': 'City',
-        name: 'Grenoble',
-        areaServed: {
-          '@type': 'State',
-          name: 'Isère'
-        }
-      },
-      {
-        '@type': 'State',
-        name: 'Isère'
-      }
+      { '@type': 'City', name: 'Grenoble' },
+      { '@type': 'City', name: 'Meylan' },
+      { '@type': 'City', name: 'Corenc' },
+      { '@type': 'City', name: 'Saint-Ismier' },
+      { '@type': 'City', name: 'Montbonnot-Saint-Martin' },
+      { '@type': 'City', name: 'La Tronche' },
+      { '@type': 'City', name: 'Échirolles' },
+      { '@type': 'City', name: 'Saint-Martin-d\'Hères' },
+      { '@type': 'City', name: 'Seyssinet-Pariset' },
+      { '@type': 'City', name: 'Sassenage' },
+      { '@type': 'City', name: 'Voiron' }
     ],
-    areaServed: [
-      {
-        '@type': 'Place',
-        name: 'Grenoble',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 45.1885,
-          longitude: 5.7245
-        }
-      },
-      {
-        '@type': 'Place',
-        name: 'Échirolles',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 45.1667,
-          longitude: 5.7333
-        }
-      },
-      {
-        '@type': 'Place',
-        name: 'Meylan',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 45.2167,
-          longitude: 5.7667
-        }
-      },
-      {
-        '@type': 'Place',
-        name: 'Fontaine',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 45.1917,
-          longitude: 5.6750
-        }
-      },
-      {
-        '@type': 'Place',
-        name: 'Saint-Martin-d\'Hères',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 45.1500,
-          longitude: 5.7667
-        }
-      },
-      {
-        '@type': 'Place',
-        name: 'Voiron',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: 45.3667,
-          longitude: 5.5833
-        }
-      }
-    ],
-    priceRange: '$$',
-    image: 'https://groupe-bml-renovation.fr/logo.png',
+    priceRange: '€€€',
+    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
     sameAs: [
-      'https://www.google.com/maps/place/Grenoble',
-      'https://www.facebook.com/groupebml'
-    ],
-    knowsAbout: [
-      'Rénovation maison à Grenoble',
-      'Rénovation appartement à Grenoble',
-      'Travaux rénovation en Isère',
-      'Rénovation clé en main Grenoble',
-      'Rénovation intérieure Isère',
-      'Rénovation extérieure Grenoble'
+      'https://www.facebook.com/profile.php?id=61583239311358',
+      'https://www.instagram.com/groupe_bml_renovation_tce/',
+      'https://www.linkedin.com/in/groupe-bml-r%C3%A9novation-tout-corps-d-%C3%A9tat-86aa693b1/',
+      'https://www.google.com/maps?cid=6757121703080060012'
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: 4.8,
-      ratingCount: 127,
-      bestRating: 5,
-      worstRating: 1
-    }
+      ratingValue: '4.9',
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1'
+    },
+    hasCertification: [
+      'Qualibat RGE',
+      'Garantie Décennale AXA'
+    ]
   };
 
   const maisionServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Rénovation Maison à Grenoble et Isère',
+    name: 'Rénovation Maison Grenoble & Isère',
     provider: {
-      '@type': 'LocalBusiness',
-      name: 'Groupe BML Rénovation',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Grenoble',
-        addressRegion: 'Isère',
-        addressCountry: 'FR'
-      }
+      '@id': 'https://groupe-bml-renovation.fr/grenoble/#localbusiness'
     },
-    description: 'Rénovation maison clé en main à Grenoble et en Isère - Entreprise spécialisée en rénovation complète maison, rénovation intérieure et extérieure, extensions, surélévations. Devis gratuit pour tous les projets de rénovation en Isère.',
-    areaServed: [
-      { '@type': 'City', name: 'Grenoble' },
-      { '@type': 'City', name: 'Échirolles' },
-      { '@type': 'City', name: 'Meylan' },
-      { '@type': 'City', name: 'Fontaine' },
-      { '@type': 'City', name: 'Saint-Martin-d\'Hères' },
-      { '@type': 'City', name: 'Voiron' },
-      { '@type': 'State', name: 'Isère' }
-    ],
-    serviceType: 'Rénovation',
+    description: 'Rénovation globale de villas et maisons individuelles en Isère. Maîtrise d\'œuvre, extension, isolation RGE et aménagement intérieur haut de gamme.',
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'Isère'
+    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Services de Rénovation Maison à Grenoble',
+      name: 'Rénovation Maison Isère',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Rénovation Complète Maison'
+            name: 'Rénovation Énergétique Maison',
+            description: 'Isolation, menuiseries et chauffage aux normes RGE.'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Rénovation Clé en Main'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Travaux Intérieur Extérieur'
+            name: 'Extension et Surélévation',
+            description: 'Agrandissement de surface habitable.'
           }
         }
       ]
@@ -169,51 +101,33 @@ export const generateGrenobleSeoSchemas = () => {
   const appartementServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Rénovation Appartement à Grenoble et Isère',
+    name: 'Rénovation Appartement Grenoble',
     provider: {
-      '@type': 'LocalBusiness',
-      name: 'Groupe BML Rénovation',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Grenoble',
-        addressRegion: 'Isère',
-        addressCountry: 'FR'
-      }
+      '@id': 'https://groupe-bml-renovation.fr/grenoble/#localbusiness'
     },
-    description: 'Rénovation appartement clé en main à Grenoble et en Isère - Entreprise spécialisée rénovation appartement, rénovation intérieure, travaux sans déménagement. Devis gratuit et rapide pour tous vos projets de rénovation en Isère.',
-    areaServed: [
-      { '@type': 'City', name: 'Grenoble' },
-      { '@type': 'City', name: 'Échirolles' },
-      { '@type': 'City', name: 'Meylan' },
-      { '@type': 'City', name: 'Fontaine' },
-      { '@type': 'City', name: 'Saint-Martin-d\'Hères' },
-      { '@type': 'City', name: 'Voiron' },
-      { '@type': 'State', name: 'Isère' }
-    ],
-    serviceType: 'Rénovation',
+    description: 'Rénovation d\'appartements anciens (Haussmannien) et contemporains à Grenoble. Optimisation d\'espace, cuisines et salles de bain clé en main.',
+    areaServed: {
+      '@type': 'City',
+      name: 'Grenoble'
+    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Services de Rénovation Appartement à Grenoble',
+      name: 'Rénovation Appartement Grenoble',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Rénovation Appartement Clé en Main'
+            name: 'Rénovation Studio & T2',
+            description: 'Solutions d\'aménagement pour petites surfaces.'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Rénovation sans Déménagement'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Travaux Rénovation Intérieure'
+            name: 'Rénovation Luxe & Prestige',
+            description: 'Finitions haut de gamme pour appartements de standing.'
           }
         }
       ]
@@ -226,50 +140,34 @@ export const generateGrenobleSeoSchemas = () => {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Combien coûte une rénovation maison à Grenoble en Isère ?',
+        name: 'Quel est le prix moyen au m2 pour une rénovation à Grenoble ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Le coût de rénovation maison à Grenoble varie selon l\'envergure des travaux, les finitions et la surface. Groupe BML Rénovation offre un devis gratuit et détaillé pour votre projet spécifique à Grenoble et en Isère.'
+          text: 'À Grenoble, le prix d\'une rénovation complète varie de 800€/m² pour un rafraîchissement à plus de 2000€/m² pour une rénovation lourde avec restructuration. Groupe BML fournit un chiffrage précis sous 24h.'
         }
       },
       {
         '@type': 'Question',
-        name: 'Quelle est la meilleure entreprise rénovation à Grenoble ?',
+        name: 'Pourquoi choisir Groupe BML pour ses travaux en Isère ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Groupe BML Rénovation propose des services de qualité avec 300+ projets réalisés et 10 ans d\'expérience à Grenoble et en Isère. Devis gratuit sous 24h pour comparer nos tarifs compétitifs.'
+          text: 'Groupe BML offre un interlocuteur unique, une garantie décennale sur tous les lots et une expertise de 10 ans avec plus de 300 avis positifs à Grenoble. Nous gérons tout, de la démolition aux finitions.'
         }
       },
       {
         '@type': 'Question',
-        name: 'Combien de temps pour rénover un appartement à Grenoble en Isère ?',
+        name: 'Quels sont les délais pour un devis de rénovation à Grenoble ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'La durée dépend du scope de rénovation. Un planning détaillé est établi lors du devis. Notre équipe à Grenoble respecte les délais convenus et assure un suivi régulier pour tous projets en Isère.'
+          text: 'Nous intervenons pour une visite technique à Grenoble sous 24h à 48h. Votre devis détaillé et gratuit vous est envoyé dans les 3 à 5 jours suivant la visite.'
         }
       },
       {
         '@type': 'Question',
-        name: 'Rénovation appartement occupé à Grenoble : est-ce possible ?',
+        name: 'L\'entreprise Groupe BML est-elle certifiée RGE à Grenoble ?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Oui, les rénovations d\'appartements occupés sont courantes à Grenoble. Nous organisons le chantier par phases pour minimiser les nuisances et maintenir le confort résidentiel pour nos clients en Isère.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Entreprise rénovation Grenoble Isère : rénovation clé en main, qu\'est-ce que c\'est ?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Rénovation clé en main signifie que Groupe BML Rénovation gère tout : études, démarches, travaux, suivi, finition pour votre maison ou appartement à Grenoble. Vous avez un interlocuteur unique du début à la fin.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Interventions dans quelles communes en Isère ?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Groupe BML Rénovation intervient notamment à Grenoble, Échirolles, Meylan, Fontaine, Saint-Martin-d\'Hères et Voiron. Nous couvrons également l\'ensemble de l\'Isère. Contactez-nous pour connaître la disponibilité dans votre commune.'
+          text: 'Oui, Groupe BML possède les certifications Qualibat RGE, vous permettant de bénéficier des aides de l\'État (MaPrimeRénov\') pour vos travaux de rénovation énergétique en Isère.'
         }
       }
     ]
