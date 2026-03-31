@@ -18,7 +18,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   iconName,
   onClick
 }) => {
-  const IconComponent = (Icons as Record<string, React.ComponentType<any>>)[iconName] || Icons.Zap;
+  const IconComponent = (Icons as any)[iconName] || Icons.Zap;
 
   const handleClick = () => {
     if (onClick) {
@@ -43,6 +43,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             decoding="async"
+            loading="lazy"
           />
 
           <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

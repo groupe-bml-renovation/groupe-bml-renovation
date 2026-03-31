@@ -12,7 +12,7 @@ export const PageLoader: React.FC = () => {
       setIsLoading(false);
       // Unlock body scroll
       document.body.style.overflow = '';
-    }, 1800);
+    }, 1000);
 
     return () => {
       clearTimeout(timer);
@@ -26,8 +26,8 @@ export const PageLoader: React.FC = () => {
         <motion.div
           initial={{ y: 0 }}
           exit={{ y: '-100%', opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900"
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#38bdf8]"
         >
           <div className="flex flex-col items-center">
             {/* Animated Logo Container */}
@@ -43,14 +43,14 @@ export const PageLoader: React.FC = () => {
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
-                transition={{ duration: 0.8, delay: 0.3, ease: 'easeInOut' }}
-                className="h-[2px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent mb-2"
+                transition={{ duration: 0.5, delay: 0.2, ease: 'easeInOut' }}
+                className="h-[2px] bg-gradient-to-r from-transparent via-white to-transparent mb-2"
               />
               <motion.h2
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-lg md:text-xl font-light text-slate-300 tracking-widest text-center uppercase"
+                transition={{ duration: 0.4, delay: 0.5 }}
+                className="text-lg md:text-xl font-light text-white tracking-widest text-center uppercase"
               >
                 Rénovation
               </motion.h2>

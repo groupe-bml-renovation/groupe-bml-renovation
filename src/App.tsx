@@ -8,32 +8,42 @@ import HeroSection from './components/ui/hero-section';
 import PartnerCarouselOnly from './components/PartnerCarouselOnly';
 import { heroConfigs } from './data/hero-config';
 import { BMLRenovationHero } from './components/hero-gallery-demo';
-import Amenagement from './components/Amenagement';
-import BoutiquesBureaux from './components/BoutiquesBureaux';
-import Appartements from './components/Appartements';
-import Chambres from './components/Chambres';
-import Chauffage from './components/Chauffage';
-import TerrasseBois from './components/TerrasseBois';
-import Piscine from './pages/Piscine';
-import MaisonsVillas from './pages/MaisonsVillas';
-import Menuiserie from './pages/Menuiserie';
-import Peinture from './pages/Peinture';
-import Amiante from './pages/Amiante';
-import BorneElectrique from './pages/BorneElectrique';
-import SallesDeBainPMR from './pages/SallesDeBainPMR';
-import Salons from './pages/Salons';
-import CuisinesRenovation from './pages/CuisinesRenovation';
-import SallesDeBain from './pages/SallesDeBain';
-import Plomberie from './pages/Plomberie';
-import Electricite from './pages/Electricite';
-import Climatisation from './pages/Climatisation';
-import RevetementsSols from './pages/RevetementsSols';
-import WallCoverings from './pages/WallCoverings';
-import EspaceVerre from './pages/EspaceVerre';
-import EtapesProjet from './components/EtapesProjet';
-import Blog from './pages/Blog';
-import DevenirArtisanPartenaire from './pages/DevenirArtisanPartenaire';
-import ConfirmationDevis from './pages/ConfirmationDevis';
+const Amenagement = lazy(() => import('./components/Amenagement'));
+const BoutiquesBureaux = lazy(() => import('./components/BoutiquesBureaux'));
+const Appartements = lazy(() => import('./components/Appartements'));
+const Chambres = lazy(() => import('./components/Chambres'));
+const Chauffage = lazy(() => import('./components/Chauffage'));
+const TerrasseBois = lazy(() => import('./components/TerrasseBois'));
+const Piscine = lazy(() => import('./pages/Piscine'));
+const MaisonsVillas = lazy(() => import('./pages/MaisonsVillas'));
+const Menuiserie = lazy(() => import('./pages/Menuiserie'));
+const Peinture = lazy(() => import('./pages/Peinture'));
+const Amiante = lazy(() => import('./pages/Amiante'));
+const BorneElectrique = lazy(() => import('./pages/BorneElectrique'));
+const SallesDeBainPMR = lazy(() => import('./pages/SallesDeBainPMR'));
+const Salons = lazy(() => import('./pages/Salons'));
+const CuisinesRenovation = lazy(() => import('./pages/CuisinesRenovation'));
+const SallesDeBain = lazy(() => import('./pages/SallesDeBain'));
+const Plomberie = lazy(() => import('./pages/Plomberie'));
+const Electricite = lazy(() => import('./pages/Electricite'));
+const Climatisation = lazy(() => import('./pages/Climatisation'));
+const RevetementsSols = lazy(() => import('./pages/RevetementsSols'));
+const WallCoverings = lazy(() => import('./pages/WallCoverings'));
+const EspaceVerre = lazy(() => import('./pages/EspaceVerre'));
+const EtapesProjet = lazy(() => import('./components/EtapesProjet'));
+const Blog = lazy(() => import('./pages/Blog'));
+const DevenirArtisanPartenaire = lazy(() => import('./pages/DevenirArtisanPartenaire'));
+const ConfirmationDevis = lazy(() => import('./pages/ConfirmationDevis'));
+const Contact = lazy(() => import('./pages/Contact'));
+const AProposPage = lazy(() => import('./pages/APropos'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const PolitiqueConfidentialite = lazy(() => import('./pages/PolitiqueConfidentialite'));
+const ConditionsUtilisation = lazy(() => import('./pages/ConditionsUtilisation'));
+const MentionsLegales = lazy(() => import('./pages/MentionsLegales'));
+const ForumConverter = lazy(() => import('./pages/ForumConverter'));
+const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
+const PageLoader = lazy(() => import('./components/PageLoader'));
+
 import RenovationArchitectureSection from './components/RenovationArchitectureSection';
 import ProjectStepsSection from './components/ProjectStepsSection';
 import SocialProofBannerGrenoble from './components/SocialProofBannerGrenoble';
@@ -41,17 +51,9 @@ import PartnersSection from './components/PartnersSection';
 import { useVoiceflow } from './hooks/useVoiceflow';
 import { renovationSectionsConfig } from './data/renovation-sections-config';
 import { renovationSectionsConfigGrenoble } from './data/renovation-sections-config-grenoble';
-import Contact from './pages/Contact';
-import AProposPage from './pages/APropos';
-import FAQ from './pages/FAQ';
-import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
-import ConditionsUtilisation from './pages/ConditionsUtilisation';
-import MentionsLegales from './pages/MentionsLegales';
-import ForumConverter from './pages/ForumConverter';
-import DevenirFranchisePage from './pages/DevenirFranchise';
 import { LazyLoadingBoundary } from './components/LazyLoadingBoundary';
-import PageLoader from './components/PageLoader';
 import NotreSecteur from './components/NotreSecteur';
+
 
 const Navigation = lazy(() => import('./components/Navigation'));
 const StickyDemandeCTA = lazy(() => import('./components/StickyDemandeCTA'));
@@ -123,148 +125,292 @@ function App() {
 
   const renderPage = () => {
     if (currentPage === 'appartements') {
-      return <Appartements onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Appartements onBack={() => handleNavigate('home')} onNavigate={(p, t) => handleNavigate(p, t)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'boutiques-bureaux') {
-      return <BoutiquesBureaux onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <BoutiquesBureaux onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'piscine') {
-      return <Piscine onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Piscine onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'maisons-villas') {
-      return <MaisonsVillas onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <MaisonsVillas onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'menuiserie') {
-      return <Menuiserie onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Menuiserie onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'peinture') {
-      return <Peinture onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Peinture onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'amiante') {
-      return <Amiante onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Amiante onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'borne-electrique') {
-      return <BorneElectrique onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <BorneElectrique onBack={() => handleNavigate('home')} onNavigate={() => handleNavigate('home')} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'salons') {
-      return <Salons onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Salons onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'cuisines') {
-      return <CuisinesRenovation onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <CuisinesRenovation onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'salles-de-bain') {
-      return <SallesDeBain onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <SallesDeBain onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'plomberie') {
-      return <Plomberie onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Plomberie onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'electricite') {
-      return <Electricite onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Electricite onBack={() => handleNavigate('home')} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'climatisation') {
-      return <Climatisation onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Climatisation onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'revetements-sols') {
-      return <RevetementsSols onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <RevetementsSols onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'espace-verre') {
-      return <EspaceVerre onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <EspaceVerre onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
 
     if (currentPage === 'etapes-de-projet') {
-      return <EtapesProjet onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <EtapesProjet onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'contact') {
-      return <Contact onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Contact onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'apropos') {
-      return <AProposPage onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <AProposPage onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'faq') {
-      return <FAQ onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <FAQ onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'politique-confidentialite') {
-      return <PolitiqueConfidentialite onBack={() => handleNavigate('home')} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <PolitiqueConfidentialite onBack={() => handleNavigate('home')} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'conditions-utilisation') {
-      return <ConditionsUtilisation onBack={() => handleNavigate('home')} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <ConditionsUtilisation onBack={() => handleNavigate('home')} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'mentions-legales') {
-      return <MentionsLegales onBack={() => handleNavigate('home')} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <MentionsLegales onBack={() => handleNavigate('home')} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'forum-converter') {
-      return <ForumConverter />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <ForumConverter />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'devenir-franchise') {
-      return <DevenirFranchisePage onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <DevenirFranchisePage onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'chambres') {
-      return <Chambres onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Chambres onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'chauffage') {
-      return <Chauffage onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Chauffage onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'amenagement') {
-      return <Amenagement onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Amenagement onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'terrasse-bois') {
-      return <TerrasseBois onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <TerrasseBois onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'revetements-muraux') {
-      return <WallCoverings onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <WallCoverings onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'salles-de-bain-pmr') {
-      return <SallesDeBainPMR onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <SallesDeBainPMR onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'blog') {
-      return <Blog onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Blog onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'devenir-artisan-partenaire') {
-      return <DevenirArtisanPartenaire onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <DevenirArtisanPartenaire onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'a-propos') {
-      return <AProposPage onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <AProposPage onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'maisons-et-villas') {
-      return <MaisonsVillas onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <MaisonsVillas onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     if (currentPage === 'confirmation-devis') {
-      return <ConfirmationDevis onBack={() => handleNavigate('home')} onNavigate={handleNavigate} />;
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <ConfirmationDevis onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
     }
 
     const selectedSectionsConfig = isGrenoble ? renovationSectionsConfigGrenoble : renovationSectionsConfig;
@@ -275,131 +421,135 @@ function App() {
     const grenobleSeoSchemas = isGrenoble ? generateGrenobleSeoSchemas() : null;
 
     return (
-      <div className="min-h-screen">
-        <Helmet>
-          <title>{isGrenoble ? 'Rénovation de maison à Grenoble | Groupe BML Rénovation' : 'Rénovation Maison Complète | Entreprise de Rénovation Bâtiment | BML - Travaux Artisan'}</title>
-          <meta name="description" content={isGrenoble ? 'Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.' : 'Spécialisé dans la rénovation haut de gamme de maisons et d\'appartements depuis 10 ans dans tout la France.'} />
-          <meta name="keywords" content={isGrenoble ? 'rénovation maison grenoble, entreprise rénovation maison grenoble, rénovation appartement grenoble, entreprise rénovation appartement grenoble, rénovation clé en main grenoble, société rénovation maison, travaux maison grenoble, entreprise travaux appartement, rénovation intérieure grenoble, rénovation extérieure grenoble' : 'rénovation maison, renovation maison, rénover une maison, rénovation, rénovations, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de rénovation maison, entreprise de rénovation, travaux maison, rénovation maison complète, rénovation maison ancienne, coût rénovation maison, prix rénovation maison, rénovation intérieure, rénovation extérieure, travaux de peinture bâtiment, artisan rénovation maison, entreprise bâtiment rénovation'} />
-          <meta property="og:title" content={isGrenoble ? 'Rénovation Maison & Appartement Grenoble | 300+ Projets' : 'Rénovation Maison Complète | Entreprise de Rénovation'} />
-          <meta property="og:description" content={isGrenoble ? 'Rénovation clé en main à Grenoble. 300+ projets, 10 ans d\'expérience. Devis gratuit, RDV 24h. Maison & appartement.' : 'Travaux de rénovation professionnels pour votre maison. Entreprise spécialisée en rénovation complète, intérieure et extérieure.'} />
-          <meta property="og:type" content="website" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={isGrenoble ? 'Rénovation Maison Grenoble | BML' : 'Rénovation Maison Complète | BML'} />
-          <meta name="twitter:description" content={isGrenoble ? 'Entreprise rénovation maison & appartement Grenoble. 300+ projets, 10 ans. Devis gratuit 24h.' : 'Entreprise de rénovation maison - Travaux de peinture, rénovation intérieure, extérieure et maison ancienne.'} />
-          <link rel="canonical" href={canonicalUrl} />
-          <meta name="language" content="fr" />
-          <meta name="geo.region" content={geoRegion} />
-          {isGrenoble && grenobleSeoSchemas && (
-            <>
-              <script type="application/ld+json">
-                {JSON.stringify(grenobleSeoSchemas.localBusinessSchema)}
-              </script>
-              <script type="application/ld+json">
-                {JSON.stringify(grenobleSeoSchemas.maisionServiceSchema)}
-              </script>
-              <script type="application/ld+json">
-                {JSON.stringify(grenobleSeoSchemas.appartementServiceSchema)}
-              </script>
-              <script type="application/ld+json">
-                {JSON.stringify(grenobleSeoSchemas.faqSchema)}
-              </script>
-            </>
-          )}
-        </Helmet>
-        <HeroSection
-          videoUrl={selectedHeroConfig.videoUrl}
-          badgeText={selectedHeroConfig.badgeText}
-          mainHeadlinePrefix={selectedHeroConfig.mainHeadlinePrefix}
-          mainHeadlineLineBreak={selectedHeroConfig.mainHeadlineLineBreak}
-          rotatingTitles={selectedHeroConfig.rotatingTitles}
-          subheadline={selectedHeroConfig.subheadline}
-          reviewText={selectedHeroConfig.reviewText}
-          reviewStars={selectedHeroConfig.reviewStars}
-          reviewLink={selectedHeroConfig.reviewLink}
-          primaryHeading={selectedHeroConfig.primaryHeading}
-        />
-        <PartnerCarouselOnly />
-        <SocialProofBannerGrenoble />
-        <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
-
-        <NotreSecteur />
-
-        <LazyLoadingBoundary delay={isGrenoble ? 1200 : 500}>
-          <ServicesTabbedCarousel
-            onNavigate={!isGrenoble ? handleNavigate : () => { }}
-            headerText="NOS SERVICES"
-            title="Quels types de travaux recherchez-vous ?"
-            description="Explorez nos services adaptés à vos besoins spécifiques"
-            isGrenoble={isGrenoble}
+      <Suspense fallback={<PageLoader />}>
+        <div className="min-h-screen">
+          <Helmet>
+            <title>{isGrenoble ? 'Rénovation de maison à Grenoble | Groupe BML Rénovation' : 'Rénovation Maison Complète | Entreprise de Rénovation Bâtiment | BML - Travaux Artisan'}</title>
+            <meta name="description" content={isGrenoble ? 'Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.' : 'Spécialisé dans la rénovation haut de gamme de maisons et d\'appartements depuis 10 ans dans tout la France.'} />
+            <meta name="keywords" content={isGrenoble ? 'rénovation maison grenoble, entreprise rénovation maison grenoble, rénovation appartement grenoble, entreprise rénovation appartement grenoble, rénovation clé en main grenoble, société rénovation maison, travaux maison grenoble, entreprise travaux appartement, rénovation intérieure grenoble, rénovation extérieure grenoble' : 'rénovation maison, renovation maison, rénover une maison, rénovation, rénovations, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de rénovation maison, entreprise de rénovation, travaux maison, rénovation maison complète, rénovation maison ancienne, coût rénovation maison, prix rénovation maison, rénovation intérieure, rénovation extérieure, travaux de peinture bâtiment, artisan rénovation maison, entreprise bâtiment rénovation'} />
+            <meta property="og:title" content={isGrenoble ? 'Rénovation Maison & Appartement Grenoble | 300+ Projets' : 'Rénovation Maison Complète | Entreprise de Rénovation'} />
+            <meta property="og:description" content={isGrenoble ? 'Rénovation clé en main à Grenoble. 300+ projets, 10 ans d\'expérience. Devis gratuit, RDV 24h. Maison & appartement.' : 'Travaux de rénovation professionnels pour votre maison. Entreprise spécialisée en rénovation complète, intérieure et extérieure.'} />
+            <meta property="og:type" content="website" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={isGrenoble ? 'Rénovation Maison Grenoble | BML' : 'Rénovation Maison Complète | BML'} />
+            <meta name="twitter:description" content={isGrenoble ? 'Entreprise rénovation maison & appartement Grenoble. 300+ projets, 10 ans. Devis gratuit 24h.' : 'Entreprise de rénovation maison - Travaux de peinture, rénovation intérieure, extérieure et maison ancienne.'} />
+            <link rel="canonical" href={canonicalUrl} />
+            <meta name="language" content="fr" />
+            <meta name="geo.region" content={geoRegion} />
+            <link rel="preload" href="/videos/hero-video.mp4" as="video" type="video/mp4" />
+            {isGrenoble && grenobleSeoSchemas && (
+              <>
+                <script type="application/ld+json">
+                  {JSON.stringify(grenobleSeoSchemas.localBusinessSchema)}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify(grenobleSeoSchemas.maisionServiceSchema)}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify(grenobleSeoSchemas.appartementServiceSchema)}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify(grenobleSeoSchemas.faqSchema)}
+                </script>
+              </>
+            )}
+          </Helmet>
+          <HeroSection
+            videoUrl={selectedHeroConfig.videoUrl}
+            badgeText={selectedHeroConfig.badgeText}
+            mainHeadlinePrefix={selectedHeroConfig.mainHeadlinePrefix}
+            mainHeadlineLineBreak={selectedHeroConfig.mainHeadlineLineBreak}
+            rotatingTitles={selectedHeroConfig.rotatingTitles}
+            subheadline={selectedHeroConfig.subheadline}
+            reviewText={selectedHeroConfig.reviewText}
+            reviewStars={selectedHeroConfig.reviewStars}
+            reviewLink={selectedHeroConfig.reviewLink}
+            primaryHeading={selectedHeroConfig.primaryHeading}
           />
-        </LazyLoadingBoundary>
+          <PartnerCarouselOnly />
+          <SocialProofBannerGrenoble />
+          <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
 
-        <ProjectStepsSection onNavigate={handleNavigate} />
+          <NotreSecteur />
 
-        <LazyLoadingBoundary delay={isGrenoble ? 1800 : 1000}>
-          <ProjectsCarousel onNavigate={handleNavigate} />
-        </LazyLoadingBoundary>
+          <LazyLoadingBoundary delay={isGrenoble ? 1200 : 500}>
+            <ServicesTabbedCarousel
+              onNavigate={!isGrenoble ? handleNavigate : () => { }}
+              headerText="NOS SERVICES"
+              title="Quels types de travaux recherchez-vous ?"
+              description="Explorez nos services adaptés à vos besoins spécifiques"
+              isGrenoble={isGrenoble}
+            />
+          </LazyLoadingBoundary>
 
-        <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
+          <ProjectStepsSection onNavigate={handleNavigate} />
 
-        <SocialProofBannerGrenoble />
+          <LazyLoadingBoundary delay={isGrenoble ? 1800 : 1000}>
+            <ProjectsCarousel onNavigate={handleNavigate} />
+          </LazyLoadingBoundary>
 
-        <LazyLoadingBoundary delay={isGrenoble ? 2300 : 1500}>
-          <PartnersSection scrollDirection="right" slowAnimation={true} />
-          <PartnersSection showHeader={false} reducedPadding={true} slowAnimation={true} />
-          <PartnersSection
-            scrollDirection="right"
-            title="Nos certifications qui protègent votre projet"
-            description="Nos équipes disposent de certifications reconnues en rénovation, chauffage, solaire, ventilation et électricité. Pour vous, cela veut dire des travaux plus sûrs, plus fiables, et réalisés par des professionnels qualifiés."
-            topSpacing="mt-8"
-            slowAnimation={false}
-            partners={[
-              { name: 'RGE', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', description: 'Entreprise certifiée et qualifiée RGE' },
-              { name: 'Pompe à chaleur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', description: 'Installateur qualifié pompe à chaleur certifié' },
-              { name: 'Solaire', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', description: 'Installateur qualifié solaire certifié' },
-              { name: 'Chauffage bois', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', description: 'Spécialiste qualifié chauffage bois' },
-              { name: 'Chauffage HP', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', description: 'Chauffage haute performance qualifié' },
-              { name: 'Ventilation', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', description: 'Ventilation qualifiée et certifiée' },
-              { name: 'Fluides', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', description: 'Attestation qualifiée capacité fluides' },
-              { name: 'Électricité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', description: 'Entreprise électricité qualifiée et certifiée' },
-              { name: 'Manipulation fluide', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', description: 'Manipulation fluide qualifiée et certifiée' },
-              { name: 'Gaz', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', description: 'Professionnel qualifié du gaz' },
-              { name: 'Installation gaz', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', description: 'Installation gaz conforme et qualifiée' },
-              { name: 'Bâtiment', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', description: 'Entreprise bâtiment qualifiée et certifiée' },
-              { name: 'Qualité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', description: 'Label qualité reconnu et agréé' },
-              { name: 'Accessibilité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', description: 'Accessibilité handicap qualifiée' },
-              { name: 'PMR', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', description: 'Adaptation qualifiée logement PMR' },
-              { name: 'Artisan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', description: 'Artisan qualifié et enregistré' }
-            ]}
-          />
-        </LazyLoadingBoundary>
+          <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
 
-        <LazyLoadingBoundary delay={isGrenoble ? 2800 : 2000}>
-          <GoogleReviews />
-        </LazyLoadingBoundary>
+          <SocialProofBannerGrenoble />
 
-        <LazyLoadingBoundary delay={isGrenoble ? 3300 : 2500}>
-          <UnifiedContactForm />
-        </LazyLoadingBoundary>
+          <LazyLoadingBoundary delay={isGrenoble ? 2300 : 1500}>
+            <PartnersSection scrollDirection="right" slowAnimation={true} />
+            <PartnersSection showHeader={false} reducedPadding={true} slowAnimation={true} />
+            <PartnersSection
+              scrollDirection="right"
+              title="Nos certifications qui protègent votre projet"
+              description="Nos équipes disposent de certifications reconnues en rénovation, chauffage, solaire, ventilation et électricité. Pour vous, cela veut dire des travaux plus sûrs, plus fiables, et réalisés par des professionnels qualifiés."
+              topSpacing="mt-8"
+              slowAnimation={false}
+              partners={[
+                { name: 'RGE', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', description: 'Entreprise certifiée et qualifiée RGE' },
+                { name: 'Pompe à chaleur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', description: 'Installateur qualifié pompe à chaleur certifié' },
+                { name: 'Solaire', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', description: 'Installateur qualifié solaire certifié' },
+                { name: 'Chauffage bois', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', description: 'Spécialiste qualifié chauffage bois' },
+                { name: 'Chauffage HP', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', description: 'Chauffage haute performance qualifié' },
+                { name: 'Ventilation', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', description: 'Ventilation qualifiée et certifiée' },
+                { name: 'Fluides', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', description: 'Attestation qualifiée capacité fluides' },
+                { name: 'Électricité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', description: 'Entreprise électricité qualifiée et certifiée' },
+                { name: 'Manipulation fluide', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', description: 'Manipulation fluide qualifiée et certifiée' },
+                { name: 'Gaz', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', description: 'Professionnel qualifié du gaz' },
+                { name: 'Installation gaz', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', description: 'Installation gaz conforme et qualifiée' },
+                { name: 'Bâtiment', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', description: 'Entreprise bâtiment qualifiée et certifiée' },
+                { name: 'Qualité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', description: 'Label qualité reconnu et agréé' },
+                { name: 'Accessibilité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', description: 'Accessibilité handicap qualifiée' },
+                { name: 'PMR', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', description: 'Adaptation qualifiée logement PMR' },
+                { name: 'Artisan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', description: 'Artisan qualifié et enregistré' }
+              ]}
+            />
+          </LazyLoadingBoundary>
 
-        <LazyLoadingBoundary delay={isGrenoble ? 3800 : 3000}>
-          <HomePageFAQ />
-        </LazyLoadingBoundary>
+          <LazyLoadingBoundary delay={isGrenoble ? 2800 : 2000}>
+            <GoogleReviews />
+          </LazyLoadingBoundary>
 
-        <LazyLoadingBoundary delay={isGrenoble ? 4300 : 3500}>
-          <RenovationFinancingCalculator />
-        </LazyLoadingBoundary>
+          <LazyLoadingBoundary delay={isGrenoble ? 3300 : 2500}>
+            <UnifiedContactForm />
+          </LazyLoadingBoundary>
 
-        <LazyLoadingBoundary delay={isGrenoble ? 4800 : 4000}>
-          <EbookPresentationSection />
-        </LazyLoadingBoundary>
+          <LazyLoadingBoundary delay={isGrenoble ? 3800 : 3000}>
+            <HomePageFAQ />
+          </LazyLoadingBoundary>
 
-        <LazyLoadingBoundary delay={isGrenoble ? 5300 : 4500}>
-          <FooterSection onNavigateToServices={handleNavigateToServices} onNavigate={handleNavigate} />
-        </LazyLoadingBoundary>
-      </div>
+          <LazyLoadingBoundary delay={isGrenoble ? 4300 : 3500}>
+            <RenovationFinancingCalculator />
+          </LazyLoadingBoundary>
+
+          <LazyLoadingBoundary delay={isGrenoble ? 4800 : 4000}>
+            <EbookPresentationSection />
+          </LazyLoadingBoundary>
+
+          <LazyLoadingBoundary delay={isGrenoble ? 5300 : 4500}>
+            <FooterSection onNavigateToServices={handleNavigateToServices} onNavigate={handleNavigate} />
+          </LazyLoadingBoundary>
+        </div>
+      </Suspense>
     );
   };
+
 
   return (
     <div className="w-full overflow-x-hidden">

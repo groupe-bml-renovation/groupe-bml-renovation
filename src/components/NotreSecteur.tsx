@@ -21,6 +21,7 @@ const cities = [
   'Venon',
   'Bresson',
   'Saint-Jean-le-Vieux',
+  '+19 villes dans tout l\'Isère',
 ];
 
 export default function NotreSecteur() {
@@ -52,7 +53,7 @@ export default function NotreSecteur() {
             {cities.map((city, index) => (
               <div key={index} className="flex items-center space-x-2 break-inside-avoid mb-2.5">
                 <div className="w-1 h-1 rounded-full bg-[#38bdf8] flex-shrink-0 mt-0.5 opacity-80"></div>
-                <span className="text-slate-700 text-xs md:text-sm font-medium leading-tight">{city}</span>
+                <span className={`text-xs md:text-sm font-medium leading-tight ${city.startsWith('+') ? 'text-[#0f172a] font-bold' : 'text-slate-700'}`}>{city}</span>
               </div>
             ))}
           </div>
