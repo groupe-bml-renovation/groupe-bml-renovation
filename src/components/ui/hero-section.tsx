@@ -54,9 +54,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         {primaryHeading && (
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-8 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-8 leading-tight">
             {primaryHeading}
-          </h1>
+          </h2>
         )}
         <div className="mb-0">
           <span className="inline-block text-[#38bdf8] text-xs sm:text-sm font-medium uppercase tracking-widest mb-4">

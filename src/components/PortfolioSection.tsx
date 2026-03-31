@@ -150,9 +150,9 @@ export default function PortfolioSection() {
           <p className="text-sky-400 text-sm sm:text-base font-semibold tracking-widest uppercase mb-4">
             PORTFOLIO DE RÉALISATIONS
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Nos Projets d'Exception
-          </h1>
+          </h2>
           <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
             Découvrez notre savoir-faire à travers une sélection de nos plus belles réalisations. Chaque projet reflète notre engagement envers l'excellence et la satisfaction client.
           </p>
@@ -181,8 +181,9 @@ export default function PortfolioSection() {
             <div className="absolute inset-0 transition-opacity duration-500 opacity-100">
               <img
                 src={currentImage}
-                alt={`${activeCategory} ${currentSlide + 1}`}
+                alt={`Rénovation ${activeCategory} - Projet BML Rénovation - Image ${currentSlide + 1}`}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>

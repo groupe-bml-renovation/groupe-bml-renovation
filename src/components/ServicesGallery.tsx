@@ -145,8 +145,9 @@ const ServicesGallery: React.FC = () => {
               >
                 <img
                   src={image}
-                  alt={`${selectedService} ${index + 1}`}
+                  alt={`Réalisation Groupe BML Rénovation - ${selectedService} - Photo ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
@@ -194,7 +195,7 @@ const ServicesGallery: React.FC = () => {
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
               src={lightboxImage}
-              alt="Lightbox"
+              alt={`Aperçu détaillé réalisation BML Rénovation - ${selectedService}`}
               className="max-w-full max-h-full object-contain rounded-xl"
               onClick={(e) => e.stopPropagation()}
             />

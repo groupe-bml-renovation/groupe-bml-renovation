@@ -2,12 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://groupe-bml-renovation.fr/sitemap.xml
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Bingbot
-Allow: /

@@ -143,6 +143,12 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
         <title>{isGrenoble ? 'Rénovation Salons Grenoble - Groupe BML Rénovation' : 'Rénovation Salons - Groupe BML Rénovation'}</title>
         <meta name="description" content={isGrenoble ? 'Rénovation complète de salons à Grenoble. Création d\'espaces ouverts, cheminées, parquets, éclairage LED. Experts en rénovation intérieure à Grenoble et région. Devis gratuit.' : 'Rénovation complète de salons à Grenoble et région. Création d\'espaces ouverts, cheminées, parquets, éclairage LED. Ambiance chaleureuse et élégante. Devis gratuit.'} />
         {isGrenoble && <meta name="keywords" content="rénovation salon Grenoble, rénovation intérieur Grenoble, rénovation maison Grenoble, aménagement salon Grenoble" />}
+        <link rel="canonical" href={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/salons' : 'https://groupe-bml-renovation.fr/salons'} />
+        <meta property="og:title" content={isGrenoble ? 'Rénovation Salons Grenoble - Groupe BML' : 'Rénovation Salons - Groupe BML Rénovation'} />
+        <meta property="og:description" content={isGrenoble ? 'Rénovation complète de salons à Grenoble. Devis gratuit.' : 'Rénovation complète de salons à Grenoble et région. Devis gratuit.'} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/salons' : 'https://groupe-bml-renovation.fr/salons'} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">

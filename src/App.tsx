@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { trackPageView, trackNavigation } from './lib/analytics';
 import { generateGrenobleSeoSchemas } from './lib/seo-grenoble-schema';
+import { generateGlobalSeoSchemas } from './lib/seo-global-schema';
 import HeroSection from './components/ui/hero-section';
 import PartnerCarouselOnly from './components/PartnerCarouselOnly';
 import { heroConfigs } from './data/hero-config';
@@ -418,6 +419,7 @@ function App() {
     const canonicalUrl = isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble' : 'https://groupe-bml-renovation.fr/';
     const geoRegion = isGrenoble ? 'FR-38' : 'FR';
 
+    const globalSeoSchemas = !isGrenoble ? generateGlobalSeoSchemas() : null;
     const grenobleSeoSchemas = isGrenoble ? generateGrenobleSeoSchemas() : null;
 
     return (
@@ -437,6 +439,19 @@ function App() {
             <meta name="language" content="fr" />
             <meta name="geo.region" content={geoRegion} />
             <link rel="preload" href="/videos/hero-video.mp4" as="video" type="video/mp4" />
+            {!isGrenoble && globalSeoSchemas && (
+              <>
+                <script type="application/ld+json">
+                  {JSON.stringify(globalSeoSchemas.organizationSchema)}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify(globalSeoSchemas.localBusinessSchema)}
+                </script>
+                <script type="application/ld+json">
+                  {JSON.stringify(globalSeoSchemas.serviceCatalogSchema)}
+                </script>
+              </>
+            )}
             {isGrenoble && grenobleSeoSchemas && (
               <>
                 <script type="application/ld+json">

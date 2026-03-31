@@ -169,7 +169,7 @@ const Navigation: React.FC<NavigationProps> = ({
         >
           <img
             src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png"
-            alt="BML Rénovation Logo"
+            alt="Groupe BML Rénovation - Expert Travaux & Rénovation"
             className="h-[5rem] w-auto object-contain"
           />
         </button>
