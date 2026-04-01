@@ -437,10 +437,13 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
           <a
             href="tel:0756915997"
-            className="px-3 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex flex-col items-center justify-center leading-tight"
+            className="px-3 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center gap-2 leading-tight"
           >
-            <span>07 56 91 59 97</span>
-            <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
+            <Phone className="w-4 h-4 flex-shrink-0" />
+            <div className="flex flex-col items-start">
+              <span>07 56 91 59 97</span>
+              <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
+            </div>
           </a>
 
           <GradientCTAButton onClick={handleCtaClick} size="sm" className="px-3 py-1.5 gap-1.5">
@@ -458,11 +461,13 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="md:hidden ml-auto flex items-center gap-2 -mr-1">
           <a
             href="tel:0756915997"
-            className="p-2 rounded-lg hover:bg-sky-50 transition-colors text-sky-400 flex-shrink-0"
-            aria-label="Call us"
-            title="07 56 91 59 97"
+            className="px-2 py-1 rounded-full border-2 border-sky-400 text-sky-400 font-bold text-[9px] hover:bg-sky-50 transition-colors flex items-center gap-1.5 leading-tight flex-shrink-0"
           >
-            <Phone className="w-5 h-5" strokeWidth={2.5} />
+            <Phone className="w-3 h-3 flex-shrink-0" />
+            <div className="flex flex-col items-start">
+              <span>07 56 91 59 97</span>
+              <span className="text-[7px] font-semibold opacity-90 uppercase tracking-tighter">Appel gratuit</span>
+            </div>
           </a>
           <button
             onClick={toggleMobileMenu}
@@ -494,10 +499,13 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 space-y-2">
           <a
             href="tel:0756915997"
-            className="w-full px-3 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex flex-col items-center justify-center leading-tight"
+            className="w-full px-4 py-2 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-sm hover:bg-sky-50 transition-colors flex items-center justify-center gap-3 leading-tight"
           >
-            <span>07 56 91 59 97</span>
-            <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
+            <Phone className="w-5 h-5 flex-shrink-0" />
+            <div className="flex flex-col items-start leading-tight">
+              <span>07 56 91 59 97</span>
+              <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
+            </div>
           </a>
 
           <GradientCTAButton onClick={handleCtaClick} size="sm" className="w-full justify-center px-3 py-1.5 gap-1.5">
