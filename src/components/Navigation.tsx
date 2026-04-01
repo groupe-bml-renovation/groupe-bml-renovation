@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Pen } from 'lucide-react';
 import { GradientCTAButton } from './ui/gradient-cta-button';
 import { prefetchPage } from '../lib/prefetch';
-import OptimizedImage from './OptimizedImage';
+
 
 interface NavigationProps {
   currentPage: string;
@@ -187,11 +187,10 @@ const Navigation: React.FC<NavigationProps> = ({
           onClick={() => handleNavigation('home')}
           className="hover:opacity-80 transition-opacity flex items-center flex-shrink-0 md:-ml-4 -ml-2"
         >
-          <OptimizedImage
+          <img
             src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png"
             alt="Groupe BML Rénovation - Expert Travaux & Rénovation"
-            className="h-[5rem] w-auto"
-            priority={true}
+            className="h-[5rem] w-auto object-contain"
           />
         </button>
 
