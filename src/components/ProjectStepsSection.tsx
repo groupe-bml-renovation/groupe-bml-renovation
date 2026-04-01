@@ -9,7 +9,7 @@ interface ProjectStepsSectionProps {
 const ProjectStepsSection: React.FC<ProjectStepsSectionProps> = ({ onNavigate }) => {
   return (
     <>
-      <section className="pt-0 pb-0 bg-white">
+      <section className="pt-6 pb-0 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block text-[#38bdf8] text-sm font-semibold uppercase tracking-wide mb-4">

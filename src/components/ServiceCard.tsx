@@ -37,7 +37,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       data-service-card
     >
       <div className="flex flex-col gap-6">
-        <div className="relative h-96 md:h-[440px] rounded-[2rem] overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+        <div className="relative h-80 md:h-[380px] rounded-[2rem] overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
           <img
             src={image}
             alt={title}
@@ -55,11 +55,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         </div>
 
         <div className="px-2 space-y-3">
-          <h3 className="text-2xl md:text-3xl font-bold text-[#0f172a] leading-tight group-hover:text-[#38bdf8] transition-colors duration-300">
+          <h3 className="text-xl md:text-2xl font-bold text-[#0f172a] leading-tight group-hover:text-[#38bdf8] transition-colors duration-300">
             {title}
           </h3>
 
-          <p className="text-slate-600 text-sm md:text-base leading-relaxed line-clamp-3">
+          <p className="text-slate-500 text-sm leading-relaxed">
             {renderDescription(description)}
           </p>
 

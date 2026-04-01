@@ -12,7 +12,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'maisons-villas',
     title: 'Rénovation de Maison',
-    description: 'Transformez votre maison de A à Z avec nos experts en rénovation complète.',
+    description: '**Moderniser, réorganiser, transformer** : vous avez un projet de rénovation de maison ? Votre interlocuteur **Groupe BML Rénovation** prend le temps de vous écouter, vous conseille avec attention et constitue pour vous une équipe travaux sur mesure. Objectif : un chantier fluide, des artisans fiables, et un lieu de vie qui vous ressemble.',
     pageId: 'maisons-villas',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
     icon: 'Home',
@@ -21,7 +21,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'appartements',
     title: 'Rénovation d\'Appartement',
-    description: 'Aménagements et rénovations spécialisés pour petits espaces optimisés.',
+    description: 'Une cuisine trop étroite, une chambre partagée entre ados, des pièces à réinventer ? Il est temps d\'oser la transformation. Votre expert **Groupe BML Rénovation** vous accompagne pour **rénover, réagencer ou remettre aux normes votre appartement**, en toute sérénité. À la clé : un lieu de vie lumineux, fonctionnel, adapté à votre quotidien.',
     pageId: 'appartements',
     image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80',
     icon: 'Building2',
@@ -30,7 +30,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'salles-bain',
     title: 'Rénovation de Salle de Bain',
-    description: 'Créez votre espace bien-être avec aménagements premium et modernité.',
+    description: 'Votre expert **Groupe BML Rénovation** vous aide à **imaginer un espace à la fois esthétique, fonctionnel et adapté à votre foyer**, même nombreux. En choisissant notre offre de service, vous bénéficiez d\'un suivi précis de votre projet jusqu\'à la réception des travaux et des finitions.',
     pageId: 'salles-de-bain',
     image: 'https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=1920&q=80',
     icon: 'Droplets',
@@ -39,7 +39,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'cuisines',
     title: 'Rénovation de Cuisine',
-    description: 'Cuisines modernes, fonctionnelles et élégantes, conçues à votre image.',
+    description: 'Cœur battant de la maison, la cuisine mérite une attention particulière. Nous vous accompagnons pour **concevoir et réaliser une cuisine moderne et conviviale**. De l\'optimisation des rangements au choix des **matériaux durables**, nous créons un espace qui allie design et praticité pour vos moments de vie.',
     pageId: 'cuisines',
     image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=80',
     icon: 'UtensilsCrossed',
@@ -48,7 +48,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'piscine',
     title: 'Rénovation Piscine',
-    description: 'Rénovation et aménagement de piscine pour votre espace détente.',
+    description: 'Grâce à nos services, vous allez pouvoir profiter de votre **piscine en toute simplicité**. De la réfection de l\'étanchéité à la modernisation des équipements, nous sommes à vos côtés pour que vous puissiez profiter rapidement de votre nouvel espace extérieur, parfaitement intégré à votre habitat.',
     pageId: 'piscine',
     image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80',
     icon: 'Waves',
@@ -57,7 +57,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'menuiserie',
     title: 'Menuiserie et Portes',
-    description: 'Portes, fenêtres et aménagements sur mesure pour votre habitat.',
+    description: 'Une porte qui grince, des fenêtres mal isolées ou un besoin de rangements sur mesure ? Votre confort thermique et acoustique passe par une menuiserie de qualité. Nos experts vous guident dans le choix des **matériaux isolants (bois, PVC, aluminium)** et réalisent une pose soignée pour valoriser votre habitat.',
     pageId: 'menuiserie',
     image: 'https://images.unsplash.com/photo-1697538022268-c565529e616f?w=800&q=80',
     icon: 'Hammer',
@@ -66,7 +66,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'peinture',
     title: 'Peinture & Décoration',
-    description: 'Services de peinture professionnelle pour donner vie à vos intérieurs.',
+    description: 'Envie de changer d\'atmosphère ? La peinture est le moyen le plus efficace de transformer votre intérieur. Nous utilisons des **peintures premium, respectueuses de l\'environnement**, pour garantir un rendu impeccable, sans odeur et durable sur vos murs et plafonds.',
     pageId: 'peinture',
     image: 'https://images.unsplash.com/photo-1634822929331-ee4dc2c97fc4?w=1600&q=80',
     icon: 'Palette',
@@ -75,7 +75,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'plomberie',
     title: 'Plomberie & Sanitaires',
-    description: 'Solutions de plomberie modernes et durables pour votre confort.',
+    description: 'Indispensable au quotidien, votre installation de plomberie doit être irréprochable. De la création de réseaux neufs au remplacement de sanitaires, nos plombiers qualifiés assurent une **installation aux normes**, sécurisée et durable, pour votre confort.',
     pageId: 'plomberie',
     image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/d296e8a5-5cb3-446d-93b0-00f1a722c16b_jq4nyi%20(1).jpg',
     icon: 'Wrench',
@@ -84,7 +84,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'revetements-sols',
     title: 'Revêtements & Sols',
-    description: 'Parquets, carrelages et sols souples pour vos espaces intérieurs.',
+    description: 'Parquet massif, carrelage grand format ou sols souples techniques : le sol définit le style de vos pièces. Nous maîtrisons toutes les techniques de pose (collée, flottante, scellée) pour vous offrir un résultat à la fois **esthétique et résistant**.',
     pageId: 'revetements-sols',
     image: 'https://images.unsplash.com/photo-1722603931789-aea8bd4f5d01?w=1600&q=80',
     icon: 'SquareStack',
@@ -93,7 +93,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'boutiques-bureaux',
     title: 'Rénovation bureaux',
-    description: 'Aménagements commerciaux modernes et fonctionnels pour votre espace.',
+    description: 'Le cadre de travail est un levier de performance majeur. Nous vous accompagnons pour **repenser vos bureaux : open-spaces, salles de réunion ou espaces détente**. De l\'acoustique à l\'éclairage, nous créons des environnements qui favorisent la productivité de vos équipes.',
     pageId: 'boutiques-bureaux',
     image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80',
     icon: 'ShoppingCart',
@@ -102,7 +102,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
   {
     id: 'renovation-boutiques',
     title: 'Rénovation boutiques',
-    description: 'Transformation complète de vos espaces commerciaux pour attirer la clientèle.',
+    description: 'Votre surface de vente est votre première vitrine. Nous réalisons la **transformation de vos boutiques et points de vente** pour optimiser le parcours client. Un accompagnement de la conception à la réalisation finale, avec un respect rigoureux de votre image de marque.',
     pageId: 'boutiques-bureaux',
     image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/blake-wisz.jpg',
     icon: 'Store',

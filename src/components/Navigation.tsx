@@ -461,12 +461,12 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="md:hidden ml-auto flex items-center gap-2 -mr-1">
           <a
             href="tel:0756915997"
-            className="px-2 py-1 rounded-full border-2 border-sky-400 text-sky-400 font-bold text-[9px] hover:bg-sky-50 transition-colors flex items-center gap-1.5 leading-tight flex-shrink-0"
+            className="px-2.5 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-bold text-[10px] hover:bg-sky-50 transition-colors flex items-center gap-2 leading-tight flex-shrink-0"
           >
-            <Phone className="w-3 h-3 flex-shrink-0" />
+            <Phone className="w-3.5 h-3.5 flex-shrink-0" />
             <div className="flex flex-col items-start">
               <span>07 56 91 59 97</span>
-              <span className="text-[7px] font-semibold opacity-90 uppercase tracking-tighter">Appel gratuit</span>
+              <span className="text-[8px] font-semibold opacity-90 uppercase tracking-tighter">Appel gratuit</span>
             </div>
           </a>
           <button

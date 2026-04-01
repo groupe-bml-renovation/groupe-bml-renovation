@@ -40,9 +40,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, [titleNumber, rotatingTitles]);
 
   return (
-    <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
       <video
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        key={videoUrl}
+        className="absolute inset-0 w-full h-full object-cover opacity-40 transition-opacity duration-700"
         autoPlay
         muted
         loop

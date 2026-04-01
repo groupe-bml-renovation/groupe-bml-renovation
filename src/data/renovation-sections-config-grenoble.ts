@@ -27,7 +27,7 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
     reverseLayout: true,
     showCTA: true,
     paragraphs: [
-      'Vous avez un projet de rénovation à Grenoble, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier ?',
+      'Vous avez un projet de rénovation à Grenoble, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier?',
       'Depuis plus de 10 ans, **Groupe BML Rénovation** à Grenoble est votre **interlocuteur unique**. Nous pilotons l\'intégralité de vos projets de **rénovation et d\'extension**, avec des **finitions haut de gamme** et une **attention particulière au détail**. Intervenant à Grenoble et dans toute l\'Isère, nous accompagnons vos projets du début à la fin.',
       'Un **expert en rénovation haut de gamme** se déplace à votre domicile à Grenoble pour vous conseiller en détail sur votre projet, vous présenter les différentes alternatives techniques de mise en œuvre, et vous guider dans le choix des **meilleurs matériaux**.',
       'Ensuite, nous rédigeons un **devis détaillé** et **rigoureusement étudié**, parfaitement adapté à votre situation.',

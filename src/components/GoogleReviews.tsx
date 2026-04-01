@@ -81,7 +81,7 @@ const GoogleReviews: React.FC = () => {
             </div>
             <div className="flex justify-center items-center gap-4">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900">
-                Excellent
+                Excellent 5/5
               </h2>
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (

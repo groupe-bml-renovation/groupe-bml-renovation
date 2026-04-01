@@ -27,7 +27,7 @@ export const renovationSectionsConfig: SectionContent[] = [
     reverseLayout: true,
     showCTA: true,
     paragraphs: [
-      'Vous avez un projet, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier ?',
+      'Vous avez un projet, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier?',
       'Depuis plus de 10 ans, **Groupe BML Rénovation** est votre **interlocuteur unique**. Nous pilotons l\'intégralité de vos projets de **rénovation et d\'extension**, avec des **finitions haut de gamme** et une **attention particulière au détail**.',
       'Un **expert en rénovation haut de gamme** se déplace à votre domicile pour vous conseiller en détail sur votre projet, vous présenter les différentes alternatives techniques de mise en œuvre, et vous guider dans le choix des **meilleurs matériaux**.',
       'Ensuite, nous rédigeons un **devis détaillé** et **rigoureusement étudié**, parfaitement adapté à votre situation.',
