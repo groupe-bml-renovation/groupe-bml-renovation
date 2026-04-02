@@ -1,13 +1,9 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import NotFound from './components/NotFound.tsx';
-import { registerSW } from 'virtual:pwa-register';
-
-// Register service worker for instant loading/offline support
-registerSW({ immediate: true });
 import { measureComponentRenderTime } from './lib/web-vitals';
 import Appartements from './components/Appartements.tsx';
 import MaisonsVillas from './pages/MaisonsVillas.tsx';
@@ -63,16 +59,17 @@ const PageLayout = ({ children, currentPageName = '' }: { children: React.ReactN
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const location = useLocation();
   const isGrenoble = location.pathname.includes('/grenoble');
+  const navigate = useNavigate();
 
   const handleNavigate = (page: string, target?: string) => {
     if (page === 'home' && target) {
       const baseUrl = isGrenoble ? '/grenoble' : '/';
-      window.location.href = `${baseUrl}?scrollTo=${target}`;
+      navigate(`${baseUrl}?scrollTo=${target}`);
     } else {
       if (isGrenoble) {
-        window.location.href = page === 'home' ? '/grenoble' : `/grenoble/${page}`;
+        navigate(page === 'home' ? '/grenoble' : `/grenoble/${page}`);
       } else {
-        window.location.href = page === 'home' ? '/' : `/${page}`;
+        navigate(page === 'home' ? '/' : `/${page}`);
       }
     }
   };
@@ -91,105 +88,114 @@ const PageLayout = ({ children, currentPageName = '' }: { children: React.ReactN
   );
 };
 
+const AppRouter = () => {
+  const navigate = useNavigate();
+  
+  return (
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/maisons-et-villas" element={<PageLayout currentPageName="maisons-et-villas"><MaisonsVillas onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/boutiques-bureaux" element={<PageLayout><BoutiquesBureaux onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/salons" element={<PageLayout><Salons onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/cuisines" element={<PageLayout><CuisinesRenovation onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/chambres" element={<PageLayout><Chambres onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/salles-de-bain" element={<PageLayout><SallesDeBain onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/salles-de-bain-pmr" element={<PageLayout><SallesDeBainPMR onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/terrasse-bois" element={<PageLayout><TerrasseBois onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/espace-verre" element={<PageLayout><EspaceVerre onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/piscine" element={<PageLayout><Piscine onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/a-propos" element={<PageLayout><AProposPage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/contact" element={<PageLayout><Contact onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/devenir-franchise" element={<PageLayout><DevenirFranchisePage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/apropos" element={<PageLayout><AProposPage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/faq" element={<PageLayout><FAQ onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite onBack={() => navigate('/')} />} />
+      <Route path="/conditions-utilisation" element={<ConditionsUtilisation onBack={() => navigate('/')} />} />
+      <Route path="/mentions-legales" element={<MentionsLegales onBack={() => navigate('/')} />} />
+      <Route path="/forum-converter" element={<ForumConverter />} />
+      <Route path="/devenir-artisan-partenaire" element={<PageLayout><DevenirArtisanPartenairePage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/peinture" element={<PageLayout><Peinture onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/plomberie" element={<PageLayout><Plomberie onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/electricite" element={<PageLayout><Electricite onBack={() => navigate('/')} /></PageLayout>} />
+      <Route path="/chauffage" element={<PageLayout><Chauffage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/climatisation" element={<PageLayout><Climatisation onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/menuiserie" element={<PageLayout><Menuiserie onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/amiante" element={<PageLayout><Amiante onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/revetements-muraux" element={<PageLayout><WallCoverings onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/amenagement" element={<PageLayout currentPageName="amenagement"><Amenagement onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/blog" element={<PageLayout><Blog onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/blog/:slug" element={<PageLayout><BlogPost /></PageLayout>} />
+      <Route path="/confirmation-devis" element={<PageLayout currentPageName="confirmation-devis"><ConfirmationDevis onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/financement" element={<PageLayout><Financement onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/realisations" element={<PageLayout><Realisations onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/projet-salle-bain-pmr" element={<PageLayout currentPageName="projet-salle-bain-pmr"><ProjetSalleBainPMR /></PageLayout>} />
+      <Route path="/projet-facade-maison" element={<PageLayout currentPageName="projet-facade-maison"><ProjetFacadeMaison /></PageLayout>} />
+      <Route path="/projet-renovation-sejour" element={<PageLayout currentPageName="projet-renovation-sejour"><ProjetRenovationSejour /></PageLayout>} />
+      <Route path="/projet-renovation-bureau" element={<PageLayout currentPageName="projet-renovation-bureau"><ProjetRenovationBureau /></PageLayout>} />
+      <Route path="/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
+      <Route path="/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+
+      <Route path="/grenoble" element={<App />} />
+      <Route path="/grenoble/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/maisons-et-villas" element={<PageLayout currentPageName="maisons-et-villas"><MaisonsVillas onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/boutiques-bureaux" element={<PageLayout><BoutiquesBureaux onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/salons" element={<PageLayout><Salons onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/cuisines" element={<PageLayout><CuisinesRenovation onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/chambres" element={<PageLayout><Chambres onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/salles-de-bain" element={<PageLayout><SallesDeBain onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/salles-de-bain-pmr" element={<PageLayout><SallesDeBainPMR onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/terrasse-bois" element={<PageLayout><TerrasseBois onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/espace-verre" element={<PageLayout><EspaceVerre onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/piscine" element={<PageLayout><Piscine onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/a-propos" element={<PageLayout><AProposPage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/contact" element={<PageLayout><Contact onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/devenir-franchise" element={<PageLayout><DevenirFranchisePage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/apropos" element={<PageLayout><AProposPage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/faq" element={<PageLayout><FAQ onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/politique-confidentialite" element={<PolitiqueConfidentialite onBack={() => navigate('/grenoble')} />} />
+      <Route path="/grenoble/conditions-utilisation" element={<ConditionsUtilisation onBack={() => navigate('/grenoble')} />} />
+      <Route path="/grenoble/mentions-legales" element={<MentionsLegales onBack={() => navigate('/grenoble')} />} />
+      <Route path="/grenoble/devenir-artisan-partenaire" element={<PageLayout><DevenirArtisanPartenairePage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/peinture" element={<PageLayout><Peinture onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/plomberie" element={<PageLayout><Plomberie onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/electricite" element={<PageLayout><Electricite onBack={() => navigate('/grenoble')} /></PageLayout>} />
+      <Route path="/grenoble/chauffage" element={<PageLayout><Chauffage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/climatisation" element={<PageLayout><Climatisation onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/menuiserie" element={<PageLayout><Menuiserie onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/amiante" element={<PageLayout><Amiante onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/revetements-muraux" element={<PageLayout><WallCoverings onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/amenagement" element={<PageLayout currentPageName="amenagement"><Amenagement onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/blog" element={<PageLayout><Blog onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/blog/:slug" element={<PageLayout><BlogPost /></PageLayout>} />
+      <Route path="/grenoble/confirmation-devis" element={<PageLayout currentPageName="confirmation-devis"><ConfirmationDevis onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/financement" element={<PageLayout><Financement onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/realisations" element={<PageLayout><Realisations onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/projet-salle-bain-pmr" element={<PageLayout currentPageName="projet-salle-bain-pmr"><ProjetSalleBainPMR /></PageLayout>} />
+      <Route path="/grenoble/projet-facade-maison" element={<PageLayout currentPageName="projet-facade-maison"><ProjetFacadeMaison /></PageLayout>} />
+      <Route path="/grenoble/projet-renovation-sejour" element={<PageLayout currentPageName="projet-renovation-sejour"><ProjetRenovationSejour /></PageLayout>} />
+      <Route path="/grenoble/projet-renovation-bureau" element={<PageLayout currentPageName="projet-renovation-bureau"><ProjetRenovationBureau /></PageLayout>} />
+      <Route path="/grenoble/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
+      <Route path="/grenoble/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/maisons-et-villas" element={<PageLayout currentPageName="maisons-et-villas"><MaisonsVillas onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/boutiques-bureaux" element={<PageLayout><BoutiquesBureaux onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/salons" element={<PageLayout><Salons onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/cuisines" element={<PageLayout><CuisinesRenovation onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/chambres" element={<PageLayout><Chambres onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/salles-de-bain" element={<PageLayout><SallesDeBain onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/salles-de-bain-pmr" element={<PageLayout><SallesDeBainPMR onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/terrasse-bois" element={<PageLayout><TerrasseBois onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/espace-verre" element={<PageLayout><EspaceVerre onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/piscine" element={<PageLayout><Piscine onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/a-propos" element={<PageLayout><AProposPage onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/contact" element={<PageLayout><Contact onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/devenir-franchise" element={<PageLayout><DevenirFranchisePage onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/apropos" element={<PageLayout><AProposPage onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/faq" element={<PageLayout><FAQ onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite onBack={() => window.location.href = '/'} />} />
-        <Route path="/conditions-utilisation" element={<ConditionsUtilisation onBack={() => window.location.href = '/'} />} />
-        <Route path="/mentions-legales" element={<MentionsLegales onBack={() => window.location.href = '/'} />} />
-        <Route path="/forum-converter" element={<ForumConverter />} />
-        <Route path="/devenir-artisan-partenaire" element={<PageLayout><DevenirArtisanPartenairePage onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/peinture" element={<PageLayout><Peinture onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/plomberie" element={<PageLayout><Plomberie onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/electricite" element={<PageLayout><Electricite onBack={() => window.location.href = '/'} /></PageLayout>} />
-        <Route path="/chauffage" element={<PageLayout><Chauffage onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/climatisation" element={<PageLayout><Climatisation onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/menuiserie" element={<PageLayout><Menuiserie onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/amiante" element={<PageLayout><Amiante onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/revetements-muraux" element={<PageLayout><WallCoverings onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/amenagement" element={<PageLayout currentPageName="amenagement"><Amenagement onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/blog" element={<PageLayout><Blog onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/blog/:slug" element={<PageLayout><BlogPost /></PageLayout>} />
-        <Route path="/confirmation-devis" element={<PageLayout currentPageName="confirmation-devis"><ConfirmationDevis onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/financement" element={<PageLayout><Financement onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/realisations" element={<PageLayout><Realisations onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/projet-salle-bain-pmr" element={<PageLayout currentPageName="projet-salle-bain-pmr"><ProjetSalleBainPMR /></PageLayout>} />
-        <Route path="/projet-facade-maison" element={<PageLayout currentPageName="projet-facade-maison"><ProjetFacadeMaison /></PageLayout>} />
-        <Route path="/projet-renovation-sejour" element={<PageLayout currentPageName="projet-renovation-sejour"><ProjetRenovationSejour /></PageLayout>} />
-        <Route path="/projet-renovation-bureau" element={<PageLayout currentPageName="projet-renovation-bureau"><ProjetRenovationBureau /></PageLayout>} />
-        <Route path="/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
-        <Route path="/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => window.location.href = '/'} onNavigate={() => {}} /></PageLayout>} />
-
-        <Route path="/grenoble" element={<App />} />
-        <Route path="/grenoble/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/maisons-et-villas" element={<PageLayout currentPageName="maisons-et-villas"><MaisonsVillas onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/boutiques-bureaux" element={<PageLayout><BoutiquesBureaux onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/salons" element={<PageLayout><Salons onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/cuisines" element={<PageLayout><CuisinesRenovation onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/chambres" element={<PageLayout><Chambres onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/salles-de-bain" element={<PageLayout><SallesDeBain onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/salles-de-bain-pmr" element={<PageLayout><SallesDeBainPMR onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/terrasse-bois" element={<PageLayout><TerrasseBois onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/espace-verre" element={<PageLayout><EspaceVerre onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/piscine" element={<PageLayout><Piscine onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/a-propos" element={<PageLayout><AProposPage onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/contact" element={<PageLayout><Contact onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/devenir-franchise" element={<PageLayout><DevenirFranchisePage onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/apropos" element={<PageLayout><AProposPage onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/faq" element={<PageLayout><FAQ onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/politique-confidentialite" element={<PolitiqueConfidentialite onBack={() => window.location.href = '/grenoble'} />} />
-        <Route path="/grenoble/conditions-utilisation" element={<ConditionsUtilisation onBack={() => window.location.href = '/grenoble'} />} />
-        <Route path="/grenoble/mentions-legales" element={<MentionsLegales onBack={() => window.location.href = '/grenoble'} />} />
-        <Route path="/grenoble/devenir-artisan-partenaire" element={<PageLayout><DevenirArtisanPartenairePage onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/peinture" element={<PageLayout><Peinture onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/plomberie" element={<PageLayout><Plomberie onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/electricite" element={<PageLayout><Electricite onBack={() => window.location.href = '/grenoble'} /></PageLayout>} />
-        <Route path="/grenoble/chauffage" element={<PageLayout><Chauffage onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/climatisation" element={<PageLayout><Climatisation onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/menuiserie" element={<PageLayout><Menuiserie onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/amiante" element={<PageLayout><Amiante onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/revetements-muraux" element={<PageLayout><WallCoverings onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/amenagement" element={<PageLayout currentPageName="amenagement"><Amenagement onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/blog" element={<PageLayout><Blog onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/blog/:slug" element={<PageLayout><BlogPost /></PageLayout>} />
-        <Route path="/grenoble/confirmation-devis" element={<PageLayout currentPageName="confirmation-devis"><ConfirmationDevis onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/financement" element={<PageLayout><Financement onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/realisations" element={<PageLayout><Realisations onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-        <Route path="/grenoble/projet-salle-bain-pmr" element={<PageLayout currentPageName="projet-salle-bain-pmr"><ProjetSalleBainPMR /></PageLayout>} />
-        <Route path="/grenoble/projet-facade-maison" element={<PageLayout currentPageName="projet-facade-maison"><ProjetFacadeMaison /></PageLayout>} />
-        <Route path="/grenoble/projet-renovation-sejour" element={<PageLayout currentPageName="projet-renovation-sejour"><ProjetRenovationSejour /></PageLayout>} />
-        <Route path="/grenoble/projet-renovation-bureau" element={<PageLayout currentPageName="projet-renovation-bureau"><ProjetRenovationBureau /></PageLayout>} />
-        <Route path="/grenoble/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
-        <Route path="/grenoble/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => window.location.href = '/grenoble'} onNavigate={() => {}} /></PageLayout>} />
-
-        <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRouter />
       </BrowserRouter>
     </HelmetProvider>
   </StrictMode>
 );
+
