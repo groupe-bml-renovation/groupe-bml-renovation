@@ -60,6 +60,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         loop
         playsInline
         preload="auto"
+        poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         {...({ fetchPriority: "high" } as any)}
       >
         <source src={videoUrl} type="video/mp4" />
