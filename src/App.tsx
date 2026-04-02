@@ -42,7 +42,7 @@ const ConditionsUtilisation = lazy(() => import('./pages/ConditionsUtilisation')
 const MentionsLegales = lazy(() => import('./pages/MentionsLegales'));
 const ForumConverter = lazy(() => import('./pages/ForumConverter'));
 const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
-const PageLoader = lazy(() => import('./components/PageLoader'));
+import PageLoader from './components/PageLoader';
 
 import RenovationArchitectureSection from './components/RenovationArchitectureSection';
 import ProjectStepsSection from './components/ProjectStepsSection';
@@ -54,8 +54,8 @@ import { renovationSectionsConfigGrenoble } from './data/renovation-sections-con
 import NotreSecteur from './components/NotreSecteur';
 
 
-const Navigation = lazy(() => import('./components/Navigation'));
-const StickyDemandeCTA = lazy(() => import('./components/StickyDemandeCTA'));
+import Navigation from './components/Navigation';
+import StickyDemandeCTA from './components/StickyDemandeCTA';
 
 const ServicesTabbedCarousel = lazy(() => import('./components/ServicesTabbedCarousel'));
 const ProjectsCarousel = lazy(() => import('./components/ProjectsCarousel'));
@@ -548,17 +548,14 @@ function App() {
   return (
     <div className="w-full overflow-x-hidden">
       <PageLoader />
-      <Suspense fallback={null}>
-        <Navigation
-          currentPage={currentPage}
-          onNavigate={handleNavigate}
-          isMobileMenuOpen={isMobileMenuOpen}
-          setIsMobileMenuOpen={setIsMobileMenuOpen}
-        />
-      </Suspense>
-      <Suspense fallback={null}>
-        <StickyDemandeCTA currentPage={currentPage} onNavigate={handleNavigate} isGrenoble={isGrenoble} />
-      </Suspense>
+      <Navigation
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
+
+      <StickyDemandeCTA currentPage={currentPage} onNavigate={handleNavigate} isGrenoble={isGrenoble} />
       <div className="w-full overflow-x-hidden">
         {renderPage()}
       </div>

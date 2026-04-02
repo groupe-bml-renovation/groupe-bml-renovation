@@ -12,7 +12,7 @@ export const PageLoader: React.FC = () => {
       setIsLoading(false);
       // Unlock body scroll
       document.body.style.overflow = '';
-    }, 1000);
+    }, 450);
 
     return () => {
       clearTimeout(timer);
