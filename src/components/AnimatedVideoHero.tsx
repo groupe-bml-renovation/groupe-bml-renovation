@@ -7,7 +7,7 @@ interface AnimatedVideoHeroProps {
 }
 
 export const AnimatedVideoHero: React.FC<AnimatedVideoHeroProps> = ({
-  videoUrl = 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/0113.mp4',
+  videoUrl = '/hero-video.mp4',
   overlayOpacity = 0.4,
 }) => {
   const [titleNumber, setTitleNumber] = useState(0);
