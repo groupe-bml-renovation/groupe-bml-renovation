@@ -73,6 +73,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         disablePictureInPicture
         disableRemotePlayback
         onContextMenu={(e) => e.preventDefault()}
+        {...({ fetchPriority: "high" } as any)}
       >
         <source src={videoUrl} type="video/mp4" />
       </video>
