@@ -59,7 +59,8 @@ export default function PartnerCarouselOnly() {
                       alt={partner.name}
                       className="h-10 md:h-14 w-auto hover:scale-110 transition-all duration-500 cursor-pointer object-contain"
                       loading="eager"
-                      decoding="async"
+                      decoding="sync"
+                      {...({ fetchPriority: "high" } as any)}
                     />
                   </div>
                 ))}
@@ -72,7 +73,8 @@ export default function PartnerCarouselOnly() {
                       alt={partner.name}
                       className="h-10 md:h-14 w-auto hover:scale-110 transition-all duration-500 cursor-pointer object-contain"
                       loading="eager"
-                      decoding="async"
+                      decoding="sync"
+                      {...({ fetchPriority: "high" } as any)}
                     />
                   </div>
                 ))}

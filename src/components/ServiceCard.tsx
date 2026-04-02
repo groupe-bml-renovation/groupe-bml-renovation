@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as Icons from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface ServiceCardProps {
   title: string;
@@ -38,12 +39,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
     >
       <div className="flex flex-col gap-6">
         <div className="relative h-80 md:h-[380px] rounded-[2rem] overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
-          <img
+          <OptimizedImage
             src={image}
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            decoding="async"
-            loading="eager"
+            priority={true}
           />
 
           <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

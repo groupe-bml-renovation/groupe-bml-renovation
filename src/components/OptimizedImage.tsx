@@ -51,8 +51,8 @@ export const OptimizedImage = ({
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         alt={alt}
         loading={priority ? 'eager' : loading}
-        fetchPriority={priority ? 'high' : 'auto'}
-        decoding="async"
+        decoding={priority ? "sync" : "async"}
+        {...({ fetchPriority: priority ? "high" : "auto" } as any)}
         width={width}
         height={height}
         onLoad={() => setIsLoaded(true)}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface MobileCarouselProps {
   images: string[];
@@ -116,12 +117,11 @@ export const MobileCarousel: React.FC<MobileCarouselProps> = ({
               key={index}
               className="relative flex-shrink-0 flex items-center justify-center w-full h-full"
             >
-              <img
+              <OptimizedImage
                 src={image}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
-                loading="eager"
-                draggable={false}
+                priority={index === 0}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>

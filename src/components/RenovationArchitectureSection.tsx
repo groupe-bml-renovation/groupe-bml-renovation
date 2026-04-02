@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Pen } from 'lucide-react';
 import { GradientCTAButton } from '@/components/ui/gradient-cta-button';
-import { AnimatedGalleryGrid } from '@/components/AnimatedGalleryGrid';
+import { AnimatedGalleryGrid } from './AnimatedGalleryGrid';
+import { OptimizedImage } from './OptimizedImage';
 
 export interface SectionContent {
   categoryLabel: string;
@@ -84,10 +85,10 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
                     viewport={{ once: true }}
                     className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-48"
                   >
-                    <img
+                    <OptimizedImage
                       src={image}
                       alt={content.galleryImagesAlt?.[index] || `Gallery image ${index + 1}`}
-                      loading="eager"
+                      priority={index === 0}
                     />
                   </motion.div>
                 ))}
@@ -112,21 +113,20 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
 
             <div className="relative order-2 hidden lg:flex flex-col h-full">
               <div className="rounded-2xl overflow-hidden shadow-2xl h-full min-h-96">
-                <img
+                <OptimizedImage
                   src={content.imageUrl}
                   alt={content.imageAlt}
-                  loading="eager"
+                  priority={true}
                 />
               </div>
             </div>
 
             <div className="lg:hidden order-3 col-span-full rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <OptimizedImage
                 src={content.imageUrl}
                 alt={content.imageAlt}
                 className="w-full h-screen object-cover"
-                loading="eager"
-                decoding="async"
+                priority={true}
               />
             </div>
           </div>
@@ -213,12 +213,11 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
                     playsInline
                   />
                 ) : (
-                  <img
+                  <OptimizedImage
                     src={content.imageUrl}
                     alt={content.imageAlt}
                     className="w-full h-full object-cover"
-                    loading="eager"
-                    decoding="async"
+                    priority={true}
                   />
                 )}
               </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { OptimizedImage } from './OptimizedImage';
 
 interface GalleryGridCellProps extends React.HTMLAttributes<HTMLDivElement> {
   index: number;
@@ -66,12 +67,11 @@ export const AnimatedGalleryGrid: React.FC<AnimatedGalleryGridProps> = ({ images
             key={index}
             index={index}
           >
-            <img
+            <OptimizedImage
               src={imageUrl}
               alt={imageAlts?.[index] || `Gallery image ${index + 1}`}
               className="w-full h-full object-cover"
-              loading="eager"
-              decoding="async"
+              priority={index < 2}
             />
           </GalleryGridCell>
         ))}

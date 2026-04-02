@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
@@ -39,11 +39,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     return () => clearTimeout(timeoutId);
   }, [titleNumber, rotatingTitles]);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Silently catch autoplay rejection
+      });
+    }
+  }, [videoUrl]);
+
   return (
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
       <video
         key={videoUrl}
-        className="absolute inset-0 w-full h-full object-cover opacity-40 transition-opacity duration-700"
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
         autoPlay
         muted
         loop

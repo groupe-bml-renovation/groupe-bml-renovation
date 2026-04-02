@@ -61,7 +61,7 @@ export default defineConfig({
           },
           {
             urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico|mp4)$/i,
-            handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'images-cache',
               expiration: {
@@ -137,7 +137,7 @@ export default defineConfig({
       compress: {
         drop_console: false,
         drop_debugger: true,
-        pure_funcs: null,
+        pure_funcs: undefined,
       },
       output: {
         comments: false,
