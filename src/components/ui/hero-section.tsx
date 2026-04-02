@@ -40,26 +40,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, [titleNumber, rotatingTitles]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
+    if (videoRef.current && isVideoReady) {
       videoRef.current.play().catch(() => {
         // Silently catch autoplay rejection
       });
     }
-  }, [videoUrl]);
+  }, [videoUrl, isVideoReady]);
+
+  const handleVideoCanPlay = () => {
+    setIsVideoReady(true);
+  };
 
   return (
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
       <video
         key={videoUrl}
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
-        autoPlay
+        className={`absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none transition-opacity duration-1000 ${
+          isVideoReady ? 'opacity-40' : 'opacity-0'
+        }`}
         muted
         loop
         playsInline
         preload="auto"
+        onCanPlay={handleVideoCanPlay}
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture
         disableRemotePlayback
