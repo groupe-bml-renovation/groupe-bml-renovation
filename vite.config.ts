@@ -60,20 +60,6 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /^https:\/\/pub-b2e43cc835de44a7830034d539ae5fe1\.r2\.dev\/.*\.mp4$/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'hero-video-cache',
-              expiration: {
-                maxEntries: 5,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
             urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico|mp4)$/i,
             handler: 'StaleWhileRevalidate',
             options: {
@@ -151,7 +137,7 @@ export default defineConfig({
       compress: {
         drop_console: false,
         drop_debugger: true,
-        pure_funcs: undefined,
+        pure_funcs: null,
       },
       output: {
         comments: false,
