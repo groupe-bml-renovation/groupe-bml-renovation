@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo, memo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeroSectionProps {
   videoUrl: string;
@@ -14,6 +14,48 @@ interface HeroSectionProps {
   primaryHeading?: string;
 }
 
+// Separate VideoBackground to prevent it from re-rendering when the main component's state changes
+const VideoBackground = memo(({ videoUrl, onReady }: { videoUrl: string, onReady: () => void }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Silently catch autoplay rejection
+      });
+    }
+  }, [videoUrl]);
+
+  return (
+    <video
+      ref={videoRef}
+      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      muted
+      loop
+      playsInline
+      autoPlay
+      preload="auto"
+      onLoadedData={onReady}
+      controlsList="nodownload nofullscreen noremoteplayback"
+      disablePictureInPicture
+      disableRemotePlayback
+      onContextMenu={(e) => e.preventDefault()}
+      poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style={{ 
+        opacity: 0.4,
+        willChange: 'transform, opacity',
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden'
+      }}
+      {...({ fetchPriority: "high" } as any)}
+    >
+      <source src={videoUrl} type="video/mp4" />
+    </video>
+  );
+});
+
+VideoBackground.displayName = 'VideoBackground';
+
 export const HeroSection: React.FC<HeroSectionProps> = ({
   videoUrl,
   badgeText,
@@ -27,55 +69,35 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   primaryHeading
 }) => {
   const [titleNumber, setTitleNumber] = useState(0);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check for mobile on mount to avoid window.innerWidth in render
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === rotatingTitles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
+      setTitleNumber((prev) => (prev === rotatingTitles.length - 1 ? 0 : prev + 1));
     }, 4000);
     return () => clearTimeout(timeoutId);
-  }, [titleNumber, rotatingTitles]);
+  }, [titleNumber, rotatingTitles.length]);
 
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoReady, setIsVideoReady] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current && isVideoReady) {
-      videoRef.current.play().catch(() => {
-        // Silently catch autoplay rejection
-      });
-    }
-  }, [videoUrl, isVideoReady]);
-
-  const handleVideoCanPlay = () => {
+  const handleVideoReady = () => {
     setIsVideoReady(true);
   };
 
   return (
-    <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      <video
-        key={videoUrl}
-        ref={videoRef}
-        className={`absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none transition-opacity duration-1000 ${
-          isVideoReady ? 'opacity-40' : 'opacity-0'
-        }`}
-        muted
-        loop
-        playsInline
-        preload="auto"
-        onCanPlay={handleVideoCanPlay}
-        controlsList="nodownload nofullscreen noremoteplayback"
-        disablePictureInPicture
-        disableRemotePlayback
-        onContextMenu={(e) => e.preventDefault()}
-        poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        {...({ fetchPriority: "high" } as any)}
+    <section className="relative h-[100dvh] flex items-center justify-center bg-slate-900 overflow-hidden">
+      <div 
+        className={`absolute inset-0 transition-opacity duration-1500 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
       >
-        <source src={videoUrl} type="video/mp4" />
-      </video>
+        <VideoBackground videoUrl={videoUrl} onReady={handleVideoReady} />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         {primaryHeading && (
@@ -97,48 +119,36 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
             <span className="bg-gradient-to-r from-[#38bdf8] via-green-400 to-yellow-400 bg-clip-text text-transparent">
               <span className="relative flex w-full justify-center overflow-hidden text-center h-12 md:h-16">
-                {rotatingTitles.map((title, index) => (
+                <AnimatePresence mode="wait">
                   <motion.span
-                    key={index}
+                    key={titleNumber}
                     className="absolute font-bold bg-gradient-to-r from-[#38bdf8] from-30% via-gray-200 via-70% to-gray-400 bg-clip-text text-transparent whitespace-nowrap"
-                    initial={{ opacity: 0, y: window.innerWidth < 768 ? 0 : "-100" }}
-                    transition={{ type: "spring", stiffness: 50 }}
-                    animate={
-                      titleNumber === index
-                        ? {
-                          y: 0,
-                          opacity: 1,
-                        }
-                        : {
-                          y: window.innerWidth < 768 ? 0 : (titleNumber > index ? -80 : 80),
-                          opacity: 0,
-                        }
-                    }
+                    initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: isMobile ? 0 : -20 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
                   >
-                    {title}
+                    {rotatingTitles[titleNumber]}
                   </motion.span>
-                ))}
+                </AnimatePresence>
               </span>
             </span>
           </h1>
 
           <div className="max-w-2xl mx-auto space-y-4 sm:space-y-8 lg:space-y-4">
-            <div>
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed px-4">
-                {subheadline.split('\n\n')[0]}
-              </p>
-            </div>
-            <div>
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed px-4">
-                {subheadline.split('\n\n')[1]}
-              </p>
+            <div className="space-y-4">
+              {subheadline.split('\n\n').map((para, i) => (
+                <p key={i} className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed px-4">
+                  {para}
+                </p>
+              ))}
             </div>
 
             <motion.a
               href={reviewLink}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: window.innerWidth < 768 ? 0 : 20 }}
+              initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="inline-flex flex-col items-center justify-center gap-3 sm:gap-4 pt-4"
