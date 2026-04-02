@@ -104,7 +104,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Revêtements muraux ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -116,7 +116,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Revêtements muraux ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -265,7 +265,7 @@ const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => 
                 src="https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=1200&q=80"
                 alt="Revêtements Muraux Décoratifs"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

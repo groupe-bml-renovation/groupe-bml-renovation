@@ -255,7 +255,7 @@ const DevenirArtisanPartenairePage: React.FC<DevenirArtisanPartenairePageProps> 
               src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251128_1127_Laptop%20Screen%20Display_remix_01kb4zxxaheg0tqme6tkqwt94y.png"
               alt="Interface de gestion des projets de rénovation maison pour artisan rénovation et travaux de rénovation"
               className="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
           </motion.div>

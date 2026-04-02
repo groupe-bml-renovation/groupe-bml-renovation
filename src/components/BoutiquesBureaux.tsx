@@ -215,7 +215,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
                 alt="Rénovation Boutique et Bureau"
                 className="w-full h-full"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

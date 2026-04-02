@@ -43,7 +43,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             decoding="async"
-            loading="lazy"
+            loading="eager"
           />
 
           <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -70,7 +70,7 @@ export const AnimatedGalleryGrid: React.FC<AnimatedGalleryGridProps> = ({ images
               src={imageUrl}
               alt={imageAlts?.[index] || `Gallery image ${index + 1}`}
               className="w-full h-full object-cover"
-              loading={index === 0 ? 'eager' : 'lazy'}
+              loading="eager"
               decoding="async"
             />
           </GalleryGridCell>

@@ -87,9 +87,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
                     <img
                       src={image}
                       alt={content.galleryImagesAlt?.[index] || `Gallery image ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
+                      loading="eager"
                     />
                   </motion.div>
                 ))}
@@ -117,9 +115,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
                 <img
                   src={content.imageUrl}
                   alt={content.imageAlt}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -129,7 +125,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
                 src={content.imageUrl}
                 alt={content.imageAlt}
                 className="w-full h-screen object-cover"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
             </div>
@@ -221,7 +217,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
                     src={content.imageUrl}
                     alt={content.imageAlt}
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                   />
                 )}

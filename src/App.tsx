@@ -51,7 +51,6 @@ import PartnersSection from './components/PartnersSection';
 import { useVoiceflow } from './hooks/useVoiceflow';
 import { renovationSectionsConfig } from './data/renovation-sections-config';
 import { renovationSectionsConfigGrenoble } from './data/renovation-sections-config-grenoble';
-import { LazyLoadingBoundary } from './components/LazyLoadingBoundary';
 import NotreSecteur from './components/NotreSecteur';
 
 
@@ -486,28 +485,23 @@ function App() {
 
           <NotreSecteur />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 1200 : 500}>
-            <ServicesTabbedCarousel
+          <ServicesTabbedCarousel
               onNavigate={!isGrenoble ? handleNavigate : () => { }}
               headerText="NOS SERVICES"
               title="Quels types de travaux recherchez-vous ?"
               description="Explorez nos services adaptés à vos besoins spécifiques"
               isGrenoble={isGrenoble}
             />
-          </LazyLoadingBoundary>
 
           <ProjectStepsSection onNavigate={handleNavigate} />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 1800 : 1000}>
-            <ProjectsCarousel onNavigate={handleNavigate} />
-          </LazyLoadingBoundary>
+          <ProjectsCarousel onNavigate={handleNavigate} />
 
           <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
 
           <SocialProofBannerGrenoble />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 2300 : 1500}>
-            <PartnersSection scrollDirection="right" slowAnimation={true} />
+          <PartnersSection scrollDirection="right" slowAnimation={true} />
             <PartnersSection showHeader={false} reducedPadding={true} slowAnimation={true} />
             <PartnersSection
               scrollDirection="right"
@@ -534,31 +528,18 @@ function App() {
                 { name: 'Artisan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', description: 'Artisan qualifié et enregistré' }
               ]}
             />
-          </LazyLoadingBoundary>
 
-          <LazyLoadingBoundary delay={isGrenoble ? 2800 : 2000}>
-            <GoogleReviews />
-          </LazyLoadingBoundary>
+          <GoogleReviews />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 3300 : 2500}>
-            <UnifiedContactForm />
-          </LazyLoadingBoundary>
+          <UnifiedContactForm />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 3800 : 3000}>
-            <HomePageFAQ />
-          </LazyLoadingBoundary>
+          <HomePageFAQ />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 4300 : 3500}>
-            <RenovationFinancingCalculator />
-          </LazyLoadingBoundary>
+          <RenovationFinancingCalculator />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 4800 : 4000}>
-            <EbookPresentationSection />
-          </LazyLoadingBoundary>
+          <EbookPresentationSection />
 
-          <LazyLoadingBoundary delay={isGrenoble ? 5300 : 4500}>
-            <FooterSection onNavigateToServices={handleNavigateToServices} onNavigate={handleNavigate} />
-          </LazyLoadingBoundary>
+          <FooterSection onNavigateToServices={handleNavigateToServices} onNavigate={handleNavigate} />
         </div>
       </Suspense>
     );

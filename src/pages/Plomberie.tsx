@@ -101,7 +101,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Rénovation maison - Travaux de rénovation intérieure et plomberie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -113,7 +113,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Rénovation maison - Travaux de rénovation intérieure et plomberie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -315,7 +315,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/flagged/photo-1600002368144-444430d3f3ca?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
                 alt="Expert en rénovation maison - Entreprise de rénovation spécialisée en travaux de rénovation intérieure"
                 className="w-full h-[450px]"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

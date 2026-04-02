@@ -94,7 +94,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Installation borne électrique - Véhicule électrique ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -106,7 +106,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Installation borne électrique - Véhicule électrique ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -266,7 +266,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
                 src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2069"
                 alt="Installation wallbox borne électrique"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

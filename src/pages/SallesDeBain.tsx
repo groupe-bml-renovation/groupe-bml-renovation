@@ -83,7 +83,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Rénovation salle de bain ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -95,7 +95,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Rénovation salle de bain ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -250,7 +250,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1260&q=80"
                 alt={isGrenoble ? "Expertise rénovation salle de bain Grenoble" : "Expertise rénovation salle de bain"}
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

@@ -79,7 +79,7 @@ export const ServiceHeroCarousel: React.FC<ServiceHeroCarouselProps> = ({
             src={slide.image}
             alt={slide.title}
             className="w-full h-full object-cover"
-            loading={index === 0 ? 'eager' : 'lazy'}
+            loading="eager"
             draggable={false}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />

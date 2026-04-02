@@ -24,7 +24,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/3935333/pexels-photo-3935333.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Pool aerial view"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
@@ -33,7 +33,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Modern building facade"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
@@ -42,7 +42,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Wooden deck"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
@@ -51,7 +51,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Pool and garden"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             <button
@@ -71,7 +71,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Interior room"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
@@ -80,7 +80,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/1439227/pexels-photo-1439227.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Modern kitchen"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
@@ -89,7 +89,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
               src="https://images.pexels.com/photos/1909657/pexels-photo-1909657.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Luxury bathroom"
               className="w-full h-full"
-              loading="lazy"
+              loading="eager"
             />
           </div>
         </div>

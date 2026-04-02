@@ -319,7 +319,7 @@ const AProposPage: React.FC<AProposPageProps> = ({ onBack, onNavigate }) => {
                     src={milestone.image}
                     alt={milestone.title}
                     className="w-full rounded-xl mt-6 shadow-md"
-                    loading="lazy"
+                    loading="eager"
                   />
                 )}
               </motion.div>

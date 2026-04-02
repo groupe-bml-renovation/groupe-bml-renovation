@@ -234,7 +234,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
               src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               alt="Équipe professionnelle entreprise de rénovation maison - Travaux de rénovation spécialisés"
               className="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
           </motion.div>
@@ -276,7 +276,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
               src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251206_1902_E%CC%81quipe%20Pre%CC%82te%20a%CC%80%20Aider_simple_compose_01kbtd5xrvfwns9taht56aya0q.png"
               alt="Piliers de succès franchise rénovation - Équipe bâtiment travaux publics préte à aider"
               className="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-slate-900/20 to-transparent" />
             <div className="absolute inset-0 flex items-end">
@@ -332,7 +332,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
                   src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251206_1736_Formation%20et%20Support%20Experts_simple_compose_01kbt87gwqfwrbqtwrq7284hwm.png"
                   alt="Formation et support experts artisan rénovation maison - Travaux de rénovation intérieure et extérieure"
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
               </motion.div>
@@ -382,7 +382,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
                   src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251206_1741_Outils%20Technologiques%20Performants_simple_compose_01kbt8hrc7fk29ay5qsww4d4bq.png"
                   alt="Outils technologiques performants rénovation maison - Gestion entreprise de rénovation"
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
               </motion.div>
@@ -432,7 +432,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
                   src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251206_1857_Re%CC%81seau%20Dynamique%20Professionnel_simple_compose_01kbtcvf9rff5tg88rnavnx2zm.png"
                   alt="Réseau professionnel dynamique artisan - Peintre en bâtiment et travaux de rénovation maison"
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
               </motion.div>
@@ -543,7 +543,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
                 src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Rendez-vous franchise rénovation - Équipe entreprise bâtiment travaux rénovation maison complète"
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
             </motion.div>

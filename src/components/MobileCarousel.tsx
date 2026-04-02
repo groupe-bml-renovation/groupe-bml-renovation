@@ -120,7 +120,7 @@ export const MobileCarousel: React.FC<MobileCarouselProps> = ({
                 src={image}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
-                loading={index === 0 ? 'eager' : 'lazy'}
+                loading="eager"
                 draggable={false}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

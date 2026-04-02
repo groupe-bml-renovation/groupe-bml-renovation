@@ -104,7 +104,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Revêtements de sols ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -116,7 +116,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Revêtements de sols ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -262,7 +262,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
                 src="https://images.unsplash.com/photo-1598718544285-7180f670198b?w=1200&q=80"
                 alt="Revêtements de Sols"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

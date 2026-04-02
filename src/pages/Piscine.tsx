@@ -105,7 +105,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Travaux de rénovation maison - Rénovation ${index + 1} par entreprise de rénovation`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -117,7 +117,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Travaux de rénovation maison - Rénovation ${index + 1} par artisan rénovation`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -324,7 +324,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/photo-1673147056688-4df20283643b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=988"
                 alt="Entreprise de rénovation maison - Travaux de rénovation maison complète et rénovation maison ancienne"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

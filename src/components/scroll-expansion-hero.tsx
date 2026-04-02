@@ -68,7 +68,7 @@ const ScrollExpandMedia = ({
               playsInline
             />
           ) : (
-            <img loading="lazy" decoding="async" src={mediaSrc} alt={title} className="w-full h-full object-cover" />
+            <img loading="eager" decoding="async" src={mediaSrc} alt={title} className="w-full h-full object-cover" />
           )}
         </motion.div>
 

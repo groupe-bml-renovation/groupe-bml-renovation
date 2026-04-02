@@ -112,7 +112,7 @@ const ImageCarousel = () => {
                     src={img.url}
                     alt={img.alt}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -124,7 +124,7 @@ const ImageCarousel = () => {
                     src={img.url}
                     alt={img.alt}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -248,7 +248,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/photo-1660361339525-643f7d6eed6b?w=1200&q=80"
                 alt="Espace Verre"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

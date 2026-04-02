@@ -85,7 +85,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Salle de bain PMR ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -97,7 +97,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Salle de bain PMR ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -202,7 +202,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
                 src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%20Hero%20-%20After.jpeg.png"
                 alt="Rénovation de Salle de bain PMR"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

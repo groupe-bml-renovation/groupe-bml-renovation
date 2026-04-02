@@ -184,7 +184,7 @@ export default function PortfolioSection() {
                 src={currentImage}
                 alt={`Rénovation ${activeCategory} - Projet BML Rénovation - Image ${currentSlide + 1}`}
                 className="w-full h-full"
-                loading="lazy"
+                loading="eager"
               />
             </div>
           </div>

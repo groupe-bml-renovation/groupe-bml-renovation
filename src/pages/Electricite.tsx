@@ -93,7 +93,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Travaux de rénovation maison électricité - Rénovation ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -105,7 +105,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Travaux de rénovation maison électricité - Rénovation ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -272,7 +272,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack }) => {
                 src="https://images.unsplash.com/photo-1700727448575-6f1680cd7d75?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3131"
                 alt="Installation électrique rénovation maison - Travaux d'électricité professionnels"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

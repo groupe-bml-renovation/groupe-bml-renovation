@@ -95,7 +95,7 @@ const ImageCarousel = () => {
                       src={media}
                       alt={`Rénovation salon ${index + 1}`}
                       className="w-full h-full hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      loading="eager"
                     />
                   )}
                 </div>
@@ -118,7 +118,7 @@ const ImageCarousel = () => {
                       src={media}
                       alt={`Rénovation salon ${index + 1}`}
                       className="w-full h-full hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      loading="eager"
                     />
                   )}
                 </div>

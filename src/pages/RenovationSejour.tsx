@@ -84,7 +84,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Rénovation séjour ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -96,7 +96,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Rénovation séjour ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -202,7 +202,7 @@ const RenovationSejour: React.FC<RenovationSejourProps> = ({ onBack, onNavigate 
                 src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1260&q=80"
                 alt="Rénovation de Séjour"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

@@ -110,7 +110,7 @@ const ImageCarousel = () => {
                         src={media}
                         alt={`Travaux de rénovation maison cuisine ${imgIndex + 1}`}
                         className="w-full h-full hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
+                        loading="eager"
                       />
                     )}
                   </div>

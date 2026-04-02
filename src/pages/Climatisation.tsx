@@ -93,7 +93,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Installation climatisation ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -105,7 +105,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Installation climatisation ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -228,7 +228,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
                 src="https://images.unsplash.com/photo-1737369284265-c249f9503b0e?w=1920&q=80"
                 alt="Installation de Climatisation"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

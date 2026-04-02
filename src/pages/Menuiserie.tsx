@@ -83,7 +83,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Menuiserie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -95,7 +95,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Menuiserie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -279,7 +279,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=1200&q=80"
                 alt="Menuiserie Sur Mesure"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>

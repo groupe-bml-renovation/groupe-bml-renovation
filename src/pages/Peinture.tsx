@@ -111,7 +111,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Travaux de Peinture ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -123,7 +123,7 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Travaux de Peinture ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -310,7 +310,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/photo-1678762200388-51e11225d4de?w=1200&q=80"
                 alt="Travaux de Peinture"
                 className="w-full h-[450px] object-cover"
-                loading="lazy"
+                loading="eager"
               />
             </motion.div>
           </div>
