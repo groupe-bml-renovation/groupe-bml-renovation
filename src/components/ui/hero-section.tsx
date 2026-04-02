@@ -54,12 +54,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <video
         key={videoUrl}
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
+        controlsList="nodownload nofullscreen noremoteplayback"
+        disablePictureInPicture
+        disableRemotePlayback
+        onContextMenu={(e) => e.preventDefault()}
         poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         {...({ fetchPriority: "high" } as any)}
       >
