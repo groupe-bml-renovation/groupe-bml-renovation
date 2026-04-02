@@ -1,6 +1,7 @@
 export const heroConfigs = {
   bmlRenovation: {
     videoUrl: "/hero-video.mp4",
+    posterUrl: "/hero-poster.webp",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
     mainHeadlineLineBreak: "et Appartement",
@@ -13,6 +14,7 @@ export const heroConfigs = {
   },
   grenoble: {
     videoUrl: "/hero-video.mp4",
+    posterUrl: "/hero-poster.webp",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
     mainHeadlineLineBreak: "et Appartement",
@@ -25,6 +27,7 @@ export const heroConfigs = {
   },
   default: {
     videoUrl: "",
+    posterUrl: "",
     badgeText: "YOUR BADGE TEXT",
     mainHeadlinePrefix: "YOUR MAIN HEADLINE",
     mainHeadlineLineBreak: "SECOND LINE",

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   videoUrl: string;
+  posterUrl?: string;
   badgeText: string;
   mainHeadlinePrefix: string;
   mainHeadlineLineBreak: string;
@@ -16,6 +17,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   videoUrl,
+  posterUrl,
   badgeText,
   mainHeadlinePrefix,
   mainHeadlineLineBreak,
@@ -42,29 +44,35 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
 
-
-
-
-
   return (
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+      {/* Background Poster fallback that renders instantly */}
+      {posterUrl && (
+        <img 
+          src={posterUrl} 
+          alt="Hero background" 
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-40'}`}
+          fetchPriority="high"
+        />
+      )}
+      
       <video
         key={videoUrl}
         ref={videoRef}
-        className={`absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none transition-opacity duration-700 ${
-          isVideoReady ? 'opacity-40' : 'opacity-20'
+        className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${
+          isVideoReady ? 'opacity-40' : 'opacity-0'
         }`}
         autoPlay
         muted
         loop
         playsInline
+        poster={posterUrl}
         preload="auto"
         onLoadedData={() => setIsVideoReady(true)}
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture
         disableRemotePlayback
         onContextMenu={(e) => e.preventDefault()}
-        {...({ fetchPriority: "high" } as any)}
       >
         <source src={videoUrl} type="video/mp4" />
       </video>
