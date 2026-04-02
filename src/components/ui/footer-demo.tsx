@@ -184,7 +184,7 @@ export function Footer({ onNavigateToServices }: FooterProps) {
             <div className="relative text-right">
               <h3 className="mb-4 text-lg font-semibold">Contact</h3>
               <address className="space-y-2 text-sm not-italic">
-                <p>Téléphone: <a href="tel:0756915997">07 56 91 59 97</a></p>
+                <p>Téléphone: <a href="tel:0756915997"><span>07 56 91 59 97</span></a></p>
                 <p>Email: <a href="mailto:contact@groupe-bml-renovation.com">contact@groupe-bml-renovation.com</a></p>
               </address>
             </div>

@@ -125,7 +125,7 @@ const PolitiqueConfidentialite: React.FC<PolicyPageProps> = ({ onBack }) => {
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <p className="font-semibold mb-2">Groupe BML Rénovation tout corps d'état</p>
               <p>Email : contact@groupe-bml-renovation.com</p>
-              <p>Téléphone : 07 56 91 59 97</p>
+              <p>Téléphone : <span>07 56 91 59 97</span></p>
               <p>Localisation : 5 Av. Paul Verlaine, 38100 Grenoble</p>
             </div>
           </section>

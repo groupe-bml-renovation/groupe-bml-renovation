@@ -27,14 +27,14 @@ export default function PartnerCarousel({ partners, scrollDirection = 'left', sl
           >
             <div className={`flex gap-4 ${scrollDirection === 'right' ? (slowAnimation ? 'animate-scroll-reverse-slow' : 'animate-scroll-reverse') : (slowAnimation ? 'animate-scroll-slow' : 'animate-scroll')}`}>
               {partners.map((partner, index) => (
-                <div key={`set1-${index}`} className="flex-shrink-0 w-36 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-2 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-                  <div className="h-16 flex items-center justify-center mb-2">
+                <div key={`set1-${index}`} className="flex-shrink-0 w-44 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-2 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                  <div className="h-20 flex items-center justify-center mb-2">
                     <img
                       src={partner.logoUrl}
                       alt={partner.name}
-                      className="h-12 w-auto object-contain hover:scale-110 transition-transform duration-500"
+                      className="h-[60px] w-auto object-contain hover:scale-110 transition-transform duration-500"
                       decoding="async"
-                      loading="lazy"
+                      loading="eager"
                     />
                   </div>
                   {partner.description && (
@@ -47,12 +47,12 @@ export default function PartnerCarousel({ partners, scrollDirection = 'left', sl
             </div>
             <div className={`flex gap-4 ${scrollDirection === 'right' ? (slowAnimation ? 'animate-scroll-reverse-slow' : 'animate-scroll-reverse') : (slowAnimation ? 'animate-scroll-slow' : 'animate-scroll')}`} aria-hidden="true">
               {partners.map((partner, index) => (
-                <div key={`set2-${index}`} className="flex-shrink-0 w-36 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-2 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-                  <div className="h-16 flex items-center justify-center mb-2">
+                <div key={`set2-${index}`} className="flex-shrink-0 w-44 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-2 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
+                  <div className="h-20 flex items-center justify-center mb-2">
                     <img
                       src={partner.logoUrl}
                       alt={partner.name}
-                      className="h-12 w-auto object-contain hover:scale-110 transition-transform duration-500"
+                      className="h-[60px] w-auto object-contain hover:scale-110 transition-transform duration-500"
                       decoding="async"
                     />
                   </div>

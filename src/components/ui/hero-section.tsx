@@ -61,7 +61,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </h2>
         )}
         <div className="mb-0">
-          <span className="inline-block text-[#38bdf8] text-sm md:text-base font-semibold tracking-[-0.03em] sm:tracking-widest mb-4 whitespace-nowrap">
+          <span className="inline-block text-[#38bdf8] text-[11px] min-[375px]:text-[13px] sm:text-base font-medium tracking-wider sm:tracking-widest whitespace-nowrap mb-6">
             {badgeText}
           </span>
 

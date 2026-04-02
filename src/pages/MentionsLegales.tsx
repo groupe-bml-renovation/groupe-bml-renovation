@@ -31,7 +31,7 @@ const MentionsLegales: React.FC<LegalNoticePageProps> = ({ onBack }) => {
               <p><strong>SIRET :</strong> [À compléter avec votre SIRET]</p>
               <p><strong>Adresse du Siège Social :</strong> 5 Av. Paul Verlaine, 38100 Grenoble</p>
               <p><strong>Email :</strong> contact@groupe-bml-renovation.com</p>
-              <p><strong>Téléphone :</strong> <a href="tel:0756915997">07 56 91 59 97</a></p>
+              <p><strong>Téléphone :</strong> <a href="tel:0756915997"><span>07 56 91 59 97</span></a></p>
               <p><strong>Responsable de Publication :</strong> [Nom du Responsable]</p>
             </div>
           </section>
@@ -193,7 +193,7 @@ const MentionsLegales: React.FC<LegalNoticePageProps> = ({ onBack }) => {
             </p>
             <div className="p-4 bg-gray-50 rounded-lg space-y-2">
               <p><strong>Email :</strong> contact@groupe-bml-renovation.com</p>
-              <p><strong>Téléphone :</strong> <a href="tel:0756915997">07 56 91 59 97</a></p>
+              <p><strong>Téléphone :</strong> <a href="tel:0756915997"><span>07 56 91 59 97</span></a></p>
               <p><strong>Localisation :</strong> 5 Av. Paul Verlaine, 38100 Grenoble</p>
             </div>
           </section>

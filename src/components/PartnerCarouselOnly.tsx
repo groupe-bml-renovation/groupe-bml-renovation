@@ -58,7 +58,7 @@ export default function PartnerCarouselOnly() {
                       src={partner.logoUrl}
                       alt={partner.name}
                       className="h-10 md:h-14 w-auto hover:scale-110 transition-all duration-500 cursor-pointer object-contain"
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
                     />
                   </div>
@@ -71,7 +71,7 @@ export default function PartnerCarouselOnly() {
                       src={partner.logoUrl}
                       alt={partner.name}
                       className="h-10 md:h-14 w-auto hover:scale-110 transition-all duration-500 cursor-pointer object-contain"
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
                     />
                   </div>

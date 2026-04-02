@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
+import ServiceFAQ from '../components/ServiceFAQ';
+import { appartementFAQs } from '../data/service-faqs';
 
 interface AppartementsProps {
   onBack: () => void;
@@ -392,7 +394,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
 
             <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
+              <div className="relative h-44 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white px-4 pb-6" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%)' }}>
                 <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M3 21V9L12 3L21 9V21H3Z" strokeLinejoin="round" />
                   <rect x="9" y="11" width="6" height="10" />
@@ -401,7 +403,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                   <line x1="16" y1="14" x2="18" y2="14" />
                   <line x1="16" y1="17" x2="18" y2="17" />
                 </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Rénovation intérieure</h3>
+                <h3 className="text-lg font-bold uppercase tracking-wider text-center leading-tight">Rénovation intérieure</h3>
               </div>
               <div className="px-6 pt-8 pb-6">
                 <ul className="space-y-2 text-base text-slate-600">
@@ -430,11 +432,11 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
             </div>
 
             <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
+              <div className="relative h-44 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white px-4 pb-6" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%)' }}>
                 <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                 </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Artisan rénovation</h3>
+                <h3 className="text-lg font-bold uppercase tracking-wider text-center leading-tight">Artisan rénovation</h3>
               </div>
               <div className="px-6 pt-8 pb-6">
                 <ul className="space-y-2 text-base text-slate-600">
@@ -467,13 +469,13 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
             </div>
 
             <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
+              <div className="relative h-44 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white px-4 pb-6" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%)' }}>
                 <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
                   <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
                   <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
                 </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Rénovation extérieure</h3>
+                <h3 className="text-lg font-bold uppercase tracking-wider text-center leading-tight">Rénovation extérieure</h3>
               </div>
               <div className="px-6 pt-8 pb-6">
                 <ul className="space-y-2 text-base text-slate-600">
@@ -527,6 +529,12 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
           </div>
         </div>
       </section>
+
+      <ServiceFAQ 
+        items={appartementFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Appartement Grenoble" : "FAQ Rénovation Appartement"}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation d'appartements à Grenoble et en Isère." : "Retrouvez les réponses à vos questions sur la rénovation complète d'appartements."}
+      />
 
       <PartnersSection />
 

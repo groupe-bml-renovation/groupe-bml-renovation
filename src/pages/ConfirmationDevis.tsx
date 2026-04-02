@@ -350,7 +350,7 @@ const ConfirmationDevis: React.FC<ConfirmationDevisProps> = ({ onBack, onNavigat
               <Phone className="w-8 h-8 text-blue-600 mb-3 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold text-gray-900 mb-2">Appelez-nous</h3>
               <p className="text-gray-600 mb-3">
-                07 56 91 59 97
+                <span>07 56 91 59 97</span>
               </p>
               <p className="text-sm text-gray-500">Disponible en semaine de 8h à 18h</p>
             </a>

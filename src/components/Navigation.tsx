@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Pen } from 'lucide-react';
 import { GradientCTAButton } from './ui/gradient-cta-button';
 import { prefetchPage } from '../lib/prefetch';
-
+import OptimizedImage from './OptimizedImage';
 
 interface NavigationProps {
   currentPage: string;
@@ -19,7 +19,6 @@ const Navigation: React.FC<NavigationProps> = ({
   setIsMobileMenuOpen
 }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const isGrenoble = location.pathname.includes('/grenoble');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
@@ -105,32 +104,15 @@ const Navigation: React.FC<NavigationProps> = ({
     setOpenDropdown(null);
     setMobileOpenDropdown(null);
 
-    const spaRoutes = [
-      'appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 
-      'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 
-      'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 
-      'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'plomberie', 
-      'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 
-      'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'
-    ];
-
-    if (spaRoutes.includes(page)) {
+    if (['appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'plomberie', 'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'].includes(page)) {
       const prefix = isGrenoble ? '/grenoble' : '';
-      navigate(`${prefix}/${page}`);
-      window.scrollTo(0, 0);
+      window.location.href = `${prefix}/${page}`;
     } else if (page === 'home') {
-      const prefix = isGrenoble ? '/grenoble' : '/';
-      navigate(prefix);
-      window.scrollTo(0, 0);
+      const prefix = isGrenoble ? '/grenoble' : '';
+      window.location.href = prefix || '/';
     } else {
       onNavigate(page);
     }
-  };
-
-  const handlePrefetch = (page: string) => {
-    const prefix = isGrenoble ? '/grenoble' : '';
-    const path = page === 'home' ? (prefix || '/') : `${prefix}/${page}`;
-    prefetchPage(path);
   };
 
   const handleCtaClick = () => {
@@ -197,10 +179,9 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="hidden md:flex items-center space-x-6 flex-1 justify-center">
           <button
             onClick={() => handleNavigation('home')}
-            onMouseEnter={() => handlePrefetch('home')}
             className={`text-sm font-medium transition-colors ${currentPage === 'home'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Accueil
@@ -208,10 +189,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('a-propos')}
-            onMouseEnter={() => handlePrefetch('a-propos')}
             className={`text-sm font-medium transition-colors ${currentPage === 'a-propos'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             À Propos
@@ -243,15 +223,6 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('boutiques-bureaux');
                       } else {
                         handleNavigation('services');
-                      }
-                    }}
-                    onMouseEnter={() => {
-                      if (item === 'Appartements') {
-                        handlePrefetch('appartements');
-                      } else if (item === 'Maisons et villas') {
-                        handlePrefetch('maisons-et-villas');
-                      } else if (item === 'Boutiques et Bureaux') {
-                        handlePrefetch('boutiques-bureaux');
                       }
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
@@ -302,20 +273,6 @@ const Navigation: React.FC<NavigationProps> = ({
                       } else {
                         handleNavigation('services');
                       }
-                    }}
-                    onMouseEnter={() => {
-                      const mapping: Record<string, string> = {
-                        'Salons': 'salons',
-                        'Cuisines': 'cuisines',
-                        'Chambres': 'chambres',
-                        'Salles de bain': 'salles-de-bain',
-                        'Salles de bain PMR': 'salles-de-bain-pmr',
-                        'Aménagement': 'amenagement',
-                        'Terrasse bois': 'terrasse-bois',
-                        'Espace Verre': 'espace-verre',
-                        'Installation piscine': 'piscine'
-                      };
-                      if (mapping[item]) handlePrefetch(mapping[item]);
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
                   >
@@ -379,10 +336,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('financement')}
-            onMouseEnter={() => handlePrefetch('financement')}
             className={`text-sm font-medium transition-colors ${currentPage === 'financement'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Financement
@@ -390,10 +346,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('realisations')}
-            onMouseEnter={() => handlePrefetch('realisations')}
             className={`text-sm font-medium transition-colors ${currentPage === 'realisations'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Réalisations
@@ -401,10 +356,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('blog')}
-            onMouseEnter={() => handlePrefetch('blog')}
             className={`text-sm font-medium transition-colors ${currentPage === 'blog'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Blog
@@ -412,10 +366,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('faq')}
-            onMouseEnter={() => handlePrefetch('faq')}
             className={`text-sm font-medium transition-colors ${currentPage === 'faq'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             FAQ
@@ -423,10 +376,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('contact')}
-            onMouseEnter={() => handlePrefetch('contact')}
             className={`text-sm font-medium transition-colors ${currentPage === 'contact'
-                ? 'text-[#38bdf8]'
-                : 'text-gray-700 hover:text-[#38bdf8]'
+              ? 'text-[#38bdf8]'
+              : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Contact
@@ -439,11 +391,8 @@ const Navigation: React.FC<NavigationProps> = ({
             href="tel:0756915997"
             className="px-3 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center gap-2 leading-tight"
           >
-            <Phone className="w-4 h-4 flex-shrink-0" />
-            <div className="flex flex-col items-start">
-              <span>07 56 91 59 97</span>
-              <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
-            </div>
+            <span>07 56 91 59 97</span>
+            <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
           </a>
 
           <GradientCTAButton onClick={handleCtaClick} size="sm" className="px-3 py-1.5 gap-1.5">
@@ -461,13 +410,11 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="md:hidden ml-auto flex items-center gap-2 -mr-1">
           <a
             href="tel:0756915997"
-            className="px-2.5 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-bold text-[10px] hover:bg-sky-50 transition-colors flex items-center gap-2 leading-tight flex-shrink-0"
+            className="p-2 rounded-lg hover:bg-sky-50 transition-colors text-sky-400 flex-shrink-0"
+            aria-label="Call us"
+            title="07 56 91 59 97"
           >
-            <Phone className="w-3.5 h-3.5 flex-shrink-0" />
-            <div className="flex flex-col items-start">
-              <span>07 56 91 59 97</span>
-              <span className="text-[8px] font-semibold opacity-90 uppercase tracking-tighter">Appel gratuit</span>
-            </div>
+            <Phone className="w-5 h-5" strokeWidth={2.5} />
           </a>
           <button
             onClick={toggleMobileMenu}
@@ -487,8 +434,8 @@ const Navigation: React.FC<NavigationProps> = ({
       <div
         ref={mobileMenuRef}
         className={`md:hidden transition-all duration-300 ease-in-out overflow-x-hidden ${isMobileMenuOpen
-            ? 'max-h-[calc(100vh-5rem)] opacity-100 border-t border-slate-200 overflow-y-auto'
-            : 'max-h-0 opacity-0 overflow-hidden'
+          ? 'max-h-[calc(100vh-5rem)] opacity-100 border-t border-slate-200 overflow-y-auto'
+          : 'max-h-0 opacity-0 overflow-hidden'
           } scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-slate-50`}
         style={{
           WebkitOverflowScrolling: 'touch',
@@ -499,13 +446,10 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 space-y-2">
           <a
             href="tel:0756915997"
-            className="w-full px-4 py-2 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-sm hover:bg-sky-50 transition-colors flex items-center justify-center gap-3 leading-tight"
+            className="w-full px-3 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex flex-col items-center justify-center leading-tight"
           >
-            <Phone className="w-5 h-5 flex-shrink-0" />
-            <div className="flex flex-col items-start leading-tight">
-              <span>07 56 91 59 97</span>
-              <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
-            </div>
+            <span>07 56 91 59 97</span>
+            <span className="text-[10px] font-semibold opacity-90">Appel gratuit</span>
           </a>
 
           <GradientCTAButton onClick={handleCtaClick} size="sm" className="w-full justify-center px-3 py-1.5 gap-1.5">
@@ -523,9 +467,9 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="px-6 py-4 bg-white space-y-4 pb-8 w-full overflow-x-hidden">
           <button
             onClick={() => handleNavigation('home')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'home'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'home'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Accueil
@@ -534,7 +478,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div>
             <button
               onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'renovation' ? null : 'renovation')}
-              className="flex items-center justify-between w-full text-left transition-colors py-3 border-b border-slate-100 text-slate-600 hover:text-slate-800"
+              className="flex items-center justify-between w-full text-left transition-colors py-2 text-slate-600 hover:text-slate-800"
             >
               Rénovation
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenDropdown !== 'renovation' && mobileOpenDropdown !== null ? '' : 'rotate-180'}`} />
@@ -555,7 +499,7 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('services');
                       }
                     }}
-                    className="block w-full text-left py-2 md:py-1 text-base md:text-sm text-slate-500 hover:text-[#38bdf8]"
+                    className="block w-full text-left py-1 text-sm text-slate-500 hover:text-[#38bdf8]"
                   >
                     {item}
                   </button>
@@ -567,7 +511,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div>
             <button
               onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'espaces' ? null : 'espaces')}
-              className="flex items-center justify-between w-full text-left transition-colors py-3 border-b border-slate-100 text-slate-600 hover:text-slate-800"
+              className="flex items-center justify-between w-full text-left transition-colors py-2 text-slate-600 hover:text-slate-800"
             >
               Espaces
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenDropdown !== 'espaces' && mobileOpenDropdown !== null ? '' : 'rotate-180'}`} />
@@ -612,7 +556,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <div>
             <button
               onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'metiers' ? null : 'metiers')}
-              className="flex items-center justify-between w-full text-left transition-colors py-3 border-b border-slate-100 text-slate-600 hover:text-slate-800"
+              className="flex items-center justify-between w-full text-left transition-colors py-2 text-slate-600 hover:text-slate-800"
             >
               Métiers
               <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenDropdown !== 'metiers' && mobileOpenDropdown !== null ? '' : 'rotate-180'}`} />
@@ -647,7 +591,7 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('services');
                       }
                     }}
-                    className="block w-full text-left py-2 md:py-1 text-base md:text-sm text-slate-500 hover:text-[#38bdf8]"
+                    className="block w-full text-left py-1 text-sm text-slate-500 hover:text-[#38bdf8]"
                   >
                     {item}
                   </button>
@@ -658,9 +602,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('financement')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'financement'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'financement'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Financement
@@ -668,9 +612,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('realisations')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'realisations'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'realisations'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Réalisations
@@ -678,9 +622,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('a-propos')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'a-propos'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'a-propos'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             À Propos
@@ -688,9 +632,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('blog')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'blog'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'blog'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Blog
@@ -698,9 +642,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('faq')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'faq'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'faq'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             FAQ
@@ -708,9 +652,9 @@ const Navigation: React.FC<NavigationProps> = ({
 
           <button
             onClick={() => handleNavigation('contact')}
-            className={`block w-full text-left transition-colors py-3 border-b border-slate-100 ${currentPage === 'contact'
-                ? 'text-[#38bdf8] font-medium'
-                : 'text-slate-600 hover:text-slate-800'
+            className={`block w-full text-left transition-colors py-2 ${currentPage === 'contact'
+              ? 'text-[#38bdf8] font-medium'
+              : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Contact

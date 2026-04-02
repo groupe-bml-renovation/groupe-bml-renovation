@@ -66,8 +66,6 @@ const RenovationFinancingCalculator = lazy(() => import('./components/Renovation
 const EbookPresentationSection = lazy(() => import('./components/EbookPresentationSection'));
 const HomePageFAQ = lazy(() => import('./components/HomePageFAQ'));
 const FooterSection = lazy(() => import('./components/footer-section').then(module => ({ default: module.FooterSection })));
-import GEOSummary from './components/GEOSummary';
-import { CheckCircle2, Zap, Shield, MapPin, Clock, Award, Hammer } from 'lucide-react';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -427,15 +425,15 @@ function App() {
       <Suspense fallback={<PageLoader />}>
         <div className="min-h-screen">
           <Helmet>
-            <title>{isGrenoble ? 'Rénovation Maison & Appartement Grenoble | Devis Gratuit 24h | Groupe BML' : 'Entreprise de Rénovation Maison & Appartement | Rénovation Clé en Main France | Groupe BML'}</title>
-            <meta name="description" content={isGrenoble ? 'Besoin d\'une rénovation à Grenoble ? Groupe BML : interlocuteur unique pour vos travaux de maison et appartement en Isère. Artisans RGE, garantie décennale, devis détaillé sous 24h. De la conception à la réalisation.' : 'Expert en rénovation haut de gamme pour maisons et appartements depuis 10 ans. Interlocuteur unique, tous corps d\'état, finitions d\'exception. Obtenez un devis précis pour votre projet de rénovation complète.'} />
-            <meta name="keywords" content={isGrenoble ? 'rénovation maison grenoble, entreprise rénovation grenoble, travaux appartement grenoble, rénovation clé en main isère, artisan bâtiment grenoble, prix rénovation m2 grenoble' : 'rénovation maison complète, entreprise rénovation appartement, rénovation haut de gamme, interlocuteur unique travaux, rénovation clé en main, coût rénovation maison'} />
-            <meta property="og:title" content={isGrenoble ? 'Experts Rénovation Grenoble & Isère | Groupe BML' : 'Rénovation Maison & Appartement de Prestige | Groupe BML'} />
-            <meta property="og:description" content={isGrenoble ? 'Transformez votre habitat à Grenoble avec un expert local. 300+ réalisations, devis gratuit 24h.' : 'Solutions de rénovation globale pour particuliers et professionnels. Qualité artisanale certifiée.'} />
+            <title>{isGrenoble ? 'Rénovation de maison à Grenoble | Groupe BML Rénovation' : 'Rénovation Maison Complète | Entreprise de Rénovation Bâtiment | BML - Travaux Artisan'}</title>
+            <meta name="description" content={isGrenoble ? 'Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.' : 'Spécialisé dans la rénovation haut de gamme de maisons et d\'appartements depuis 10 ans dans tout la France.'} />
+            <meta name="keywords" content={isGrenoble ? 'rénovation maison grenoble, entreprise rénovation maison grenoble, rénovation appartement grenoble, entreprise rénovation appartement grenoble, rénovation clé en main grenoble, société rénovation maison, travaux maison grenoble, entreprise travaux appartement, rénovation intérieure grenoble, rénovation extérieure grenoble' : 'rénovation maison, renovation maison, rénover une maison, rénovation, rénovations, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de rénovation maison, entreprise de rénovation, travaux maison, rénovation maison complète, rénovation maison ancienne, coût rénovation maison, prix rénovation maison, rénovation intérieure, rénovation extérieure, travaux de peinture bâtiment, artisan rénovation maison, entreprise bâtiment rénovation'} />
+            <meta property="og:title" content={isGrenoble ? 'Rénovation Maison & Appartement Grenoble | 300+ Projets' : 'Rénovation Maison Complète | Entreprise de Rénovation'} />
+            <meta property="og:description" content={isGrenoble ? 'Rénovation clé en main à Grenoble. 300+ projets, 10 ans d\'expérience. Devis gratuit, RDV 24h. Maison & appartement.' : 'Travaux de rénovation professionnels pour votre maison. Entreprise spécialisée en rénovation complète, intérieure et extérieure.'} />
             <meta property="og:type" content="website" />
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={isGrenoble ? 'Rénovation Grenoble | Groupe BML' : 'Rénovation Prestige | Groupe BML'} />
-            <meta name="twitter:description" content={isGrenoble ? 'Votre projet de rénovation à Grenoble clé en main. Contactez-nous pour une visite sous 24h.' : 'Entreprise de rénovation tous corps d\'état. Expertise et finitions haut de gamme.'} />
+            <meta name="twitter:title" content={isGrenoble ? 'Rénovation Maison Grenoble | BML' : 'Rénovation Maison Complète | BML'} />
+            <meta name="twitter:description" content={isGrenoble ? 'Entreprise rénovation maison & appartement Grenoble. 300+ projets, 10 ans. Devis gratuit 24h.' : 'Entreprise de rénovation maison - Travaux de peinture, rénovation intérieure, extérieure et maison ancienne.'} />
             <link rel="canonical" href={canonicalUrl} />
             <meta name="language" content="fr" />
             <meta name="geo.region" content={geoRegion} />
@@ -483,7 +481,6 @@ function App() {
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
           <PartnerCarouselOnly />
-
           <SocialProofBannerGrenoble />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
 
@@ -498,7 +495,6 @@ function App() {
               isGrenoble={isGrenoble}
             />
           </LazyLoadingBoundary>
-
 
           <ProjectStepsSection onNavigate={handleNavigate} />
 

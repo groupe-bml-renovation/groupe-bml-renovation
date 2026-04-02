@@ -55,15 +55,15 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         </div>
 
         <div className="px-2 space-y-3">
-          <h3 className="text-xl md:text-2xl font-bold text-[#0f172a] leading-tight group-hover:text-[#38bdf8] transition-colors duration-300">
+          <h3 className="text-2xl md:text-3xl font-bold text-[#0f172a] leading-tight group-hover:text-[#38bdf8] transition-colors duration-300">
             {title}
           </h3>
 
-          <p className="text-slate-500 text-sm leading-relaxed">
+          <p className="text-slate-600 text-sm md:text-base leading-relaxed line-clamp-3">
             {renderDescription(description)}
           </p>
 
-          <div className="flex items-center gap-2 text-[#38bdf8] font-bold text-sm uppercase tracking-wider pt-2 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
+          <div className="flex items-center gap-2 text-[#38bdf8] font-bold text-sm uppercase tracking-wider pt-2 transition-all duration-300">
             <span>En savoir plus</span>
             <Icons.ArrowRight className="w-4 h-4" />
           </div>
@@ -75,7 +75,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
 
 function renderDescription(text: string): React.ReactNode {
   if (!text.includes('**')) return text;
-  
+
   const parts = text.split(/(\*\*.*?\*\*)/g);
   return parts.map((part, index) => {
     if (part.startsWith('**') && part.endsWith('**')) {

@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import { FooterSection } from './footer-section';
 import PartnersSection from './PartnersSection';
 import { OptimizedImage } from './OptimizedImage';
+import ServiceFAQ from './ServiceFAQ';
+import { boutiqueFAQs } from '../data/service-faqs';
+
 
 interface BoutiquesBureauxProps {
   onBack: () => void;
@@ -476,6 +479,12 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
           </div>
         </div>
       </section>
+
+      <ServiceFAQ 
+        items={boutiqueFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Boutiques & Bureaux Grenoble" : "FAQ Rénovation Boutiques & Bureaux"}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur l'aménagement de locaux professionnels à Grenoble." : "Retrouvez les réponses à vos questions sur la rénovation de boutiques et bureaux."}
+      />
 
       <PartnersSection />
 

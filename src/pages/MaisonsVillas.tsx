@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
+import ServiceFAQ from '../components/ServiceFAQ';
+import { maisonFAQs } from '../data/service-faqs';
+
 
 const createSeoSchema = (isGrenoble: boolean) => ({
 // ... rest of schema ...
@@ -305,9 +308,6 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                 <strong>Groupe BML Rénovation Tout Corps D'état</strong> conçoit et réalise des <strong>rénovations complètes de maisons et villas</strong>{isGrenoble ? ' à Grenoble et en Isère' : ''}. De l'<strong>étude de conception</strong> à la <strong>réalisation</strong>, nos équipes vous accompagnent tout au long de votre <strong>projet personnalisé</strong>, incluant extensions, surélévations et aménagements extérieurs.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-6">
-                Notre <strong>approche globale</strong> garantit une <strong>prise en charge complète</strong> de votre projet {isGrenoble ? 'à Grenoble' : ''} : analyse architecturale, étude des possibilités d'extension, recommandations sur les matériaux haut de gamme, et <strong>suivi rigoureux</strong> de chaque étape de réalisation. Nous veillons à préserver le caractère de votre propriété tout en la modernisant pour optimiser les <strong>délais et la qualité</strong>.
-              </p>
 
               <p className="text-base text-slate-600 leading-relaxed">
                 <strong>Spécialistes de la rénovation de maisons et villas {isGrenoble ? 'à Grenoble' : ''}</strong>, nous intervenons sur <strong>tous types de projets</strong> : rénovation complète, extension et surélévation, création de pièces supplémentaires, aménagement d'espaces extérieurs, installation de piscines et terrasses, amélioration de l\'isolation thermique et énergétique, et modernisation complète. Chaque détail est pensé pour <strong>valoriser votre patrimoine immobilier</strong>.
@@ -545,6 +545,12 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
           </div>
         </div>
       </section>
+
+      <ServiceFAQ 
+        items={maisonFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Maison Grenoble" : "FAQ Rénovation Maison"}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de maisons et villas à Grenoble." : "Retrouvez les réponses à vos questions sur la rénovation complète de maisons."}
+      />
 
       <PartnersSection />
 

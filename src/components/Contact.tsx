@@ -85,7 +85,7 @@ export function Contact() {
               <div>
                 <h3 className="font-semibold text-slate-900 mb-1">Téléphone</h3>
                 <a href="tel:0756915997" className="text-slate-600 hover:text-amber-600 transition-colors">
-                  <strong>07 56 91 59 97</strong>
+                  <strong><span>07 56 91 59 97</span></strong>
                 </a>
               </div>
             </div>
