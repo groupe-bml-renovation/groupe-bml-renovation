@@ -44,6 +44,34 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      // Force play for mobile devices that might restrict autoplay
+      const attemptPlay = async () => {
+        try {
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current.setAttribute('muted', '');
+            videoRef.current.setAttribute('playsinline', '');
+            videoRef.current.setAttribute('webkit-playsinline', '');
+            
+            const playPromise = videoRef.current.play();
+            if (playPromise !== undefined) {
+              await playPromise;
+              setIsVideoReady(true);
+            } else {
+              setIsVideoReady(true);
+            }
+          }
+        } catch (error) {
+          console.log("Autoplay prevented:", error);
+        }
+      };
+
+      attemptPlay();
+    }
+  }, [videoUrl]);
+
   return (
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
       {/* Background Poster fallback that renders instantly */}
@@ -68,7 +96,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         playsInline
         poster={posterUrl}
         preload="auto"
+        onCanPlay={() => setIsVideoReady(true)}
         onLoadedData={() => setIsVideoReady(true)}
+        onPlaying={() => setIsVideoReady(true)}
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture
         disableRemotePlayback
