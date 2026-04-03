@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface AnimatedVideoHeroProps {
@@ -25,9 +25,26 @@ export const AnimatedVideoHero: React.FC<AnimatedVideoHeroProps> = ({
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles.length]);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn("Auto-play was prevented by browser:", error);
+        });
+      }
+    }
+  }, [videoUrl]);
+
   return (
     <div className="relative h-80 sm:h-96 lg:h-auto w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center antialiased py-8 sm:py-10">
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop

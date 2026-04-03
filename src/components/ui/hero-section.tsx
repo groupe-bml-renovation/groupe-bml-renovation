@@ -46,29 +46,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   useEffect(() => {
     if (videoRef.current) {
-      // Force play for mobile devices that might restrict autoplay
-      const attemptPlay = async () => {
-        try {
-          if (videoRef.current) {
-            videoRef.current.muted = true;
-            videoRef.current.setAttribute('muted', '');
-            videoRef.current.setAttribute('playsinline', '');
-            videoRef.current.setAttribute('webkit-playsinline', '');
-            
-            const playPromise = videoRef.current.play();
-            if (playPromise !== undefined) {
-              await playPromise;
-              setIsVideoReady(true);
-            } else {
-              setIsVideoReady(true);
-            }
-          }
-        } catch (error) {
-          console.log("Autoplay prevented:", error);
-        }
-      };
-
-      attemptPlay();
+      // Force defaultMuted for iOS autoplay policies
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn("Auto-play was prevented by browser:", error);
+        });
+      }
     }
   }, [videoUrl]);
 
@@ -96,9 +83,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         playsInline
         poster={posterUrl}
         preload="auto"
-        onCanPlay={() => setIsVideoReady(true)}
         onLoadedData={() => setIsVideoReady(true)}
-        onPlaying={() => setIsVideoReady(true)}
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture
         disableRemotePlayback
