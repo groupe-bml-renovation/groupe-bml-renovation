@@ -72,52 +72,17 @@ export async function submitConsultation(
       return createError(validationError);
     }
 
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
-      console.warn('Supabase not configured, skipping database save');
-      return createError('Configuration error');
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
     const now = new Date().toISOString();
+    const consultationId = crypto.randomUUID?.() || Date.now().toString();
 
-    const { data: insertedData, error: dbError } = await supabase
-      .from('consultation_requests')
-      .insert([
-        {
-          work_type: data.workType,
-          budget: data.budget || null,
-          first_name: data.firstName,
-          last_name: data.lastName,
-          email: data.email,
-          phone: data.phone,
-          address: data.address,
-          postal_code: data.postalCode || null,
-          city: data.city || null,
-          project_description: data.projectDescription,
-          civilite: data.civilite || null,
-          created_at: now,
-          updated_at: now,
-        }
-      ])
-      .select();
-
-    if (dbError) {
-      console.error('Database error saving consultation:', dbError);
-      return createError('Erreur lors de l\'enregistrement de votre demande');
-    }
-
-    const consultationId = insertedData?.[0]?.id || crypto.randomUUID?.() || Date.now().toString();
-
-    console.log('Consultation saved:', {
+    console.log('Consultation processing, sending webhook first:', {
       id: consultationId,
       workType: data.workType,
       email: data.email,
       timestamp: now
     });
 
+    // Send webhook regardless of Supabase config
     await sendConsultationWebhook({
       id: consultationId,
       workType: data.workType,
@@ -131,9 +96,43 @@ export async function submitConsultation(
       city: data.city,
       projectDescription: data.projectDescription,
       appointmentDate: data.appointmentDate,
-      civilite: data.civilite,
+      civilite: data.civilite || '',
       submittedAt: now,
     });
+
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+    // Database fallback without failing the whole request
+    if (supabaseUrl && supabaseKey) {
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { error: dbError } = await supabase
+        .from('consultation_requests')
+        .insert([
+          {
+            id: consultationId,
+            work_type: data.workType,
+            budget: data.budget || null,
+            first_name: data.firstName,
+            last_name: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            postal_code: data.postalCode || null,
+            city: data.city || null,
+            project_description: data.projectDescription,
+            civilite: data.civilite || null,
+            created_at: now,
+            updated_at: now,
+          }
+        ]);
+
+      if (dbError) {
+        console.error('Database error saving consultation, but webhook was sent:', dbError);
+      }
+    } else {
+      console.warn('Supabase not configured, skipping database save. Webhook was sent.');
+    }
 
     const consultation: Consultation = {
       ...data,
