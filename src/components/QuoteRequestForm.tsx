@@ -86,11 +86,11 @@ export default function QuoteRequestForm() {
 
         <div className="text-center text-gray-600 text-base sm:text-lg leading-relaxed mb-12 max-w-3xl mx-auto space-y-4">
           <p>
-            Remplissez le formulaire ci-dessous pour que membre de notre service client vous appellera sous 24h afin de prendre rendez-vous avec un conseils personnalisés pour votre projet.
+            <strong>Demandez un devis gratuit en quelques clics</strong>, et réservez une <strong>estimation sur mesure</strong> de vos travaux de rénovation. <strong>(Réponse sous 24h)</strong>
           </p>
 
           <p>
-            De plus recevez un cadeau par e-mail avec la confirmation de réception.
+            En bonus, vous recevrez notre <strong>eBook de réalisation</strong> ainsi qu’un <strong>cadeau exclusif</strong> directement par email, dès que vous compléterez le formulaire.
           </p>
 
           <p className="font-semibold text-gray-900">

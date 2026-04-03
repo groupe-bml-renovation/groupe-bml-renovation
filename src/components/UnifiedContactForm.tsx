@@ -21,19 +21,11 @@ export default function UnifiedContactForm() {
 
           <div className="space-y-4 max-w-3xl mx-auto">
             <p className="text-center text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
-              Remplissez le formulaire ci-dessous pour que{' '}
-              <span className="font-semibold text-gray-900">membre de notre service client</span>
-              {' '}vous appellera sous{' '}
-              <span className="font-semibold text-gray-900">24h</span>
-              {' '}afin de prendre rendez-vous avec un{' '}
-              <span className="font-semibold text-gray-900">conseils personnalisés pour votre projet</span>
-              .
+              <strong>Demandez un devis gratuit en quelques clics</strong>, et réservez une <strong>estimation sur mesure</strong> de vos travaux de rénovation. <strong>(Réponse sous 24h)</strong>
             </p>
 
             <p className="text-center text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
-              De plus recevez un{' '}
-              <span className="font-semibold text-gray-900">cadeau</span>
-              {' '}par e-mail avec la confirmation de réception.
+              En bonus, vous recevrez notre <strong>eBook de réalisation</strong> ainsi qu’un <strong>cadeau exclusif</strong> directement par email, dès que vous compléterez le formulaire.
             </p>
           </div>
         </motion.div>
