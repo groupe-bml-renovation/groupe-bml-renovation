@@ -184,11 +184,13 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
           ? 'Extensions et surélévations à Grenoble - Rénovation complète maison, travaux intérieur/extérieur. Devis gratuit.'
           : 'Travaux de rénovation maison complète : extensions, peinture bâtiment, rénovation intérieure. Artisan rénovation expert en bâtiment travaux. Devis gratuit.'} />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={isGrenoble ? 'Rénovation Maisons à Grenoble' : 'Rénovation Maison - Groupe BML Rénovation'} />
         <meta name="twitter:description" content={isGrenoble
           ? 'Rénovation maisons à Grenoble : extensions, surélévations, travaux complets.'
           : 'Entreprise rénovation maison : travaux maison, rénovation complète, peintre bâtiment. Devis gratuit.'} />
+        <meta name="twitter:image" content="/og-image.png" />
         <link rel="canonical" href={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/maisons-et-villas' : 'https://groupe-bml-renovation.fr/maisons-et-villas'} />
         <script type="application/ld+json">
           {JSON.stringify(seoSchema)}

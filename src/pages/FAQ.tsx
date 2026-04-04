@@ -703,8 +703,10 @@ const FAQ: React.FC<FAQPageProps> = ({ onBack, onNavigate = () => {} }) => {
         <meta name="keywords" content={SEO.keywords} />
         <meta property="og:title" content={SEO.ogTitle} />
         <meta property="og:description" content={SEO.ogDescription} />
+        <meta property="og:image" content="/og-image.png" />
         <meta name="twitter:title" content={SEO.twitterTitle} />
         <meta name="twitter:description" content={SEO.twitterDescription} />
+        <meta name="twitter:image" content="/og-image.png" />
         {isGrenoble && (
           <>
             <meta name="geo.region" content="FR-38" />

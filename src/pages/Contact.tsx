@@ -58,8 +58,10 @@ const Contact: React.FC<ContactPageProps> = ({ onBack, onNavigate = () => {} }) 
         <meta property="og:title" content={isGrenoble ? "Contactez Notre Entreprise de Rénovation Maison à Grenoble | Groupe BML" : "Contactez Notre Entreprise de Rénovation Maison | Groupe BML"} />
         <meta property="og:description" content={isGrenoble ? "Travaux de rénovation maison professionnels à Grenoble et en Isère. Rénovation maison complète, peinture bâtiment, artisan rénovation. Devis gratuit et consultation sans engagement." : "Travaux de rénovation maison professionnels. Rénovation maison complète, peinture bâtiment, artisan rénovation. Devis gratuit et consultation sans engagement."} />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="/og-image.png" />
         <meta property="og:url" content={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/contact" : "https://groupe-bml-renovation.fr/contact"} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/og-image.png" />
         <meta name="twitter:title" content={isGrenoble ? "Rénovation Maison Grenoble - Contactez Groupe BML" : "Rénovation Maison - Contactez Groupe BML"} />
         <meta name="twitter:description" content={isGrenoble ? "Entreprise de rénovation maison à Grenoble spécialisée en travaux de rénovation complète, peinture bâtiment, et artisan rénovation en Isère. Devis gratuit." : "Entreprise de rénovation maison spécialisée en travaux de rénovation complète, peinture bâtiment, et artisan rénovation. Devis gratuit."} />
         <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/contact" : "https://groupe-bml-renovation.fr/contact"} />

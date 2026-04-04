@@ -430,9 +430,12 @@ function App() {
             <meta property="og:title" content={isGrenoble ? 'Rénovation Maison & Appartement Grenoble | 300+ Projets' : 'Rénovation Maison Complète | Entreprise de Rénovation'} />
             <meta property="og:description" content={isGrenoble ? 'Rénovation clé en main à Grenoble. 300+ projets, 10 ans d\'expérience. Devis gratuit, RDV 24h. Maison & appartement.' : 'Travaux de rénovation professionnels pour votre maison. Entreprise spécialisée en rénovation complète, intérieure et extérieure.'} />
             <meta property="og:type" content="website" />
+            <meta property="og:image" content="/og-image.png" />
+            <meta property="og:url" content={canonicalUrl} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={isGrenoble ? 'Rénovation Maison Grenoble | BML' : 'Rénovation Maison Complète | BML'} />
             <meta name="twitter:description" content={isGrenoble ? 'Entreprise rénovation maison & appartement Grenoble. 300+ projets, 10 ans. Devis gratuit 24h.' : 'Entreprise de rénovation maison - Travaux de peinture, rénovation intérieure, extérieure et maison ancienne.'} />
+            <meta name="twitter:image" content="/og-image.png" />
             <link rel="canonical" href={canonicalUrl} />
             <meta name="language" content="fr" />
             <meta name="geo.region" content={geoRegion} />
