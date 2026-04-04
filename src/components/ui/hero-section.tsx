@@ -82,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         loop
         playsInline
         poster={posterUrl}
-        preload="auto"
+        preload="metadata"
         onLoadedData={() => setIsVideoReady(true)}
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture

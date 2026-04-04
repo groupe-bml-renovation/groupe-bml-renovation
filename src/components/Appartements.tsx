@@ -138,9 +138,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
         <meta property="og:title" content={isGrenoble ? "Rénovation Appartements à Grenoble - Entreprise Expert | BML Rénovation" : "Rénovation Appartements Complète - Entreprise Rénovation d'Appartements | BML"} />
         <meta property="og:description" content={isGrenoble ? "Transformez votre appartement à Grenoble avec notre expertise. Rénovation complète, intérieure et extérieure. Dévis gratuit. Satisfaction client garantie." : "Transformation complète de votre appartement. Rénovation intérieure et extérieure professionnelle. Travaux de rénovation clés en main. Devis gratuit."} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/og-image.png" />
         <meta name="twitter:title" content={isGrenoble ? "Rénovation Appartements à Grenoble | BML" : "Rénovation Appartements Complète | BML Rénovation"} />
         <meta name="twitter:description" content={isGrenoble ? "Rénovation d'appartements à Grenoble - Services complètes de rénovation. Demandez votre devis gratuit." : "Entreprise de rénovation d'appartements - Rénovation complète, intérieure et extérieure. Artisan professionnel. Devis gratuit."} />
         <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/appartements" : "https://groupe-bml-renovation.fr/appartements"} />
