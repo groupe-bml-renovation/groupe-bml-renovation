@@ -56,7 +56,7 @@ const MentionsLegales: React.FC<MentionsLegalesProps> = ({ isOpen, onClose }) =>
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Nous contacter</h3>
             <div className="text-gray-700 leading-relaxed space-y-2">
-              <p><strong>Par téléphone :</strong> 06 99 45 37 04</p>
+              <p><strong>Par téléphone :</strong> <a href="tel:0699453704" className="hover:text-[#38bdf8] transition-colors">06 99 45 37 04</a></p>
               <p><strong>Par email :</strong> contact@groupe-bml-renovation.com</p>
               <p><strong>Par courrier :</strong> 143 chemin de l'étigny 73000 CHAMBÉRY</p>
             </div>

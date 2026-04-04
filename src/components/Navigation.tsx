@@ -389,7 +389,6 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="hidden md:flex items-center space-x-4 flex-shrink-0">
           <a
             href="tel:0756915997"
-            onClick={() => (window as any).gtag_report_conversion('tel:0756915997')}
             className="px-3 py-1.5 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center gap-2.5 leading-none min-w-[140px]"
           >
             <Phone className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={2.5} />
@@ -414,7 +413,6 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="md:hidden ml-auto flex items-center gap-2 -mr-1">
           <a
             href="tel:0756915997"
-            onClick={() => (window as any).gtag_report_conversion('tel:0756915997')}
             className="px-2.5 py-1 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center gap-2 leading-none"
           >
             <Phone className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
@@ -453,7 +451,6 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 space-y-2">
           <a
             href="tel:0756915997"
-            onClick={() => (window as any).gtag_report_conversion('tel:0756915997')}
             className="w-full px-3 py-2 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center justify-center gap-2.5 leading-none"
           >
             <Phone className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />

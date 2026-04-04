@@ -16,17 +16,14 @@ export const initPhoneTracking = () => {
       if (href && href.startsWith('tel:')) {
         const phoneNumber = href.replace('tel:', '');
 
-        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
-          // Prevent default to let gtag_report_conversion handle the redirect after tracking
-          e.preventDefault();
-          (window as any).gtag_report_conversion(href);
-          console.log('Phone call tracking triggered for:', phoneNumber);
-        } else if (typeof window !== 'undefined' && 'gtag' in window) {
+        if (typeof window !== 'undefined' && 'gtag' in window) {
+          // Fire conversion event directly without blocking the link
           (window as any).gtag('event', 'conversion', {
             'send_to': 'AW-17790717407/_73uCO7D7ZUcEN-bo6NC',
             'value': 1200.0,
             'currency': 'EUR'
           });
+          console.log('Phone call tracking triggered for:', phoneNumber);
         }
       }
     }

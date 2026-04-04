@@ -78,7 +78,7 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: '7',
     question: 'Quel est votre délai de réponse pour une demande ?',
-    answer: 'Nous nous engageons à répondre à vos demandes dans un délai de 24 heures ouvrables. Pour les demandes urgentes concernant des dépannages immédiats, nous offrons un service d\'intervention rapide selon la disponibilité actuelle de notre équipe sur le terrain à Grenoble et Isère. Appelez-nous directement au <span>07 56 91 59 97</span> pour les urgences. Pour les demandes standard, vous pouvez utiliser notre formulaire de contact ou nous appeler - nous vous recontacterons rapidement pour planifier une visite de consultation.',
+    answer: 'Nous nous engageons à répondre à vos demandes dans un délai de 24 heures ouvrables. Pour les demandes urgentes concernant des dépannages immédiats, nous offrons un service d\'intervention rapide selon la disponibilité actuelle de notre équipe sur le terrain à Grenoble et Isère. Appelez-nous directement au <a href="tel:0756915997" class="text-[#38bdf8] font-bold hover:underline">07 56 91 59 97</a> pour les urgences. Pour les demandes standard, vous pouvez utiliser notre formulaire de contact ou nous appeler - nous vous recontacterons rapidement pour planifier une visite de consultation.',
     category: 'Contact',
     order: 1,
     keywords: ['délai réponse', 'contactez-nous', 'urgence dépannage', 'Grenoble', 'Isère'],
@@ -87,7 +87,7 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: '8',
     question: 'Travaillez-vous les week-ends, jours fériés et en urgence ?',
-    answer: 'Sur demande spécifique, nous pouvons organiser des interventions les week-ends et jours fériés, particulièrement pour les urgences de dépannage qui ne peuvent pas attendre. Notre équipe d\'urgence est mobilisable selon la disponibilité. Les interventions en dehors des heures de travail standard peuvent être soumises à des tarifs supplémentaires à discuter au préalable. Pour les situations d\'urgence ou dépannage immédiat, contactez-nous directement au <span>07 56 91 59 97</span> - nous ferons notre maximum pour vous intervenir rapidement.',
+    answer: 'Sur demande spécifique, nous pouvons organiser des interventions les week-ends et jours fériés, particulièrement pour les urgences de dépannage qui ne peuvent pas attendre. Notre équipe d\'urgence est mobilisable selon la disponibilité. Les interventions en dehors des heures de travail standard peuvent être soumises à des tarifs supplémentaires à discuter au préalable. Pour les situations d\'urgence ou dépannage immédiat, contactez-nous directement au <a href="tel:0756915997" class="text-[#38bdf8] font-bold hover:underline">07 56 91 59 97</a> - nous ferons notre maximum pour vous intervenir rapidement.',
     category: 'Disponibilité',
     order: 1,
     keywords: ['urgence rénovation', 'dépannage week-end', 'intervention rapide'],
@@ -105,7 +105,7 @@ const FAQ_DATA: FAQItem[] = [
   {
     id: '10',
     question: 'Comment me mettre en contact en cas d\'urgence ou de dépannage ?',
-    answer: 'Pour les urgences et dépannages immédiats à Grenoble et en Isère, appelez-nous directement au <span>07 56 91 59 97</span>. Notre équipe grenobleoise de dépannage d\'urgence est disponible pour vous intervenir au plus vite selon les disponibilités. Vous pouvez également nous envoyer un message d\'urgence via notre formulaire de contact, mais l\'appel téléphonique reste le moyen le plus rapide pour les situations critiques. Décrivez précisément le problème - qu\'il s\'agisse d\'une fuite d\'eau, d\'un problème électrique, d\'une panne de chauffage ou d\'autre urgence - pour que nous puissions vous proposer la solution appropriée rapidement.',
+    answer: 'Pour les urgences et dépannages immédiats à Grenoble et en Isère, appelez-nous directement au <a href="tel:0756915997" class="text-[#38bdf8] font-bold hover:underline">07 56 91 59 97</a>. Notre équipe grenobleoise de dépannage d\'urgence est disponible pour vous intervenir au plus vite selon les disponibilités. Vous pouvez également nous envoyer un message d\'urgence via notre formulaire de contact, mais l\'appel téléphonique reste le moyen le plus rapide pour les situations critiques. Décrivez précisément le problème - qu\'il s\'agisse d\'une fuite d\'eau, d\'un problème électrique, d\'une panne de chauffage ou d\'autre urgence - pour que nous puissions vous proposer la solution appropriée rapidement.',
     category: 'Urgence',
     order: 1,
     keywords: ['urgence dépannage', 'appel urgence', 'intervention rapide', 'Grenoble', 'Isère'],
