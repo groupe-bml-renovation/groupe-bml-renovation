@@ -1,6 +1,7 @@
 declare global {
   interface Window {
     gtag: (command: string, ...args: unknown[]) => void;
+    gtag_report_conversion: (url?: string) => boolean;
   }
 }
 
@@ -46,6 +47,10 @@ export const trackPhoneClick = (phoneNumber: string) => {
   trackEvent('phone_click', {
     phone_number: phoneNumber,
   });
+
+  if (typeof window !== 'undefined' && window.gtag_report_conversion) {
+    window.gtag_report_conversion(`tel:${phoneNumber.replace(/\s/g, '')}`);
+  }
 };
 
 export const trackServiceView = (serviceName: string) => {

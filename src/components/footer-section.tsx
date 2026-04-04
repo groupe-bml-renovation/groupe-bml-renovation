@@ -436,7 +436,7 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
             </div>
             <h3 className="mb-4 text-lg font-semibold">Contact</h3>
             <address className="space-y-2 text-sm not-italic">
-              <p>Téléphone: <a href="tel:0756915997"><span>07 56 91 59 97</span></a></p>
+              <p>Téléphone: <a href="tel:0756915997" onClick={() => (window as any).gtag_report_conversion('tel:0756915997')}><span>07 56 91 59 97</span></a></p>
               <p>Email: contact@groupe-bml-renovation.com</p>
               <p className="pt-2 border-t mt-2">5 Av. Paul Verlaine, 38100 Grenoble</p>
             </address>

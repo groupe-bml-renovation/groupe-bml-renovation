@@ -16,18 +16,17 @@ export const initPhoneTracking = () => {
       if (href && href.startsWith('tel:')) {
         const phoneNumber = href.replace('tel:', '');
 
-        if (typeof window !== 'undefined' && 'gtag' in window) {
-          (window as any).gtag('event', 'conversion', {
-            'send_to': 'AW-17790717407/TKBZCOH7CQMD67Z63GEY'
-          });
-
-          (window as any).gtag('event', 'call_conversion', {
-            'phone_conversion_number': '07 56 91 59 97'
-          });
-
+        if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+          // Prevent default to let gtag_report_conversion handle the redirect after tracking
+          e.preventDefault();
+          (window as any).gtag_report_conversion(href);
           console.log('Phone call tracking triggered for:', phoneNumber);
-        } else {
-          console.warn('gtag not available for phone tracking');
+        } else if (typeof window !== 'undefined' && 'gtag' in window) {
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-17790717407/_73uCO7D7ZUcEN-bo6NC',
+            'value': 1200.0,
+            'currency': 'EUR'
+          });
         }
       }
     }

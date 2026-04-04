@@ -18,6 +18,38 @@
   <link rel="preconnect" href="https://pub-fad5314e0b4f4ac9ac1d628fe5865ddf.r2.dev" crossorigin />
   <link rel="preconnect" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev" crossorigin />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17790717407"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17790717407');
+
+    gtag('config', 'AW-17790717407/WGotCNmBsoscEN-bo6NC', {
+      'phone_conversion_number': '07 56 91 59 97'
+    });
+  </script>
+
+  <!-- Event snippet for Click pour appeler surite conversion page -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17790717407/_73uCO7D7ZUcEN-bo6NC',
+        'value': 1200.0,
+        'currency': 'EUR',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
   <!-- Google Tag Manager (deferred to after page interactive) -->
   <script id="gtm-init-script">
     if (document.readyState === 'loading') {
@@ -45,20 +77,6 @@
         })(window, document, 'script', 'dataLayer', 'GTM-PT4KBH2Z');
       }, 3500);
     }
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17790717407"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17790717407');
-
-    gtag('config', 'AW-17790717407/WGotCNmBsoscEN-bo6NC', {
-      'phone_conversion_number': '07 56 91 59 97'
-    });
   </script>
 
   <link rel="icon" type="image/png" href="/favicon.png" />
