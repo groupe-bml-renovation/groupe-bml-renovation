@@ -13,7 +13,6 @@ import {
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import { FaYoutube, FaTiktok, FaPinterest } from "react-icons/fa"
 import { InterventionZones } from "./InterventionZones"
-import { LazyGoogleMap } from "./LazyGoogleMap"
 
 interface FooterSectionProps {
   onNavigateToServices?: (serviceId?: string) => void;
@@ -468,8 +467,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
             viewport={{ once: true }}
             className="w-full h-64 rounded-lg overflow-hidden shadow-lg"
           >
-            <LazyGoogleMap
+            <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18029.212838234685!2d5.703100730227123!3d45.1607314178529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af55e7fcef2a9%3A0x7fb9ce66faf8e6b9!2sGroupe%20BML%20R%C3%A9novation%20tout%20corps%20d&#39;%C3%A9tat!5e0!3m2!1sen!2sfr!4v1763451151876!5m2!1sen!2sfr"
+              width="100%"
+              height="100%"
               style={{ border: 0 }}
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
