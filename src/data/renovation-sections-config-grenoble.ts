@@ -27,10 +27,10 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
     reverseLayout: true,
     showCTA: true,
     paragraphs: [
-      'Vous avez un projet de rénovation à Grenoble, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier?',
-      'Depuis plus de 10 ans, **Groupe BML Rénovation** à Grenoble est votre **interlocuteur unique**. Nous pilotons l\'intégralité de vos projets de **rénovation et d\'extension**, avec des **finitions haut de gamme** et une **attention particulière au détail**. Intervenant à Grenoble et dans toute l\'Isère, nous accompagnons vos projets du début à la fin.',
-      'Un **expert en rénovation haut de gamme** se déplace à votre domicile à Grenoble pour vous conseiller en détail sur votre projet, vous présenter les différentes alternatives techniques de mise en œuvre, et vous guider dans le choix des **meilleurs matériaux**.',
-      'Ensuite, nous rédigeons un **devis détaillé** et **rigoureusement étudié**, parfaitement adapté à votre situation.',
+      "**Vous avez un projet de rénovation à Grenoble**, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier?",
+      "**Depuis plus de 10 ans**, **Groupe BML Rénovation** est **votre interlocuteur unique**. Nous intervenons **à Grenoble et dans toute l'Isère** pour vous accompagner **du début à la fin de votre projet**.",
+      "Avec **des finitions haut de gamme** et **une attention particulière au détail**.",
+      "**Un expert se déplace à votre domicile** pour **une estimation offerts sur mesure** et vous guider dans **le choix des matériaux**. Pour un **devis détaillé et sur mesure**, **envoyé sous 24h**.",
     ],
   },
   {
@@ -57,8 +57,6 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
       'Technicien spécialisé travaillant sur les revêtements muraux et finitions à Grenoble',
     ],
     paragraphs: [
-      'Depuis plus de **10 ans**, nous accompagnons les propriétaires dans leurs projets de **rénovation complète**.',
-      'Notre approche **\'clé en main\'** coordonne **architectes, artisans et chefs de projet** pour transformer vos espaces avec une exigence de **finition haut de gamme**.',
       'Chaque membre de notre équipe est sélectionné pour son **savoir-faire**, sa **rigueur** et son **sens du travail**.',
       'Nos **partenaires** sont tous **expérimentés** et partagent la même **exigence d\'excellence** ainsi que le même **engagement** envers la satisfaction du client.',
       'Leur **expertise**, alliée à une **approche humaine et attentive**, fait de notre entreprise un **partenaire de confiance** pour tous vos projets, des plus simples aux plus ambitieux.',
@@ -137,8 +135,6 @@ export const renovationSectionsConfigGrenoble: SectionContent[] = [
     reverseLayout: false,
     showCTA: true,
     paragraphs: [
-      'Depuis plus de **10 ans**, nous accompagnons les propriétaires dans leurs projets de **rénovation complète**.',
-      'Notre approche **\'clé en main\'** coordonne **architectes, artisans et chefs de projet** pour transformer vos espaces avec une exigence de **finition haut de gamme**.',
       'Chaque membre de notre équipe est sélectionné pour son **savoir-faire**, sa **rigueur** et son **sens du travail**.',
       'Nos **partenaires à Grenoble et en Isère** sont tous **expérimentés** et partagent la même **exigence d\'excellence** ainsi que le même **engagement** envers la satisfaction du client.',
       'Leur **expertise**, alliée à une **approche humaine et attentive**, fait de notre entreprise un **partenaire de confiance** pour tous vos projets, des plus simples aux plus ambitieux.',

@@ -310,7 +310,7 @@ export default function DemandDevisForm() {
         className="mb-8 p-4 bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-100 rounded-lg text-center"
       >
         <p className="text-base md:text-lg font-bold text-gray-900">
-          Formulaire demande de devis
+          Formulaire demande de devis pour une estimation sur mesure
         </p>
       </motion.div>
 
