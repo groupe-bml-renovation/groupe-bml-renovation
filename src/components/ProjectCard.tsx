@@ -23,11 +23,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   onClick
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+    <div
       className="flex-shrink-0 w-80 md:w-96 group snap-start bg-transparent"
       data-project-card
       onClick={onClick}
@@ -39,7 +35,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             src={image}
             alt={title}
             className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
-            loading="eager"
+            priority={true}
           />
 
           {/* Subtle overlay on hover */}
@@ -71,7 +67,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

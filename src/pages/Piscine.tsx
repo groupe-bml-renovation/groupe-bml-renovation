@@ -244,7 +244,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=987"
+            src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/a4a23d2a-e60e-48a4-aceb-a8996afb580c_htgckp%20(1).jpg"
             alt="Rénovation maison - Travaux de rénovation complète par entreprise de rénovation spécialisée"
             className="w-full h-full"
             priority={true}

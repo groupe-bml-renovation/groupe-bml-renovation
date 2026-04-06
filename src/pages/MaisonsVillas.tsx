@@ -200,7 +200,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+            src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/99bc0d67-c27f-414b-b223-6c1f194bbd7a_lamuod%20(2).jpg"
             alt={isGrenoble ? 'Rénovation maison à Grenoble - Extensions et travaux maison' : 'Rénovation maison complète - Travaux de rénovation intérieure et extérieure'}
             className="w-full h-full object-cover"
             priority={true}

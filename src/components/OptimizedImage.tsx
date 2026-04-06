@@ -41,7 +41,7 @@ export const OptimizedImage = ({
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {!isLoaded && (
+      {!priority && !isLoaded && (
         <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse" />
       )}
       <img
@@ -56,7 +56,7 @@ export const OptimizedImage = ({
         width={width}
         height={height}
         onLoad={() => setIsLoaded(true)}
-        className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'
+        className={`w-full h-full object-cover ${!priority ? 'transition-opacity duration-300' : ''} ${(isLoaded || priority) ? 'opacity-100' : 'opacity-0'
           }`}
       />
     </div>

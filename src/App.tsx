@@ -57,8 +57,8 @@ import NotreSecteur from './components/NotreSecteur';
 import Navigation from './components/Navigation';
 import StickyDemandeCTA from './components/StickyDemandeCTA';
 
+import ProjectsCarousel from './components/ProjectsCarousel';
 const ServicesTabbedCarousel = lazy(() => import('./components/ServicesTabbedCarousel'));
-const ProjectsCarousel = lazy(() => import('./components/ProjectsCarousel'));
 const GoogleReviews = lazy(() => import('./components/GoogleReviews'));
 const UnifiedContactForm = lazy(() => import('./components/UnifiedContactForm'));
 const EbookPresentationSection = lazy(() => import('./components/EbookPresentationSection'));
@@ -483,6 +483,7 @@ function App() {
 
           <NotreSecteur />
 
+          <ProjectStepsSection onNavigate={handleNavigate} />
           <ProjectsCarousel onNavigate={handleNavigate} />
 
           <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
@@ -493,7 +494,6 @@ function App() {
 
           <UnifiedContactForm />
 
-          <ProjectStepsSection onNavigate={handleNavigate} />
 
           {/* <ServicesTabbedCarousel
               onNavigate={!isGrenoble ? handleNavigate : () => { }}

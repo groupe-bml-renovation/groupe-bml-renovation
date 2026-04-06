@@ -78,22 +78,28 @@ export default function QuoteRequestForm() {
   return (
     <div id="contact-form" className="bg-white text-gray-900 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-center mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-left mb-6">
           <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
             Demande de devis gratuit
           </span>
         </h1>
 
-        <div className="text-center text-gray-600 text-base sm:text-lg leading-relaxed mb-12 max-w-3xl mx-auto space-y-4">
+        <div className="text-left text-gray-600 text-base sm:text-lg leading-relaxed mb-12 max-w-3xl space-y-4">
           <p>
-            <strong>Demandez un devis gratuit en quelques clics</strong>, et réservez une <strong>estimation sur mesure</strong> de vos travaux de rénovation. <strong>(Réponse sous 24h)</strong>
+            Demandez votre devis en quelques clics et obtenez une <strong>estimation sur mesure</strong> de vos travaux de rénovation, <strong>(Réponse sous 24h)</strong>.
+          </p>
+ 
+          <p>
+            Dès votre demande, recevez un <strong>cadeau exclusif</strong> ainsi que notre <strong>e-book de réalisations</strong>.
           </p>
 
           <p>
-            En bonus, vous recevrez notre <strong>eBook de réalisation</strong> ainsi qu’un <strong>cadeau exclusif</strong> directement par email, dès que vous compléterez le formulaire.
+            Après validation du devis, bénéficiez d’un <strong>cahier des charges complet</strong> avec un <strong>planning détaillé</strong> des travaux. 
           </p>
 
-          <p className="font-semibold text-gray-900">
+
+
+          <p className="font-semibold text-gray-900 pt-4">
             Après la visite, vous recevez gratuitement :
           </p>
 

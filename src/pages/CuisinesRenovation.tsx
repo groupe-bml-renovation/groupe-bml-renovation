@@ -182,7 +182,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
       <section className="relative h-screen flex items-center justify-center overflow-hidden pb-12">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=80"
+            src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0044.jpg"
             alt={isGrenoble ? "Rénovation de cuisines à Grenoble" : "Rénovation de cuisines haut de gamme"}
             className="w-full h-full"
             priority={true}

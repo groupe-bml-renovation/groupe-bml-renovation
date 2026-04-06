@@ -312,17 +312,17 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
             viewport={{ once: true }}
           >
             <h3 className="mb-4 text-lg font-semibold">Suivez-nous</h3>
-            <div className="mb-6 flex space-x-4">
+            <div className="mb-6 flex flex-wrap gap-2">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600"
+                      className="text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 shrink-0 h-8 w-8"
                       onClick={() => window.open('https://www.facebook.com/profile.php?id=61583239311358', '_blank')}
                     >
-                      <Facebook className="h-5 w-5" />
+                      <Facebook className="h-4 w-4" />
                       <span className="sr-only">Facebook</span>
                     </Button>
                   </TooltipTrigger>
@@ -336,10 +336,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-blue-400 hover:text-white hover:border-blue-400"
+                      className="text-slate-700 hover:bg-blue-400 hover:text-white hover:border-blue-400 shrink-0 h-8 w-8"
                       onClick={() => window.open('https://x.com/BML_Renovation', '_blank')}
                     >
-                      <Twitter className="h-5 w-5" />
+                      <Twitter className="h-4 w-4" />
                       <span className="sr-only">Twitter</span>
                     </Button>
                   </TooltipTrigger>
@@ -353,10 +353,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-pink-600 hover:text-white hover:border-pink-600"
+                      className="text-slate-700 hover:bg-pink-600 hover:text-white hover:border-pink-600 shrink-0 h-8 w-8"
                       onClick={() => window.open('https://www.instagram.com/groupe_bml_renovation_tce/', '_blank')}
                     >
-                      <Instagram className="h-5 w-5" />
+                      <Instagram className="h-4 w-4" />
                       <span className="sr-only">Instagram</span>
                     </Button>
                   </TooltipTrigger>
@@ -370,10 +370,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
+                      className="text-slate-700 hover:bg-blue-700 hover:text-white hover:border-blue-700 shrink-0 h-8 w-8"
                       onClick={() => window.open('https://www.linkedin.com/in/groupe-bml-r%C3%A9novation-tout-corps-d-%C3%A9tat-86aa693b1/', '_blank')}
                     >
-                      <Linkedin className="h-5 w-5" />
+                      <Linkedin className="h-4 w-4" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </TooltipTrigger>
@@ -387,10 +387,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-red-600 hover:text-white hover:border-red-600"
+                      className="text-slate-700 hover:bg-red-600 hover:text-white hover:border-red-600 shrink-0 h-8 w-8"
                       onClick={() => window.open('https://www.youtube.com/@GroupeBMLR%C3%A9novation', '_blank')}
                     >
-                      <FaYoutube className="h-5 w-5" />
+                      <FaYoutube className="h-4 w-4" />
                       <span className="sr-only">YouTube</span>
                     </Button>
                   </TooltipTrigger>
@@ -404,10 +404,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-red-700 hover:text-white hover:border-red-700"
+                      className="text-slate-700 hover:bg-red-700 hover:text-white hover:border-red-700 shrink-0 h-8 w-8"
                       onClick={() => window.open('https://fr.pinterest.com/38000bml/', '_blank')}
                     >
-                      <FaPinterest className="h-5 w-5" />
+                      <FaPinterest className="h-4 w-4" />
                       <span className="sr-only">Pinterest</span>
                     </Button>
                   </TooltipTrigger>
@@ -421,10 +421,10 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                     <Button
                       variant="outline"
                       size="icon-rounded"
-                      className="text-slate-700 hover:bg-black hover:text-white hover:border-black"
+                      className="text-slate-700 hover:bg-black hover:text-white hover:border-black shrink-0 h-8 w-8"
                       onClick={() => window.open('https://www.tiktok.com/@groupe_bml_renovation', '_blank')}
                     >
-                      <FaTiktok className="h-5 w-5" />
+                      <FaTiktok className="h-4 w-4" />
                       <span className="sr-only">TikTok</span>
                     </Button>
                   </TooltipTrigger>

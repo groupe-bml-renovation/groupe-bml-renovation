@@ -55,24 +55,25 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
 
 
   const scroll = (direction: 'left' | 'right') => {
-    if (!scrollContainerRef.current || isScrollingRef.current) return;
+    if (!scrollContainerRef.current) return;
 
     const container = scrollContainerRef.current;
-    const firstCard = container.querySelector('[data-project-card]') as HTMLElement;
+    // Don't block clicking if it's already scrolling, let browser handle the queue or interrupt
+    // isScrollingRef.current = true; 
 
+    const firstCard = container.querySelector('[data-project-card]') as HTMLElement;
     if (!firstCard) return;
 
     const cardComputedWidth = firstCard.offsetWidth;
     const flexContainer = container.querySelector('.flex') as HTMLElement;
-
     let computedGap = 24;
+
     if (flexContainer) {
       const gapStyle = window.getComputedStyle(flexContainer).gap;
       const gapMatch = gapStyle.match(/^([\d.]+)(px|rem|em)?/);
       if (gapMatch) {
         const gapValue = parseFloat(gapMatch[1]);
         const gapUnit = gapMatch[2] || 'px';
-
         if (gapUnit === 'rem') {
           const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
           computedGap = Math.round(gapValue * rootFontSize);
@@ -88,26 +89,47 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
     const scrollAmount = (cardComputedWidth + computedGap) * (direction === 'right' ? 1 : -1);
     const currentScrollLeft = container.scrollLeft;
     const newPosition = currentScrollLeft + scrollAmount;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    const finalPosition = Math.max(0, Math.min(newPosition, maxScroll));
-
-    isScrollingRef.current = true;
+    
     container.scrollTo({
-      left: finalPosition,
+      left: newPosition,
       behavior: 'smooth'
     });
 
+    // We still update the position after a shorter delay to refresh button states
     setTimeout(() => {
-      isScrollingRef.current = false;
-      setCarouselPosition(container.scrollLeft);
-    }, 600);
+      if (scrollContainerRef.current) {
+        setCarouselPosition(scrollContainerRef.current.scrollLeft);
+      }
+    }, 300);
   };
 
   const scrollThreshold = 10;
-  const currentScrollPosition = scrollContainerRef.current?.scrollLeft ?? carouselPosition;
+  const currentScrollPosition = carouselPosition;
   const maxScrollPosition = scrollContainerRef.current ? scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth : 0;
   const canScrollLeft = currentScrollPosition > scrollThreshold;
   const canScrollRight = currentScrollPosition < (maxScrollPosition - scrollThreshold);
+
+  // Throttled scroll listener
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    let timeoutId: number | null = null;
+    const handleScroll = () => {
+      if (timeoutId === null) {
+        timeoutId = window.setTimeout(() => {
+          setCarouselPosition(container.scrollLeft);
+          timeoutId = null;
+        }, 100); // 100ms throttle
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const touch = e.touches[0];
@@ -171,7 +193,6 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: canScrollLeft ? 1 : 0.3 }}
-              exit={{ opacity: 0 }}
               onClick={(e) => {
                 e.preventDefault();
                 if (canScrollLeft) scroll('left');
@@ -191,40 +212,31 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
             {/* Carousel Container */}
             <div
               ref={scrollContainerRef}
-              className="w-full scroll-smooth overflow-x-hidden overflow-y-hidden"
-              style={{ scrollSnapType: 'x mandatory', touchAction: 'pan-y', overscrollBehavior: 'pan-x', scrollBehavior: 'smooth' }}
-              onScroll={(e) => {
-                if (!isScrollingRef.current) {
-                  const container = e.currentTarget;
-                  setCarouselPosition(container.scrollLeft);
-                }
+              className="w-full overflow-x-auto overflow-y-hidden no-scrollbar"
+              style={{ 
+                scrollSnapType: 'x mandatory', 
+                touchAction: 'pan-y', 
+                overscrollBehavior: 'pan-x',
+                WebkitOverflowScrolling: 'touch'
               }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
               <div className="flex gap-6 pb-4">
-                <AnimatePresence mode="wait">
-                  {featuredProjects_sorted.map((project) => (
-                    <motion.div
-                      key={project.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ProjectCard
-                        title={project.title}
-                        description={project.description}
-                        image={project.image}
-                        category={project.category}
-                        budget={project.budget}
-                        duration={project.duration}
-                        onClick={project.route ? () => handleProjectClick(project) : undefined}
-                      />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                {featuredProjects_sorted.map((project: any) => (
+                  <div key={project.id}>
+                    <ProjectCard
+                      title={project.title}
+                      description={project.description}
+                      image={project.image}
+                      category={project.category}
+                      budget={project.budget}
+                      duration={project.duration}
+                      onClick={project.route ? () => handleProjectClick(project) : undefined}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -232,7 +244,6 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: canScrollRight ? 1 : 0.3 }}
-              exit={{ opacity: 0 }}
               onClick={(e) => {
                 e.preventDefault();
                 if (canScrollRight) scroll('right');
@@ -253,20 +264,16 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       </div>
 
       <style>{`
-        div::-webkit-scrollbar {
+        .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
-        div {
+        .no-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
         [data-project-card] img {
-          will-change: auto;
+          will-change: transform;
           backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-        }
-        [data-project-card] {
-          transform: translateZ(0);
         }
       `}</style>
     </section>

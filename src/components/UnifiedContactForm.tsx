@@ -65,11 +65,11 @@ const partenaires = [
 
 export default function UnifiedContactForm() {
   return (
-    <div id="contact-form" className="bg-white text-gray-900 py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+    <div id="contact-form" className="bg-white text-gray-900 py-12 lg:py-16 px-6 sm:px-10 lg:px-12 flex flex-col items-center">
+      <div className="max-w-[1440px] mx-auto w-full">
         
-        {/* FORM SECTION (Left side on desktop) */}
-        <div className="flex flex-col w-full lg:col-span-7">
+        {/* FORM SECTION (Full width/Centered) */}
+        <div className="flex flex-col w-full max-w-4xl mx-auto mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -79,17 +79,21 @@ export default function UnifiedContactForm() {
           >
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Demande de devis gratuit
+                Demande de devis gratuit en quelques clics
               </span>
             </h1>
-
+ 
             <div className="space-y-4 max-w-xl mx-auto">
-              <p className="text-center text-gray-600 text-sm sm:text-base leading-relaxed">
-                <strong>Demandez un devis gratuit en quelques clics</strong>, et réservez une <strong>estimation sur mesure</strong> de vos travaux de rénovation. <strong>(Réponse sous 24h)</strong>
+              <p className="text-center text-slate-700 leading-relaxed">
+                Demandez votre devis et obtenez une <strong>estimation sur mesure</strong> de vos travaux de rénovation, <strong>(Réponse sous 24h)</strong>.
+              </p>
+ 
+              <p className="text-center text-slate-700 leading-relaxed">
+                Dès votre demande, recevez un <strong>cadeau exclusif</strong> ainsi que notre <strong>e-book de réalisations</strong>.
               </p>
 
-              <p className="text-center text-gray-600 text-sm sm:text-base leading-relaxed">
-                En bonus, recevez notre <strong>eBook de réalisation</strong> directement par email !
+              <p className="text-center text-slate-700 leading-relaxed">
+                Après validation du devis, bénéficiez d’un <strong>cahier des charges complet</strong> avec un <strong>planning détaillé</strong> des travaux. 
               </p>
             </div>
           </motion.div>
@@ -99,56 +103,64 @@ export default function UnifiedContactForm() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl border-2 border-gray-200 hover:border-cyan-400 p-6 sm:p-8 lg:p-10 transition-all duration-300 flex flex-col mx-auto w-full shadow-sm"
+            className="bg-white rounded-2xl border-2 border-gray-200 hover:border-cyan-400 p-6 sm:p-8 lg:p-10 transition-all duration-300 flex flex-col w-full shadow-sm"
           >
             <DemandDevisForm />
           </motion.div>
         </div>
 
-        {/* TEXT AND CERTIFICATIONS SECTION (Right side on desktop) */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-col mt-8 lg:mt-0 lg:pl-8 lg:col-span-5"
-        >
-
-          <div>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-800 border-b border-gray-100 pb-2 text-center lg:text-left">
+        {/* LOGOS SECTION (Full Width below) */}
+        <div className="w-full space-y-16 pt-4">
+          {/* Certifications */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <h3 className="text-xl sm:text-2xl font-bold mb-8 text-slate-800 border-b border-gray-100 pb-4 text-center">
               Nos certifications
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+            
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-4 sm:gap-5">
               {certifications.map((cert, index) => (
-                <div key={index} title={cert.name} className="flex items-center justify-center p-2 sm:p-3 lg:p-4 bg-white border border-slate-100 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-default">
+                <div key={index} title={cert.name} className="flex items-center justify-center p-3 sm:p-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
                   <img 
                     src={cert.logoUrl} 
                     alt={cert.name} 
-                    className="h-8 sm:h-10 lg:h-12 w-auto object-contain hover:scale-105 transition-transform" 
+                    className="h-10 sm:h-11 lg:h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 filter brightness-105" 
                   />
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="mt-8 lg:mt-10">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-slate-800 border-b border-gray-100 pb-2 text-center lg:text-left">
+          {/* Partenaires */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="w-full"
+          >
+            <h3 className="text-xl sm:text-2xl font-bold mb-8 text-slate-800 border-b border-gray-100 pb-4 text-center">
               Nos partenaires de confiance
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+
+            <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 sm:gap-4">
               {partenaires.map((partner, index) => (
-                <div key={index} title={partner.name} className="flex items-center justify-center p-1.5 sm:p-2 bg-white border border-slate-100 rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-default">
+                <div key={index} title={partner.name} className="flex items-center justify-center p-2 sm:p-3 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
                   <img 
                     src={partner.logoUrl} 
                     alt={partner.name} 
-                    className="h-6 sm:h-8 lg:h-10 w-auto object-contain hover:scale-105 transition-transform" 
+                    className="h-7 sm:h-8 lg:h-9 w-auto object-contain transition-all duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                   />
                 </div>
               ))}
             </div>
-          </div>
-        </motion.div>
-
+          </motion.div>
+        </div>
       </div>
     </div>
   );

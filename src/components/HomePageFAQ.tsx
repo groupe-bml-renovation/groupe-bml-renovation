@@ -82,7 +82,7 @@ const HomePageFAQ = () => {
   };
 
   return (
-    <section className="pt-12 pb-16 px-4 md:px-8 bg-white">
+    <section className="pt-6 pb-16 px-4 md:px-8 bg-white">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

@@ -144,9 +144,9 @@ export const featuredProjects: Project[] = [
 ];
 
 export const featuredProjects_sorted = [
-  featuredProjects[0],
-  featuredProjects[1],
   featuredProjects[3],
+  featuredProjects[1],
+  featuredProjects[0],
   featuredProjects[2],
   featuredProjects[13],
   ...featuredProjects.slice(4, 13),
