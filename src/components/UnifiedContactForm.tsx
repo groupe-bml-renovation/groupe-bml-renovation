@@ -65,11 +65,11 @@ const partenaires = [
 
 export default function UnifiedContactForm() {
   return (
-    <div id="contact-form" className="bg-white text-gray-900 py-12 lg:py-16 px-6 sm:px-10 lg:px-12 flex flex-col items-center">
+    <div id="contact-form" className="bg-slate-50 text-gray-900 py-12 lg:py-20 px-6 sm:px-10 lg:px-12 flex flex-col items-center">
       <div className="max-w-[1440px] mx-auto w-full">
         
         {/* FORM SECTION (Full width/Centered) */}
-        <div className="flex flex-col w-full max-w-4xl mx-auto mb-16">
+        <div className="flex flex-col w-full max-w-4xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,6 @@ export default function UnifiedContactForm() {
               <p className="text-center text-slate-700 leading-relaxed">
                 Dès votre demande, recevez un <strong>cadeau exclusif</strong> ainsi que notre <strong>e-book de réalisations</strong>.
               </p>
-
             </div>
           </motion.div>
 
@@ -100,14 +99,14 @@ export default function UnifiedContactForm() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl border-2 border-gray-200 hover:border-cyan-400 p-6 sm:p-8 lg:p-10 transition-all duration-300 flex flex-col w-full shadow-sm"
+            className="bg-white rounded-2xl border-2 border-gray-100 hover:border-[#38bdf8] p-6 sm:p-8 lg:p-10 transition-all duration-300 flex flex-col w-full shadow-lg"
           >
             <DemandDevisForm />
           </motion.div>
         </div>
 
         {/* LOGOS SECTION (Full Width below) */}
-        <div className="w-full space-y-16 pt-4">
+        <div className="w-full space-y-24">
           {/* Certifications */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,17 +115,24 @@ export default function UnifiedContactForm() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h3 className="text-xl sm:text-2xl font-bold mb-8 text-slate-800 border-b border-gray-100 pb-4 text-center">
-              Nos certifications
-            </h3>
+            <div className="text-center mb-10">
+              <span className="block text-[#38bdf8] text-[10px] font-semibold uppercase tracking-wider mb-2">
+                NOS CERTIFICATIONS ET QUALIFICATIONS
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  Nos certifications
+                </span>
+              </h2>
+            </div>
             
             <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-4 sm:gap-5">
               {certifications.map((cert, index) => (
-                <div key={index} title={cert.name} className="flex items-center justify-center p-3 sm:p-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
+                <div key={index} title={cert.name} className="flex items-center justify-center p-3 sm:p-4 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
                   <img 
                     src={cert.logoUrl} 
                     alt={cert.name} 
-                    className="h-10 sm:h-11 lg:h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 filter brightness-105" 
+                    className="h-10 sm:h-12 lg:h-14 w-auto object-contain transition-all duration-500 group-hover:scale-105" 
                   />
                 </div>
               ))}
@@ -141,17 +147,24 @@ export default function UnifiedContactForm() {
             viewport={{ once: true }}
             className="w-full"
           >
-            <h3 className="text-xl sm:text-2xl font-bold mb-8 text-slate-800 border-b border-gray-100 pb-4 text-center">
-              Nos partenaires de confiance
-            </h3>
+            <div className="text-center mb-10">
+              <span className="block text-[#38bdf8] text-[10px] font-semibold uppercase tracking-wider mb-2">
+                DES PRODUITS DE QUALITÉ POUR VOTRE PROJET
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  Nos partenaires de confiance
+                </span>
+              </h2>
+            </div>
 
             <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 sm:gap-4">
               {partenaires.map((partner, index) => (
-                <div key={index} title={partner.name} className="flex items-center justify-center p-2 sm:p-3 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
+                <div key={index} title={partner.name} className="flex items-center justify-center p-2 sm:p-3 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
                   <img 
                     src={partner.logoUrl} 
                     alt={partner.name} 
-                    className="h-7 sm:h-8 lg:h-9 w-auto object-contain transition-all duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
+                    className="h-7 sm:h-8 lg:h-10 w-auto object-contain transition-all duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
                   />
                 </div>
               ))}
