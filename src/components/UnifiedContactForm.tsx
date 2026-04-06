@@ -79,7 +79,7 @@ export default function UnifiedContactForm() {
           >
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Demande de devis gratuit en quelques clics
+                Demande devis gratuit en quelques clics
               </span>
             </h1>
  
@@ -92,9 +92,6 @@ export default function UnifiedContactForm() {
                 Dès votre demande, recevez un <strong>cadeau exclusif</strong> ainsi que notre <strong>e-book de réalisations</strong>.
               </p>
 
-              <p className="text-center text-slate-700 leading-relaxed">
-                Après validation du devis, bénéficiez d’un <strong>cahier des charges complet</strong> avec un <strong>planning détaillé</strong> des travaux. 
-              </p>
             </div>
           </motion.div>
 
