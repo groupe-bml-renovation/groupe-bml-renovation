@@ -1,0 +1,143 @@
+import type { SectionContent } from '../components/RenovationArchitectureSection';
+
+export const renovationSectionsConfigGrenoble: SectionContent[] = [
+  {
+    categoryLabel: 'RÉNOVATION ET ARCHITECTURE D\'INTÉRIEUR',
+    mainHeadline: {
+      prefix: 'L\'interlocuteur unique pour tous vos projets de',
+      highlight: 'rénovation à Grenoble.',
+    },
+    imageUrl: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800',
+    imageAlt: 'Rénovation et Architecture d\'Intérieur à Grenoble',
+    buttonText: 'Demande devis gratuit',
+    useAnimatedGallery: true,
+    galleryImages: [
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/a4a23d2a-e60e-48a4-aceb-a8996afb580c_htgckp%20(1).jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/99bc0d67-c27f-414b-b223-6c1f194bbd7a_lamuod%20(2).jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0044.jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/d296e8a5-5cb3-446d-93b0-00f1a722c16b_jq4nyi%20(1).jpg',
+    ],
+    galleryImagesAlt: [
+      'Rénovation de salle de bain grenobloise avec équipements sanitaires et carrelage modernes',
+      'Cuisine rénovée à Grenoble avec armoires sur mesure et finitions haut de gamme',
+      'Projet de rénovation intérieure à Grenoble avec peinture murale et revêtements décorés',
+      'Rénovation d\'appartement grenoblois avec menuiserie et aménagement intérieur personnalisé',
+    ],
+    landscapeImage: false,
+    reverseLayout: true,
+    showCTA: true,
+    paragraphs: [
+      "**Vous avez un projet de rénovation à Grenoble**, mais ne savez pas par où commencer, quel artisan faire intervenir en premier, ou comment organiser votre chantier?",
+      "**Depuis plus de 10 ans**, **Groupe BML Rénovation** est **votre interlocuteur unique**. Nous intervenons **à Grenoble et dans toute l'Isère** pour vous accompagner **du début à la fin de votre projet**.",
+      "Avec **des finitions haut de gamme** et **une attention particulière au détail**.",
+      "**Un expert se déplace à votre domicile** pour **une estimation offerts sur mesure** et vous guider dans **le choix des matériaux**. Pour un **devis détaillé et sur mesure**, **envoyé sous 24h**.",
+    ],
+  },
+  {
+    categoryLabel: 'Nos partenaires qualifiés',
+    mainHeadline: {
+      prefix: 'UNE ÉQUIPE D\'EXPERTS',
+      highlight: 'À VOTRE SERVICE',
+    },
+    imageUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-10-13_at_12.53.51_eskjdi.jpg',
+    imageAlt: 'Équipe d\'experts partenaires à Grenoble',
+    buttonText: 'Demande devis gratuit',
+    reverseLayout: false,
+    hideImage: false,
+    multiImageLayout: true,
+    showCTA: true,
+    galleryImages: [
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0036_tjkv9r.jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0037_lm9udg.jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0040_izcj1t.jpg',
+    ],
+    galleryImagesAlt: [
+      'Artisan menuisier grenoblois réalisant des travaux de menuiserie de haute qualité',
+      'Équipe de plombiers qualifiés à Grenoble effectuant une installation sanitaire professionnelle',
+      'Technicien spécialisé travaillant sur les revêtements muraux et finitions à Grenoble',
+    ],
+    paragraphs: [
+      'Chaque membre de notre équipe est sélectionné pour son **savoir-faire**, sa **rigueur** et son **sens du travail**.',
+      'Nos **partenaires** sont tous **expérimentés** et partagent la même **exigence d\'excellence** ainsi que le même **engagement** envers la satisfaction du client.',
+      'Leur **expertise**, alliée à une **approche humaine et attentive**, fait de notre entreprise un **partenaire de confiance** pour tous vos projets, des plus simples aux plus ambitieux.',
+    ],
+  },
+  {
+    categoryLabel: 'NOS DOMAINES D\'INTERVENTION',
+    mainHeadline: {
+      prefix: 'Spécialisé dans tous les',
+      highlight: 'corps d\'état',
+    },
+    imageUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/construction-expertise.jpg',
+    imageAlt: 'Expertise tous les corps d\'état à Grenoble',
+    buttonText: 'Demande devis gratuit',
+    showCTA: true,
+    paragraphs: [
+      'Spécialisé dans tous les corps d\'état, **Groupe BML Rénovation** à Grenoble prend en charge l\'intégralité de vos travaux pour un résultat **homogène et parfaitement maîtrisé**.',
+      'Nos compétences couvrent :',
+      'Notre équipe, composée de **75 partenaires qualifiés**, œuvre chaque jour avec **rigueur** et **passion** pour garantir la **qualité** et la **durabilité** de chaque réalisation à Grenoble.',
+      'Nos **architectes** et **décorateurs d\'intérieur** vous accompagnent à chaque étape du projet : étude des plans, choix des matériaux, organisation des volumes, sélection des teintes et finitions.',
+      'Chaque détail est pensé pour créer un intérieur à votre image, **harmonieux**, **pratique** et **intemporel**.',
+    ],
+    features: [
+      { text: 'Peinture et revêtements muraux (papier peint, enduits décoratifs, etc.)' },
+      { text: 'Revêtements de sols (parquet, carrelage, sols souples)' },
+      { text: 'Plomberie, électricité et menuiserie' },
+      { text: 'Études et conception d\'aménagements intérieurs' },
+      { text: 'Architecture et décoration d\'intérieur' },
+    ],
+  },
+  {
+    categoryLabel: 'DÉPANNAGE D\'URGENCE',
+    mainHeadline: {
+      prefix: 'Des interventions rapides pour',
+      highlight: 'vos imprévus à domicile',
+    },
+    imageUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/emergency-service.jpg',
+    imageAlt: 'Service de dépannage d\'urgence à Grenoble',
+    buttonText: 'Demande devis gratuit',
+    showCTA: true,
+    paragraphs: [
+      'Parce qu\'un **incident ne prévient jamais**, Groupe BML Rénovation à Grenoble met à votre disposition un **service de dépannage d\'urgence réactif** et **fiable**, disponible à tout moment.',
+      'Nous couvrons un **large éventail de dépannages urgents**, réalisés par des **artisans spécialisés** dans chaque corps de métier :',
+      'Fuite d\'eau, panne électrique, vitre brisée ? Nos **professionnels** interviennent rapidement à Grenoble et ses environs, avec **professionnalisme** et **précision**, pour remettre votre habitat en état de fonctionnement.',
+    ],
+    features: [
+      { text: 'Plomberie : détection et réparation de fuites, débouchage de canalisations, remplacement de robinetterie ou de chauffe-eau.' },
+      { text: 'Électricité : recherche de pannes, remise en service des circuits, remplacement de prises, disjoncteurs ou luminaires défectueux.' },
+      { text: 'Vitrerie : remplacement de vitres brisées, pose de double vitrage, mise en sécurité provisoire.' },
+      { text: 'Peinture & revêtements : retouches suite à dégât des eaux ou sinistre, restauration de surfaces.' },
+    ],
+  },
+  {
+    categoryLabel: 'Nos partenaires qualifiés',
+    mainHeadline: {
+      prefix: 'Une équipe d\'experts',
+      highlight: 'à votre service',
+    },
+    imageUrl: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800',
+    imageAlt: 'Rénovation et Architecture d\'Intérieur',
+    buttonText: 'Demande devis gratuit',
+    useAnimatedGallery: true,
+    galleryImages: [
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0014_jg0xyb%20(2).jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0036.jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0040_izcj1t.jpg',
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/08c9784d-a6ba-4494-8ba9-b6935de010d6_kaax7w.jpg',
+    ],
+    galleryImagesAlt: [
+      'Équipe de rénovation grenobloise travaillant sur un chantier de rénovation résidentielle',
+      'Partenaires qualifiés à Grenoble effectuant la pose de revêtements de sol',
+      'Artisans spécialisés réalisant les finitions intérieures d\'un projet grenoblois',
+      'Équipe professionnelle durant une phase de rénovation complète en Isère',
+    ],
+    landscapeImage: false,
+    reverseLayout: false,
+    showCTA: true,
+    paragraphs: [
+      'Chaque membre de notre équipe est sélectionné pour son **savoir-faire**, sa **rigueur** et son **sens du travail**.',
+      'Nos **partenaires à Grenoble et en Isère** sont tous **expérimentés** et partagent la même **exigence d\'excellence** ainsi que le même **engagement** envers la satisfaction du client.',
+      'Leur **expertise**, alliée à une **approche humaine et attentive**, fait de notre entreprise un **partenaire de confiance** pour tous vos projets, des plus simples aux plus ambitieux.',
+    ],
+  },
+];
