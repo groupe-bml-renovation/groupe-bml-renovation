@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://groupe-bml-renovation.fr/sitemap.xml
