@@ -9,13 +9,18 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'favicon.png', 'robots.txt', 'sitemap.xml'],
+      includeAssets: ['favicon.ico', 'favicon-32x32.png', 'favicon-16x16.png', 'apple-touch-icon.png', 'robots.txt', 'sitemap.xml'],
       manifest: {
         name: 'G BML Rénovation',
         short_name: 'G BML',
         description: 'L\'interlocuteur unique pour tous vos projets de rénovation',
         theme_color: '#ffffff',
         icons: [
+          {
+            src: 'favicon-32x32.png',
+            sizes: '32x32',
+            type: 'image/png'
+          },
           {
             src: 'favicon.png',
             sizes: '192x192',
