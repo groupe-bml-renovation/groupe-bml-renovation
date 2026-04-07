@@ -103,14 +103,14 @@ export default function DemandDevisForm() {
         <div className="space-y-4 md:space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Type de travaux souhaitez ? <span className="text-red-500">*</span>
             </label>
             <select
               name="workType"
               value={formData.workType}
               onChange={handleChange}
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
               required
             >
               <option value="">Sélectionnez le type</option>
@@ -124,14 +124,14 @@ export default function DemandDevisForm() {
           </div>
 
           <div>
-            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Type de bien ? <span className="text-red-500">*</span>
             </label>
             <select
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
               required
             >
               <option value="">Sélectionnez le bien</option>
@@ -145,7 +145,7 @@ export default function DemandDevisForm() {
 
 
           <div>
-            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Civilité <span className="text-red-500">*</span>
             </label>
             <div className="flex gap-4 sm:gap-6">
@@ -178,7 +178,7 @@ export default function DemandDevisForm() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Nom <span className="text-red-500">*</span>
               </label>
               <input
@@ -187,12 +187,12 @@ export default function DemandDevisForm() {
                 value={formData.lastName}
                 onChange={handleChange}
                 placeholder="Votre nom"
-                className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
             </div>
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Prénom <span className="text-red-500">*</span>
               </label>
               <input
@@ -201,7 +201,7 @@ export default function DemandDevisForm() {
                 value={formData.firstName}
                 onChange={handleChange}
                 placeholder="Votre prénom"
-                className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
             </div>
@@ -209,7 +209,7 @@ export default function DemandDevisForm() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
@@ -218,12 +218,12 @@ export default function DemandDevisForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="votre@email.com"
-                className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
             </div>
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Téléphone <span className="text-red-500">*</span>
               </label>
               <input
@@ -232,14 +232,14 @@ export default function DemandDevisForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="06 XX XX XX XX"
-                className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Adresse <span className="text-red-500">*</span>
             </label>
             <input
@@ -248,14 +248,14 @@ export default function DemandDevisForm() {
               value={formData.address}
               onChange={handleChange}
               placeholder="Adresse complète du projet"
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
               required
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Ville <span className="text-red-500">*</span>
               </label>
               <input
@@ -264,12 +264,12 @@ export default function DemandDevisForm() {
                 value={formData.city}
                 onChange={handleChange}
                 placeholder="Annecy"
-                className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
             </div>
             <div>
-              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
                 Code postal <span className="text-red-500">*</span>
               </label>
               <input
@@ -278,7 +278,7 @@ export default function DemandDevisForm() {
                 value={formData.postalCode}
                 onChange={handleChange}
                 placeholder="74000"
-                className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
             </div>
@@ -294,7 +294,7 @@ export default function DemandDevisForm() {
               onChange={handleChange}
               placeholder="Détails : surface, travaux, délais..."
               rows={2}
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors resize-none text-sm"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors resize-none text-sm"
               required
             ></textarea>
           </div>

@@ -188,7 +188,7 @@ export default function StaticPartnersGrid({
     <section className="w-full bg-white py-12">
       <div className="max-w-7xl mx-auto px-6">
         {title && (
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
             <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
               {title}
             </span>

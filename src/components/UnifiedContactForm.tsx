@@ -65,7 +65,7 @@ const partenaires = [
 
 export default function UnifiedContactForm() {
   return (
-    <div id="contact-form" className="bg-slate-50 text-gray-900 py-12 lg:py-20 px-6 sm:px-10 lg:px-12 flex flex-col items-center">
+    <div id="contact-form" className="bg-white text-gray-900 py-12 lg:py-20 px-6 sm:px-10 lg:px-12 flex flex-col items-center">
       <div className="max-w-[1440px] mx-auto w-full">
         
         {/* FORM SECTION (Full width/Centered) */}
@@ -83,13 +83,17 @@ export default function UnifiedContactForm() {
               </span>
             </h1>
  
-            <div className="space-y-4 max-w-xl mx-auto">
-              <p className="text-center text-slate-700 leading-relaxed">
-                Demandez votre devis et obtenez une <strong>estimation sur mesure</strong> de vos travaux de rénovation, <strong>(Réponse sous 24h)</strong>.
+            <div className="space-y-6 max-w-3xl mx-auto">
+              <p className="text-center text-slate-700 leading-relaxed text-lg">
+                Après réception du devis, vous aurez une <strong>estimation détaillée</strong> de vos travaux de rénovation.
               </p>
- 
-              <p className="text-center text-slate-700 leading-relaxed">
-                Dès votre demande, recevez un <strong>cadeau exclusif</strong> ainsi que notre <strong>e-book de réalisations</strong>.
+
+              <p className="text-center text-slate-700 leading-relaxed text-lg">
+                Avec toutes les mesures, des photos avant/après, ainsi que le <strong>plan d’exécution</strong> des travaux avec toutes les étapes du projet.
+              </p>
+
+              <p className="text-center text-[#38bdf8] font-bold text-xl leading-relaxed">
+                5% de remise pour toute demande de devis en ligne.
               </p>
             </div>
           </motion.div>
@@ -116,23 +120,23 @@ export default function UnifiedContactForm() {
             className="w-full"
           >
             <div className="text-center mb-10">
-              <span className="block text-[#38bdf8] text-[10px] font-semibold uppercase tracking-wider mb-2">
+              <span className="block text-[#38bdf8] text-sm font-semibold uppercase tracking-wide mb-2">
                 NOS CERTIFICATIONS ET QUALIFICATIONS
               </span>
-              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
                   Nos certifications
                 </span>
               </h2>
             </div>
             
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-4 sm:gap-5">
+            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-4 sm:gap-6">
               {certifications.map((cert, index) => (
-                <div key={index} title={cert.name} className="flex items-center justify-center p-3 sm:p-4 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
+                <div key={index} title={cert.name} className="flex items-center justify-center p-2 hover:-translate-y-1 transition-all duration-300 cursor-default group h-20">
                   <img 
                     src={cert.logoUrl} 
                     alt={cert.name} 
-                    className="h-10 sm:h-12 lg:h-14 w-auto object-contain transition-all duration-500 group-hover:scale-105" 
+                    className="h-10 sm:h-12 lg:h-14 max-w-[85%] w-auto object-contain transition-all duration-500 group-hover:scale-105" 
                   />
                 </div>
               ))}
@@ -148,10 +152,10 @@ export default function UnifiedContactForm() {
             className="w-full"
           >
             <div className="text-center mb-10">
-              <span className="block text-[#38bdf8] text-[10px] font-semibold uppercase tracking-wider mb-2">
+              <span className="block text-[#38bdf8] text-sm font-semibold uppercase tracking-wide mb-2">
                 DES PRODUITS DE QUALITÉ POUR VOTRE PROJET
               </span>
-              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
                   Nos partenaires de confiance
                 </span>
@@ -160,11 +164,11 @@ export default function UnifiedContactForm() {
 
             <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-3 sm:gap-4">
               {partenaires.map((partner, index) => (
-                <div key={index} title={partner.name} className="flex items-center justify-center p-2 sm:p-3 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default group overflow-hidden">
+                <div key={index} title={partner.name} className="flex items-center justify-center p-2 hover:-translate-y-1 transition-all duration-300 cursor-default group h-20">
                   <img 
                     src={partner.logoUrl} 
                     alt={partner.name} 
-                    className="h-7 sm:h-8 lg:h-10 w-auto object-contain transition-all duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
+                    className="h-8 sm:h-10 lg:h-12 max-w-[85%] w-auto object-contain transition-all duration-500 group-hover:scale-105" 
                   />
                 </div>
               ))}
