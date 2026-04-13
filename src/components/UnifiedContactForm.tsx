@@ -113,7 +113,7 @@ export default function UnifiedContactForm() {
               </p>
 
               <p className="text-center text-[#38bdf8] font-bold text-xl leading-relaxed">
-                Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
+                Accompagnement d’architecte en décoration et choix des matériaux offert pour tout devis signé.
               </p>
             </div>
           </motion.div>
