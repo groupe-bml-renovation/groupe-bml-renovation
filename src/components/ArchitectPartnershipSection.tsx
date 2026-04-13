@@ -116,7 +116,7 @@ export const ArchitectPartnershipSection: React.FC<ArchitectPartnershipSectionPr
               >
                 <div className="flex flex-col items-start leading-tight text-left">
                   <span className="font-semibold">Demander un devis gratuit</span>
-                  <span className="text-xs font-normal opacity-90">Accompagnement d’architecte offert pour tout devis signé</span>
+                  <span className="text-xs font-normal opacity-90">Accompagnement d’architecte offert.</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
@@ -153,7 +153,7 @@ export const ArchitectPartnershipSection: React.FC<ArchitectPartnershipSectionPr
               >
                 <div className="flex flex-col items-start leading-tight text-left">
                   <span className="font-semibold">Demander un devis gratuit</span>
-                  <span className="text-xs font-normal opacity-90">Accompagnement d’architecte offert pour tout devis signé</span>
+                  <span className="text-xs font-normal opacity-90">Accompagnement d’architecte offert.</span>
                 </div>
                 <div className="flex flex-col items-center">
                   <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
