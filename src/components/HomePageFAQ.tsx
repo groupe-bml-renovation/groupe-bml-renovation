@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Pen } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 interface FAQItemType {
   id: string;
@@ -54,6 +55,19 @@ const HomePageFAQ = () => {
     }
   ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  };
+
   const handleContactClick = () => {
     const form = document.getElementById('contact-form');
     if (form) {
@@ -83,6 +97,11 @@ const HomePageFAQ = () => {
 
   return (
     <section className="pt-6 pb-16 px-4 md:px-8 bg-white">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -110,14 +129,19 @@ const HomePageFAQ = () => {
           className="space-y-3 mb-12"
         >
           {faqItems.map((item) => (
-            <motion.div key={item.id} variants={itemVariants}>
+            <motion.div 
+              key={item.id} 
+              variants={itemVariants}
+              itemScope
+              itemType="https://schema.org/Question"
+            >
               <button
                 onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                 className="w-full text-left bg-white border border-gray-200 rounded-lg px-6 py-4 hover:border-[#38bdf8] hover:shadow-md transition-all duration-300"
                 aria-expanded={expandedId === item.id}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-semibold text-gray-900 text-sm md:text-base leading-snug">
+                  <h3 className="font-semibold text-gray-900 text-sm md:text-base leading-snug" itemProp="name">
                     {item.question}
                   </h3>
                   <ChevronDown
@@ -136,8 +160,11 @@ const HomePageFAQ = () => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                   className="bg-sky-50 border border-t-0 border-gray-200 rounded-b-lg px-6 py-4 -mt-[1px]"
+                  itemScope
+                  itemType="https://schema.org/Answer"
+                  itemProp="acceptedAnswer"
                 >
-                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed" itemProp="text">
                     {item.answer}
                   </p>
                 </motion.div>

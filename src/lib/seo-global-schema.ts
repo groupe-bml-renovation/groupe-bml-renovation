@@ -37,8 +37,20 @@ export const generateGlobalSeoSchemas = () => {
       'Architecture d\'intérieur',
       'Maîtrise d\'œuvre',
       'Rénovation énergétique',
-      'Design d\'espace'
-    ]
+      'Design d\'espace',
+      'Rénovation appartement Grenoble',
+      'Rénovation maison Isère',
+      'Peinture bâtiment professionnelle',
+      'Plomberie et Chauffage',
+      'Électricité générale'
+    ],
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      xpath: [
+        '/html/head/title',
+        '/html/head/meta[@name="description"]/@content'
+      ]
+    }
   };
 
   const localBusinessSchema = {
@@ -61,7 +73,10 @@ export const generateGlobalSeoSchemas = () => {
       latitude: 45.1607,
       longitude: 5.7031
     },
-    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
+    image: [
+      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
+      'https://images.unsplash.com/photo-1634822929331-ee4dc2c97fc4?w=1200&q=80'
+    ],
     priceRange: '€€€',
     openingHoursSpecification: [
       {
@@ -89,7 +104,15 @@ export const generateGlobalSeoSchemas = () => {
     },
     hasCertification: [
       'Qualibat RGE',
-      'Garantie Décennale'
+      'Garantie Décennale',
+      'Certification Eco-Artisan'
+    ],
+    knowsAbout: [
+      'Rénovation intégrale',
+      'Peinture intérieure haut de gamme',
+      'Installation de pompes à chaleur',
+      'Rénovation de salles de bain PMR',
+      'Isolation thermique par l\'intérieur'
     ]
   };
 

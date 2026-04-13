@@ -1,56 +1,17 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
+import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
-import { maisonFAQs } from '../data/service-faqs';
+import { appartementFAQs } from '../data/service-faqs';
 
-
-const createSeoSchema = (isGrenoble: boolean) => ({
-// ... rest of schema ...
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Groupe BML Rénovation',
-  description: isGrenoble
-    ? 'Rénovation maisons et villas à Grenoble - Entreprise spécialisée en rénovation complète maison Grenoble, extensions, surélévations, travaux intérieur extérieur.'
-    : 'Entreprise de rénovation maison complète - Travaux de rénovation intérieure et extérieure, peinture bâtiment, artisan rénovation.',
-  url: isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/maisons-et-villas' : 'https://groupe-bml-renovation.fr/maisons-et-villas',
-  telephone: '+33',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Grenoble',
-    addressRegion: 'Isère',
-    addressCountry: 'FR'
-  },
-  serviceArea: isGrenoble
-    ? ['Grenoble', 'Échirolles', 'Meylan', 'Fontaine', 'Saint-Martin-d\'Hères', 'Voiron']
-    : ['Grenoble', 'Isère', 'Rhône', 'Drôme', 'Var', 'Bouches-du-Rhône'],
-  services: [
-    {
-      '@type': 'Service',
-      name: 'Rénovation Maison Complète',
-      description: 'Travaux de rénovation maison - rénovation complète pour maisons anciennes et modernes'
-    },
-    {
-      '@type': 'Service',
-      name: 'Travaux de Peinture Bâtiment',
-      description: 'Peintre en bâtiment - travaux de peinture intérieure et extérieure'
-    },
-    {
-      '@type': 'Service',
-      name: 'Rénovation Intérieure et Extérieure',
-      description: 'Artisan rénovation maison - extensions, surélévations, aménagements'
-    }
-  ]
-});
-
-interface MaisonsVillasProps {
+interface AppartementsProps {
   onBack: () => void;
-  onNavigate?: (page: string) => void;
+  onNavigate?: (page: string, target?: string) => void;
 }
 
 const ImageCarousel = () => {
@@ -58,30 +19,29 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80',
-    'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80',
-    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
-    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
-    'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80'
+    'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&q=80',
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80',
+    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const newPosition = container.scrollLeft - 400;
+      const itemWidth = 400;
+      const gap = 24;
+      const itemWithGap = itemWidth + gap;
+      const newPosition = container.scrollLeft - itemWithGap;
+      const firstSetWidth = itemWithGap * images.length;
 
-      if (newPosition < 0) {
-        const itemWidth = 400;
-        const totalWidth = (itemWidth + 24) * images.length;
-        container.scrollLeft = totalWidth;
-        setTimeout(() => {
-          container.scrollBy({ left: -400, behavior: 'smooth' });
-        }, 10);
+      if (newPosition <= 0) {
+        container.scrollLeft = firstSetWidth - itemWithGap;
       } else {
-        container.scrollBy({ left: -400, behavior: 'smooth' });
+        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
       }
     }
   };
@@ -89,13 +49,19 @@ const ImageCarousel = () => {
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
+      const itemWidth = 400;
+      const gap = 24;
+      const itemWithGap = itemWidth + gap;
+      const firstSetWidth = itemWithGap * images.length;
       const maxScroll = container.scrollWidth - container.clientWidth;
-      const newPosition = container.scrollLeft + 400;
+      const newPosition = container.scrollLeft + itemWithGap;
 
-      if (newPosition >= maxScroll) {
+      if (newPosition >= firstSetWidth - itemWithGap) {
+        container.scrollLeft = 0;
+      } else if (newPosition >= maxScroll) {
         container.scrollLeft = 0;
       } else {
-        container.scrollBy({ left: 400, behavior: 'smooth' });
+        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
       }
     }
   };
@@ -135,8 +101,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation ${index + 1} - Travaux de rénovation maison et bâtiment`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    alt={`Rénovation Appartement ${index + 1}`}
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -147,8 +113,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation ${index + 1} - Travaux de rénovation maison et bâtiment`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    alt={`Rénovation Appartement ${index + 1}`}
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -161,47 +127,35 @@ const ImageCarousel = () => {
   );
 };
 
-const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => {
+const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = useMemo(() => location.pathname.startsWith('/grenoble'), [location.pathname]);
-
-  const seoSchema = useMemo(() => createSeoSchema(isGrenoble), [isGrenoble]);
+  const isGrenoble = location.pathname.includes('/grenoble');
 
   const scrollToContactForm = () => {
-    navigate(isGrenoble ? '/grenoble/?scrollTo=contact-form' : '/?scrollTo=contact-form');
+    navigate('/?scrollTo=contact-form');
   };
 
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Rénovation Maisons & Villas à Grenoble | Extensions & Surélévations' : 'Rénovation Maison Complète | Entreprise Rénovation Grenoble | Travaux Maison'}</title>
-        <meta name="description" content={isGrenoble
-          ? 'Rénovation maisons et villas à Grenoble - Extensions, surélévations, rénovation complète. Entreprise spécialisée en travaux maison Grenoble. Devis gratuit.'
-          : 'Entreprise de rénovation maison : rénovation complète, travaux peinture bâtiment, rénovation intérieure/extérieure. Artisan rénovation maison ancienne. Prix rénovation maison compétitifs. Devis gratuit Grenoble.'} />
-        <meta property="og:title" content={isGrenoble ? 'Rénovation Maisons & Villas à Grenoble' : 'Rénovation Maison Complète - Entreprise Rénovation Grenoble'} />
-        <meta property="og:description" content={isGrenoble
-          ? 'Extensions et surélévations à Grenoble - Rénovation complète maison, travaux intérieur/extérieur. Devis gratuit.'
-          : 'Travaux de rénovation maison complète : extensions, peinture bâtiment, rénovation intérieure. Artisan rénovation expert en bâtiment travaux. Devis gratuit.'} />
+        <title>{isGrenoble ? 'Rénovation Appartements à Grenoble | Entreprise Rénovation | BML' : 'Rénovation Appartements Complète | Entreprise Rénovation | BML Travaux'}</title>
+        <meta name="description" content={isGrenoble ? "Rénovation d'appartements à Grenoble (38). Entreprise spécialisée en rénovation complète d'appartements anciens et modernes. Travaux intérieurs et aménagements sur mesure. Devis gratuit et estimation personnalisée." : "Rénovation d'appartements complète à Grenoble. Entreprise de rénovation spécialisée en travaux de rénovation intérieure, extérieure et aménagement d'appartements. Rénover votre appartement avec nos artisans. Prix et coût rénovation compétitifs. Devis gratuit."} />
+        <meta name="keywords" content={isGrenoble ? "rénovation appartement Grenoble, rénovation Isère, rénover un appartement à Grenoble, rénovation complète Grenoble, aménagement appartement Grenoble, rénovation intérieure extérieure, travaux de rénovation Grenoble, entreprise rénovation Grenoble, artisan rénovation Grenoble, devis rénovation gratuit Grenoble" : "rénovation appartement, renovation appartement, rénover un appartement, rénovation, rénovations, entreprise de rénovation, travaux de rénovation appartement, rénovation appartement complète, rénovation appartement ancien, coût rénovation appartement, prix rénovation appartement, rénovation intérieure, rénovation extérieure, artisan rénovation appartement, aménagement appartement, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de peinture bâtiment, entreprise bâtiment rénovation"} />
+        <meta property="og:title" content={isGrenoble ? "Rénovation Appartements à Grenoble - Entreprise Expert | BML Rénovation" : "Rénovation Appartements Complète - Entreprise Rénovation d'Appartements | BML"} />
+        <meta property="og:description" content={isGrenoble ? "Transformez votre appartement à Grenoble avec notre expertise. Rénovation complète, intérieure et extérieure. Dévis gratuit. Satisfaction client garantie." : "Transformation complète de votre appartement. Rénovation intérieure et extérieure professionnelle. Travaux de rénovation clés en main. Devis gratuit."} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={isGrenoble ? 'Rénovation Maisons à Grenoble' : 'Rénovation Maison - Groupe BML Rénovation'} />
-        <meta name="twitter:description" content={isGrenoble
-          ? 'Rénovation maisons à Grenoble : extensions, surélévations, travaux complets.'
-          : 'Entreprise rénovation maison : travaux maison, rénovation complète, peintre bâtiment. Devis gratuit.'} />
-        <link rel="canonical" href={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/maisons-et-villas' : 'https://groupe-bml-renovation.fr/maisons-et-villas'} />
-        <script type="application/ld+json">
-          {JSON.stringify(seoSchema)}
-        </script>
+        <meta name="twitter:title" content={isGrenoble ? "Rénovation Appartements à Grenoble | BML" : "Rénovation Appartements Complète | BML Rénovation"} />
+        <meta name="twitter:description" content={isGrenoble ? "Rénovation d'appartements à Grenoble - Services complètes de rénovation. Demandez votre devis gratuit." : "Entreprise de rénovation d'appartements - Rénovation complète, intérieure et extérieure. Artisan professionnel. Devis gratuit."} />
+        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/appartements" : "https://groupe-bml-renovation.fr/appartements"} />
       </Helmet>
-      <h2 className="sr-only">{isGrenoble ? 'Rénovation maisons et villas à Grenoble - Rénovation complète maison Grenoble' : 'Rénovation maison complète - Entreprise de rénovation maison ancienne'}</h2>
-      <h3 className="sr-only">{isGrenoble ? 'Extensions, surélévations et travaux maison à Grenoble' : 'Travaux de rénovation maison avec artisan rénovation professionnel'}</h3>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/99bc0d67-c27f-414b-b223-6c1f194bbd7a_lamuod%20(2).jpg"
-            alt={isGrenoble ? 'Rénovation maison à Grenoble - Extensions et travaux maison' : 'Rénovation maison complète - Travaux de rénovation intérieure et extérieure'}
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600&q=80"
+            alt="Rénovation Appartements"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -215,10 +169,18 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
-              {isGrenoble ? <>Rénovations de maisons<br />et villas à Grenoble</> : <>Rénovations<br />de maisons et villas</>}
+              {isGrenoble ? (
+                <>
+                  Rénovation d'appartements<br />à Grenoble
+                </>
+              ) : (
+                <>
+                  Rénovation d'appartements<br />en Isère
+                </>
+              )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? 'Extensions, surélévations et rénovation complète de votre patrimoine immobilier à Grenoble' : 'Transformation complète et extension de votre patrimoine immobilier'}
+              {isGrenoble ? 'Rénover votre appartement à Grenoble en espace moderne et fonctionnel' : 'Transformez votre appartement en espace moderne et fonctionnel'}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
             
@@ -259,69 +221,65 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="pt-16 pb-12 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                MAISONS & VILLAS
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                RÉNOVATION APPARTEMENTS
               </span>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                <span className="text-[#38bdf8] font-normal">Créer la maison</span> <span className="text-slate-900">dont</span><br />
-                <span className="text-slate-900">vous avez toujours rêvé.</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble 
+                    ? "Rénovation d'appartements à Grenoble pour un intérieur sur mesure" 
+                    : "Rénovation d'appartements en Isère pour sublimer votre espace"}
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
+              <p className="text-slate-700 leading-relaxed mb-6">
                 {isGrenoble
-                  ? 'À Grenoble, transformez votre maison ou villa en créant des espaces plus vastes et confortables. Agrandissez votre intérieur, optimisez chaque pièce et valorisez votre patrimoine immobilier dans l\'agglomération grenobloise.'
-                  : 'Transformez votre maison ou villa en créant des espaces plus vastes et confortables, en optimisant chaque pièce et en valorisant votre patrimoine immobilier.'}
+                  ? "À Grenoble, Groupe BML Rénovation excelle dans tous vos projets de rénovation complète d'appartements. Transformez votre appartement grenoblois en un espace de vie moderne, lumineux et parfaitement adapté à vos besoins."
+                  : "Transformez votre appartement en un espace de vie moderne, lumineux et parfaitement adapté à vos besoins, tout en respectant les contraintes de copropriété."}
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                <strong>Groupe BML Rénovation</strong> vous accompagne dans la <strong>rénovation complète</strong> de votre maison ou villa {isGrenoble ? 'à Grenoble et en Isère' : ''}. <strong>Notre équipe vous conseille et vous accompagne</strong> dans le choix des éléments pour vous apporter la solution idéale.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}possède une expertise reconnue dans la <span className="text-black font-semibold">rénovation complète d'appartements</span>. Notre équipe locale <span className="text-black font-semibold">vous conseille et vous accompagne</span> dans le choix des matériaux et des aménagements.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
+              <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? 'Que vous souhaitiez rénover une maison ancienne grenobloise, créer une extension ou surélévation, réaménager les espaces de vie ou moderniser l\'ensemble de votre propriété, nos experts en rénovation mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui reflète vos aspirations.'
-                  : 'Que vous souhaitiez rénover une maison ancienne, créer une extension ou surélévation, réaménager les espaces de vie ou moderniser l\'ensemble de votre propriété, nos experts en rénovation mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui reflète vos aspirations et répond à vos besoins quotidiens tout en valorisant votre bien.'}
+                  ? "Que vous occupiez un T3 en copropriété à Grenoble, un studio au centre-ville ou un loft à rénover, nos experts mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui valorise votre investissement immobilier en Isère."
+                  : "Que vous souhaitiez moderniser un appartement ancien, réaménager les espaces de vie ou optimiser chaque mètre carré, nos experts réalisent un projet sur mesure qui valorise votre patrimoine."}
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                {isGrenoble
-                  ? 'Nous intervenons sur Grenoble et dans l\'agglomération : Échirolles, Meylan, Fontaine, Saint-Martin-d\'Hères, Voiron, Crolles, Voreppe et Sassenage. Spécialistes de la rénovation maison à Grenoble, nous réalisons également des projets en Isère et dans le sud-est.'
-                  : 'Nous intervenons à Grenoble et dans les villes voisines (Échirolles, Meylan, Fontaine, Saint-Martin-d\'Hères, Voiron, Crolles, Voreppe, Sassenage), ainsi que dans plusieurs départements du sud-est de la France : <strong>l\'Isère, le Var, le Rhône, les Bouches-du-Rhône et la Drôme</strong>.'}
-              </p>
-
-              <div className="mt-8">
-                <button
-                  onClick={scrollToContactForm}
-                  className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                  Demander un devis gratuit
-                  <div className="flex flex-col items-center ml-1">
-                    <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
-                </button>
-              </div>
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Demander un devis gratuit
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl"
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
             >
               <video
-                src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Pour%20maison.mp4"
-                className="w-full h-[450px] object-cover"
+                src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Pour%20appartement.mp4"
+                className="w-full h-full object-cover"
                 autoPlay
                 loop
                 muted
@@ -333,7 +291,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-b from-white to-slate-50">
+      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <ImageCarousel />
         </div>
@@ -343,22 +301,23 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                RÉNOVATION MAISONS & VILLAS {isGrenoble ? '- GRENOBLE' : ''}
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "EXPERTISE À GRENOBLE" : "NOTRE SAVOIR-FAIRE"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                {isGrenoble ? <>Transformer votre<br />maison à Grenoble</> : <>Transformer votre<br />maison ou villa</>}
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble ? "Expert rénovation à Grenoble" : "Expertise en rénovation complète"}
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-6">
-                <strong>Groupe BML Rénovation Tout Corps D'état</strong> conçoit et réalise des <strong>rénovations complètes de maisons et villas</strong>{isGrenoble ? ' à Grenoble et en Isère' : ''}. De l'<strong>étude de conception</strong> à la <strong>réalisation</strong>, nos équipes vous accompagnent tout au long de votre <strong>projet personnalisé</strong>, incluant extensions, surélévations et aménagements extérieurs.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                {isGrenoble ? "Groupe BML Rénovation conçoit et réalise des rénovations complètes d'appartements à Grenoble et en Isère. De l'étude de conception à la réalisation, nos équipes greobloises vous accompagnent avec rigueur." : "Groupe BML Rénovation conçoit et réalise des rénovations complètes d'appartements. De l'étude de conception à la réalisation, nos équipes vous accompagnent avec rigueur."}
               </p>
 
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                <strong>Spécialistes de la rénovation de maisons et villas {isGrenoble ? 'à Grenoble' : ''}</strong>, nous intervenons sur <strong>tous types de projets</strong> : rénovation complète, extension et surélévation, création de pièces supplémentaires, aménagement d'espaces extérieurs, installation de piscines et terrasses, amélioration de l\'isolation thermique et énergétique, et modernisation complète. Chaque détail est pensé pour <strong>valoriser votre patrimoine immobilier</strong>.
+              <p className="text-slate-700 leading-relaxed">
+                Notre approche globale garantit une prise en charge complète de votre projet : analyse des besoins, étude architecturale, et suivi millimétré de chaque corps d'état.
               </p>
             </div>
 
@@ -373,30 +332,26 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                     </div>
                     <h3 className="text-xl font-bold text-[#38bdf8]">Votre projet</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-[#4a5568]">
+                  <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation complète de maison</span>
+                      <span>Optimisation des volumes et espaces</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Extension et surélévation</span>
+                      <span>Rénovation cuisine et salle de bain</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Aménagements extérieurs</span>
+                      <span>Mise aux normes électriques & fluides</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Création de pièces supplémentaires</span>
+                      <span>Isolation acoustique & thermique</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Modernisation énergétique</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation de façades et toitures</span>
+                      <span>Revêtements sols & murs premium</span>
                     </li>
                   </ul>
                 </div>
@@ -408,21 +363,18 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                     </div>
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
                   </div>
-                  <p className="text-sm text-[#4a5568] leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous propose une expertise complète en rénovation de maisons et villas, incluant extensions, aménagements intérieurs et extérieurs, pour créer un espace de vie exceptionnel et valoriser votre patrimoine immobilier.
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Nous vous proposons une expertise Tout Corps d'État (TCE) pour une rénovation sereine, conforme aux normes actuelles et aux contraintes de copropriété.
                   </p>
                 </div>
               </div>
 
               <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? 'Prêt à Rénover Votre Maison à Grenoble ?' : 'Prêt à Démarrer Votre Projet ?'}
+                  {isGrenoble ? "Prêt à Transformer Votre Appartement à Grenoble ?" : "Prêt pour votre Rénovation d'Appartement ?"}
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
-                  {isGrenoble ? 'Notre équipe grenobloise d\'experts est à votre écoute pour transformer votre maison.' : 'Notre équipe d\'experts est à votre écoute pour transformer votre intérieur.'}
-                </p>
-                <p className="text-base mb-8 opacity-90">
-                  Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé.
+                <p className="text-lg mb-8 opacity-90">
+                  Contactez-nous pour un devis gratuit et personnalisé adapté à vos besoins et à votre budget.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -440,7 +392,6 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      {/* Process Section */}
       <section className="pt-16 pb-8 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -459,7 +410,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
             {[
               { step: "01", title: "Conception", desc: "Étude architecturale, plans 2D/3D et sélection des matériaux premium." },
               { step: "02", title: "Préparation", desc: "Organisation logistique, protection des parties communes et démolition." },
-              { step: "03", title: "Réalisation", desc: "Exécution millimétrée par nos experts en maçonnerie, électricité et finitions." },
+              { step: "03", title: "Réalisation", desc: "Exécution millimétrée par nos experts en électricité, plomberie et finitions." },
               { step: "04", title: "Livraison", desc: "Nettoyage soigné, contrôle qualité rigoureux et levée des réserves." }
             ].map((s, i) => (
               <motion.div 
@@ -482,7 +433,6 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      {/* Architect Offer Section */}
       <section className="py-10 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
@@ -509,7 +459,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons qu'une maison réussie repose sur une architecture cohérente. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>.
+                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons qu'un appartement réussi repose sur une architecture intérieure cohérente. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>.
                 </p>
                 <p>
                   Pour chaque projet de rénovation complète, nous vous offrons un <span className="text-black font-semibold">coaching décoration personnalisé</span>. Un architecte d'intérieur vous accompagne dans l'optimisation des volumes et le <span className="text-black font-semibold">choix des finitions</span>.
@@ -541,7 +491,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                   className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                  Transformer ma maison maintenant
+                  Transformer mon appartement maintenant
                   <div className="flex flex-col items-center ml-1">
                     <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
                     <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
@@ -577,168 +527,69 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
+      <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                COMPÉTENCES {isGrenoble ? '- GRENOBLE' : ''}
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "NOTRE SAVOIR-FAIRE" : "COMPÉTENCES"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                {isGrenoble ? <>Notre expertise à<br />Grenoble</> : <>Notre savoir-faire à<br />votre service</>}
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble ? "Notre expertise appartement à Grenoble" : "Notre savoir-faire à votre service"}
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la rénovation complète de maisons et villas {isGrenoble ? 'à Grenoble et en Isère' : ''}. Notre expertise couvre tous les aspects de la transformation : gros œuvre, extensions et surélévations, second œuvre, menuiserie, électricité, plomberie, aménagements extérieurs, et solutions sur mesure pour créer un lieu de vie unique et valoriser votre patrimoine.
+              <p className="text-slate-700 leading-relaxed">
+                Groupe BML Rénovation possède une solide expérience dans tous les aspects de la rénovation d'appartements. De l'aménagement intérieur à la menuiserie sur mesure, nous coordonnons chaque lot pour une livraison clés en main.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M3 21h18M3 7v1a3 3 0 003 3h0a3 3 0 003-3V7m0 0V5a2 2 0 012-2h2a2 2 0 012 2v2m0 0v1a3 3 0 003 3h0a3 3 0 003-3V7m-9 4h2m-2 4h2m-6-4h2m-2 4h2m10-4h2m-2 4h2M6 13v8m6-8v8m6-8v8" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Extensions et surélévations</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Espaces de vie et salons</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisines et salles à manger</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Suites parentales</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Terrasses et jardins</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M3 3 L3 8 L6 10 L6 21 L3 21 L3 3 Z M21 3 L21 8 L18 10 L18 21 L21 21 L21 3 Z" strokeLinejoin="round" />
-                  <rect x="8" y="8" width="8" height="8" />
-                  <line x1="8" y1="12" x2="16" y2="12" />
-                  <line x1="12" y1="8" x2="12" y2="16" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Métiers</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Gros œuvre et maçonnerie</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Charpente et couverture</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Menuiseries extérieures</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Isolation thermique</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Plomberie et chauffage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Électricité générale</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" />
-                  <circle cx="12" cy="9" r="2" />
-                  <circle cx="9" cy="14" r="2" />
-                  <circle cx="15" cy="14" r="2" />
-                  <line x1="12" y1="11" x2="12" y2="12" />
-                  <line x1="12" y1="12" x2="9" y2="14" />
-                  <line x1="12" y1="12" x2="15" y2="14" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Étude architecturale</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Démarches administratives</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Coordination tous corps d'état</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Performance énergétique</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Gestion complète du projet</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              {[
+                {
+                  icon: <Check className="w-10 h-10" />,
+                  title: "Espaces",
+                  items: ["Studios & T1", "Appartements familiaux", "Lofts & plateaux", "Duplex d'exception", "Vieux Grenoble"]
+                },
+                {
+                  icon: <Check className="w-10 h-10" />,
+                  title: "Métiers",
+                  items: ["Plomberie & Sanitaires", "Électricité & Domotique", "Isolation & Cloisons", "Sols & Peintures", "Menuiserie sur mesure"]
+                },
+                {
+                  icon: <Check className="w-10 h-10" />,
+                  title: "Engagements",
+                  items: ["Conseils matériaux", "Diagnostic technique", "Étude de copropriété", "Garantie décennale", "Respect des délais"]
+                }
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <ul className="space-y-4">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
+                        <span className="text-sm font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
-
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8">
-        <div className="w-full max-w-none">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {isGrenoble ? 'Transformez Votre Maison Grenobloise en Lieu de Vie Exceptionnel' : 'Transformez Votre Maison en un Lieu de Vie Exceptionnel'}
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              {isGrenoble ? 'Nos rénovations de maisons et villas à Grenoble illustrent notre expertise et notre engagement envers l\'excellence.' : 'Nos rénovations de maisons et villas illustrent notre expertise et notre engagement envers l\'excellence.'}
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              {isGrenoble ? 'Démarrez votre projet de transformation à Grenoble avec un devis gratuit et personnalisé.' : 'Démarrez votre projet de transformation avec un devis gratuit et personnalisé pour votre maison.'}
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <ServiceFAQ 
-        items={maisonFAQs} 
-        title={isGrenoble ? "FAQ Rénovation Maison Grenoble" : "FAQ Rénovation Maison"}
-        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de maisons et villas à Grenoble." : "Retrouvez les réponses à vos questions sur la rénovation complète de maisons."}
-      />
 
       {/* Nos Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
@@ -867,10 +718,15 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
+      <ServiceFAQ 
+        items={appartementFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Appartement Grenoble" : "FAQ Rénovation Appartement"}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation d'appartements à Grenoble et en Isère." : "Retrouvez les réponses à vos questions sur la rénovation complète d'appartements."}
+      />
 
+      <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
     </div>
   );
 };
 
-export default MaisonsVillas;
+export default Appartements;

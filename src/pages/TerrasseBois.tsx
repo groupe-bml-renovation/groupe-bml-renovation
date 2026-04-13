@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Trees } from 'lucide-react';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
@@ -9,7 +9,7 @@ import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
 
-interface ElectriciteProps {
+interface TerrasseBoisProps {
   onBack: () => void;
   onNavigate: (page: string) => void;
 }
@@ -19,14 +19,13 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=1200&q=80',
-    'https://images.unsplash.com/photo-1660330590022-9f4ff56b63f6?w=1200&q=80',
-    'https://images.unsplash.com/photo-1505798577917-a65157d3320a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1454165833011-29743586aa2f?w=1200&q=80',
-    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80'
+    'https://images.unsplash.com/photo-1746343365763-3a93c74e0e86?w=1200&q=80',
+    'https://images.unsplash.com/photo-1760286834265-d5d840f076e3?w=1200&q=80',
+    'https://images.unsplash.com/photo-1762857995839-62cf8587f542?w=1200&q=80',
+    'https://images.unsplash.com/photo-1762195804066-2fece9b24496?w=1200&q=80',
+    'https://images.unsplash.com/photo-1742747868122-676f3de02bd9?w=1200&q=80',
+    'https://images.unsplash.com/photo-1746343365763-3a93c74e0e86?w=1200&q=80',
+    'https://images.unsplash.com/photo-1760286834265-d5d840f076e3?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
@@ -103,7 +102,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Électricité ${index + 1}`}
+                    alt={`Expertise Terrasses Bois ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -115,7 +114,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Électricité ${index + 1}`}
+                    alt={`Expertise Terrasses Bois ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -129,7 +128,7 @@ const ImageCarousel = () => {
   );
 };
 
-const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
+const TerrasseBois: React.FC<TerrasseBoisProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isGrenoble = location.pathname.includes('/grenoble/');
@@ -141,10 +140,10 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Électricité & Mise aux Normes Grenoble | Groupe BML" : "Rénovation Électrique | Mise en Conformité & Domotique | Groupe BML Rénovation"}</title>
-        <meta name="description" content={isGrenoble ? "Électriciens qualifiés à Grenoble. Mise en conformité NF C 15-100, tableaux électriques, domotique et éclairage. Devis gratuit et intervention rapide Isère." : "Travaux d'électricité pour votre rénovation complète. Mise aux normes, domotique et installations électriques haut de gamme. Entreprise de rénovation certifiée."} />
-        <meta name="keywords" content={isGrenoble ? "électricien grenoble, mise aux normes électrique isère, tableau électrique grenoble, domotique grenoble, rénovation électrique 38" : "rénovation électrique, mise aux normes, domotique, électricité bâtiment, artisan électricien"} />
-        <meta property="og:title" content={isGrenoble ? "Électricité & Mise aux Normes Grenoble | Sécurité & Confort" : "Électricité & Domotique Premium | Groupe BML"} />
+        <title>{isGrenoble ? "Concepteur de Terrasse Bois Grenoble | Groupe BML" : "Terrasses en Bois Exotique & Composite | Aménagement Extérieur | Groupe BML Rénovation"}</title>
+        <meta name="description" content={isGrenoble ? "Spécialiste terrasse bois à Grenoble. Pose de platelages en Ipé, Cumaru and bois composite en Isère. Conception sur-mesure pour votre jardin ou balcon. Devis gratuit." : "Aménagement de terrasses bois haute performance. Structure durable, essences nobles and finitions invisibles. Entreprise de rénovation experte pour vos extérieurs."} />
+        <meta name="keywords" content={isGrenoble ? "terrasse bois grenoble, poseur terrasse isère, menuiserie extérieure 38, bois exotique grenoble, terrasse composite grenoble" : "terrasse bois, ipé, cumaru, terrasse composite, aménagement extérieur, artisan menuisier terrasse"} />
+        <meta property="og:title" content={isGrenoble ? "Terrasses Bois & Design Extérieur Grenoble | Expertise Artisanale" : "Terrasses Bois Premium | Groupe BML"} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
@@ -153,8 +152,8 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1920&q=80"
-            alt="Tableau électrique moderne et câblage"
+            src="https://images.unsplash.com/photo-1746343365763-3a93c74e0e86?w=1920&q=80"
+            alt="Terrasse en bois exotique au coucher du soleil"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -170,18 +169,18 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
                 <>
-                  Électricité & Domotique<br />à Grenoble
+                  Terrasses Bois<br />à Grenoble
                 </>
               ) : (
                 <>
-                  Électricité & Design<br />lumineux
+                  Votre évasion<br />extérieure
                 </>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Sécurité électrique et intelligence de l'habitat en Isère" : "La puissance domotique au service d'un design moderne"}
+              {isGrenoble ? "Conception and réalisation de platelages durables en Isère" : "L'excellence de la menuiserie au service de vos jardins and balcons"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#10b981] mx-auto mb-8 shadow-[0_0_15px_rgba(16,185,129,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -232,40 +231,40 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                SÉCURITÉ & INTELLIGENCE
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#059669]">
+                LUXE EXTÉRIEUR
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-black to-[#10b981] bg-clip-text text-transparent">
                   {isGrenoble 
-                    ? "Votre expert électricité et domotique à Grenoble" 
-                    : "L'énergie de demain intégrée à votre habitat"}
+                    ? "Votre expert terrasses bois à Grenoble" 
+                    : "L'art de vivre en plein air"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                L'électricité ne se limite plus à l'alimentation des appareils. Elle est devenue l'intelligence centrale de votre logement, gérant sécurité, économie d'énergie and scénarios lumineux.
+                Une terrasse est bien plus qu'une surface. C'est le lien entre votre confort intérieur and la liberté de votre jardin. Elle doit être à la fois chaleureuse, durable and parfaitement intégrée.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}effectue la mise en conformité totale selon la norme NF C 15-100. Du remplacement de tableau électrique à l'intégration de solutions domotiques avancées (KNX, Zigbee), nous sécurisons and modernisons vos réseaux.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise la haute menuiserie extérieure. Nous sélectionnons des essences de bois stables (Ipé, Cumaru, Mélèze) or des composites de haute technologie pour des extérieurs sans entretien.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos électriciens interviennent dans toute l'Isère pour vos projets de rénovation complète. Nous collaborons avec nos designers pour créer des ambiances lumineuses uniques qui valorisent vos volumes grenoblois."
-                  : "Qu'il s'agisse de restructurer le Tableau Général Basse Tension ou de déployer des bornes de recharge pour véhicules électriques, nous appliquons une rigueur absolue pour une installation sans compromis."}
+                  ? "Nos charpentiers-menuisiers interviennent dans toute l'Isère pour la création de vos espaces de vie extérieurs. Nous gérons l'intégralité du projet : de la structure sur plots réglables or solivage suspendu jusqu'à la pose de lames à fixations invisibles pour un rendu d'une pureté absolue."
+                  : "Qu'il s'agisse d'un contour de piscine or d'un balcon urbain, nous appliquons une rigueur de conception pour garantir la ventilation des bois and la longévité de votre investissement."}
               </p>
 
               <button
                 onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
+                className="group relative inline-flex items-center gap-3 bg-[#10b981] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(16,185,129,0.25)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Démarrer mon étude électrique
+                Dessiner ma terrasse
                 <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <Trees className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
                   <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
                 </div>
               </button>
@@ -278,8 +277,8 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <OptimizedImage
-                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80"
-                alt="Installation électrique certifiée"
+                src="https://images.unsplash.com/photo-1760286834265-d5d840f076e3?w=1200&q=80"
+                alt="Conception de terrasse bois premium avec fixations invisibles"
                 className="w-full h-full object-cover"
                 loading="eager"
               />
@@ -300,23 +299,23 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE ÉLECTRIQUE"}
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#059669]">
+                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE ARTISANAL"}
               </span>
-              <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
+              <div className="w-24 h-px bg-[#10b981] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Sécurité certifiée à Grenoble" : "La précision technologique"}
+                <span className="bg-gradient-to-r from-black to-[#10b981] bg-clip-text text-transparent">
+                  {isGrenoble ? "Extérieurs à Grenoble" : "La précision de la pose"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                L'électricité moderne se doit d'être invisible and intelligente. Nous concevons des tableaux communicants permettant de piloter vos consommations en temps réel and de sécuriser chaque pièce de votre habitat.
+                Une terrasse bois réussie est une terrasse qui respire. Nous utilisons des plots autonivelants and des systèmes de drainage optimisés pour éviter toute stagnation d'eau and garantir la santé des bois sur le long terme.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre approche intègre la protection contre les surtensions, la gestion de la charge pour VE and une planification rigoureuse des appareillages pour une ergonomie d'usage parfaite.
+                Notre approche intègre la gestion des pentes, la réalisation d'escaliers intégrés and une finition soignée des bandeaux de rive pour une esthétique architecturale.
               </p>
             </div>
 
@@ -324,71 +323,71 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <div className="w-12 h-12 rounded-full border-2 border-[#10b981] flex items-center justify-center bg-white">
+                       <svg className="w-6 h-6 text-[#10b981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
+                    <h3 className="text-xl font-bold text-[#10b981]">Mises en œuvre</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Mise aux normes NF C 15-100 intégrale</span>
+                      <span className="text-[#10b981]">–</span>
+                      <span>Pose de bois exotiques (Ipé, Cumaru, Garapa)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Remplacement de tableaux divisionnaires</span>
+                      <span className="text-[#10b981]">–</span>
+                      <span>Platelages en bois composite co-extrudé</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Domotique & pilotage à distance</span>
+                      <span className="text-[#10b981]">–</span>
+                      <span>Structures sur plots ou solivages structurels</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Infrastructure de recharge VE (IRVE)</span>
+                      <span className="text-[#10b981]">–</span>
+                      <span>Plages de piscine (antidérapantes)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Éclairage LED architectural & encastré</span>
+                      <span className="text-[#10b981]">–</span>
+                      <span>Garde-corps bois & inox intégrés</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Alarme & Vidéosurveillance IP</span>
+                      <span className="text-[#10b981]">–</span>
+                      <span>Éclairage LED encastré basse consommation</span>
                     </li>
                   </ul>
                 </div>
 
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#38bdf8]" />
+                    <div className="w-12 h-12 rounded-full border-2 border-[#10b981] flex items-center justify-center bg-white">
+                      <Check className="w-6 h-6 text-[#10b981]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
+                    <h3 className="text-xl font-bold text-[#10b981]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation assure des installations certifiées Consuel si nécessaire. Nous utilisons exclusivement des marques de référence (Legrand, Schneider, Hager) pour garantir la qualité and la pérennité de vos appareillages.
+                    Groupe BML Rénovation assure des réalisations conformes au DTU 51.4. Nous sélectionnons des bois certifiés FSC/PEFC and des clips de fixation haute résistance pour un platelage sans vis apparentes.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-emerald-900 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Expertise IRVE à Grenoble ?" : "Votre Réseau Connecté"}
+                  {isGrenoble ? "Un nouveau jardin à Grenoble ?" : "Votre Espace Outdoor"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
                   {isGrenoble
-                    ? "Profitez d'une expertise certifiée Qualifelec en Isère pour sécuriser vos équipements électriques."
-                    : "Une seule équipe pour l'électricité, les réseaux courants faibles and la décoration."}
+                    ? "Profitez d'une expertise reconnue en Isère pour valoriser vos espaces extérieurs."
+                    : "Une seule équipe pour la conception, la structure and le platelage final."}
                 </p>
                 <p className="text-base mb-8 opacity-90 italic">
-                  Diagnostic sécurité and devis détaillé fournis sous 24h.
+                  Étude de sol and devis structurel fournis sous 48h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#10b981] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(16,185,129,0.4)] transition-all duration-300 hover:scale-105"
                 >
-                  Étudier mon projet électrique
+                  Concevoir ma terrasse
                   <div className="flex flex-col items-center ml-2">
                     <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
                     <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
@@ -404,38 +403,38 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
       <section className="pt-16 pb-8 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#10b981]">
               LOGISTIQUE TECHNIQUE
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Votre rénovation électrique en 4 phases expertes
+              <span className="bg-gradient-to-r from-black to-[#10b981] bg-clip-text text-transparent">
+                Votre platelage en 4 phases expertes
               </span>
             </h2>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+            <div className="w-24 h-0.5 bg-[#10b981] mx-auto"></div>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
               {
                 step: "01",
-                title: "Diagnostic & Audit",
-                desc: "Mesure d'isolement, vérification de la terre and diagnostic de conformité NF C 15-100."
+                title: "Étude & Structure",
+                desc: "Analyse du sol, calcul de charge and définition de l'ossature primaire (plots or lambourdes)."
               },
               {
                 step: "02",
-                title: "Plans de Distribution",
-                desc: "Dimensionnement des circuits, plan d'implantation des points de commande and domotique."
+                title: "Calepinage & Débit",
+                desc: "Optimisation des coupes pour minimiser les pertes and aligner les vis or clips au millimètre."
               },
               {
                 step: "03",
-                title: "Installation & Câblage",
-                desc: "Pose des tableaux, tirage des lignes sous gaines and raccordements certifiés."
+                title: "Pose & Fixation",
+                desc: "Installation des lames avec respect des jeux de dilatation and ventilation sous face."
               },
               {
                 step: "04",
-                title: "Vérification Finale",
-                desc: "Tests de continuité, vérification des coupures différentielles and remise des schémas."
+                title: "Finitions & Rives",
+                desc: "Réalisation des bandeaux de finition, ponçage des arêtes and application de saturateur protecteur."
               }
             ].map((s, i) => (
               <motion.div 
@@ -444,10 +443,10 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
+                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(16,185,129,0.15)] transition-all duration-500 overflow-hidden"
               >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#10b981] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#10b981]/10 transition-colors">
                   {s.step}
                 </span>
                 <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
@@ -460,8 +459,8 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
       {/* Architect Partnership Section */}
       <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#10b981]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
@@ -473,32 +472,32 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               className="space-y-8"
             >
               <div>
-                <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  DESIGN & ACCOMPAGNEMENT
+                <span className="text-sm font-semibold uppercase tracking-wide text-[#10b981]">
+                  DESIGN & EXTÉRIEUR
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
-                  <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    L'œil d'un architecte offert pour votre design lumineux
+                  <span className="bg-gradient-to-r from-black to-[#10b981] bg-clip-text text-transparent">
+                    L'œil d'un architecte offert pour votre design outdoor
                   </span>
                 </h2>
               </div>
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  L'électricité réussie demande une vision esthétique autant que technique. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design contemporain.
+                  Une terrasse doit être le prolongement naturel de votre salon. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design extérieur.
                 </p>
                 <p>
-                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour le choix des appareillages, les textures des finitions and la chorégraphie lumineuse de vos espaces. C'est l'assurance d'un intérieur cohérent and luxueux.
+                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour définir les zones de vie (repas, détente, bain), choisir l'essence de bois qui vieillira le mieux avec votre façade and intégrer des solutions d'éclairage discrètes. C'est l'assurance d'un extérieur d'exception.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
                 {[
                   { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
-                  { title: "Expertise TCE", desc: "Equipes elec & plomberie internes", icon: "🛠️" },
+                  { title: "Expertise TCE", desc: "Equipes charpente & menuiserie internes", icon: "🛠️" },
                   { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
                   { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
-                  { title: "Gestion Déchets", desc: "Chantier propre & tri sélectif", icon: "♻️" },
+                  { title: "Bois Certifiés", desc: "Sourcing éthique FSC/PEFC", icon: "🌿" },
                   { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
                 ].map((usp, i) => (
                   <div key={i} className="flex gap-4 items-start">
@@ -513,10 +512,10 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
               <button
                 onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
+                className="group relative inline-flex items-center gap-3 bg-[#10b981] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(16,185,129,0.5)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet technique
+                Lancer mon projet extérieur
                 <div className="flex flex-col items-center ml-1">
                   <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
                   <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
@@ -531,18 +530,18 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               viewport={{ once: true }}
               className="relative hidden lg:block"
             >
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#10b981]/10 to-transparent rounded-[3rem] blur-2xl" />
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Électricité Espaces Alpins"
+                  alt="Design Outdoor Espaces Alpins"
                   className="w-full h-auto object-contain opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
-                    <p className="text-xl font-semibold">"La lumière sculpte l'espace and sécurise l'habitat."</p>
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Outdoor</p>
+                    <p className="text-xl font-semibold">"L'extérieur n'est pas une limite, c'est une nouvelle dimension."</p>
                   </div>
                 </div>
               </div>
@@ -556,18 +555,18 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#10b981]">
                 {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'excellence à chaque connexion
+                <span className="bg-gradient-to-r from-black to-[#10b981] bg-clip-text text-transparent">
+                  L'excellence à chaque solivage
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie électrique de votre chantier se déroule sans aucun accroc technique.
+                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie terrasse de votre chantier se déroule sans aucun défaut de structure or de finition.
               </p>
             </div>
 
@@ -576,23 +575,19 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 {
                   icon: (
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
                     </svg>
                   ),
                   title: "Technique",
-                  items: ["Mise en conformité", "Tableaux divisionnaires", "Colonnes montantes", "Alimentation PAC", "Protections foudre"]
+                  items: ["Structure Solivage", "Plots autonivelants", "Fixations invisibles", "Ventilation DTU", "Étanchéité bitumineuse"]
                 },
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <rect x="3" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="14" width="7" height="7" rx="1" />
-                      <rect x="3" y="14" width="7" height="7" rx="1" />
-                    </svg>
+                    <Trees className="w-10 h-10" />
                   ),
-                  title: "Domotique",
-                  items: ["Scénarios lumineux", "Gestion chauffage", "Contrôle d'accès", "Réseaux VDI (RJ45)", "Vidéosurveillance IP"]
+                  title: "Essences",
+                  items: ["Ipé du Brésil", "Cumaru Gold", "Mélèze des Alpes", "Composite Premium", "Bois Thermo-traités"]
                 },
                 {
                   icon: (
@@ -601,7 +596,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                     </svg>
                   ),
                   title: "Engagement",
-                  items: ["Certification Consuel", "Respect NF C 15-100", "Garantie décennale", "Suivi post-pose", "Marques Premium"]
+                  items: ["Calcul de portance", "Bois certifiés", "Garantie décennale", "Antidérapant R11", "Partenaires Premium"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -610,16 +605,16 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(16,185,129,0.1)] transition-all duration-500 group"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#10b981] mb-6 group-hover:scale-110 group-hover:bg-[#10b981] group-hover:text-white transition-all duration-500 shadow-inner">
                     {card.icon}
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
                   <ul className="space-y-4">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] group-hover/item:scale-150 transition-transform" />
                         <span className="text-sm font-medium">{item}</span>
                       </li>
                     ))}
@@ -635,12 +630,12 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#10b981]">
               LABELS & GARANTIES
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Une sécurité certifiée pour vos énergies
+              <span className="bg-gradient-to-r from-black to-[#10b981] bg-clip-text text-transparent">
+                Une structure saine pour vos pauses café
               </span>
             </h2>
           </div>
@@ -685,33 +680,33 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
       {/* FAQ Section */}
       <ServiceFAQ
-        title="FAQ Électricité"
-        description="Les réponses de nos techniciens pour sécuriser votre installation haut de gamme."
+        title="FAQ Terrasse Bois"
+        description="Les réponses de nos techniciens pour préparer vos extérieurs avec soin."
         items={[
           {
-            id: "el1",
-            question: "Mon installation date des années 80, dois-je tout changer ?",
-            answer: "Une installation des années 80 manque souvent de dispositifs différentiels 30mA and de mise à la terre sur tous les circuits. Nous effectuons un audit complet pour déterminer s'il faut une rénovation totale ou une mise en sécurité (remplacement du tableau and ajout des protections vitales)."
+            id: "tb1",
+            question: "Quel bois choisir pour une terrasse durable ?",
+            answer: "Les bois exotiques (Ipé, Cumaru) sont naturellement de classe 4 or 5, ils résistent sans traitement à l'humidité and aux insectes pendant 30 à 50 ans. Pour un budget plus serré, le bois composite de qualité co-extrudé or le bois thermo-chauffé sont d'excellentes alternatives sans entretien."
           },
           {
-            id: "el2",
-            question: "Est-il possible d'ajouter de la domotique sans gros travaux ?",
-            answer: "Absolument. Grâce aux technologies sans fil (Zigbee, Bluetooth Mesh), nous pouvons automatiser votre éclairage, vos volets and votre chauffage sans créer de nouvelles saignées dans vos murs, en remplaçant simplement vos interrupteurs existants."
+            id: "tb2",
+            question: "Faut-il entretenir sa terrasse bois ?",
+            answer: "Si vous aimez le grisaillement naturel, un simple nettoyage annuel au balai brosse and à l'eau suffit. Si vous souhaitez conserver la teinte originelle, l'application d'un saturateur une fois par an est nécessaire. Le composite, lui, ne demande qu'un jet d'eau."
           },
           {
-            id: "el3",
-            question: "Installez-vous des prises de recharge pour voitures électriques ?",
-            answer: "Oui, nous sommes certifiés IRVE (Infrastructure de Recharge pour Véhicules Électriques). Nous installons des bornes (Wallbox) ou des prises renforcées adaptées à la puissance de votre compteur and à votre usage quotidien."
+            id: "tb3",
+            question: "Les vis apparentes sont-elles obligatoires ?",
+            answer: "Non, nous proposons des systèmes de fixations invisibles par clips or fixations par le dessous. Cela offre une esthétique épurée, évite la stagnation d'eau au cœur des lames and supprime tout risque de blessure au pied nu."
           },
           {
-            id: "el4",
-            question: "Comment gérez-vous le passage des câbles pour que ce soit esthétique ?",
-            answer: "En rénovation haut de gamme, nous privilégions l'encastrement par saignées rebouchées avec soin ou le passage dans les faux-plafonds and doublages. Si l'apparent est inévitable, nous utilisons des goulottes design minimalistes parfaitement intégrées aux plinthes."
+            id: "tb4",
+            question: "Peut-on poser une terrasse bois sur de la terre ?",
+            answer: "Jamais directement. Il faut décaisser, poser un géotextile and mettre un lit de gravier. La structure bois est ensuite montée sur des plots réglables or des vis de fondation pour assurer une ventilation parfaite and éviter le pourrissement."
           },
           {
-            id: "el5",
-            question: "Fournissez-vous l'attestation de conformité Consuel ?",
-            answer: "Oui, pour toute rénovation totale avec remplacement du tableau, nous gérons la visite du Consuel and la remise de l'attestation de conformité indispensable pour vos assurances and votre fournisseur d'énergie."
+            id: "tb5",
+            question: "Une terrasse bois est-elle glissante l'hiver ?",
+            answer: "C'est souvent la mousse and la pollution qui glissent, pas le bois. Un nettoyage régulier and le choix de lames avec un profil antidérapant or une essence naturellement rugueuse (Mélèze strié) garantissent une sécurité optimale même près d'une piscine."
           }
         ]}
       />
@@ -721,4 +716,4 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
   );
 };
 
-export default Electricite;
+export default TerrasseBois;

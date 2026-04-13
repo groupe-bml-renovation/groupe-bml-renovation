@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
+import ServiceFAQ from '../components/ServiceFAQ';
 
 interface WallCoveringsProps {
   onBack: () => void;
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string) => void;
 }
 
 const ImageCarousel = () => {
@@ -18,20 +19,20 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1761679296802-09d4d4687723?w=800&q=80',
-    'https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=800&q=80',
-    'https://images.unsplash.com/photo-1753911371949-9a07fa627a8d?w=800&q=80',
-    'https://images.unsplash.com/photo-1611066415956-91ab6f1f57cc?w=800&q=80',
-    'https://images.unsplash.com/photo-1753911371949-9a07fa627a8d?w=800&q=80',
-    'https://images.unsplash.com/photo-1753911371937-250bd2cb9ec1?w=800&q=80',
-    'https://images.unsplash.com/photo-1753911371982-d5d1f0840366?w=800&q=80',
-    'https://images.unsplash.com/photo-1753911371922-fea40946a1af?w=800&q=80'
+    'https://images.unsplash.com/photo-1761679296802-09d4d4687723?w=1200&q=80',
+    'https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=1200&q=80',
+    'https://images.unsplash.com/photo-1753911371949-9a07fa627a8d?w=1200&q=80',
+    'https://images.unsplash.com/photo-1611066415956-91ab6f1f57cc?w=1200&q=80',
+    'https://images.unsplash.com/photo-1753911371937-250bd2cb9ec1?w=1200&q=80',
+    'https://images.unsplash.com/photo-1753911371982-d5d1f0840366?w=1200&q=80',
+    'https://images.unsplash.com/photo-1753911371922-fea40946a1af?w=1200&q=80',
+    'https://images.unsplash.com/photo-1758548157276-00c54fd4a9fa?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 320;
+      const itemWidth = 400;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
 
@@ -49,7 +50,7 @@ const ImageCarousel = () => {
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 320;
+      const itemWidth = 400;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
       const firstSetWidth = itemWithGap * images.length;
@@ -102,7 +103,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Revêtements muraux ${index + 1}`}
+                    alt={`Expertise Revêtements Muraux ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -114,7 +115,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Revêtements muraux ${index + 1}`}
+                    alt={`Expertise Revêtements Muraux ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -131,64 +132,29 @@ const ImageCarousel = () => {
 const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble');
-
-  const wallCoveringsPartners = [
-    {
-      name: 'Artens',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg'
-    },
-    {
-      name: 'Marazzi',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg'
-    },
-    {
-      name: 'Porcellanosa',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg'
-    },
-    {
-      name: 'Saloni',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg'
-    }
-  ];
+  const isGrenoble = location.pathname.includes('/grenoble/');
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
   };
 
-  const pageTitle = isGrenoble
-    ? 'Revêtements Muraux Grenoble | Papier Peint, Enduits | BML Rénovation'
-    : 'Revêtements Muraux Décoratifs | Papier Peint, Enduits, Faïence | BML Rénovation';
-
-  const metaDescription = isGrenoble
-    ? 'Revêtements muraux à Grenoble : papier peint, enduits, faïence, lambris. Applicateurs spécialisés à Grenoble et Isère. Finitions impeccables, conseil déco personnalisé. Devis gratuit.'
-    : 'Revêtements muraux décoratifs, papier peint, enduits, faïence, lambris. Applicateurs spécialisés, finitions impeccables, conseil déco personnalisé. Devis gratuit.';
-
-  const h1Text = isGrenoble
-    ? 'Travaux de revêtements\nmuraux à Grenoble'
-    : 'Travaux de revêtements\nmuraux';
-
-  const canonicalUrl = isGrenoble
-    ? 'https://groupe-bml-renovation.fr/grenoble/revetements-muraux'
-    : 'https://groupe-bml-renovation.fr/revetements-muraux';
-
-  const geoRegion = isGrenoble ? 'FR-38' : 'FR';
-
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={metaDescription} />
-        {isGrenoble && <meta name="geo.region" content={geoRegion} />}
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={metaDescription} />
+        <title>{isGrenoble ? "Revêtements Muraux & Papier Peint Grenoble | Groupe BML" : "Revêtements Muraux Décoratifs | Papier Peint & Enduits | Groupe BML Rénovation"}</title>
+        <meta name="description" content={isGrenoble ? "Sublimez vos murs à Grenoble. Experts en papier peint panoramique, enduits décoratifs and habillages bois en Isère. Conseil design and finitions premium." : "Travaux de revêtements muraux pour votre rénovation complète. Large choix de papiers peints, stucs and solutions décoratives haute couture. Entreprise de rénovation experte."} />
+        <meta name="keywords" content={isGrenoble ? "papier peint grenoble, enduit décoration grenoble, stuc isère, rénovation murale 38, panoramique grenoble" : "revêtements muraux, papier peint design, stuc vénitien, enduit décoratif, habillage mural bois"} />
+        <meta property="og:title" content={isGrenoble ? "Revêtements Muraux & Design Grenoble | Texture & Élégance" : "Revêtements Muraux Premium | Groupe BML"} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
+
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1758548157276-00c54fd4a9fa?w=1600&q=80"
-            alt="Revêtements Muraux"
+            src="https://images.unsplash.com/photo-1758548157276-00c54fd4a9fa?w=1920&q=80"
+            alt="Revêtement mural texturé and design contemporain"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -201,70 +167,120 @@ const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide capitalize">
-              {h1Text.split('\n').map((line, idx) => (
-                <span key={idx}>
-                  {line}
-                  {idx < h1Text.split('\n').length - 1 && <br />}
-                </span>
-              ))}
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
+              {isGrenoble ? (
+                <>
+                  Design Mural<br />à Grenoble
+                </>
+              ) : (
+                <>
+                  La poésie des<br />surfaces
+                </>
+              )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              Transformez vos murs avec style et personnalité
+              {isGrenoble ? "Texture and caractère pour vos intérieurs d'exception en Isère" : "L'excellence des finitions au service de votre identité visuelle"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center gap-6"
+            >
+              <motion.a
+                href="https://www.google.com/search?q=groupe+bml+renovation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
+              >
+                <svg className="h-10 w-auto" viewBox="0 0 272 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335" />
+                  <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05" />
+                  <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4" />
+                  <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853" />
+                  <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335" />
+                  <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4" />
+                </svg>
+
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-white font-semibold text-lg">
+                    Excellent
+                  </span>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Intro Section */}
+      <section className="pt-16 pb-12 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                REVÊTEMENTS MURAUX DÉCORATIFS
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                ESTHÉTIQUE & MATIÈRES
               </span>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                <span className="text-[#38bdf8] font-normal">Habiller vos murs</span>{' '}
-                <span className="text-slate-900">avec des</span><br />
-                <span className="text-slate-900">matériaux d'exception.</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble 
+                    ? "Votre expert revêtements muraux à Grenoble" 
+                    : "L'art de la vibration murale dans vos espaces"}
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Donnez du caractère et de la personnalité à vos intérieurs avec nos solutions de revêtements
-                muraux décoratifs, alliant esthétique raffinée, durabilité et innovation pour créer des
-                ambiances uniques qui vous ressemblent.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Vos murs sont le visage de votre intérieur. Ils captent la lumière, créent la profondeur and apportent cette texture indispensable à une ambiance de caractère.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                <strong>Groupe BML Rénovation</strong> met à votre service des <strong>applicateurs spécialisés à Grenoble et en Isère</strong> qui
-                maîtrisent toutes les techniques de pose et d'application. <strong>Notre équipe vous accompagne</strong> dans
-                le choix des matériaux et finitions pour créer l'atmosphère parfaite qui correspond à votre style.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise l'intégralité du panel décoratif. Du stuc vénitien traditionnel au papier peint panoramique haute couture, nous transformons vos surfaces en véritables œuvres d'art.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                Que ce soit pour habiller un mur avec du papier peint design{isGrenoble ? ' à Grenoble' : ''}, créer une ambiance avec des enduits
-                décoratifs, protéger vos pièces d'eau avec de la faïence élégante ou apporter une touche chaleureuse
-                avec du lambris, nos experts réalisent des travaux soignés qui révèlent le plein potentiel de vos
-                espaces avec un rendu impeccable et durable.
+              <p className="text-slate-700 leading-relaxed mb-8">
+                {isGrenoble
+                  ? "Nos applicateurs interviennent dans toute l'Isère pour vos projets de rénovation complète. Nous coordonnons la préparation des supports (enduits de lissage, ratissage) avec la décoration finale pour garantir un rendu d'une finesse absolue dans vos volumes grenoblois."
+                  : "Qu'il s'agisse de poser un habillage acoustique bois ou d'appliquer un béton ciré mural, nous appliquons une rigueur millimétrée pour un résultat premium."}
               </p>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Démarrer mon étude murale
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl"
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=1200&q=80"
-                alt="Revêtements Muraux Décoratifs"
-                className="w-full h-[450px] object-cover"
+                alt="Application d'enduit décoratif premium"
+                className="w-full h-full object-cover"
                 loading="eager"
               />
             </motion.div>
@@ -272,31 +288,35 @@ const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-b from-white to-slate-50">
+      {/* Carousel Section */}
+      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <ImageCarousel />
         </div>
       </section>
 
+      {/* Detail Section */}
       <section className="py-8 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                REVÊTEMENTS MURAUX DÉCORATIFS
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "SAVOIR-FAIRE ISÈRE" : "SAVOIR-FAIRE DÉCORATEUR"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                Habiller et sublimer<br />tous vos murs
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble ? "Caractère mural à Grenoble" : "La finesse du support"}
+                </span>
               </h2>
 
-              <p className="text-base text-[#4a5568] leading-relaxed mb-6">
-                Groupe BML Rénovation tout corps d'état réalise tous vos travaux de revêtements muraux {isGrenoble ? 'à Grenoble et en Isère ' : ''}avec le plus grand soin. De la préparation des supports à l'application des finitions, nos applicateurs professionnels vous garantissent un résultat esthétique et durable.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Un revêtement mural d'exception exige un support "prêt-à-peindre" parfait. Nous réalisons systématiquement un ratissage complet pour éliminer la moindre imperfection avant application.
               </p>
 
-              <p className="text-base text-[#4a5568] leading-relaxed">
-                Notre expertise couvre tous les types de revêtements : papier peint traditionnel et panoramique, enduits décoratifs et stucs, faïence et carrelage mural, lambris bois et PVC, toile de verre. Nous utilisons exclusivement des matériaux de qualité professionnelle pour garantir beauté et longévité.
+              <p className="text-slate-700 leading-relaxed">
+                Notre approche intègre la gestion des angles, la pose de baguettes d'arrêt encastrées and une découpe laser pour des raccords de papier peint invisibles.
               </p>
             </div>
 
@@ -305,36 +325,36 @@ const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => 
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos prestations</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-[#4a5568]">
+                  <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Papier peint et panoramiques</span>
+                      <span>Pose de Papiers Peints Panoramiques & Luxe</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Enduits décoratifs et stucs</span>
+                      <span>Enduits minéraux (Chaux, Stucs, Tadelakt)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Faïence et carrelage mural</span>
+                      <span>Habillages muraux en chêne & acoustiques</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Lambris bois et PVC</span>
+                      <span>Béton ciré mural haute résistance</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Toile de verre et tissus muraux</span>
+                      <span>Faïence & Mosaïques d'exception</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Habillages muraux créatifs</span>
+                      <span>Moulures & Corniches décoratives</span>
                     </li>
                   </ul>
                 </div>
@@ -344,30 +364,35 @@ const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => 
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                       <Check className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Notre expertise</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
-                  <p className="text-sm text-[#4a5568] leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous offre une expertise complète en revêtements muraux décoratifs{isGrenoble ? ' à Grenoble et en Isère' : ''}, avec des finitions soignées et un service personnalisé adapté à chaque projet, du plus simple au plus sophistiqué.
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Groupe BML Rénovation assure des finitions certifiées Q4 (lissé absolu). Nous collaborons avec les meilleures manufactures (Arte, Casamance, Ressource) pour garantir l'exclusivité de vos murs.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
+              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Prêt à Démarrer Votre Projet ?
+                  {isGrenoble ? "Un nouveau décor à Grenoble ?" : "Votre Mur Signature"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
-                  Notre équipe d'experts est à votre écoute pour transformer votre intérieur.
+                  {isGrenoble
+                    ? "Profitez d'une expertise reconnue en Isère pour valoriser vos surfaces verticales."
+                    : "Une seule équipe pour le plâtre, le lissage and la décoration finale."}
                 </p>
-                <p className="text-base mb-8 opacity-90">
-                  Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé.
+                <p className="text-base mb-8 opacity-90 italic">
+                  Showroom mobile and devis précis fournis sous 24h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
                 >
-                  <Phone className="w-5 h-5" />
-                  Demander un devis gratuit
+                  Étudier mon projet de mur
+                  <div className="flex flex-col items-center ml-2">
+                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
+                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -375,163 +400,323 @@ const WallCoverings: React.FC<WallCoveringsProps> = ({ onBack, onNavigate }) => 
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
+      {/* 4-Step Process Section */}
+      <section className="pt-16 pb-8 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              LOGISTIQUE TECHNIQUE
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Votre rénovation murale en 4 phases expertes
+              </span>
+            </h2>
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Préparation Q4",
+                desc: "Plâtrerie, ratissage and ponçage grain fin pour un support sans aucun spectre visuel."
+              },
+              {
+                step: "02",
+                title: "Impression & Fond",
+                desc: "Application d'un primaire adapté à la porosité du revêtement final (Isère/France)."
+              },
+              {
+                step: "03",
+                title: "Pose & Application",
+                desc: "Marouflage de précision ou application ferrée pour les enduits à effet."
+              },
+              {
+                step: "04",
+                title: "Détails & Protection",
+                desc: "Vitrification des enduits ou protection hydrofuge des papiers peints en pièces humides."
+              }
+            ].map((s, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
+                  {s.step}
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architect Partnership Section */}
+      <section className="py-10 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div>
+                <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                  DESIGN & ACCOMPAGNEMENT
+                </span>
+                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                  <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                    L'œil d'un architecte offert pour votre design mural
+                  </span>
+                </h2>
+              </div>
+              
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+                <p>
+                  Un mur décoré sans cohérence peut alourdir une pièce. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du conseil en décoration.
+                </p>
+                <p>
+                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour choisir le pan de mur à accentuer, harmoniser les textures avec votre mobilier and sélectionner des motifs intemporels. C'est l'assurance d'un intérieur prestigieux and équilibré.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
+                {[
+                  { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
+                  { title: "Expertise TCE", desc: "Equipes plâtre & peinture internes", icon: "🛠️" },
+                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
+                  { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
+                  { title: "Gestion Déchets", desc: "Chantier propre & tri sélectif", icon: "♻️" },
+                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
+                ].map((usp, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <span className="text-2xl">{usp.icon}</span>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
+                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Lancer mon projet mural
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative hidden lg:block"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+                <OptimizedImage
+                  src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
+                  alt="Design Mural Espaces Alpins"
+                  className="w-full h-auto object-contain opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
+                    <p className="text-xl font-semibold">"La paroi n'est pas une limite, c'est une invitation au voyage."</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Expertise Grid Section */}
+      <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                SAVOIR-FAIRE
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                Une maîtrise parfaite<br />des revêtements muraux
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  L'excellence à fleur de mur
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue dans tous les domaines des revêtements muraux décoratifs{isGrenoble ? ' à Grenoble et en Isère' : ''}. Nos applicateurs qualifiés maîtrisent les techniques traditionnelles et modernes pour réaliser des finitions impeccables, de la simple pose de papier peint aux projets décoratifs les plus exigeants.
+              <p className="text-slate-700 leading-relaxed">
+                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie murale de votre chantier se déroule sans aucun raccord visible ou défaut de texture.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                  <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="7" height="7" />
-                    <rect x="14" y="3" width="7" height="7" />
-                    <rect x="14" y="14" width="7" height="7" />
-                    <rect x="3" y="14" width="7" height="7" />
-                  </svg>
-                  <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-                </div>
-                <div className="px-6 pt-8 pb-6">
-                  <ul className="space-y-2 text-sm text-slate-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Chambres et salons</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Cuisines et salles de bain</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Halls et entrées</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Bureaux et commerces</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Espaces de réception</span>
-                    </li>
+              {[
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                       <path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                  ),
+                  title: "Technique",
+                  items: ["Ratissage Q4", "Marouflage expert", "Ferrage à la main", "Joints invisibles", "Découpe laser"]
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <rect x="3" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="14" width="7" height="7" rx="1" />
+                      <rect x="3" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                  ),
+                  title: "Domaines",
+                  items: ["Papier Peint Luxe", "Stucs & Chaux", "Parements bois", "Béton ciré mural", "Panneaux 3D"]
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  ),
+                  title: "Engagement",
+                  items: ["Finition Premium", "Conseil déco gratuit", "Garantie décennale", "Suivi post-pose", "Marques Exclusives"]
+                }
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <ul className="space-y-4">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
+                        <span className="text-sm font-medium">{item}</span>
+                      </li>
+                    ))}
                   </ul>
-                </div>
-              </div>
-
-              <div className="bg-white overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                  <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M3 3h18v18H3z" />
-                    <path d="M3 9h18M9 21V9" />
-                  </svg>
-                  <h3 className="text-lg font-bold uppercase tracking-wider">Matériaux</h3>
-                </div>
-                <div className="px-6 pt-8 pb-6">
-                  <ul className="space-y-2 text-sm text-slate-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Papier peint et intissé</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Enduits et stucs décoratifs</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Faïence et céramique</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Lambris bois et PVC</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Toile de verre</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Panneaux décoratifs</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-white overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                  <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
-                    <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
-                    <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
-                  </svg>
-                  <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-                </div>
-                <div className="px-6 pt-8 pb-6">
-                  <ul className="space-y-2 text-sm text-slate-700">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Conseil déco et matériaux</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Préparation des supports</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Pose professionnelle</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Finitions soignées</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Nettoyage post-travaux</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8 bg-white">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Conquis par Nos Revêtements Muraux ?
+      {/* Certifications Section */}
+      <section className="py-16 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              LABELS & GARANTIES
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Une base solide pour vos décors
+              </span>
             </h2>
-            <p className="text-lg mb-6 opacity-90">
-              Nos applicateurs spécialisés habillent vos murs avec des matériaux d'exception pour créer des ambiances uniques qui reflètent votre personnalité.
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              Transformez vos murs en véritables œuvres décoratives avec un devis gratuit et sur mesure adapté à vos envies.
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
+            {[
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
+              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
+              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
+              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
+              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
+              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
+              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
+              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
+              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
+              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
+              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
+              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+            ].map((cert, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
+              >
+                <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <PartnersSection partners={wallCoveringsPartners} />
+      {/* Partners Section */}
+      <PartnersSection />
 
-      <FooterSection onNavigate={onNavigate || onBack} onNavigateToServices={() => onBack()} />
+      {/* FAQ Section */}
+      <ServiceFAQ
+        title="FAQ Revêtements Muraux"
+        description="Les réponses de nos techniciens pour préparer vos parois avec soin."
+        items={[
+          {
+            id: "rm1",
+            question: "Qu'est-ce qu'une finition Q4 ?",
+            answer: "C'est le plus haut standard de préparation de mur. Après plusieurs passes d'enduit and un ponçage manuel méticuleux, le mur est parfaitement lisse, sans aucune trace d'outil ou d'ombre portée, même sous lumière rase. C'est indispensable avant une peinture laquée ou un papier peint de luxe."
+          },
+          {
+            id: "rm2",
+            question: "Le papier peint panoramique est-il fragile ?",
+            answer: "Les nouveaux supports intissés sont très résistants. Pour les zones de passage ou les cuisines, nous appliquons un vernis protecteur mat invisible qui permet de rendre le décor lavable sans en altérer la structure ni les couleurs."
+          },
+          {
+            id: "rm3",
+            question: "Peut-on poser du béton ciré sur du métal ou du bois ?",
+            answer: "Oui, grâce à des primaires d'accrochage bi-composants and une trame de renfort, le béton ciré peut habiller presque tous les supports stables. Cela permet de créer des éléments décoratifs (coffrages, bibliothèques) en continuité avec vos murs."
+          },
+          {
+            id: "rm4",
+            question: "Comment entretenir un stuc ou un tadelakt ?",
+            answer: "Le stuc se nettoie à l'eau claire avec un chiffon doux. Pour le tadelakt (pièces d'eau), un entretien annuel au savon noir permet de nourrir la chaux and de conserver son imperméabilité and son brillant naturel exceptionnel."
+          },
+          {
+            id: "rm5",
+            question: "Proposez-vous des solutions acoustiques murales ?",
+            answer: "Absolument. Nous installons des panneaux muraux en tasseaux de chêne sur feutre acoustique. C'est une solution très tendance qui allie un design scandinave ultra-moderne à une absorption sonore efficace pour vos salons ou bureaux."
+          }
+        ]}
+      />
+
+      <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
     </div>
   );
 };

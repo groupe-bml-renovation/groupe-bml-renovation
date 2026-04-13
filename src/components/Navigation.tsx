@@ -418,7 +418,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <Phone className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
             <div className="flex flex-col items-center">
               <span className="text-[10px] leading-tight">07 56 91 59 97</span>
-              <span className="text-[8px] font-bold opacity-90 leading-tight uppercase tracking-tight">Appel gratuit</span>
+              <span className="text-[8px] font-bold opacity-90 leading-tight">Appel gratuit</span>
             </div>
           </a>
           <button

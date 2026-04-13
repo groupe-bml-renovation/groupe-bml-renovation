@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
+import ServiceFAQ from '../components/ServiceFAQ';
 
 interface PlomberieProps {
   onBack: () => void;
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string) => void;
 }
 
 const ImageCarousel = () => {
@@ -18,11 +19,14 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1676210134188-4c05dd172f89?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=500',
-    'https://images.unsplash.com/photo-1676210133055-eab6ef033ce3?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=500',
-    'https://images.unsplash.com/photo-1676210134190-3f2c0d5cf58d?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=500',
-    'https://images.unsplash.com/photo-1723257892379-270639bac995?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=500',
-    'https://images.unsplash.com/photo-1722764372505-f601d7df783b?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=500'
+    'https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=1200&q=80',
+    'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80',
+    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80',
+    'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80',
+    'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=1200&q=80',
+    'https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?w=1200&q=80',
+    'https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=1200&q=80',
+    'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
@@ -99,7 +103,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation maison - Travaux de rénovation intérieure et plomberie ${index + 1}`}
+                    alt={`Expertise Plomberie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -111,7 +115,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation maison - Travaux de rénovation intérieure et plomberie ${index + 1}`}
+                    alt={`Expertise Plomberie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -128,7 +132,7 @@ const ImageCarousel = () => {
 const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble');
+  const isGrenoble = location.pathname.includes('/grenoble/');
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -137,107 +141,21 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Plomberie Grenoble - Travaux de Rénovation | Groupe BML" : "Plomberie Rénovation Maison - Travaux de Rénovation | Groupe BML"}</title>
-        <meta name="description" content={isGrenoble ? "Travaux de plomberie à Grenoble (Isère) par Groupe BML. Installation sanitaire, chauffage, réparation de fuites. Entreprise de plomberie rénovation maison à Grenoble. Devis gratuit." : "Travaux de rénovation maison incluant plomberie complète. Entreprise de rénovation expert en rénovation intérieure et extérieure. Artisan rénovation maison, devis gratuit pour rénovation maison ancienne et rénovation maison complète. Coût et prix rénovation maison."} />
-        <meta name="keywords" content={isGrenoble ? "plomberie grenoble, plombier grenoble, travaux plomberie grenoble, installation sanitaire grenoble, chauffage grenoble, rénovation maison grenoble, dépannage plomberie grenoble, plomberie isère" : "rénovation maison, travaux de rénovation maison, entreprise de rénovation, rénover une maison, rénovation maison complète, rénovation maison ancienne, artisan rénovation maison, prix rénovation maison, coût rénovation maison, rénovation intérieure, rénovation extérieure, travaux maison, bâtiment travaux publics, peintre en bâtiment, travaux de peinture bâtiment, entreprise bâtiment rénovation"} />
-        <meta property="og:title" content={isGrenoble ? "Plomberie Grenoble - Travaux de Rénovation | Groupe BML" : "Plomberie & Rénovation Maison Complète - Groupe BML Rénovation"} />
-        <meta property="og:description" content={isGrenoble ? "Travaux de plomberie professionnels à Grenoble. Installation sanitaire, chauffage, dépannage d'urgence. Groupe BML vous accompagne pour tous vos travaux de plomberie en Isère. Devis gratuit." : "Entreprise de rénovation maison spécialisée en travaux de rénovation complets. Artisan rénovation maison avec expertise en rénovation intérieure, extérieure et aménagements."} />
+        <title>{isGrenoble ? "Plomberie & Chauffage Grenoble | Installation & Dépannage | Groupe BML" : "Plomberie Rénovation | Installations Sanitaires & Chauffage | Groupe BML Rénovation"}</title>
+        <meta name="description" content={isGrenoble ? "Experts plombiers à Grenoble. Installation sanitaire, chauffage et dépannage rapide. Devis gratuit et intervention sous 24h en Isère." : "Travaux de plomberie et chauffage pour votre rénovation. Installations sanitaires haute performance et mise aux normes. Entreprise de rénovation qualifiée."} />
+        <meta name="keywords" content={isGrenoble ? "plombier grenoble, dépannage plomberie isère, installation sanitaire grenoble, chauffage grenoble, rénovation plomberie 38" : "plomberie rénovation, installation sanitaire, chauffage central, artisan plombier, travaux plomberie"} />
+        <meta property="og:title" content={isGrenoble ? "Plomberie & Chauffage Grenoble | Excellence Technique" : "Plomberie & Sanitaires Premium | Groupe BML"} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/plomberie" : "https://groupe-bml-renovation.fr/plomberie"} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={isGrenoble ? "Plomberie Grenoble | Travaux de Rénovation" : "Plomberie & Rénovation Maison | Travaux de Rénovation"} />
-        <meta name="twitter:description" content={isGrenoble ? "Plomberie à Grenoble : installation sanitaire, chauffage, dépannage. Groupe BML rénovation en Isère. Devis gratuit." : "Travaux de rénovation maison et plomberie. Entreprise de rénovation offrant services complets de rénovation maison ancienne et moderne. Devis gratuit."} />
-        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/plomberie" : "https://groupe-bml-renovation.fr/plomberie"} />
-        {isGrenoble && <meta name="geo.region" content="FR-38" />}
-        {isGrenoble && <meta name="geo.placename" content="Grenoble" />}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": isGrenoble ? "Groupe BML - Plomberie Grenoble" : "Groupe BML - Rénovation Maison",
-            "description": isGrenoble ? "Entreprise de plomberie spécialisée à Grenoble. Installation sanitaire, chauffage, dépannage d'urgence et rénovation maison en Isère." : "Entreprise de rénovation maison spécialisée en travaux de rénovation complète, rénovation intérieure et extérieure",
-            "url": "https://groupebml.com",
-            "telephone": "+33...",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "",
-              "addressLocality": isGrenoble ? "Grenoble" : "",
-              "postalCode": isGrenoble ? "38" : "",
-              "addressCountry": "FR"
-            },
-            "areaServed": [
-              {
-                "@type": "AdministrativeArea",
-                "name": isGrenoble ? "Isère" : "France"
-              }
-            ],
-            "knowsAbout": isGrenoble ? [
-              "Plomberie",
-              "Installation sanitaire",
-              "Chauffage",
-              "Dépannage plomberie",
-              "Rénovation maison",
-              "Travaux de rénovation",
-              "Installations extérieures",
-              "Réparation de fuites",
-              "Débouchage canalisations"
-            ] : [
-              "Rénovation maison",
-              "Rénovation maison complète",
-              "Rénovation maison ancienne",
-              "Rénovation intérieure",
-              "Rénovation extérieure",
-              "Travaux de rénovation maison",
-              "Travaux maison",
-              "Plomberie",
-              "Chauffage",
-              "Installations sanitaires"
-            ]
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": isGrenoble ? "Travaux de Plomberie à Grenoble" : "Travaux de Rénovation Maison et Plomberie",
-            "description": isGrenoble ? "Service de plomberie professionnel à Grenoble incluant installation sanitaire, chauffage, dépannage d'urgence et rénovation maison en Isère" : "Service de rénovation maison complet incluant plomberie, chauffage, installations sanitaires et aménagements intérieurs",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": isGrenoble ? "Groupe BML - Plomberie Grenoble" : "Groupe BML - Entreprise de Rénovation"
-            },
-            "areaServed": {
-              "@type": isGrenoble ? "AdministrativeArea" : "Country",
-              "name": isGrenoble ? "Grenoble, Isère" : "France"
-            },
-            "serviceType": isGrenoble ? [
-              "Plomberie",
-              "Installation sanitaire",
-              "Chauffage",
-              "Dépannage d'urgence",
-              "Rénovation salle de bain",
-              "Installations extérieures"
-            ] : [
-              "Rénovation maison",
-              "Rénovation intérieure",
-              "Rénovation extérieure",
-              "Plomberie",
-              "Chauffage",
-              "Installations sanitaires"
-            ],
-            "offers": {
-              "@type": "Offer",
-              "priceCurrency": "EUR",
-              "price": "Sur devis"
-            }
-          })}
-        </script>
       </Helmet>
+
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1761330440311-16e160cad236?w=1920&q=80"
-            alt="Travaux de rénovation maison - Plomberie et installations sanitaires for rénovation intérieure"
-            className="w-full h-full"
+            src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=1920&q=80"
+            alt="Détail plomberie haute précision"
+            className="w-full h-full object-cover"
             priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
@@ -250,71 +168,119 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
-              Travaux de<br />plomberie{isGrenoble && <span> à Grenoble</span>}
+              {isGrenoble ? (
+                <>
+                  Plomberie & Chauffage<br />à Grenoble
+                </>
+              ) : (
+                <>
+                  Plomberie & Chauffage<br />haute performance
+                </>
+              )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Plomberie professionnelle à Grenoble - Installations fiables et interventions rapides" : "Des installations fiables et des interventions rapides for votre confort"}
+              {isGrenoble ? "L'assurance d'une installation fiable et durable en Isère" : "L'excellence technique au service de votre confort"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center gap-6"
+            >
+              <motion.a
+                href="https://www.google.com/search?q=groupe+bml+renovation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
+              >
+                <svg className="h-10 w-auto" viewBox="0 0 272 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335" />
+                  <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05" />
+                  <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4" />
+                  <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853" />
+                  <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335" />
+                  <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4" />
+                </svg>
+
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-white font-semibold text-lg">
+                    Excellent
+                  </span>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Intro Section */}
+      <section className="pt-16 pb-12 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                PLOMBERIE
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                FIABILITÉ & CONFORMITÉ
               </span>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                {isGrenoble ? (
-                  <>
-                    <span className="text-[#38bdf8] font-normal">Plomberie et rénovation à Grenoble</span> <span className="text-slate-900">pour</span><br />
-                    <span className="text-slate-900">vos installations sanitaires performantes</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="text-[#38bdf8] font-normal">Assurer votre confort au quotidien</span> <span className="text-slate-900">avec</span><br />
-                    <span className="text-slate-900">des installations sanitaires performantes.</span>
-                  </>
-                )}
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble 
+                    ? "Votre expert plomberie et réseaux à Grenoble" 
+                    : "L'ingénierie des fluides au service de votre habitat"}
+                </span>
               </h2>
 
-              <p className="text-base text-[#4a5568] leading-relaxed mb-4">
-                {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation vous offre des solutions de plomberie fiables et durables. Garantissez la qualité de vos installations sanitaires avec des interventions professionnelles qui allient expertise technique and service de proximité."
-                  : "Garantissez la fiabilité and la durabilité de vos installations sanitaires avec des interventions professionnelles qui allient expertise technique and qualité de service."}
+              <p className="text-slate-700 leading-relaxed mb-6">
+                La plomberie est le système circulatoire de votre logement. Une installation invisible mais cruciale qui exige une précision absolue pour garantir confort thermique and sérénité durable.
               </p>
 
-              <p className="text-base text-[#4a5568] leading-relaxed mb-4">
-                <strong>{isGrenoble ? "Groupe BML Rénovation à Grenoble" : "Groupe BML Rénovation"}</strong> vous accompagne dans tous vos <strong>travaux
-                de plomberie</strong>. Notre équipe {isGrenoble && "grenobloise"} <strong>vous conseille and vous
-                accompagne</strong> dans l'installation, la réparation and l'entretien de vos équipements sanitaires.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise l'intégralité du cycle de l'eau. De la distribution des réseaux en PER ou multicouche à l'installation des équipements sanitaires les plus sophistiqués, nous garantissons une étanchéité parfaite.
               </p>
 
-              <p className="text-base text-[#4a5568] leading-relaxed">
+              <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "À Grenoble, que vous souhaitiez moderniser votre salle de bain, installer un nouveau système de chauffage, réparer une fuite urgente ou optimiser votre réseau de distribution d'eau, nos plombiers professionnels en Isère mettent leur expertise à votre service for réaliser des installations conformes and durables qui améliorent votre confort au quotidien."
-                  : "Que vous souhaitiez moderniser votre salle de bain, installer un nouveau système de chauffage, réparer une fuite urgente ou optimiser votre réseau de distribution d'eau, nos plombiers professionnels mettent leur expertise à votre service for réaliser des installations conformes and durables qui améliorent votre confort au quotidien."}
+                  ? "Nos équipes interviennent dans toute la métropole grenobloise pour vos projets de rénovation complète. Nous coordonnons la pose de vos sanitaires avec nos autres corps d'état pour une livraison clé en main sans accroc."
+                  : "Qu'il s'agisse de restructurer vos colonnes d'évacuation ou d'installer un système de chauffage central innovant, nous appliquons les normes DTU les plus strictes pour une installation pérenne."}
               </p>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Démarrer mon étude technique
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl"
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <OptimizedImage
-                src="https://images.unsplash.com/flagged/photo-1600002368144-444430d3f3ca?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
-                alt="Expert en rénovation maison - Entreprise de rénovation spécialisée en travaux de rénovation intérieure"
-                className="w-full h-[450px]"
+                src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=1200&q=80"
+                alt="Expertise technique plomberie"
+                className="w-full h-full object-cover"
                 loading="eager"
               />
             </motion.div>
@@ -322,37 +288,35 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-b from-white to-slate-50">
+      {/* Carousel Section */}
+      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <ImageCarousel />
         </div>
       </section>
 
+      {/* Detail Section */}
       <section className="py-8 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                TRAVAUX DE PLOMBERIE
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE TECHNIQUE"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                {isGrenoble ? "Plomberie à Grenoble :\nOptimiser vos installations" : "Optimiser vos\ninstallations"}
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble ? "Maîtrise technologique à Grenoble" : "La précision hydraulique"}
+                </span>
               </h2>
 
-              <p className="text-base text-[#4a5568] leading-relaxed mb-6">
-                <strong>{isGrenoble ? "Groupe BML Rénovation Grenoble" : "Groupe BML Rénovation Tout Corps D'état"}</strong> réalise tous types de <strong>travaux de plomberie</strong>. De l'<strong>installation d'équipements neufs</strong> à la <strong>réparation d'urgence</strong>, nos plombiers professionnels {isGrenoble && "en Isère"} vous accompagnent pour un <strong>résultat fiable et conforme aux normes</strong> qui garantit votre confort et votre sécurité.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Nous n'installons pas seulement des tuyaux, nous concevons des systèmes fluides intelligents. Nos plombiers utilisent des outils de diagnostic thermique and acoustique pour des réseaux silencieux and efficaces.
               </p>
 
-              <p className="text-base text-[#4a5568] leading-relaxed mb-6">
-                {isGrenoble
-                  ? "Notre expertise technique à Grenoble garantit une qualité d'exécution irréprochable : diagnostic des installations existantes, choix des équipements adaptés, conseil en optimisation énergétique, installation selon les normes en vigueur, et tests de fonctionnement rigoureux pour des installations parfaites. Nous veillons à ce que chaque intervention respecte les réglementations et améliore votre confort quotidien."
-                  : "Notre expertise technique garantit une qualité d'exécution irréprochable : diagnostic des installations existantes, choix des équipements adaptés, conseil en optimisation énergétique, installation selon les normes en vigueur, et tests de fonctionnement rigoureux pour des installations parfaites. Nous veillons à ce que chaque intervention respecte les réglementations et améliore votre confort quotidien."}
-              </p>
-
-              <p className="text-base text-[#4a5568] leading-relaxed">
-                <strong>Spécialistes de la plomberie sanitaire et du chauffage</strong> {isGrenoble && "à Grenoble"}, nous intervenons sur <strong>tous types de projets</strong> : installation de salles de bain complètes, remplacement de chaudières, création de réseaux d'eau, réparation de fuites, débouchage de canalisations, installation de chauffe-eau, et mise en conformité des installations. Chaque projet bénéficie de <strong>notre savoir-faire et notre disponibilité</strong>.
+              <p className="text-slate-700 leading-relaxed">
+                Notre approche intègre la gestion de la pression, la filtration de l'eau and l'optimisation des départs chaudière pour une consommation d'énergie maîtrisée and un confort constant.
               </p>
             </div>
 
@@ -361,36 +325,36 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Votre projet</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
                   </div>
-                  <ul className="space-y-2 text-sm text-[#4a5568]">
+                  <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Installation de salle de bain complète</span>
+                      <span>Pose de réseaux cuivre, PER & Multicouche</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Remplacement de chaudière</span>
+                      <span>Remplacement de chauffe-eau & ballons</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Réparation de fuites et débouchage</span>
+                      <span>Distribution sanitaire & chauffage central</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Installation de chauffe-eau</span>
+                      <span>Installation de pompes à chaleur (PAC)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Création de réseaux d'eau</span>
+                      <span>Mise en oeuvre de planchers chauffants</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Mise en conformité des installations</span>
+                      <span>Traitement de l'eau & adoucisseurs</span>
                     </li>
                   </ul>
                 </div>
@@ -400,30 +364,35 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                       <Check className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
-                  <p className="text-sm text-[#4a5568] leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous propose une expertise complète en plomberie, que ce soit pour créer une nouvelle installation sanitaire, moderniser vos équipements ou intervenir en urgence sur une panne.
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Groupe BML Rénovation garantit des installations sous pression certifiées. Nous effectuons des tests de mise en eau rigoureux and fournissons un dossier technique complet de vos réseaux pour une maintenance facilitée.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
+              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Besoin de Plomberie à Grenoble ?" : "Prêt à Démarrer Votre Projet ?"}
+                  {isGrenoble ? "Urgence ou Projet à Grenoble ?" : "Votre Installation Clé en Main"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
-                  {isGrenoble ? "Notre équipe de plombiers grenoblois est à votre écoute pour tous vos travaux de plomberie et rénovation." : "Notre équipe d'experts est à votre écoute pour transformer votre intérieur."}
+                  {isGrenoble
+                    ? "Profitez d'une expertise reconnue en Isère pour sécuriser vos réseaux hydrauliques."
+                    : "Une seule équipe pour la plomberie, le chauffage and les finitions."}
                 </p>
-                <p className="text-base mb-8 opacity-90">
-                  {isGrenoble ? "Contactez-nous dès aujourd'hui à Grenoble pour un devis gratuit et personnalisé." : "Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé."}
+                <p className="text-base mb-8 opacity-90 italic">
+                  Intervention rapide and devis technique détaillé fournis sous 24h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
                 >
-                  <Phone className="w-5 h-5" />
-                  Demander un devis gratuit
+                  Étudier mon projet technique
+                  <div className="flex flex-col items-center ml-2">
+                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
+                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -431,162 +400,321 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
+      {/* 4-Step Process Section */}
+      <section className="pt-16 pb-8 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              MÉTHODOLOGIE TECHNIQUE
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Votre projet plomberie en 4 phases expertes
+              </span>
+            </h2>
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Diagnostic Réseau",
+                desc: "Analyse laser des réseaux existants, test de pression and diagnostic de conformité."
+              },
+              {
+                step: "02",
+                title: "Conception Technique",
+                desc: "Dimensionnement des débits, plan de passage des fluides and choix des matériaux."
+              },
+              {
+                step: "03",
+                title: "Installation & Pose",
+                desc: "Montage rigoureux, soudures certifiées and mise en place des collecteurs isolés."
+              },
+              {
+                step: "04",
+                title: "Tests & Finitions",
+                desc: "Mise en eau sous pression, équilibrage thermique and purge complète du système."
+              }
+            ].map((s, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
+                  {s.step}
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architect Partnership Section */}
+      <section className="py-10 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div>
+                <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                  DESIGN & ACCOMPAGNEMENT
+                </span>
+                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                  <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                    L'œil d'un architecte offert pour vos choix sanitaires
+                  </span>
+                </h2>
+              </div>
+              
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+                <p>
+                  Une plomberie réussie demande une vision esthétique autant que technique. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design contemporain.
+                </p>
+                <p>
+                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour le choix des robinetteries, des textures and de l'agencement de vos sanitaires. C'est l'assurance d'un intérieur cohérent and luxueux.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
+                {[
+                  { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
+                  { title: "Expertise TCE", desc: "Equipes plomberie & elec internes", icon: "🛠️" },
+                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
+                  { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
+                  { title: "Gestion Déchets", desc: "Chantier propre & tri sélectif", icon: "♻️" },
+                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
+                ].map((usp, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <span className="text-2xl">{usp.icon}</span>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
+                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Lancer mon projet technique
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative hidden lg:block"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+                <OptimizedImage
+                  src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
+                  alt="Design Sanitaire Espaces Alpins"
+                  className="w-full h-auto object-contain opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
+                    <p className="text-xl font-semibold">"L'harmonie technique au service de l'esthétique."</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Expertise Grid Section */}
+      <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                COMPÉTENCES
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                {isGrenoble ? "Plombier à Grenoble :\nNotre savoir-faire à votre service" : "Notre savoir-faire à\nvotre service"}
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  L'excellence à chaque raccordement
+                </span>
               </h2>
 
-              <p className="text-base text-[#4a5568] leading-relaxed">
-                {isGrenoble
-                  ? "Groupe BML Rénovation à Grenoble possède une solide expérience dans tous types de travaux de plomberie en Isère. Notre expertise couvre l'ensemble des techniques : installation sanitaire, chauffage central, traitement de l'eau, dépannage d'urgence, et entretien préventif pour un résultat qui allie performance et fiabilité durable."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans tous types de travaux de plomberie. Notre expertise couvre l'ensemble des techniques : installation sanitaire, chauffage central, traitement de l'eau, dépannage d'urgence, et entretien préventif pour un résultat qui allie performance et fiabilité durable."}
+              <p className="text-slate-700 leading-relaxed">
+                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie plomberie de votre chantier se déroule sans aucun accroc technique.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Salles de bain et sanitaires</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Cuisines et espaces de vie</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Buanderies et caves</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Systèmes de chauffage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Installations extérieures</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Métiers</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Installation sanitaire complète</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Chauffage et climatisation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Réparation et dépannage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Détection et réparation de fuites</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Débouchage de canalisations</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Traitement de l'eau</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
-                  <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Diagnostic et conseil technique</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Installation selon normes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Intervention d'urgence 24/7</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Entretien préventif</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Garantie décennale</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              {[
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  ),
+                  title: "Technique",
+                  items: ["Répartition hydraulique", "Tuyauterie Multicouche", "Isolation thermique", "Régulation connectée", "Maintenance préventive"]
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <rect x="3" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="14" width="7" height="7" rx="1" />
+                      <rect x="3" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                  ),
+                  title: "Matériaux",
+                  items: ["Robinetterie premium", "Sanitaires design", "Collecteurs isolés", "Siphons anti-odeur", "Adoucisseurs d'eau"]
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  ),
+                  title: "Engagement",
+                  items: ["Test de pression", "Certification étanchéité", "Respect des DTU", "Garantie décennale", "Suivi post-chantier"]
+                }
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <ul className="space-y-4">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
+                        <span className="text-sm font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8 bg-slate-50">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {isGrenoble ? "Plomberie à Grenoble - Installation et Dépannage" : "Besoin d'une Installation de Plomberie ?"}
+      {/* Certifications Section */}
+      <section className="py-16 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              LABELS & GARANTIES
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Une sécurité certifiée pour vos fluides
+              </span>
             </h2>
-            <p className="text-lg mb-6 opacity-90">
-              {isGrenoble ? "Groupe BML vous propose des installations sanitaires fiables et conformes à Grenoble qui garantissent votre confort au quotidien." : "Des installations sanitaires fiables et conformes qui garantissent votre confort au quotidien."}
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              {isGrenoble ? "Confiez vos travaux de plomberie à nos experts grenoblois et bénéficiez d'un devis gratuit personnalisé." : "Confiez vos travaux de plomberie à nos experts et bénéficiez d'un devis gratuit personnalisé."}
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
+            {[
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
+              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
+              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expertise PAC' },
+              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
+              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
+              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
+              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
+              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
+              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
+              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
+              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
+              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+            ].map((cert, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
+              >
+                <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Partners Section */}
       <PartnersSection />
+
+      {/* FAQ Section */}
+      <ServiceFAQ
+        title="FAQ Plomberie"
+        description="Les réponses de nos techniciens pour sécuriser votre installation."
+        items={[
+          {
+            id: "pl1",
+            question: "Utilisez-vous du cuivre ou des matériaux de synthèse comme le PER ?",
+            answer: "Nous adaptons le matériau à l'usage. Le cuivre reste privilégié pour les réseaux apparents and les entrées de chaudière pour sa noblesse and durabilité. Le MULTICOUCHE est quant à lui notre standard pour les distributions encastrées car il allie la fiabilité du métal à la souplesse du plastique, sans mémoire de forme."
+          },
+          {
+            id: "pl2",
+            question: "Gérez-vous également la partie chauffage and climatisation ?",
+            answer: "Absolument. En tant que Groupe TCE, nous intégrons la pose de pompes à chaleur (Air/Air, Air/Eau), le remplacement de chaudières and l'installation de planchers chauffants. Un seul interlocuteur pour toute la gestion thermique de votre habitat."
+          },
+          {
+            id: "pl3",
+            question: "Quelles garanties offrez-vous sur l'étanchéité ?",
+            answer: "Toutes nos installations de plomberie sont couvertes par notre assurance décennale. De plus, nous effectuons systématiquement des tests de mise sous pression avant de refermer les cloisons, garantissant une étanchéité absolue dès le premier jour."
+          },
+          {
+            id: "pl4",
+            question: "Pouvez-vous restructurer une salle de bain en déplaçant les évacuations ?",
+            answer: "C'est une demande fréquente en rénovation. Nous étudions les pentes and les diamètres pour déplacer vos WC, douches ou vasques où vous le souhaitez, tout en garantissant une évacuation fluide sans risque d'engorgement."
+          },
+          {
+            id: "pl5",
+            question: "Est-il possible d'installer un adoucisseur pour protéger mes équipements ?",
+            answer: "Oui, nous recommandons fortement l'installation d'un adoucisseur d'eau en Isère, où l'eau est particulièrement calcaire. Cela prolonge la durée de vie de votre chaudière, de vos robinetteries and améliore votre confort de peau."
+          }
+        ]}
+      />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
     </div>

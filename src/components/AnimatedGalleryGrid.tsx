@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { OptimizedImage } from './OptimizedImage';
 
-interface GalleryGridCellProps extends React.HTMLAttributes<HTMLDivElement> {
+interface GalleryGridCellProps extends HTMLMotionProps<'div'> {
   index: number;
 }
 

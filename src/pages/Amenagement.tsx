@@ -9,7 +9,7 @@ import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
 
-interface ElectriciteProps {
+interface AmenagementProps {
   onBack: () => void;
   onNavigate: (page: string) => void;
 }
@@ -19,14 +19,14 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=1200&q=80',
-    'https://images.unsplash.com/photo-1660330590022-9f4ff56b63f6?w=1200&q=80',
-    'https://images.unsplash.com/photo-1505798577917-a65157d3320a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1454165833011-29743586aa2f?w=1200&q=80',
-    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80'
+    'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1200&q=80',
+    'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80',
+    'https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80',
+    'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
@@ -103,7 +103,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Électricité ${index + 1}`}
+                    alt={`Aménagement Sur Mesure ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -115,7 +115,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Électricité ${index + 1}`}
+                    alt={`Aménagement Sur Mesure ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -129,7 +129,7 @@ const ImageCarousel = () => {
   );
 };
 
-const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
+const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isGrenoble = location.pathname.includes('/grenoble/');
@@ -141,20 +141,19 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Électricité & Mise aux Normes Grenoble | Groupe BML" : "Rénovation Électrique | Mise en Conformité & Domotique | Groupe BML Rénovation"}</title>
-        <meta name="description" content={isGrenoble ? "Électriciens qualifiés à Grenoble. Mise en conformité NF C 15-100, tableaux électriques, domotique et éclairage. Devis gratuit et intervention rapide Isère." : "Travaux d'électricité pour votre rénovation complète. Mise aux normes, domotique et installations électriques haut de gamme. Entreprise de rénovation certifiée."} />
-        <meta name="keywords" content={isGrenoble ? "électricien grenoble, mise aux normes électrique isère, tableau électrique grenoble, domotique grenoble, rénovation électrique 38" : "rénovation électrique, mise aux normes, domotique, électricité bâtiment, artisan électricien"} />
-        <meta property="og:title" content={isGrenoble ? "Électricité & Mise aux Normes Grenoble | Sécurité & Confort" : "Électricité & Domotique Premium | Groupe BML"} />
+        <title>{isGrenoble ? 'Aménagement Sur Mesure Grenoble | Dressings & Placards | Groupe BML' : 'Aménagement Sur Mesure | Rangement Design & Optimisation | Groupe BML Rénovation'}</title>
+        <meta name="description" content={isGrenoble ? "Experts en aménagement sur mesure à Grenoble. Dressings personnalisés, placards intelligents and optimisation d'espace. Devis gratuit and étude 3D sous 24h." : "Aménagement and optimisation de vos espaces intérieurs. Création de dressings, bibliothèques and rangements sur mesure. Entreprise de rénovation qualifiée."} />
+        <meta name="keywords" content={isGrenoble ? "aménagement sur mesure Grenoble, dressing Grenoble, placard sur mesure Grenoble, menuiserie Grenoble, optimisation espace Isère" : "aménagement sur mesure, dressing design, menuiserie intérieure, placard personnalisé, rénovation rangements"} />
+        <meta property="og:title" content={isGrenoble ? "Aménagement Sur Mesure Grenoble | Design & Gain de Place" : "Aménagement & Rangements de Luxe | Groupe BML"} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1920&q=80"
-            alt="Tableau électrique moderne et câblage"
+            src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1920&q=80"
+            alt="Aménagement Sur Mesure Moderne"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -170,16 +169,16 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
                 <>
-                  Électricité & Domotique<br />à Grenoble
+                  Aménagement sur<br />mesure à Grenoble
                 </>
               ) : (
                 <>
-                  Électricité & Design<br />lumineux
+                  Aménagement sur<br />mesure & design
                 </>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Sécurité électrique et intelligence de l'habitat en Isère" : "La puissance domotique au service d'un design moderne"}
+              {isGrenoble ? "Sublimez chaque mètre carré de votre habitat en Isère" : "L'intelligence de l'espace au service de votre style"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
             
@@ -222,7 +221,6 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Intro Section */}
       <section className="pt-16 pb-12 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -233,29 +231,29 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                SÉCURITÉ & INTELLIGENCE
+                OPTIMISATION & HARMONIE
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
                   {isGrenoble 
-                    ? "Votre expert électricité et domotique à Grenoble" 
-                    : "L'énergie de demain intégrée à votre habitat"}
+                    ? "L'aménagement intérieur sur mesure à Grenoble" 
+                    : "L'art de sculpter vos espaces intérieurs"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                L'électricité ne se limite plus à l'alimentation des appareils. Elle est devenue l'intelligence centrale de votre logement, gérant sécurité, économie d'énergie and scénarios lumineux.
+                Chaque recoin de votre habitat recèle un potentiel inexploité. Nos solutions d'aménagement ne se contentent pas de ranger, elles transforment radicalement votre perception du volume and du confort.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}effectue la mise en conformité totale selon la norme NF C 15-100. Du remplacement de tableau électrique à l'intégration de solutions domotiques avancées (KNX, Zigbee), nous sécurisons and modernisons vos réseaux.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}conçoit and réalise votre <span className="text-black font-semibold">aménagement global sur mesure</span>. Du dressing walk-in à la bibliothèque murale complexe, nous marions menuiserie de précision and agencement intelligent.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos électriciens interviennent dans toute l'Isère pour vos projets de rénovation complète. Nous collaborons avec nos designers pour créer des ambiances lumineuses uniques qui valorisent vos volumes grenoblois."
-                  : "Qu'il s'agisse de restructurer le Tableau Général Basse Tension ou de déployer des bornes de recharge pour véhicules électriques, nous appliquons une rigueur absolue pour une installation sans compromis."}
+                  ? "Nos artisans grenoblois interviennent dans toute l'Isère pour optimiser vos intérieurs. Nous maîtrisons les structures complexes (sous combles, sous escaliers) pour créer des rangements qui s'intègrent parfaitement à l'architecture de votre logement."
+                  : "Qu'il s'agisse de créer un bureau de télétravail inspirant ou d'organiser une suite parentale avec placard invisible, nous coordonnons tous les corps d'état pour une finition impeccable and un gain de place immédiat."}
               </p>
 
               <button
@@ -263,7 +261,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Démarrer mon étude électrique
+                Démarrer mon étude d'aménagement
                 <div className="flex flex-col items-center ml-1">
                   <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
                   <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
@@ -278,8 +276,8 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <OptimizedImage
-                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80"
-                alt="Installation électrique certifiée"
+                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80"
+                alt="Expertise Aménagement"
                 className="w-full h-full object-cover"
                 loading="eager"
               />
@@ -288,35 +286,33 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Carousel Section */}
       <section className="py-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <ImageCarousel />
         </div>
       </section>
 
-      {/* Detail Section */}
       <section className="py-8 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE ÉLECTRIQUE"}
+                {isGrenoble ? "CONCEPTION ISÈRE" : "SAVOIR-FAIRE AGENCEMENT"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Sécurité certifiée à Grenoble" : "La précision technologique"}
+                  {isGrenoble ? "Menuiserie & Design à Grenoble" : "La précision d'agencement"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                L'électricité moderne se doit d'être invisible and intelligente. Nous concevons des tableaux communicants permettant de piloter vos consommations en temps réel and de sécuriser chaque pièce de votre habitat.
+                L'aménagement réussi est celui qui s'efface devant le style. Nous utilisons des ferrures de haute qualité and des panneaux aux décors raffinés pour garantir une durabilité and une esthétique haut de gamme.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre approche intègre la protection contre les surtensions, la gestion de la charge pour VE and une planification rigoureuse des appareillages pour une ergonomie d'usage parfaite.
+                Notre approche intègre la scénarisation lumineuse par LED, l'utilisation de matériaux bois éco-responsables and une planification ergonomique pour un usage fluide and agréable.
               </p>
             </div>
 
@@ -326,7 +322,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                        <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <path d="M4 6h16M4 12h16m-7 6h7" />
                       </svg>
                     </div>
                     <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
@@ -334,27 +330,27 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Mise aux normes NF C 15-100 intégrale</span>
+                      <span>Dressings sur mesure toute hauteur</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Remplacement de tableaux divisionnaires</span>
+                      <span>Placards & bibliothèques sous combles</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Domotique & pilotage à distance</span>
+                      <span>Bureaux intégrés and espaces de travail</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Infrastructure de recharge VE (IRVE)</span>
+                      <span>Cloisonnement verrière & portes coulissantes</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Éclairage LED architectural & encastré</span>
+                      <span>Rangements d'entrée and celliers optimisés</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Alarme & Vidéosurveillance IP</span>
+                      <span>Eclairage LED intégré à détection</span>
                     </li>
                   </ul>
                 </div>
@@ -367,28 +363,28 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation assure des installations certifiées Consuel si nécessaire. Nous utilisons exclusivement des marques de référence (Legrand, Schneider, Hager) pour garantir la qualité and la pérennité de vos appareillages.
+                    Groupe BML Rénovation garantit une intégration au millimètre. Nous prenons en charge la totalité de la chaîne : du relevé laser précis à la pose minutieuse sans dégradation de votre décoration existante. Votre aménagement est livré prêt à être organisé.
                   </p>
                 </div>
               </div>
 
               <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Expertise IRVE à Grenoble ?" : "Votre Réseau Connecté"}
+                  {isGrenoble ? "Créez votre Dressing à Grenoble" : "Votre Aménagement Clé en Main"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
                   {isGrenoble
-                    ? "Profitez d'une expertise certifiée Qualifelec en Isère pour sécuriser vos équipements électriques."
-                    : "Une seule équipe pour l'électricité, les réseaux courants faibles and la décoration."}
+                    ? "Profitez d'une expertise reconnue en agencement pour transformer vos volumes grenoblois."
+                    : "Une seule équipe pour la conception, la menuiserie and les finitions électriques."}
                 </p>
                 <p className="text-base mb-8 opacity-90 italic">
-                  Diagnostic sécurité and devis détaillé fournis sous 24h.
+                  Étude personnalisée and devis détaillé fournis sous 48h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
                   className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
                 >
-                  Étudier mon projet électrique
+                  Demander une étude 3D
                   <div className="flex flex-col items-center ml-2">
                     <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
                     <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
@@ -400,16 +396,15 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* 4-Step Process Section */}
       <section className="pt-16 pb-8 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              LOGISTIQUE TECHNIQUE
+              LOGISTIQUE PROJET
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Votre rénovation électrique en 4 phases expertes
+                Votre aménagement en 4 phases expertes
               </span>
             </h2>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
@@ -419,23 +414,23 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
             {[
               {
                 step: "01",
-                title: "Diagnostic & Audit",
-                desc: "Mesure d'isolement, vérification de la terre and diagnostic de conformité NF C 15-100."
+                title: "Analyse des besoins",
+                desc: "Relevé laser précis, inventaire des volumes de rangement and définition du style."
               },
               {
                 step: "02",
-                title: "Plans de Distribution",
-                desc: "Dimensionnement des circuits, plan d'implantation des points de commande and domotique."
+                title: "Conception 3D",
+                desc: "Modélisation de votre futur aménagement pour valider les volumes space and l'esthétique."
               },
               {
                 step: "03",
-                title: "Installation & Câblage",
-                desc: "Pose des tableaux, tirage des lignes sous gaines and raccordements certifiés."
+                title: "Fabrication",
+                desc: "Confection personnalisée des éléments de menuiserie and préparation des quincailleries."
               },
               {
                 step: "04",
-                title: "Vérification Finale",
-                desc: "Tests de continuité, vérification des coupures différentielles and remise des schémas."
+                title: "Pose & Ajustement",
+                desc: "Installation rigoureuse, réglages des alignements and mise en service des éclairages."
               }
             ].map((s, i) => (
               <motion.div 
@@ -458,7 +453,6 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Architect Partnership Section */}
       <section className="py-10 bg-slate-50 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
@@ -478,28 +472,28 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    L'œil d'un architecte offert pour votre design lumineux
+                    L'œil d'un architecte offert pour votre aménagement
                   </span>
                 </h2>
               </div>
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  L'électricité réussie demande une vision esthétique autant que technique. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design contemporain.
+                  Agencer un intérieur demande une vision globale de l'espace and de la lumière. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design contemporain.
                 </p>
                 <p>
-                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour le choix des appareillages, les textures des finitions and la chorégraphie lumineuse de vos espaces. C'est l'assurance d'un intérieur cohérent and luxueux.
+                  Pour tout projet de rénovation d'aménagement complet, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour définir les textures, les proportions and l'intégration parfaite à votre décor. C'est la signature d'un intérieur unique.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
                 {[
-                  { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
-                  { title: "Expertise TCE", desc: "Equipes elec & plomberie internes", icon: "🛠️" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
-                  { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
-                  { title: "Gestion Déchets", desc: "Chantier propre & tri sélectif", icon: "♻️" },
-                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
+                  { title: "Coaching Déco", desc: "Étude matériaux & harmonies", icon: "🎨" },
+                  { title: "Expertise TCE", desc: "Menuiserie & Elec intégrées", icon: "📐" },
+                  { title: "Visuels 3D", desc: "Maquettes de projection", icon: "🖥️" },
+                  { title: "Garantie Totale", desc: "Assurance décennale Isère", icon: "🛡️" },
+                  { title: "Gestion Déchets", desc: "Chantier propre & éco-responsable", icon: "♻️" },
+                  { title: "Suivi Local", desc: "Équipes basées à proximité", icon: "🏡" }
                 ].map((usp, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <span className="text-2xl">{usp.icon}</span>
@@ -516,7 +510,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet technique
+                Lancer mon projet d'agencement
                 <div className="flex flex-col items-center ml-1">
                   <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
                   <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
@@ -535,14 +529,14 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Électricité Espaces Alpins"
+                  alt="Design Aménagement Espaces Alpins"
                   className="w-full h-auto object-contain opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
-                    <p className="text-xl font-semibold">"La lumière sculpte l'espace and sécurise l'habitat."</p>
+                    <p className="text-xl font-semibold">"L'espace est un luxe à votre mesure."</p>
                   </div>
                 </div>
               </div>
@@ -551,23 +545,22 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Expertise Grid Section */}
       <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
+                {isGrenoble ? "ARTISANS DE L'ISÈRE" : "VOTRE PROJET TCE"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'excellence à chaque connexion
+                  L'excellence à chaque ajustement
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie électrique de votre chantier se déroule sans aucun accroc technique.
+                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la pose de vos aménagements se déroule sans aucun accroc technique.
               </p>
             </div>
 
@@ -576,32 +569,30 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 {
                   icon: (
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                   ),
                   title: "Technique",
-                  items: ["Mise en conformité", "Tableaux divisionnaires", "Colonnes montantes", "Alimentation PAC", "Protections foudre"]
+                  items: ["Menuiserie de précision", "Peintures dépolluantes", "Eclairage LED bas voltage", "Automatisation d'ouverture", "Structures autoporteuses"]
                 },
                 {
                   icon: (
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <rect x="3" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="14" width="7" height="7" rx="1" />
-                      <rect x="3" y="14" width="7" height="7" rx="1" />
+                      <path d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" />
+                      <path d="M7 8h10M7 12h10M7 16h4" />
                     </svg>
                   ),
-                  title: "Domotique",
-                  items: ["Scénarios lumineux", "Gestion chauffage", "Contrôle d'accès", "Réseaux VDI (RJ45)", "Vidéosurveillance IP"]
+                  title: "Matériaux",
+                  items: ["Bois massifs & Placages", "Mélaminés haute résistance", "Miroiteries intégrées", "Verrières acier / alu", "Systèmes coulissants premium"]
                 },
                 {
                   icon: (
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   ),
                   title: "Engagement",
-                  items: ["Certification Consuel", "Respect NF C 15-100", "Garantie décennale", "Suivi post-pose", "Marques Premium"]
+                  items: ["Ajustement au millimètre", "Chantier propre garanti", "Respect strict des délais", "Garantie décennale", "Suivi post-pose certifié"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -631,7 +622,6 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
@@ -640,7 +630,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Une sécurité certifiée pour vos énergies
+                Une sécurité certifiée pour vos intérieurs
               </span>
             </h2>
           </div>
@@ -653,7 +643,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
               { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
               { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
-              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
+              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expertise PAC' },
               { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
               { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
               { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
@@ -680,38 +670,36 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Partners Section */}
       <PartnersSection />
 
-      {/* FAQ Section */}
       <ServiceFAQ
-        title="FAQ Électricité"
-        description="Les réponses de nos techniciens pour sécuriser votre installation haut de gamme."
+        title="FAQ Aménagement"
+        description="Les réponses de nos menuisiers agenceurs pour votre projet."
         items={[
           {
-            id: "el1",
-            question: "Mon installation date des années 80, dois-je tout changer ?",
-            answer: "Une installation des années 80 manque souvent de dispositifs différentiels 30mA and de mise à la terre sur tous les circuits. Nous effectuons un audit complet pour déterminer s'il faut une rénovation totale ou une mise en sécurité (remplacement du tableau and ajout des protections vitales)."
+            id: "am1",
+            question: "Est-il préférable d'utiliser du bois massif ou du mélaminé haute densité ?",
+            answer: "Tout dépend de l'usage and de l'esthétique recherchée. Le mélaminé haute densité offre une résistance exceptionnelle and une palette de décors infinie (parfait pour l'intérieur des dressings). Le bois massif and les placages sont privilégiés pour les façades visibles and les bibliothèques de prestige."
           },
           {
-            id: "el2",
-            question: "Est-il possible d'ajouter de la domotique sans gros travaux ?",
-            answer: "Absolument. Grâce aux technologies sans fil (Zigbee, Bluetooth Mesh), nous pouvons automatiser votre éclairage, vos volets and votre chauffage sans créer de nouvelles saignées dans vos murs, en remplaçant simplement vos interrupteurs existants."
+            id: "am2",
+            question: "Combien de temps faut-il pour installer un grand dressing sur mesure ?",
+            answer: "Après la phase de conception and de fabrication en atelier (3 à 5 semaines), la pose effective à domicile prend généralement entre 2 and 4 jours, incluant les ajustements finaux and les finitions électriques."
           },
           {
-            id: "el3",
-            question: "Installez-vous des prises de recharge pour voitures électriques ?",
-            answer: "Oui, nous sommes certifiés IRVE (Infrastructure de Recharge pour Véhicules Électriques). Nous installons des bornes (Wallbox) ou des prises renforcées adaptées à la puissance de votre compteur and à votre usage quotidien."
+            id: "am3",
+            question: "Pouvez-vous aménager des espaces avec des pentes complexes (sous combles) ?",
+            answer: "C'est notre cœur de métier. Nous utilisons des relevés laser pour fabriquer des caissons qui épousent parfaitement la pente de votre toit ou de votre escalier, optimisant ainsi 100% de la surface disponible."
           },
           {
-            id: "el4",
-            question: "Comment gérez-vous le passage des câbles pour que ce soit esthétique ?",
-            answer: "En rénovation haut de gamme, nous privilégions l'encastrement par saignées rebouchées avec soin ou le passage dans les faux-plafonds and doublages. Si l'apparent est inévitable, nous utilisons des goulottes design minimalistes parfaitement intégrées aux plinthes."
+            id: "am4",
+            question: "Gérez-vous l'éclairage intérieur des placards ?",
+            answer: "Absolument. Nous installons des profilés LED discrets avec détecteurs d'ouverture ou d'approche. Toutes les alimentations sont dissimulées dans les doubles fonds pour un rendu professionnel and esthétique."
           },
           {
-            id: "el5",
-            question: "Fournissez-vous l'attestation de conformité Consuel ?",
-            answer: "Oui, pour toute rénovation totale avec remplacement du tableau, nous gérons la visite du Consuel and la remise de l'attestation de conformité indispensable pour vos assurances and votre fournisseur d'énergie."
+            id: "am5",
+            question: "Proposez-vous des visuels 3D avant de lancer la fabrication ?",
+            answer: "Oui, chaque projet d'agencement fait l'objet d'une modélisation 3D détaillée. Cela vous permet de valider l'ergonomie (hauteur de penderie, nombre de tiroirs) and l'aspect visuel avant toute intervention."
           }
         ]}
       />
@@ -721,4 +709,4 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
   );
 };
 
-export default Electricite;
+export default Amenagement;

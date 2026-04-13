@@ -1,49 +1,71 @@
 import React, { useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
 import { GradientCTAButton } from '../components/ui/gradient-cta-button';
-import PartnersSection from '../components/PartnersSection';
+import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
+import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
+import ServiceFAQ from '../components/ServiceFAQ';
 
 interface MenuiserieProps {
   onBack: () => void;
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string) => void;
 }
 
 const ImageCarousel = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    'https://images.unsplash.com/photo-1719381502987-058c2140df08?w=800&q=80',
-    'https://images.unsplash.com/photo-1719381503001-e971fddf0dd5?w=800&q=80',
-    'https://images.unsplash.com/photo-1697538022270-f3f3e8f9cf32?w=800&q=80',
-    'https://images.unsplash.com/photo-1697538022268-c565529e616f?w=800&q=80',
-    'https://images.unsplash.com/photo-1736281554803-a04e6499b576?w=800&q=80',
-    'https://images.unsplash.com/photo-1656733911001-16912b79d2bf?w=800&q=80'
+    'https://images.unsplash.com/photo-1719381502987-058c2140df08?w=1200&q=80',
+    'https://images.unsplash.com/photo-1697538022270-f3f3e8f9cf32?w=1200&q=80',
+    'https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=1200&q=80',
+    'https://images.unsplash.com/photo-1687995673177-053cfb879128?w=1200&q=80',
+    'https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=1200&q=80',
+    'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=1200&q=80',
+    'https://images.unsplash.com/photo-1719381502987-058c2140df08?w=1200&q=80',
+    'https://images.unsplash.com/photo-1697538022270-f3f3e8f9cf32?w=1200&q=80'
   ];
 
-  const scrollToIndex = (index: number) => {
+  const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      const itemWidth = 344;
-      scrollContainerRef.current.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
+      const container = scrollContainerRef.current;
+      const itemWidth = 400;
+      const gap = 24;
+      const itemWithGap = itemWidth + gap;
+
+      const newPosition = container.scrollLeft - itemWithGap;
+      const firstSetWidth = itemWithGap * images.length;
+
+      if (newPosition <= 0) {
+        container.scrollLeft = firstSetWidth - itemWithGap;
+      } else {
+        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
+      }
     }
   };
 
-  const scrollLeft = () => {
-    const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-    scrollToIndex(newIndex);
-  };
-
   const scrollRight = () => {
-    const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-    scrollToIndex(newIndex);
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const itemWidth = 400;
+      const gap = 24;
+      const itemWithGap = itemWidth + gap;
+      const firstSetWidth = itemWithGap * images.length;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      const newPosition = container.scrollLeft + itemWithGap;
+
+      if (newPosition >= firstSetWidth - itemWithGap) {
+        container.scrollLeft = 0;
+      } else if (newPosition >= maxScroll) {
+        container.scrollLeft = 0;
+      } else {
+        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -81,7 +103,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Menuiserie ${index + 1}`}
+                    alt={`Expertise Menuiserie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -93,7 +115,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Menuiserie ${index + 1}`}
+                    alt={`Expertise Menuiserie ${index + 1}`}
                     className="w-full h-full hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -108,107 +130,31 @@ const ImageCarousel = () => {
 };
 
 const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
+  const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble');
-
-  const menuiseriePartners = [
-    {
-      name: 'Euro Wall',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg'
-    },
-    {
-      name: 'Homs',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg'
-    },
-    {
-      name: 'Scrigno',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg'
-    },
-    {
-      name: 'Vachette',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg'
-    },
-    {
-      name: 'Cuisinella',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg'
-    },
-    {
-      name: 'Bricard',
-      logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg'
-    }
-  ];
+  const isGrenoble = location.pathname.includes('/grenoble/');
 
   const scrollToContactForm = () => {
-    onBack();
-    setTimeout(() => {
-      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    navigate('/?scrollTo=contact-form');
   };
 
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Menuiserie Grenoble - Travaux de Rénovation | Groupe BML" : "Menuiserie Rénovation Maison - Travaux de Rénovation | Groupe BML"}</title>
-        <meta name="description" content={isGrenoble ? "Menuiserie sur mesure à Grenoble (Isère) par Groupe BML. Portes, placards, parquet, escaliers. Artisans menuisiers qualifiés. Création et pose de menuiserie. Devis gratuit." : "Menuiserie rénovation maison - Travaux de rénovation incluant portes, placards, parquet, escaliers. Artisans menuisiers experts en création sur mesure. Devis gratuit pour rénovation maison."} />
-        <meta name="keywords" content={isGrenoble ? "menuiserie grenoble, menuisier grenoble, portes grenoble, placards grenoble, parquet grenoble, escaliers grenoble, menuiserie isère, rénovation maison grenoble, travaux menuiserie grenoble" : "menuiserie rénovation, menuiserie maison, portes intérieures, placards sur mesure, parquet, escaliers, menuiserie sur mesure, artisan menuisier, rénovation maison"} />
-        <meta property="og:title" content={isGrenoble ? "Menuiserie Grenoble - Travaux de Rénovation | Groupe BML" : "Menuiserie & Rénovation Maison - Groupe BML Rénovation"} />
-        <meta property="og:description" content={isGrenoble ? "Menuiserie sur mesure à Grenoble : portes, placards, parquet, escaliers. Artisans menuisiers professionnels en Isère. Devis gratuit." : "Menuiserie sur mesure pour votre rénovation maison. Portes, placards, parquet, escaliers. Artisans qualifiés. Devis gratuit."} />
+        <title>{isGrenoble ? "Menuiserie Sur Mesure Grenoble | Portes & Placards | Groupe BML" : "Rénovation Menuiserie | Agencement Bois & Sur Mesure | Groupe BML Rénovation"}</title>
+        <meta name="description" content={isGrenoble ? "Artisans menuisiers à Grenoble. Portes, fenêtres, placards sur mesure and parquets. Devis gratuit and créations personnalisées en Isère." : "Travaux de menuiserie pour votre rénovation complète. Agencements sur mesure, portes and fenêtres haute performance. Entreprise de rénovation bois."} />
+        <meta name="keywords" content={isGrenoble ? "menuisier grenoble, placard sur mesure isère, porte intérieure grenoble, parquet grenoble, rénovation menuiserie 38" : "menuiserie rénovation, agencement bois, porte sur mesure, parquet massif, artisan menuisier"} />
+        <meta property="og:title" content={isGrenoble ? "Menuiserie Sur Mesure Grenoble | L'Art du Bois" : "Menuiserie & Agencement Premium | Groupe BML"} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/menuiserie" : "https://groupe-bml-renovation.fr/menuiserie"} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={isGrenoble ? "Menuiserie Grenoble | Travaux de Rénovation" : "Menuiserie & Rénovation Maison | Travaux de Rénovation"} />
-        <meta name="twitter:description" content={isGrenoble ? "Menuiserie à Grenoble : portes, placards, parquet, escaliers. Groupe BML rénovation en Isère. Devis gratuit." : "Menuiserie sur mesure pour rénovation maison. Portes, placards, parquet, escaliers. Devis gratuit."} />
-        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/menuiserie" : "https://groupe-bml-renovation.fr/menuiserie"} />
-        {isGrenoble && <meta name="geo.region" content="FR-38" />}
-        {isGrenoble && <meta name="geo.placename" content="Grenoble" />}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": isGrenoble ? "Groupe BML - Menuiserie Grenoble" : "Groupe BML - Menuiserie",
-            "description": isGrenoble ? "Entreprise de menuiserie spécialisée à Grenoble. Portes intérieures et extérieures, placards sur mesure, parquet, escaliers, boiseries. Artisans qualifiés, devis gratuit." : "Entreprise de menuiserie spécialisée. Portes, placards sur mesure, parquet, escaliers, boiseries. Artisans qualifiés, devis gratuit.",
-            "url": "https://groupe-bml.com",
-            "telephone": "+33...",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "",
-              "addressLocality": isGrenoble ? "Grenoble" : "",
-              "postalCode": isGrenoble ? "38" : "",
-              "addressCountry": "FR"
-            },
-            "areaServed": [
-              {
-                "@type": "AdministrativeArea",
-                "name": isGrenoble ? "Isère" : "France"
-              }
-            ],
-            "knowsAbout": isGrenoble ? [
-              "Menuiserie",
-              "Portes intérieures et extérieures",
-              "Placards sur mesure",
-              "Parquet",
-              "Escaliers",
-              "Boiseries",
-              "Rénovation maison",
-              "Travaux menuiserie"
-            ] : [
-              "Menuiserie",
-              "Portes intérieures et extérieures",
-              "Placards sur mesure",
-              "Parquet",
-              "Escaliers",
-              "Boiseries",
-              "Rénovation maison"
-            ]
-          })}
-        </script>
       </Helmet>
 
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1687995673177-053cfb879128?w=1600&q=80"
-            alt="Menuiserie Sur Mesure"
+            src="https://images.unsplash.com/photo-1687995673177-053cfb879128?w=1920&q=80"
+            alt="Atelier de menuiserie de précision"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -222,63 +168,119 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
-              Menuiserie{isGrenoble && ' Grenoble'}<br />sur mesure
+              {isGrenoble ? (
+                <>
+                  Menuiserie d'art<br />à Grenoble
+                </>
+              ) : (
+                <>
+                  Menuiserie &<br />Agencement bois
+                </>
+              )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Créations en bois à Grenoble et en Isère - L'artisanat du bois au service de votre habitat" : "L'artisanat du bois au service de votre habitat"}
+              {isGrenoble ? "Le savoir-faire artisanal au service de votre habitat en Isère" : "L'excellence du sur-mesure pour un intérieur unique"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center gap-6"
+            >
+              <motion.a
+                href="https://www.google.com/search?q=groupe+bml+renovation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
+              >
+                <svg className="h-10 w-auto" viewBox="0 0 272 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335" />
+                  <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05" />
+                  <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4" />
+                  <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853" />
+                  <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335" />
+                  <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4" />
+                </svg>
+
+                <div className="flex flex-col items-center gap-2">
+                  <span className="text-white font-semibold text-lg">
+                    Excellent
+                  </span>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Intro Section */}
+      <section className="pt-16 pb-12 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                MENUISERIE
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                L'ART DU SUR-MESURE
               </span>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                <span className="text-[#38bdf8] font-normal">Des créations en bois</span>{' '}
-                <span className="text-slate-900">qui subliment</span><br />
-                <span className="text-slate-900">votre intérieur.</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble 
+                    ? "Votre menuisier créateur à Grenoble" 
+                    : "La noblesse du bois sculptée pour votre confort"}
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Transformez votre espace avec des réalisations en menuiserie sur mesure,
-                alliant esthétique, fonctionnalité et durabilité pour créer un intérieur unique et authentique{isGrenoble && " à Grenoble et en Isère"}.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Le bois est l'âme de votre intérieur. Vivant, chaleureux and intemporel, il exige une main experte pour révéler tout son potentiel and s'ajuster parfaitement à vos volumes.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                <strong>Groupe BML Rénovation</strong> vous accompagne dans tous vos <strong>projets
-                de menuiserie</strong>{isGrenoble && " à Grenoble, Villeurbanne et en Isère"}. Notre équipe <strong>d'artisans qualifiés vous conseille et vous
-                accompagne</strong> dans la conception et la réalisation de vos aménagements en bois.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}conçoit des agencements qui optimisent chaque centimètre carré. Des bibliothèques toute hauteur aux dressings suspendus, en passant par les verrières bois and les parquets massifs, nous créons du mobilier immuable.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                Que vous souhaitiez installer des portes intérieures, créer des placards sur mesure,
-                poser du parquet noble, concevoir une bibliothèque encastrée ou réaliser des boiseries décoratives{isGrenoble && " à Grenoble"},
-                nos experts menuisiers mettent leur savoir-faire ancestral à votre service pour réaliser
-                un projet de qualité qui ajoute du caractère et de la valeur à votre habitation.
+              <p className="text-slate-700 leading-relaxed mb-8">
+                {isGrenoble
+                  ? "Nos menuisiers interviennent dans toute la métropole grenobloise. Nous intégrons nos ouvrages bois dans vos projets de rénovation globale pour une cohérence esthétique totale, de la porte intérieure à l'escalier magistral."
+                  : "Qu'il s'agisse de restaurer des menuiseries anciennes ou de créer des claustras contemporains, notre atelier applique une précision millimétrique pour magnifier votre patrimoine."}
               </p>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Démarrer mon étude bois
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl"
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=1200&q=80"
-                alt="Menuiserie Sur Mesure"
-                className="w-full h-[450px] object-cover"
+                alt="Agencement bois sur mesure d'exception"
+                className="w-full h-full object-cover"
                 loading="eager"
               />
             </motion.div>
@@ -286,31 +288,35 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-b from-white to-slate-50">
+      {/* Carousel Section */}
+      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <ImageCarousel />
         </div>
       </section>
 
+      {/* Detail Section */}
       <section className="py-8 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                MENUISERIE SUR MESURE
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "ARTISANAT ISÈRE" : "SAVOIR-FAIRE MENUISIER"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                Sublimer votre<br />espace avec le bois
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  {isGrenoble ? "Conception bois à Grenoble" : "La précision du trait"}
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-6">
-                Groupe BML Rénovation tout corps d'état conçoit et réalise des ouvrages de menuiserie sur mesure{isGrenoble && " à Grenoble et en Isère"}. De l'étude de conception à la pose finale, nos menuisiers vous accompagnent tout au long de votre projet personnalisé pour créer des aménagements en bois nobles et durables.
+              <p className="text-slate-700 leading-relaxed mb-6">
+                Chaque pièce est unique. Nous sélectionnons nos bois auprès de scieries locales and européennes certifiées PEFC pour garantir une stabilité dimensionnelle and une esthétique haut de gamme.
               </p>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                Notre approche globale garantit une prise en charge complète de votre projet{isGrenoble && " dans la région de Grenoble"} : analyse de vos besoins et de votre espace, conseils en aménagement et choix des essences de bois, recommandations sur les finitions et les traitements, et suivi rigoureux de chaque étape de fabrication et d'installation.
+              <p className="text-slate-700 leading-relaxed">
+                Notre approche allie techniques traditionnelles (tenons-mortaises) and outils de découpe numérique pour des ajustements parfaits, même dans les bâtis anciens les plus complexes.
               </p>
             </div>
 
@@ -319,36 +325,36 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Votre projet</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Portes intérieures et extérieures</span>
+                      <span>Dressings & Placards sur mesure intégrés</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Placards et dressings sur mesure</span>
+                      <span>Bibliothèques & Meubles TV architecturaux</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Parquets massifs et contrecollés</span>
+                      <span>Portes intérieures haute finition & chambranles</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Bibliothèques et étagères</span>
+                      <span>Parquets massifs, contrecollés & Point de Hongrie</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Escaliers et garde-corps</span>
+                      <span>Claustras, verrières bois & séparations d'espace</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Boiseries décoratives</span>
+                      <span>Agencement de cuisines & mobilier de bain</span>
                     </li>
                   </ul>
                 </div>
@@ -358,30 +364,35 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                       <Check className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous propose une expertise complète en menuiserie, que ce soit pour des ouvrages traditionnels en bois massif ou des créations contemporaines alliant différents matériaux nobles parfaitement adaptés à votre projet.
+                    Groupe BML Rénovation assure des finitions millimétriques. Nous traitons nos bois avec des huiles and vernis éco-responsables pour préserver la santé de votre habitat and la beauté naturelle du veinage.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
+              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Prêt à Démarrer Votre Projet ?
+                  {isGrenoble ? "Un meuble unique à Grenoble ?" : "Votre Agencement Signature"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
-                  Notre équipe de menuisiers qualifiés est à votre écoute pour donner vie à vos idées.
+                  {isGrenoble
+                    ? "Profitez du savoir-faire de nos menuisiers grenoblois pour valoriser votre patrimoine."
+                    : "Une seule équipe pour la menuiserie, l'électricité and les finitions de sol."}
                 </p>
-                <p className="text-base mb-8 opacity-90">
-                  Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé.
+                <p className="text-base mb-8 opacity-90 italic">
+                  Étude de conception and plans 3D fournis après validation du devis.
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
                 >
-                  <Phone className="w-5 h-5" />
-                  Demander un devis gratuit
+                  Concevoir mon projet bois
+                  <div className="flex flex-col items-center ml-2">
+                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
+                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -389,161 +400,325 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
+      {/* 4-Step Process Section */}
+      <section className="pt-16 pb-8 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              PROCESSUS DE CRÉATION
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Votre menuiserie sur mesure en 4 étapes clés
+              </span>
+            </h2>
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Prise de Cotes",
+                desc: "Mesure laser précise de vos espaces and étude des contraintes techniques (murs, fluides)."
+              },
+              {
+                step: "02",
+                title: "Plans & Design",
+                desc: "Modélisation 3D de l'ouvrage, choix des essences, des quincailleries and des finitions."
+              },
+              {
+                step: "03",
+                title: "Fabrication",
+                desc: "Usinage en atelier, assemblage traditionnel and application des traitements protecteurs."
+              },
+              {
+                step: "04",
+                title: "Pose & Ajustement",
+                desc: "Installation par nos compagnons menuisiers, réglages des jeux and finitions de jointoiement."
+              }
+            ].map((s, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
+                  {s.step}
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Architect Partnership Section */}
+      <section className="py-10 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div>
+                <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                  DESIGN & ACCOMPAGNEMENT
+                </span>
+                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                  <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                    L'œil d'un architecte offert pour votre agencement
+                  </span>
+                </h2>
+              </div>
+              
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+                <p>
+                  Une menuiserie réussie demande une vision architecturale autant que technique. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design.
+                </p>
+                <p>
+                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour la conception des meubles sur mesure, le choix des essences and l'harmonisation avec vos futurs éclairages. C'est l'assurance d'un intérieur cohérent and luxueux.
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
+                {[
+                  { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
+                  { title: "Atelier Local", desc: "Fabrication artisanale Isère", icon: "🔨" },
+                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
+                  { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
+                  { title: "Bois Certifiés", desc: "Origine France & PEFC", icon: "🌲" },
+                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
+                ].map((usp, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <span className="text-2xl">{usp.icon}</span>
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
+                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                Lancer mon projet de menuiserie
+                <div className="flex flex-col items-center ml-1">
+                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                </div>
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative hidden lg:block"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+                <OptimizedImage
+                  src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
+                  alt="Design Menuiserie Espaces Alpins"
+                  className="w-full h-auto object-contain opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
+                    <p className="text-xl font-semibold">"Le bois sculpte la lumière and définit l'espace."</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Expertise Grid Section */}
+      <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                COMPÉTENCES
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                Notre savoir-faire à<br />votre service
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  L'excellence à chaque ajustement
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans tous les domaines de la menuiserie{isGrenoble && " à Grenoble et en Isère"}. Notre expertise couvre la menuiserie intérieure et extérieure : pose de portes et fenêtres, création de placards et dressings, pose de parquets traditionnels et contemporains, fabrication d'escaliers sur mesure, réalisation de boiseries décoratives, et agencement d'espaces de rangement optimisés.
+              <p className="text-slate-700 leading-relaxed">
+                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos menuisiers internes avec nos autres corps d'état pour que la partie agencement de votre chantier soit un succès total.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                  <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="7" height="7" />
-                    <rect x="14" y="3" width="7" height="7" />
-                    <rect x="14" y="14" width="7" height="7" />
-                    <rect x="3" y="14" width="7" height="7" />
-                  </svg>
-                  <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-                </div>
-                <div className="px-6 pt-8 pb-6">
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Portes intérieures et extérieures</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Fenêtres bois et mixtes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Volets battants et coulissants</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Vérandas et pergolas</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Terrasses bois</span>
-                    </li>
+              {[
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <rect x="3" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="3" width="7" height="7" rx="1" />
+                      <rect x="14" y="14" width="7" height="7" rx="1" />
+                      <rect x="3" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                  ),
+                  title: "Espaces",
+                  items: ["Dressings sur mesure", "Bibliothèques Murales", "Cuisines artisanales", "Espaces de travail", "Suites parentales"]
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
+                      <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
+                      <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                  title: "Métiers",
+                  items: ["Menuiserie intérieure", "Parqueterie noble", "Pose d'escaliers", "Verrières bois", "Moulures & Boiseries"]
+                },
+                {
+                  icon: (
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  ),
+                  title: "Engagement",
+                  items: ["Plans 3D offerts", "Essences certifiées", "Garantie décennale", "Suivi post-pose", "Finition soignée"]
+                }
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <ul className="space-y-4">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
+                        <span className="text-sm font-medium">{item}</span>
+                      </li>
+                    ))}
                   </ul>
-                </div>
-              </div>
-
-              <div className="bg-white overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                  <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                  </svg>
-                  <h3 className="text-lg font-bold uppercase tracking-wider">Métiers</h3>
-                </div>
-                <div className="px-6 pt-8 pb-6">
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Parquets massifs et stratifiés</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Escaliers sur mesure</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Garde-corps et rampes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Lambris et boiseries</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Plinthes et moulures</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Habillages décoratifs</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-white overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                  <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
-                    <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
-                    <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
-                  </svg>
-                  <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-                </div>
-                <div className="px-6 pt-8 pb-6">
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Conception et plans 3D</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Choix des essences de bois</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Fabrication en atelier</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Pose et installation</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                      <span>Finitions et traitements</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8 bg-white">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Un Projet de Menuiserie en Tête ?
+      {/* Certifications Section */}
+      <section className="py-16 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-12">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              LABELS & GARANTIES
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Une sécurité certifiée pour vos ouvrages bois
+              </span>
             </h2>
-            <p className="text-lg mb-6 opacity-90">
-              Nos artisans menuisiers transforment vos idées en créations sur mesure avec un savoir-faire d'exception.
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              Découvrez comment nous pouvons sublimer vos espaces avec des ouvrages en bois nobles et durables.
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
+            {[
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
+              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
+              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
+              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
+              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
+              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
+              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
+              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
+              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
+              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
+              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
+              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+            ].map((cert, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
+              >
+                <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <PartnersSection partners={menuiseriePartners} />
-      <FooterSection onNavigate={onNavigate} />
+      {/* Partners Section */}
+      <PartnersSection />
+
+      {/* FAQ Section */}
+      <ServiceFAQ
+        title="FAQ Menuiserie"
+        description="Les réponses de nos artisans pour vos projets d'agencement bois."
+        items={[
+          {
+            id: "me1",
+            question: "Quelles sont les essences de bois que vous travaillez ?",
+            answer: "Nous travaillons une large gamme d'essences adaptées à chaque usage. Le CHÊNE pour sa noblesse and résistance (parquets, escaliers), le FRÊNE pour sa clarté contemporaine, le NOYER pour son prestige, and des résineux comme le MÉLÈZE pour les ouvrages extérieurs."
+          },
+          {
+            id: "me2",
+            question: "Est-il possible de créer un dressing avec des portes coulissantes invisibles ?",
+            answer: "Absolument. En tant qu'experts en agencement, nous installons des systèmes de rails encastrés and des finitions affleurantes qui permettent une intégration parfaite dans vos cloisons, pour une esthétique minimaliste sans aucune visserie apparente."
+          },
+          {
+            id: "me3",
+            question: "Réalisez-vous la pose de parquets sur d'anciens sols ?",
+            answer: "Oui, c'est possible après une préparation rigoureuse du support (ragréage si nécessaire). Nous maîtrisons la pose de parquets massifs collés, de parquets contrecollés flottants and même la restauration de parquets anciens avec ponçage and vitrification."
+          },
+          {
+            id: "me4",
+            question: "Combien de temps faut-il pour fabriquer un meuble sur mesure ?",
+            answer: "La fabrication en atelier dépend de la complexité de l'ouvrage. Comptez généralement 4 à 6 semaines entre la validation des plans 3D and la pose finale. Ce délai garantit le temps nécessaire au séchage des finitions and à la précision de l'ajustage."
+          },
+          {
+            id: "me5",
+            question: "Gérez-vous également la peinture ou le vernis des meubles ?",
+            answer: "Oui, nos ouvrages sont livrés totalement finis. Nous disposons d'une cabine de finition pour l'application de laqués, de vernis polyuréthanes ou d'huiles naturelles, selon le rendu souhaité (mat, satiné ou brillant)."
+          }
+        ]}
+      />
+
+      <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
     </div>
   );
 };

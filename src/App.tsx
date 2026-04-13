@@ -8,12 +8,12 @@ import { generateGlobalSeoSchemas } from './lib/seo-global-schema';
 import HeroSection from './components/ui/hero-section';
 import PartnerCarouselOnly from './components/PartnerCarouselOnly';
 import { heroConfigs } from './data/hero-config';
-const Amenagement = lazy(() => import('./components/Amenagement'));
-const BoutiquesBureaux = lazy(() => import('./components/BoutiquesBureaux'));
-const Appartements = lazy(() => import('./components/Appartements'));
-const Chambres = lazy(() => import('./components/Chambres'));
+const Amenagement = lazy(() => import('./pages/Amenagement'));
+const BoutiquesBureaux = lazy(() => import('./pages/BoutiquesBureaux'));
+const Appartements = lazy(() => import('./pages/Appartements'));
+const Chambres = lazy(() => import('./pages/Chambres'));
 const Chauffage = lazy(() => import('./components/Chauffage'));
-const TerrasseBois = lazy(() => import('./components/TerrasseBois'));
+const TerrasseBois = lazy(() => import('./pages/TerrasseBois'));
 const Piscine = lazy(() => import('./pages/Piscine'));
 const MaisonsVillas = lazy(() => import('./pages/MaisonsVillas'));
 const Menuiserie = lazy(() => import('./pages/Menuiserie'));
@@ -44,6 +44,7 @@ const ForumConverter = lazy(() => import('./pages/ForumConverter'));
 const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
 import PageLoader from './components/PageLoader';
 
+import ArchitectPartnershipSection from './components/ArchitectPartnershipSection';
 import RenovationArchitectureSection from './components/RenovationArchitectureSection';
 import ProjectStepsSection from './components/ProjectStepsSection';
 import SocialProofBannerGrenoble from './components/SocialProofBannerGrenoble';
@@ -480,6 +481,7 @@ function App() {
           <PartnerCarouselOnly />
           <SocialProofBannerGrenoble />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
+          <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
 
           <NotreSecteur />
 
