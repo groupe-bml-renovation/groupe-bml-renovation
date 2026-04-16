@@ -35,7 +35,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             src={image}
             alt={title}
             className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
-            priority={true}
+            priority={false}
+            width={384}
+            height={288}
           />
 
           {/* Subtle overlay on hover */}

@@ -48,6 +48,9 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
               src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png"
               alt="BML Rénovation Logo"
               className="h-24 w-auto object-contain"
+              width={160}
+              height={96}
+              loading="lazy"
             />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">BML Rénovation</h2>
@@ -506,6 +509,9 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
               src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Playfair%20Display-11.png"
               alt="10 ans badge"
               className="h-48 w-auto object-contain"
+              width={192}
+              height={192}
+              loading="lazy"
             />
           </motion.div>
           <motion.p

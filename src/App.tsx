@@ -44,21 +44,19 @@ const ForumConverter = lazy(() => import('./pages/ForumConverter'));
 const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
 import PageLoader from './components/PageLoader';
 
-import ArchitectPartnershipSection from './components/ArchitectPartnershipSection';
-import RenovationArchitectureSection from './components/RenovationArchitectureSection';
-import ProjectStepsSection from './components/ProjectStepsSection';
-import SocialProofBannerGrenoble from './components/SocialProofBannerGrenoble';
-import PartnersSection from './components/PartnersSection';
+const ArchitectPartnershipSection = lazy(() => import('./components/ArchitectPartnershipSection'));
+const RenovationArchitectureSection = lazy(() => import('./components/RenovationArchitectureSection'));
+const ProjectStepsSection = lazy(() => import('./components/ProjectStepsSection'));
+const SocialProofBannerGrenoble = lazy(() => import('./components/SocialProofBannerGrenoble'));
+const PartnersSection = lazy(() => import('./components/PartnersSection'));
+const NotreSecteur = lazy(() => import('./components/NotreSecteur'));
+const ProjectsCarousel = lazy(() => import('./components/ProjectsCarousel'));
+
 import { useVoiceflow } from './hooks/useVoiceflow';
 import { renovationSectionsConfig } from './data/renovation-sections-config';
 import { renovationSectionsConfigGrenoble } from './data/renovation-sections-config-grenoble';
-import NotreSecteur from './components/NotreSecteur';
-
-
 import Navigation from './components/Navigation';
 import StickyDemandeCTA from './components/StickyDemandeCTA';
-
-import ProjectsCarousel from './components/ProjectsCarousel';
 const ServicesTabbedCarousel = lazy(() => import('./components/ServicesTabbedCarousel'));
 const GoogleReviews = lazy(() => import('./components/GoogleReviews'));
 const UnifiedContactForm = lazy(() => import('./components/UnifiedContactForm'));

@@ -37,8 +37,9 @@ export default function PartnerCarouselOnly() {
         alt={partner.name}
         className="h-10 md:h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
         loading="eager"
-        decoding="sync"
-        {...({ fetchPriority: "high" } as any)}
+        decoding="async"
+        width={144}
+        height={44}
       />
       <span className="text-[11px] md:text-xs font-semibold text-slate-600 text-center leading-tight">
         {partner.description}

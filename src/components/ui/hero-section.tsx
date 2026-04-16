@@ -67,7 +67,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           src={posterUrl} 
           alt="Hero background" 
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-40'}`}
-          fetchPriority="high"
+          {...({ fetchPriority: "high" } as any)}
+          width={1920}
+          height={1080}
         />
       )}
       
@@ -182,17 +184,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </motion.a>
             
-            <motion.div
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="pt-2 sm:pt-3"
-            >
-              <p className="text-slate-400 text-[10px] sm:text-xs font-medium tracking-[0.15em] uppercase leading-relaxed text-center">
-                Votre projet, <br />
-                dessiné par des architectes.
-              </p>
-            </motion.div>
           </div>
         </div>
       </div>

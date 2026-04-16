@@ -9,9 +9,12 @@
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
   <link rel="dns-prefetch" href="https://cdn.voiceflow.com" />
   <link rel="dns-prefetch" href="https://general-runtime.voiceflow.com" />
+  <link rel="preconnect" href="https://cdn.voiceflow.com" crossorigin />
+  <link rel="preconnect" href="https://general-runtime.voiceflow.com" crossorigin />
   <link rel="preconnect" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="dns-prefetch" href="https://images.pexels.com" />
   <link rel="preconnect" href="https://images.pexels.com" crossorigin />
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
@@ -117,7 +120,10 @@
   </script>
 
   <style id="critical-path-css">
-    .hero-bg-dark { background-color: #0f172a; }
+    :root { --nav-height: 80px; }
+    .hero-bg-dark { background-color: #0f172a; min-height: 100vh; display: flex; align-items: center; }
+    nav.fixed { height: var(--nav-height); background: white; border-bottom: 1px solid #f3f4f6; }
+    .header-logo { height: 5rem; width: 160px; background-color: transparent; }
   </style>
 </head>
 
