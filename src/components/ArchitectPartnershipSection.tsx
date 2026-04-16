@@ -68,7 +68,7 @@ export const ArchitectPartnershipSection: React.FC<ArchitectPartnershipSectionPr
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  Votre projet de rénovation, dessiné par nos architectes d’intérieur.
+                  Votre projet de rénovation décoré par nos architectes d’intérieur.
                 </span>
               </h2>
             </div>

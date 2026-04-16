@@ -477,6 +477,7 @@ function App() {
             reviewLink={selectedHeroConfig.reviewLink}
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
+          {measureComponentRenderTime('ProjectsCarousel').start()}
           <PartnerCarouselOnly />
           <SocialProofBannerGrenoble />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
@@ -494,10 +495,12 @@ function App() {
           <SocialProofBannerGrenoble />
 
           <div ref={(el) => { if (el) measureComponentRenderTime('GoogleReviews').end(); }}>
+            {measureComponentRenderTime('GoogleReviews').start()}
             <GoogleReviews />
           </div>
 
           <div ref={(el) => { if (el) measureComponentRenderTime('UnifiedContactForm').end(); }}>
+            {measureComponentRenderTime('UnifiedContactForm').start()}
             <UnifiedContactForm />
           </div>
 
