@@ -76,9 +76,17 @@ export const useVoiceflow = () => {
       document.body.appendChild(scriptRef.current);
     };
 
-    initTimerRef.current = window.setTimeout(() => {
-      loadVoiceflowScript();
-    }, VOICEFLOW_INIT_DELAY);
+    const startSequence = () => {
+      initTimerRef.current = window.setTimeout(() => {
+        loadVoiceflowScript();
+      }, VOICEFLOW_INIT_DELAY);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(startSequence);
+    } else {
+      startSequence();
+    }
 
     return () => {
       if (initTimerRef.current) {

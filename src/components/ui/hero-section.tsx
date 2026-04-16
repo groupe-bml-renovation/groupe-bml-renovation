@@ -43,21 +43,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(true);
 
   useEffect(() => {
-    if (videoRef.current) {
-      // Force defaultMuted for iOS autoplay policies
+    const nav = navigator as any;
+    if (nav.connection) {
+      if (nav.connection.saveData || (nav.connection.effectiveType && ['slow-2g', '2g', '3g'].includes(nav.connection.effectiveType))) {
+        setShouldLoadVideo(false);
+        return;
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (shouldLoadVideo && videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.warn("Auto-play was prevented by browser:", error);
-        });
+        playPromise.catch(() => {});
       }
     }
-  }, [videoUrl]);
+  }, [videoUrl, shouldLoadVideo]);
 
   return (
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
@@ -73,27 +81,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         />
       )}
       
-      <video
-        key={videoUrl}
-        ref={videoRef}
-        className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${
-          isVideoReady ? 'opacity-40' : 'opacity-0'
-        }`}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={posterUrl}
-        preload="metadata"
-        onLoadedData={() => setIsVideoReady(true)}
-        controlsList="nodownload nofullscreen noremoteplayback"
-        disablePictureInPicture
-        disableRemotePlayback
-        onContextMenu={(e) => e.preventDefault()}
-        {...({ fetchPriority: "high" } as any)}
-      >
-        <source src={videoUrl} type="video/mp4" />
-      </video>
+      {shouldLoadVideo && (
+        <video
+          key={videoUrl}
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${
+            isVideoReady ? 'opacity-40' : 'opacity-0'
+          }`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={posterUrl}
+          preload="metadata"
+          onLoadedData={() => setIsVideoReady(true)}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
+          onContextMenu={(e) => e.preventDefault()}
+          {...({ fetchPriority: "high" } as any)}
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         {primaryHeading && (

@@ -484,15 +484,21 @@ function App() {
           <NotreSecteur />
 
           <ProjectStepsSection onNavigate={handleNavigate} />
-          <ProjectsCarousel onNavigate={handleNavigate} />
+          <div ref={(el) => { if (el) measureComponentRenderTime('ProjectsCarousel').end(); }}>
+            <ProjectsCarousel onNavigate={handleNavigate} />
+          </div>
 
           <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
 
           <SocialProofBannerGrenoble />
 
-          <GoogleReviews />
+          <div ref={(el) => { if (el) measureComponentRenderTime('GoogleReviews').end(); }}>
+            <GoogleReviews />
+          </div>
 
-          <UnifiedContactForm />
+          <div ref={(el) => { if (el) measureComponentRenderTime('UnifiedContactForm').end(); }}>
+            <UnifiedContactForm />
+          </div>
 
 
           {/* <ServicesTabbedCarousel

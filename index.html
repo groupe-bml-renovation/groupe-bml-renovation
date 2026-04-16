@@ -53,32 +53,22 @@
     }
   </script>
 
-  <!-- Google Tag Manager (deferred to after page interactive) -->
+  <!-- Google Tag Manager (deferred to idle) -->
   <script id="gtm-init-script">
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        window.gtmInitTimer = setTimeout(() => {
-          (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-              'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-              j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-          })(window, document, 'script', 'dataLayer', 'GTM-PT4KBH2Z');
-        }, 3500);
-      });
+    const initGTM = () => {
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start': new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-PT4KBH2Z');
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => setTimeout(initGTM, 3500));
     } else {
-      window.gtmInitTimer = setTimeout(() => {
-        (function (w, d, s, l, i) {
-          w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-              new Date().getTime(), event: 'gtm.js'
-          }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PT4KBH2Z');
-      }, 3500);
+      window.addEventListener('load', () => setTimeout(initGTM, 3500));
     }
   </script>
 
@@ -107,16 +97,20 @@
   <meta property="twitter:description" content="Groupe BML Rénovation est spécialisé dans la rénovation haut de gamme d'appartements et maisons depuis 10 ans à Grenoble et dans toute l'Isère." />
   <meta property="twitter:image" content="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Preview.png" />
 
-  <!-- ContentSquare User Experience Analytics (Deferred) -->
+  <!-- ContentSquare User Experience Analytics (Deferred to Idle) -->
   <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const script = document.createElement('script');
-        script.src = "https://t.contentsquare.net/uxa/0c29eb0c283d1.js";
-        script.async = true;
-        document.head.appendChild(script);
-      }, 4000);
-    });
+    const initCS = () => {
+      const script = document.createElement('script');
+      script.src = "https://t.contentsquare.net/uxa/0c29eb0c283d1.js";
+      script.async = true;
+      document.head.appendChild(script);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => setTimeout(initCS, 4000));
+    } else {
+      window.addEventListener('load', () => setTimeout(initCS, 4000));
+    }
   </script>
 
   <style id="critical-path-css">
