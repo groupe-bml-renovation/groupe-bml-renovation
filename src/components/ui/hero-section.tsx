@@ -44,41 +44,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
 
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-
   useEffect(() => {
-    // Aggressive deferral to eliminate 143MB initial payload
-    // Only load video after 6s delay OR first interaction
-    let timeoutId: number;
-    
-    const triggerVideoLoad = () => {
-      setShouldLoadVideo(true);
-      removeEventListeners();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-
-    const removeEventListeners = () => {
-      window.removeEventListener('scroll', triggerVideoLoad);
-      window.removeEventListener('touchstart', triggerVideoLoad);
-      window.removeEventListener('mousemove', triggerVideoLoad);
-    };
-
-    // Fallback timer
-    timeoutId = window.setTimeout(triggerVideoLoad, 6000);
-
-    // Interaction listeners
-    window.addEventListener('scroll', triggerVideoLoad, { passive: true });
-    window.addEventListener('touchstart', triggerVideoLoad, { passive: true });
-    window.addEventListener('mousemove', triggerVideoLoad, { passive: true });
-
-    return () => {
-      removeEventListeners();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (shouldLoadVideo && videoRef.current) {
+    if (videoRef.current) {
       // Force defaultMuted for iOS autoplay policies
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
@@ -90,7 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         });
       }
     }
-  }, [shouldLoadVideo, videoUrl]);
+  }, [videoUrl]);
 
   return (
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
@@ -101,35 +68,32 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           alt="Hero background" 
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-40'}`}
           {...({ fetchPriority: "high" } as any)}
-          loading="eager"
           width={1920}
           height={1080}
         />
       )}
       
-      {shouldLoadVideo && (
-        <video
-          key={videoUrl}
-          ref={videoRef}
-          className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${
-            isVideoReady ? 'opacity-40' : 'opacity-0'
-          }`}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={posterUrl}
-          preload="none"
-          onLoadedData={() => setIsVideoReady(true)}
-          controlsList="nodownload nofullscreen noremoteplayback"
-          disablePictureInPicture
-          disableRemotePlayback
-          onContextMenu={(e) => e.preventDefault()}
-          {...({ fetchPriority: "high" } as any)}
-        >
-          <source src={videoUrl} type="video/mp4" />
-        </video>
-      )}
+      <video
+        key={videoUrl}
+        ref={videoRef}
+        className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${
+          isVideoReady ? 'opacity-40' : 'opacity-0'
+        }`}
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster={posterUrl}
+        preload="metadata"
+        onLoadedData={() => setIsVideoReady(true)}
+        controlsList="nodownload nofullscreen noremoteplayback"
+        disablePictureInPicture
+        disableRemotePlayback
+        onContextMenu={(e) => e.preventDefault()}
+        {...({ fetchPriority: "high" } as any)}
+      >
+        <source src={videoUrl} type="video/mp4" />
+      </video>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
         {primaryHeading && (

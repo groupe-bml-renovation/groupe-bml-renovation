@@ -64,23 +64,6 @@ const EbookPresentationSection = lazy(() => import('./components/EbookPresentati
 const HomePageFAQ = lazy(() => import('./components/HomePageFAQ'));
 const FooterSection = lazy(() => import('./components/footer-section').then(module => ({ default: module.FooterSection })));
 
-const SectionSkeleton = ({ height = "400px" }: { height?: string }) => (
-  <div className="w-full bg-slate-50 animate-pulse rounded-3xl mb-8" style={{ height }} />
-);
-
-const CarouselSkeleton = () => (
-  <div className="w-full py-20 bg-white overflow-hidden animate-pulse">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="h-8 w-64 bg-slate-100 rounded mb-12 mx-auto" />
-      <div className="flex gap-6">
-        {[1, 2, 3].map(i => (
-          <div key={i} className="flex-shrink-0 w-80 md:w-96 h-80 bg-slate-50 rounded-[1.75rem]" />
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -493,30 +476,15 @@ function App() {
             reviewLink={selectedHeroConfig.reviewLink}
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
-          <Suspense fallback={<SectionSkeleton height="200px" />}>
-            <PartnerCarouselOnly />
-          </Suspense>
-          <Suspense fallback={<SectionSkeleton height="100px" />}>
-            <SocialProofBannerGrenoble />
-          </Suspense>
-          <Suspense fallback={<SectionSkeleton height="500px" />}>
-            <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
-          </Suspense>
-          <Suspense fallback={<SectionSkeleton height="400px" />}>
-            <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
-          </Suspense>
+          <PartnerCarouselOnly />
+          <SocialProofBannerGrenoble />
+          <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
+          <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
 
-          <Suspense fallback={<SectionSkeleton height="300px" />}>
-            <NotreSecteur />
-          </Suspense>
+          <NotreSecteur />
 
-          <Suspense fallback={<SectionSkeleton height="400px" />}>
-            <ProjectStepsSection onNavigate={handleNavigate} />
-          </Suspense>
-          
-          <Suspense fallback={<CarouselSkeleton />}>
-            <ProjectsCarousel onNavigate={handleNavigate} />
-          </Suspense>
+          <ProjectStepsSection onNavigate={handleNavigate} />
+          <ProjectsCarousel onNavigate={handleNavigate} />
 
           <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
 

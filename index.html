@@ -5,49 +5,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <link rel="dns-prefetch" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://cdn.voiceflow.com" />
+  <link rel="dns-prefetch" href="https://general-runtime.voiceflow.com" />
+  <link rel="preconnect" href="https://cdn.voiceflow.com" crossorigin />
+  <link rel="preconnect" href="https://general-runtime.voiceflow.com" crossorigin />
   <link rel="preconnect" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="dns-prefetch" href="https://images.pexels.com" />
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="preconnect" href="https://pub-fad5314e0b4f4ac9ac1d628fe5865ddf.r2.dev" crossorigin />
+  <link rel="preconnect" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev" crossorigin />
 
-  <!-- Google tag (gtag.js) - Defer to after load -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17790717407"></script>
   <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const script = document.createElement('script');
-        script.src = "https://www.googletagmanager.com/gtag/js?id=AW-17790717407";
-        script.async = true;
-        document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'AW-17790717407');
-        gtag('config', 'AW-17790717407/WGotCNmBsoscEN-bo6NC', {
-          'phone_conversion_number': '07 56 91 59 97'
-        });
+    gtag('config', 'AW-17790717407');
 
-        // Conversion helper
-        window.gtag_report_conversion = function(url) {
-          var callback = function () {
-            if (typeof (url) != 'undefined') {
-              window.location = url;
-            }
-          };
-          gtag('event', 'conversion', {
-            'send_to': 'AW-17790717407/_73uCO7D7ZUcEN-bo6NC',
-            'value': 1200.0,
-            'currency': 'EUR',
-            'event_callback': callback
-          });
-          return false;
-        };
-      }, 3000);
+    gtag('config', 'AW-17790717407/WGotCNmBsoscEN-bo6NC', {
+      'phone_conversion_number': '07 56 91 59 97'
     });
+  </script>
+
+  <!-- Event snippet for Click pour appeler surite conversion page -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17790717407/_73uCO7D7ZUcEN-bo6NC',
+        'value': 1200.0,
+        'currency': 'EUR',
+        'event_callback': callback
+      });
+      return false;
+    }
   </script>
 
   <!-- Google Tag Manager (deferred to after page interactive) -->
