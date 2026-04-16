@@ -1,4 +1,8 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
+<<<<<<< HEAD
+=======
+import { measureComponentRenderTime } from './lib/web-vitals';
+>>>>>>> 4ff4746 (Fix mobile hero and update project files)
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';

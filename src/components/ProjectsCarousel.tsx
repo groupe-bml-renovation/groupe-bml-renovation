@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+<<<<<<< HEAD
 import { featuredProjects_sorted } from '@/data/projects-carousel-config';
+=======
+import { featuredProjects_sorted } from '../data/projects-carousel-config';
+>>>>>>> 4ff4746 (Fix mobile hero and update project files)
 
 interface ProjectsCarouselProps {
   onNavigate?: (page: string) => void;
