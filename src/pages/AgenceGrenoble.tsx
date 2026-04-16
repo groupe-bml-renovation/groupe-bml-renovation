@@ -9,6 +9,7 @@ import {
 import { FooterSection } from '../components/footer-section';
 import PageLoader from '../components/PageLoader';
 import UnifiedContactForm from '../components/UnifiedContactForm';
+import { OptimizedImage } from '../components/OptimizedImage';
 
 const AgenceGrenoble: React.FC = () => {
     const [activeProject, setActiveProject] = useState(0);

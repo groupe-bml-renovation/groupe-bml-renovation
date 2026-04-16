@@ -177,7 +177,7 @@ const Navigation: React.FC<NavigationProps> = ({
             width={160}
             height={80}
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </button>
 

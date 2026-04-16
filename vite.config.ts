@@ -140,12 +140,11 @@ export default defineConfig({
       },
     },
     cssCodeSplit: true,
-    minify: 'oxc',
-    oxcOptions: {
+    minify: 'terser',
+    terserOptions: {
       compress: {
         drop_console: false,
         drop_debugger: true,
-        pure_funcs: undefined,
       },
       output: {
         comments: false,
