@@ -683,7 +683,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                 viewport={{ once: true }}
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
-                <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
+                <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" width={120} height={48} loading="lazy" />
                 <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
               </motion.div>
             ))}
@@ -760,7 +760,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                 viewport={{ once: true }}
                 className="flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
-                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" width={120} height={44} loading="lazy" />
               </motion.div>
             ))}
           </div>

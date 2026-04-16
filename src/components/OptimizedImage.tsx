@@ -23,20 +23,40 @@ export const OptimizedImage = ({
   const imgRef = useRef<HTMLImageElement>(null);
 
   const generateSrcSet = (url: string) => {
-    if (!url.includes('cloudinary.com')) return undefined;
+    if (url.includes('cloudinary.com')) {
+      const widths = [320, 640, 768, 1024, 1280, 1536];
+      return widths
+        .map(w => {
+          const optimizedUrl = url.replace('/upload/', `/upload/w_${w},q_auto,f_auto/`);
+          return `${optimizedUrl} ${w}w`;
+        })
+        .join(', ');
+    }
+    
+    if (url.includes('images.unsplash.com')) {
+      const widths = [320, 640, 768, 1024, 1280, 1600, 2000];
+      return widths
+        .map(w => {
+          // Remove existing w/q/auto params and add new ones
+          const baseUrl = url.split('?')[0];
+          const optimizedUrl = `${baseUrl}?auto=format&fit=crop&q=80&w=${w}`;
+          return `${optimizedUrl} ${w}w`;
+        })
+        .join(', ');
+    }
 
-    const widths = [320, 640, 768, 1024, 1280, 1536];
-    return widths
-      .map(w => {
-        const optimizedUrl = url.replace('/upload/', `/upload/w_${w},q_auto,f_auto/`);
-        return `${optimizedUrl} ${w}w`;
-      })
-      .join(', ');
+    return undefined;
   };
 
   const getOptimizedSrc = (url: string) => {
-    if (!url.includes('cloudinary.com')) return url;
-    return url.replace('/upload/', '/upload/q_auto,f_auto/');
+    if (url.includes('cloudinary.com')) {
+      return url.replace('/upload/', '/upload/q_auto,f_auto/');
+    }
+    if (url.includes('images.unsplash.com')) {
+      const baseUrl = url.split('?')[0];
+      return `${baseUrl}?auto=format&fit=crop&q=80&w=${width || 800}`;
+    }
+    return url;
   };
 
   return (

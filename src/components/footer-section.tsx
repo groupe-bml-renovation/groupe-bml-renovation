@@ -13,6 +13,7 @@ import {
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import { FaYoutube, FaTiktok, FaPinterest } from "react-icons/fa"
 import { InterventionZones } from "./InterventionZones"
+import { LazyIframe } from "./ui/LazyIframe"
 
 interface FooterSectionProps {
   onNavigateToServices?: (serviceId?: string) => void;
@@ -54,7 +55,7 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
             />
           </div>
           <h2 className="text-2xl font-bold text-slate-900 mb-2">BML Rénovation</h2>
-          <p className="text-slate-600 max-w-md">Votre partenaire de confiance pour tous vos projets de rénovation depuis 10 ans.</p>
+          <p className="text-slate-700 max-w-md">Votre partenaire de confiance pour tous vos projets de rénovation depuis 10 ans.</p>
         </motion.div>
 
         <motion.div
@@ -438,9 +439,9 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
               </TooltipProvider>
             </div>
             <h3 className="mb-4 text-lg font-semibold">Contact</h3>
-            <address className="space-y-2 text-sm not-italic">
-              <p>Téléphone: <a href="tel:0756915997"><span>07 56 91 59 97</span></a></p>
-              <p>Email: contact@groupe-bml-renovation.com</p>
+            <address className="space-y-2 text-sm not-italic text-slate-700">
+              <p>Téléphone: <a href="tel:0756915997"><span className="font-semibold text-slate-900">07 56 91 59 97</span></a></p>
+              <p>Email: <span className="font-medium">contact@groupe-bml-renovation.com</span></p>
               <p className="pt-2 border-t mt-2">5 Av. Paul Verlaine, 38100 Grenoble</p>
             </address>
           </motion.div>
@@ -468,15 +469,17 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full h-64 rounded-lg overflow-hidden shadow-lg"
+            className="w-full h-64 rounded-lg overflow-hidden shadow-lg border-2 border-[#38bdf8]/10"
           >
-            <iframe
+            <LazyIframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18029.212838234685!2d5.703100730227123!3d45.1607314178529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af55e7fcef2a9%3A0x7fb9ce66faf8e6b9!2sGroupe%20BML%20R%C3%A9novation%20tout%20corps%20d&#39;%C3%A9tat!5e0!3m2!1sen!2sfr!4v1763451151876!5m2!1sen!2sfr"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
+              title="Groupe BML Rénovation - Localisation Grenoble"
+              loading="lazy"
             />
           </motion.div>
 
@@ -519,7 +522,7 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-sm text-muted-foreground"
+            className="text-sm text-slate-700"
           >
             © 2025 BML Rénovation. Tous droits réservés.
           </motion.p>

@@ -12,6 +12,25 @@ interface ProjectsCarouselProps {
   description?: string;
 }
 
+export const ProjectsCarouselSkeleton = () => (
+  <div className="w-full pt-16 md:pt-8 pb-8 md:pb-12 bg-white overflow-hidden animate-pulse">
+    <div className="mb-12">
+      <div className="text-center mb-12 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="h-4 w-40 bg-slate-100 mx-auto rounded mb-3" />
+        <div className="h-10 w-64 bg-slate-100 mx-auto rounded mb-4" />
+        <div className="h-20 w-full max-w-2xl bg-slate-100 mx-auto rounded" />
+      </div>
+    </div>
+    <div className="w-full px-4 md:px-6 lg:px-8">
+      <div className="flex gap-6 overflow-hidden">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="flex-shrink-0 w-80 md:w-96 h-[400px] bg-slate-50 rounded-[1.75rem]" />
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
   onNavigate,
   headerText = 'GALLERY DE RÉALISATIONS',

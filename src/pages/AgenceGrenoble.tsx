@@ -49,10 +49,13 @@ const AgenceGrenoble: React.FC = () => {
 
                 {/* Hero Section with Title Overlay */}
                 <section className="relative h-[450px] md:h-[550px] overflow-hidden">
-                    <img 
+                    <OptimizedImage 
                       src={images.hero} 
                       alt="Grenoble Landscape" 
                       className="w-full h-full object-cover"
+                      priority={true}
+                      width={1920}
+                      height={550}
                     />
                     <div className="absolute inset-0 bg-black/30" />
                     <div className="absolute inset-x-0 bottom-0 py-10 bg-gradient-to-t from-black/80 to-transparent">
@@ -77,10 +80,12 @@ const AgenceGrenoble: React.FC = () => {
                     <div className="max-w-5xl mx-auto">
                         <div className="bg-[#e9eff4] rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-white">
                             <div className="md:w-1/3 p-8 flex flex-col items-center text-center bg-white">
-                                <img 
+                                <OptimizedImage 
                                     src={images.manager} 
                                     alt="David" 
                                     className="w-32 h-32 rounded-full border-4 border-[#e9eff4] mb-4 object-cover"
+                                    width={128}
+                                    height={128}
                                 />
                                 <h2 className="text-2xl font-bold text-[#003265]">David</h2>
                                 <p className="text-slate-500 font-semibold mb-4 text-sm tracking-wide">Responsable d'agence</p>
@@ -152,10 +157,12 @@ const AgenceGrenoble: React.FC = () => {
                                 </div>
                             </div>
                             <div className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-2xl border-8 border-slate-50">
-                                <img 
+                                <OptimizedImage 
                                     src={images.shopfront} 
                                     alt="Illico Travaux Shop" 
                                     className="w-full h-auto transform hover:scale-105 transition-transform duration-700" 
+                                    width={600}
+                                    height={400}
                                 />
                             </div>
                         </div>
@@ -262,7 +269,7 @@ const AgenceGrenoble: React.FC = () => {
                                     onClick={() => setActiveProject(i)}
                                     className={`relative aspect-video rounded-xl overflow-hidden shadow-md transition-all ${activeProject === i ? 'ring-4 ring-[#f58220]' : 'opacity-60 hover:opacity-100'}`}
                                 >
-                                    <img src={img} className="w-full h-full object-cover" />
+                                    <img src={img} className="w-full h-full object-cover" width={300} height={169} loading="lazy" />
                                 </button>
                             ))}
                         </div>

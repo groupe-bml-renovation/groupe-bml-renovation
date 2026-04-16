@@ -209,3 +209,13 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>
 );
 
+// Manual Service Worker registration to avoid render-blocking
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(reg => console.log('SW registered:', reg))
+        .catch(err => console.log('SW error:', err));
+    }, 5000); // Delay of 5 seconds to ensure everything else is loaded
+  });
+}

@@ -101,7 +101,9 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Salon Design ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    loading="eager"
+                    loading="lazy"
+                    width={400}
+                    height={300}
                   />
                 </div>
               ))}
@@ -113,7 +115,9 @@ const ImageCarousel = () => {
                     src={img}
                     alt={`Salon Design ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    loading="eager"
+                    loading="lazy"
+                    width={400}
+                    height={300}
                   />
                 </div>
               ))}
@@ -165,6 +169,8 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
             alt="Salon de luxe baigné de lumière"
             className="w-full h-full object-cover"
             priority={true}
+            width={1920}
+            height={1080}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/40 to-slate-900/50" />
         </div>
@@ -288,7 +294,9 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                 src="https://images.unsplash.com/photo-1588471980726-8346cb477a33?w=1200&q=80"
                 alt="Salon moderne avec parquet and grandes baies vitrées"
                 className="w-full h-full object-cover"
-                loading="eager"
+                loading="lazy"
+                width={800}
+                height={600}
               />
             </motion.div>
           </div>
@@ -544,6 +552,8 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
                   alt="Design d'intérieur Espaces Alpins"
                   className="w-full h-auto object-contain"
+                  width={600}
+                  height={800}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
@@ -671,7 +681,14 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                 viewport={{ once: true }}
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
-                <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
+                <img 
+                  src={cert.logo} 
+                  alt={cert.name} 
+                  className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" 
+                  width={120}
+                  height={48}
+                  loading="lazy"
+                />
                 <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
               </motion.div>
             ))}
@@ -747,7 +764,14 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                 viewport={{ once: true }}
                 className="flex items-center justify-center transition-all duration-300 hover:scale-110"
               >
-                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+                <img 
+                  src={p.logoUrl} 
+                  alt={p.name} 
+                  className="max-h-11 md:max-h-12 w-auto object-contain" 
+                  width={120}
+                  height={44}
+                  loading="lazy"
+                />
               </motion.div>
             ))}
           </div>
