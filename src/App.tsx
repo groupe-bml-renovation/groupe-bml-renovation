@@ -12,7 +12,7 @@ const Amenagement = lazy(() => import('./pages/Amenagement'));
 const BoutiquesBureaux = lazy(() => import('./pages/BoutiquesBureaux'));
 const Appartements = lazy(() => import('./pages/Appartements'));
 const Chambres = lazy(() => import('./pages/Chambres'));
-const Chauffage = lazy(() => import('./components/Chauffage'));
+const Chauffage = lazy(() => import('./pages/Chauffage'));
 const TerrasseBois = lazy(() => import('./pages/TerrasseBois'));
 const Piscine = lazy(() => import('./pages/Piscine'));
 const MaisonsVillas = lazy(() => import('./pages/MaisonsVillas'));
@@ -28,7 +28,7 @@ const Plomberie = lazy(() => import('./pages/Plomberie'));
 const Electricite = lazy(() => import('./pages/Electricite'));
 const Climatisation = lazy(() => import('./pages/Climatisation'));
 const RevetementsSols = lazy(() => import('./pages/RevetementsSols'));
-const WallCoverings = lazy(() => import('./pages/WallCoverings'));
+const RevetementsMuraux = lazy(() => import('./pages/RevetementsMuraux'));
 const EspaceVerre = lazy(() => import('./pages/EspaceVerre'));
 const EtapesProjet = lazy(() => import('./components/EtapesProjet'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -126,7 +126,7 @@ function App() {
     if (currentPage === 'appartements') {
       return (
         <Suspense fallback={<PageLoader />}>
-          <Appartements onBack={() => handleNavigate('home')} onNavigate={(p, t) => handleNavigate(p, t)} />
+          <Appartements onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
         </Suspense>
       );
     }
@@ -222,7 +222,7 @@ function App() {
     if (currentPage === 'electricite') {
       return (
         <Suspense fallback={<PageLoader />}>
-          <Electricite onBack={() => handleNavigate('home')} />
+          <Electricite onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
         </Suspense>
       );
     }
@@ -359,7 +359,7 @@ function App() {
     if (currentPage === 'revetements-muraux') {
       return (
         <Suspense fallback={<PageLoader />}>
-          <WallCoverings onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+          <RevetementsMuraux onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
         </Suspense>
       );
     }

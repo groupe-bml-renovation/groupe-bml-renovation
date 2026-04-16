@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Accessibility, Layout, ShieldCheck, Ruler, Grid3X3, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
+import { salleDeBainPMRFAQs } from '../data/service-faqs';
 
 interface SallesDeBainPMRProps {
   onBack: () => void;
@@ -22,48 +21,27 @@ const ImageCarousel = () => {
     'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/G%20BML%20-%2001%20-%20Sdb%20pmr%201mois%2013000%E2%82%AC%20-%2007.png',
     'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2002.JPG',
     'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2003.jpeg',
-    'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/G%20BML%20-%2001%20-%20Sdb%20pmr%201mois%2013000%E2%82%AC%20-%2007.png',
-    'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2002.JPG',
-    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80',
-    'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/G%20BML%20-%2001%20-%20Sdb%20pmr%201mois%2013000%E2%82%AC%20-%2007.png'
+    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80',
+    'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/G%20BML%20-%2001%20-%20Sdb%20pmr%201mois%2013000%E2%82%AC%20-%2005.png'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
-      const firstSetWidth = itemWithGap * images.length;
-
-      if (newPosition <= 0) {
-        container.scrollLeft = firstSetWidth - itemWithGap;
-      } else {
-        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-      const firstSetWidth = itemWithGap * images.length;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      const newPosition = container.scrollLeft + itemWithGap;
-
-      if (newPosition >= firstSetWidth - itemWithGap) {
-        container.scrollLeft = 0;
-      } else if (newPosition >= maxScroll) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
     }
   };
 
@@ -102,8 +80,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Salle de Bain PMR ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Salle de Bain PMR Design ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -114,8 +92,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Salle de Bain PMR ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Salle de Bain PMR Design ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -131,7 +109,7 @@ const ImageCarousel = () => {
 const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -140,19 +118,39 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Salle de Bain PMR Grenoble | Accessibilité & Sécurité | Groupe BML' : 'Salle de Bain PMR | Aménagement Handicap & Sénior | Groupe BML Rénovation'}</title>
-        <meta name="description" content={isGrenoble ? "Experts en salle de bain PMR à Grenoble. Douches extra-plates, matériel de sécurité and ergonomie certifiée. Devis gratuit and accompagnement subventions." : "Spécialiste de l'accessibilité salle de bain. Solutions PMR and Séniors : douches sécurisées, barres de maintien and automatisation. Garantie and normes respectées."} />
-        <meta name="keywords" content={isGrenoble ? "salle de bain PMR Grenoble, douche senior Grenoble, accessibilité handicapé Isère, aménagement PMR Grenoble" : "salle de bain PMR, douche sécurisée, accessibilité senior, aménagement handicap, rénovation PMR"} />
-        <meta property="og:title" content={isGrenoble ? "Salle de Bain PMR Grenoble | Autonomie & Confort" : "Rénovation PMR & Accessibilité | Groupe BML"} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>{isGrenoble ? "Salle de Bain PMR à Grenoble | Accessibilité & Sécurité | BML" : "Salles de Bain PMR & Accessibilité de Prestige | Rénovation Handicap | BML"}</title>
+        <meta name="description" content="Sublimez votre autonomie. Rénovation PMR, douche sécurisée, agencement ergonomique haut de gamme with architecte offert for votre confort and sécurité." />
+        <meta property="og:title" content="Salle de Bain PMR & Accessibilité | Groupe BML" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation - Salle de Bain PMR",
+            "description": isGrenoble ? "Expert en adaptation de salle de bain PMR à Grenoble" : "Entreprise spécialisée en accessibilité salle de bain haut de gamme",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
+
+      <div className="sr-only">
+        <h2>Expertise Salle de Bain PMR & Senior</h2>
+        <p>Adaptation and rénovation de salles de bains for Personnes à Mobilité Réduite and Seniors</p>
+        <h3>Douche PMR Grenoble</h3>
+        <h3>Installation MaPrimeAdapt'</h3>
+        <h3>Accessibilité RGE Qualibat</h3>
+        <h3>Architecte d'Intérieur Offert</h3>
+      </div>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%20Hero%20-%20After.jpeg.png"
-            alt="Salle de Bain PMR Haut de Gamme"
+            alt="Salle de bain PMR d'exception"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -167,19 +165,15 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>
-                  Salles de bain<br />PMR à Grenoble
-                </>
+                <>Salle de Bain PMR<br />à Grenoble</>
               ) : (
-                <>
-                  Salles de bain<br />PMR & Séniors
-                </>
+                <>Salles de Bain<br />PMR & Senior</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "La sécurité and l'autonomie sans compromis en Isère" : "L'excellence technique au service de votre indépendance"}
+              {isGrenoble ? "La sécurité and l'autonomie au cœur de l'Isère" : "L'excellence au service de votre indépendance and de votre confort"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -215,6 +209,14 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
                   </div>
                 </div>
               </motion.a>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(56,189,248,0.3)]"
+              >
+                Sécuriser mon autonomie
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -230,235 +232,170 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                ACCESSIBILITÉ & CONFORT
+                ACCESSIBILITÉ & BIEN-ÊTRE
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble 
-                    ? "Expert de l'adaptation PMR à Grenoble" 
-                    : "Votre salle de bain adaptée & sécurisée"}
+                  L'expertise ergonomique d'exception
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Rendre une salle de bain accessible ne signifie pas sacrifier l'esthétique. Nous concevons des espaces ergonomiques qui allient design contemporain and sécurité maximale.
-              </p>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
+                <p>
+                  Rendre une salle de bain accessible ne signifie pas sacrifier l'esthétique. Nous concevons des espaces ergonomiques qui allient design contemporain and sécurité maximale. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous redonnons du plaisir aux gestes du quotidien.
+                </p>
+                <p>
+                  {isGrenoble 
+                    ? "Nos experts en adaptation PMR à Grenoble maîtrisent les normes les plus strictes for sécuriser votre habitat. De la douche à l'italienne sans ressaut à l'installation de WC surélevés within Grenoble, nous orchestrons votre transformation with une propreté de chantier exemplaire and un accompagnement for les aides (MaPrimeAdapt')."
+                    : "Qu'il s'agisse de transformer une baignoire encombrante en une douche de plain-pied sécurisée or d'agencer une suite parentale ergonomique, nous appliquons une rigueur absolue. Chaque barre d'appui est fixée with renfort, chaque sol est certifié antidérapant PN24."}
+                </p>
+              </div>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise les <span className="text-black font-semibold">normes d'accessibilité PMR</span> les plus strictes. Nous transformons votre pièce d'eau pour garantir votre autonomie quotidienne avec des équipements de haute manufacture.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed mb-8">
-                {isGrenoble
-                  ? "Nos artisans interviennent dans tout l'Isère pour remplacer vos baignoires par des douches de plain-pied extra-plates. Nous vous accompagnons également dans les démarches d'aides and subventions pour votre projet d'adaptation."
-                  : "De la pose de barres de maintien design à l'élargissement des accès, nous gérons l'intégralité des travaux sous une responsabilité unique, garantissant une conformité parfaite and un confort immédiat."}
-              </p>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Démarrer mon projet PMR
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="grid sm:grid-cols-2 gap-6 mt-10">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Sols Antidérapants PN24</span>
                 </div>
-              </button>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Architecte d'Intérieur Offert</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <OptimizedImage
-                src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%20Hero%20-%20After.jpeg.png"
-                alt="Expertise PMR Salle de Bain"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#38bdf8]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%20Hero%20-%20After.jpeg.png"
+                  alt="Salle de bain PMR sécurisée design"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ImageCarousel />
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Réalisations Adaptées</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez comment nous marions sécurité and élégance within nos projets PMR.</p>
         </div>
+        <ImageCarousel />
       </section>
 
-      <section className="py-8 bg-slate-50">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
-            <div className="bg-[#f5f5f5] p-8">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "ERGONOMIE ISÈRE" : "SAVOIR-FAIRE PMR"}
-              </span>
-              <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Sécurité certifiée à Grenoble" : "L'excellence ergonomique"}
-                </span>
-              </h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                L'adaptation PMR demande une expertise technique pointue : renforcement des cloisons pour les barres d'appui, calcul des pentes d'évacuation and choix de revêtements antidérapants classés PN18 ou PN24.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed">
-                Notre approche intègre l'optimisation des rayons de giration, l'installation de robinetteries à levier prolongé and de miroirs inclinables pour un usage sans effort.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
+          <div className="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div className="lg:pr-12 order-2 lg:order-1">
+              <div className="space-y-10">
+                {[
+                  { 
+                    icon: <Accessibility className="w-6 h-6" />, 
+                    title: "Ergonomie Totale", 
+                    desc: "Étude des rayons de giration and des hauteurs d'usage for une autonomie sans compromis." 
+                  },
+                  { 
+                    icon: <Grid3X3 className="w-6 h-6" />, 
+                    title: "Matériaux Sécurisés", 
+                    desc: "Grès cérame antidérapant and profilés de douche extra-plats for limiter tout risque de chute." 
+                  },
+                  { 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Domotique Confort", 
+                    desc: "Détection de présence, éclairage nocturne automatique and robinetteries thermostatiques sécurisées." 
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6 group"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                      {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Pose de douches de plain-pied sans ressaut</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Installation de barres d'appui ergonomiques</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>WC suspendus à hauteur réglée (rallongés)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Vasques suspendues avec passage de jambes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Sols souples ou carrelage antidérapant PN24</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Elargissement des portes & seuils invisibles</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#38bdf8]" />
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 italic uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed font-medium italic">{item.desc}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation s'engage sur la conformité PMR stricte. Nous validons chaque cote pour garantir l'indépendance de l'utilisateur. En tant qu'artisan reconnu en Isère, nous assurons un suivi complet, de l'expertise initiale à la réception finale certifiée.
-                  </p>
-                </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Aménagez votre Salle de Bain PMR à Grenoble" : "Votre accessibilité Clé en Main"}
+                  {isGrenoble ? "Un besoin d'accessibilité à Grenoble ?" : "Votre SDB PMR Signature"}
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
+                <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Bénéficiez de l'expertise d'un artisan local pour une salle de bain sécurisée and durable."
-                    : "Une seule équipe pour l'étude, la démolition, la plomberie and la pose adaptée."}
-                </p>
-                <p className="text-base mb-8 opacity-90 italic">
-                  Visite technique and devis chiffré fournis sous 48h.
+                    ? "Nos experts de l'adaptation basés à Grenoble sécurisent votre habitat with bienveillance."
+                    : "Redonner de la dignité and du confort across un agencement intelligent."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.2)] transition-all duration-300 hover:scale-105"
                 >
-                  Demander une expertise gratuite
-                  <div className="flex flex-col items-center ml-2">
-                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
+                  Étudier mon projet d'accessibilité
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
+                <OptimizedImage
+                  src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2003.jpeg"
+                  alt="Détails salle de bain PMR premium"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pt-16 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              PROCESSUS ADAPTATION
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Votre projet PMR en 4 phases maîtrisées
-              </span>
-            </h2>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#38bdf8]/10 blur-[120px] rounded-full" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Sécurité</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre projet en 4 temps</h2>
+            <div className="w-24 h-1 bg-[#38bdf8] mx-auto opacity-50" />
           </div>
-
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              {
-                step: "01",
-                title: "Diagnostic Accessibilité",
-                desc: "Analyse des besoins spécifiques, relevé des côtes and étude des subventions (MaPrimeAdapt')."
-              },
-              {
-                step: "02",
-                title: "Conception Ergonomique",
-                desc: "Planification des volumes, rayons de giration and sélection d'équipements certifiés."
-              },
-              {
-                step: "03",
-                title: "Travaux Adaptés",
-                desc: "Dépose, modification des réseaux and installation minutieuse des douches & accessoires."
-              },
-              {
-                step: "04",
-                title: "Certification Sécurité",
-                desc: "Tests de charge des fixations, vérification des pentes and mise en service sécurisée."
-              }
+              { step: "01", title: "Audit", desc: "Analyse d'ergonomie and des besoins spécifiques by nos techniciens certifiés." },
+              { step: "02", title: "Conception", desc: "Planification des circulations and sélection des équipements certifiés PMR." },
+              { step: "03", title: "Chantier", desc: "Pose with renforts structurels for les barres d'appui and étanchéité absolue." },
+              { step: "04", title: "Support", desc: "Aide au montage du dossier MaPrimeAdapt' and service après-vente réactif." }
             ].map((s, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
-                  {s.step}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
-              </motion.div>
+              <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
+                <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
+                <h3 className="text-2xl font-bold mb-4 relative z-10">{s.title}</h3>
+                <p className="text-white/60 relative z-10 leading-relaxed font-medium italic">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 bg-white relative overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[3.5rem] p-12 md:p-24 shadow-2xl border border-slate-100 grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -468,54 +405,44 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  DESIGN & ACCOMPAGNEMENT
+                  AUTONOMIE & ACCOMPAGNEMENT
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight italic">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    Conseil d'architecte offert pour votre projet PMR
+                    Accompagnement d’architecte offert
                   </span>
                 </h2>
               </div>
               
-              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  L'accessibilité ne doit pas rimer avec milieu hospitalier. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous créons des salles de bain PMR qui sont avant tout de beaux espaces.
-                </p>
-                <p>
-                  Pour tout projet de rénovation complète PMR, un <span className="text-black font-semibold">architecte d'intérieur vous accompagne</span> pour harmoniser sécurité and esthétique. C'est l'assurance d'une autonomie retrouvée dans un cadre élégant.
+                  Parce que l'accessibilité exige une précision d'orfèvre, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for co-concevoir votre espace : ergonomie des flux, harmonie chromatique apaisante and éclairage sécurisant sans zone d'ombre.
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
-                {[
-                  { title: "Coaching Déco", desc: "Conseils matériaux & couleurs", icon: "🎨" },
-                  { title: "Expertise PMR", desc: "Plomberie & Elec adaptées", icon: "♿" },
-                  { title: "Plans 3D", desc: "Simulation d'accessibilité", icon: "📐" },
-                  { title: "Garantie Totale", desc: "Assurance décennale Isère", icon: "🛡️" },
-                  { title: "Gestion Aides", desc: "MaPrimeAdapt' & Crédit d'impôt", icon: "📉" },
-                  { title: "SAV Réactif", desc: "Équipes locales en Isère", icon: "🏡" }
-                ].map((usp, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-2xl">{usp.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Démarrer mon étude PMR
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Projet 3D d'implantation ergonomique offert</span>
                 </div>
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Conseils décoration et sélection de matériaux antidérapants premium</span>
+                </div>
+              </div>
+
+              <button 
+                onClick={scrollToContactForm} 
+                className="relative overflow-hidden bg-slate-900 text-white px-12 py-6 rounded-full font-bold hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)] transition-all flex items-center gap-4 group"
+              >
+                <span className="relative z-10">Lancer mon projet design</span>
+                <Pen className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-[#38bdf8] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
+              
+              <p className="mt-8 text-xs text-slate-400 italic">
+                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -526,17 +453,17 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
-                <OptimizedImage
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <img
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design PMR Espaces Alpins"
-                  className="w-full h-auto object-contain opacity-90"
+                  alt="Architecture d'intérieur Espaces Alpins"
+                  className="w-full h-auto object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
-                    <p className="text-xl font-semibold">"L'autonomie est un luxe pour tous."</p>
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Accessibilité</p>
+                    <p className="text-xl font-semibold">"L'autonomie est le plus beau des luxes."</p>
                   </div>
                 </div>
               </div>
@@ -550,49 +477,38 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET PMR"}
+                {isGrenoble ? "NOTRE MÉTIER ISÈRE" : "CHAMP D'ACTION"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'excellence à chaque adaptation
+                  La perfection au service de l'usage
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts pour que l'accessibilité de votre salle de bain soit totale and votre satisfaction entière.
+              <p className="text-slate-700 leading-relaxed italic font-medium">
+                {isGrenoble
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'adaptation handicap. Nous coordonnons maçonnerie, plomberie spécialisée and finitions antidérapantes with une propreté de chantier and une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en accessibilité. Nous coordonnons nos plombiers, carreleurs and électriciens for que vos salles de bains PMR soient livrées with un niveau de fiabilité digne des plus grands standards de santé."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M12 21l-8.228-3.085a2 2 0 01-1.272-1.834V5.618a2 2 0 011.272-1.834L12 1l8.228 2.784a2 2 0 011.272 1.834V16.08a2 2 0 01-1.272 1.834L12 21z" />
-                    </svg>
-                  ),
-                  title: "Technique",
-                  items: ["Plomberie certifiée", "Étanchéité SEL/SPEC", "Normes accessibilité", "Douches plain-pied", "Sols antidérapants"]
+                  icon: <Accessibility className="w-10 h-10" />,
+                  title: "Adaptations",
+                  items: ["Transformation Baignoire", "Douche de Plain-Pied", "Élargissement Portes", "WC Surélevés / Senior", "Mobilier Ergonomique"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" />
-                      <path d="M7 8h10M7 12h10M7 16h4" />
-                    </svg>
-                  ),
-                  title: "Équipements",
-                  items: ["Barres d'appui design", "Sièges de douche", "WC adaptés / senior", "Vasques suspendues", "Miroirs inclinables"]
+                  icon: <Ruler className="w-10 h-10" />,
+                  title: "Techniques",
+                  items: ["Plomberie Spécialisée", "Sols PN24 Certifiés", "Barres de Maintien Renforcées", "Étanchéité SEL Garantie", "Robinets à Levier Pro"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                  title: "Engagement",
-                  items: ["Certification PMR", "Pose au millimètre", "Chantier propre", "Étude subventions", "Suivi post-chantier"]
+                  icon: <ShieldCheck className="w-10 h-10" />,
+                  title: "Garanties",
+                  items: ["Garantie Décennale TCE", "Labels RGE & Qualibat", "Chantier Millimétré", "Délais de Pose Garantis", "Aide MaPrimeAdapt'"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -606,12 +522,12 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
                   <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
                     {card.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 italic">{card.title}</h3>
                   <ul className="space-y-4">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
-                        <span className="text-sm font-medium">{item}</span>
+                        <span className="text-sm font-medium italic">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -626,33 +542,25 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              LABELS & GARANTIES
+              Qualité Certifiée
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Une sécurité certifiée en Isère
+                Nos labels for votre habitat
               </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Expert PMR' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Isère Accessible' },
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Artisan Reconnu' },
-              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Service Client' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Assurance BTP' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' },
-              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Mise aux normes' },
-              { name: 'Plomberie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Fluides & Pose' },
-              { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Éco-Action' },
-              { name: 'Sanitaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Spécialiste SDB' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Air Sain' },
-              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'Expert Fluides' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
-              { name: 'Install Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Certifié Gaz' },
-              { name: 'Technical', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
-              { name: 'Heating', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Chauffage SDB' }
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Savoir-Faire PMR' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Finition Élite' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Artisan de Confiance' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Normes de Pose' },
+              { name: 'Isère Local', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Pro de Proximité' },
+              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Plan Technique' },
+              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Assurance BML' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -663,45 +571,92 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight italic">{cert.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Nos partenaires for des produits d'élite
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
+              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      <ServiceFAQ
-        title="FAQ Salle de Bain PMR"
-        description="Les réponses de nos spécialistes sur l'accessibilité and les aides."
-        items={[
-          {
-            id: "pmr1",
-            question: "Existe-t-il des aides pour financer une salle de bain PMR ?",
-            answer: "Oui, plusieurs aides existent comme MaPrimeAdapt', le crédit d'impôt (25%), les aides de l'Anah ou de votre caisse de retraite. Nous vous aidons à monter votre dossier technique pour maximiser vos subventions."
-          },
-          {
-            id: "pmr2",
-            question: "Une douche à l'italienne est-elle forcément sans seuil ?",
-            answer: "Pour être conforme PMR, le seuil doit être inférieur à 2 cm (idéalement 0 cm). Nous réalisons des douches de plain-pied avec évacuation à haut débit pour éviter tout débordement sans avoir besoin de seuil."
-          },
-          {
-            id: "pmr3",
-            question: "Gérez-vous l'agrandissement des portes d'accès ?",
-            answer: "Oui, en tant que contractant général, nous gérons les modifications de structures si nécessaire pour assurer un passage de 90 cm minimum, libre de tout obstacle."
-          },
-          {
-            id: "pmr4",
-            question: "Qu'est-ce qu'un carrelage PN24 ?",
-            answer: "C'est un carrelage à haute adhérence, obligatoire dans les douches PMR. Nous proposons une large sélection de modèles PN24 qui sont à la fois extrêmement sécurisés (même mouillés) and esthétiquement superbes."
-          },
-          {
-            id: "pmr5",
-            question: "Peut-on installer un siège de douche rabbatable sur une cloison en placo ?",
-            answer: "Oui, mais cela nécessite un renforcement structurel spécifique derrière la paroi que nous installons systématiquement pour garantir une résistance à la charge de 150 kg minimum."
-          }
-        ]}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_ de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ServiceFAQ 
+        items={salleDeBainPMRFAQs} 
+        title={isGrenoble ? "FAQ SDB PMR à Grenoble" : "FAQ Salle de Bain PMR & Senior"}
+        description={isGrenoble ? "Retrouvez les réponses de nos experts sur l'adaptation and l'accessibilité à Grenoble." : "Retrouvez les réponses de nos experts sur la sécurisation de votre pièce d'eau."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

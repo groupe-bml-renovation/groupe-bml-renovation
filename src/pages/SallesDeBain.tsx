@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Bath, Layout, ShieldCheck, Ruler } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
+import { salleDeBainFAQs } from '../data/service-faqs';
 
 interface SallesDeBainProps {
   onBack: () => void;
@@ -34,10 +33,9 @@ const ImageCarousel = () => {
       const itemWidth = 400;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
       const firstSetWidth = itemWithGap * images.length;
 
+      const newPosition = container.scrollLeft - itemWithGap;
       if (newPosition <= 0) {
         container.scrollLeft = firstSetWidth - itemWithGap;
       } else {
@@ -56,7 +54,6 @@ const ImageCarousel = () => {
       const maxScroll = container.scrollWidth - container.clientWidth;
 
       const newPosition = container.scrollLeft + itemWithGap;
-
       if (newPosition >= firstSetWidth - itemWithGap) {
         container.scrollLeft = 0;
       } else if (newPosition >= maxScroll) {
@@ -102,8 +99,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation Salle de Bain ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Salle de Bain Design ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -114,8 +111,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation Salle de Bain ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Salle de Bain Design ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -131,7 +128,7 @@ const ImageCarousel = () => {
 const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.startsWith('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -140,23 +137,36 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Rénovation Salle de Bain Grenoble | Douche Italienne & Carrelage | Groupe BML' : 'Rénovation Salle de Bain | Installation Douche & Sanitaires | Groupe BML Rénovation'}</title>
-        <meta name="description" content={isGrenoble ? "Experts en rénovation de salle de bain à Grenoble. Douche à l'italienne, carrelage tendance, plomberie certifiée and agencement sur mesure. Devis gratuit sous 24h." : "Rénovation complète de salle de bain. Installation de douches, robinetterie, meubles vasques and étanchéité garantie. Entreprise de rénovation experte."} />
-        <meta name="keywords" content={isGrenoble ? "rénovation salle de bain Grenoble, douche italienne Grenoble, plombier Grenoble, carrelage Grenoble, travaux salle de bain Isère" : "rénovation salle de bain, douche italienne, entreprise plomberie, aménagement salle de bain, rénovation intérieure"} />
-        <meta property="og:title" content={isGrenoble ? "Rénovation Salle de Bain Grenoble | Design & Qualité" : "Rénovation de Salle de Bain de Prestige | Groupe BML"} />
+        <title>{isGrenoble ? "Rénovation de Salle de Bain à Grenoble | Douche Italienne | BML" : "Rénovation de Salles de Bain d'Exception | BML"}</title>
+        <meta name="description" content="Sublimez votre espace bien-être. Rénovation complète de salle de bain, douche à l'italienne, carrelage haut de gamme with architecte offert." />
+        <meta property="og:title" content="Rénovation Salle de Bain | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation",
+            "description": isGrenoble ? "Expert en rénovation de salle de bain à Grenoble" : "Entreprise spécialisée en salles de bain de prestige",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/SDB%20PMR%2001.png"
-            alt="Rénovation Salle de Bain Moderne"
+            src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1920&q=80"
+            alt="Salle de bain moderne and raffinée"
             className="w-full h-full object-cover"
             priority={true}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/40 to-slate-900/50" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -168,18 +178,18 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
                 <>
-                  Rénovation de<br />salle de bain à Grenoble
+                  Salle de bain<br />à Grenoble
                 </>
               ) : (
                 <>
-                  Rénovation de<br />salles de bain design
+                  Salles de bain<br />d'exception
                 </>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "L'élégance and le bien-être au cœur de l'Isère" : "Votre espace de détente réinventé par nos experts"}
+              {isGrenoble ? "Votre sanctuaire de bien-être au cœur de l'Isère" : "L'excellence au service de votre sérénité"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,7 +198,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               className="flex flex-col items-center gap-6"
             >
               <motion.a
-                href="https://www.google.com/search?q=groupe+bml+renovation"
+                href="https://www.google.com/search?q=groupe+bml+renovation&oq=groupe+bml+renovation&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGDwyBggDEEUYPDIGCAQQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgzMTUyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x478af4894336bf9b:0x5e236531336e14ed,1,,,,"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
@@ -251,8 +261,8 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos artisans grenoblois interviennent avec une rapidité exemplaire pour minimiser l'indisponibilité de votre pièce d'eau. Nous maîtrisons les dernières tendances en carrelage grand format and sanitaires haut de gamme pour créer votre sanctuaire de bien-être."
-                  : "Qu'il s'agisse d'optimiser une petite salle d'eau ou de créer une vaste pièce de détente, nous orchestrons tous les corps d'état sous une responsabilité unique pour une sérénité totale."}
+                  ? "Nos orfèvres du bâtiment grenoblois interviennent avec une minutie extrême. Nous maîtrisons les dernières tendances en carrelage grand format for créer votre sanctuaire de bien-être."
+                  : "Chaque projet est une quête de pureté, où nous orchestrons tous les corps d'état sous une responsabilité unique pour une sérénité totale and un confort absolu."}
               </p>
 
               <button
@@ -272,7 +282,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-[450px]"
             >
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&q=80"
@@ -296,22 +306,22 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTISE TECHNIQUE" : "SAVOIR-FAIRE"}
+                {isGrenoble ? "NOTRE MÉTIER" : "SAVOIR-FAIRE"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Plomberie & Étanchéité Isère" : "L'excellence technique"}
+                  {isGrenoble ? "Plomberie & Étanchéité à Grenoble" : "L'excellence technique"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Une salle de bain dure 20 ans si elle est techniquement irréprochable. Nous apportons une attention extrême à l'étanchéité sous carrelage (SPEC/SEL) and à la mise aux normes des volumes électriques.
+                Une salle de bain réussie est avant tout une salle de bain saine. Nous accordons une importance capitale à l'étanchéité absolue (SPEC/SEL) and aux raccordements invisibles.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre approche intègre le choix de matériaux antidérapants, l'optimisation des débits d'eau and une ventilation (VMC) performante pour garantir un air sain and un entretien facilité.
+                Notre expertise inclut la maîtrise des réseaux de plomberie complexes, l'installation de douches à l'italienne sans ressaut and la pose millimétrée de carrelages grand format.
               </p>
             </div>
 
@@ -320,18 +330,14 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M12 21a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2H12z" />
-                        <path d="M9 12h6" />
-                        <path d="M12 16h3" />
-                      </svg>
+                       <Bath className="w-6 h-6 text-[#38bdf8]" />
                     </div>
                     <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Pose de carrelage, faïence and mosaïque</span>
+                      <span>Pose de carrelage, faïence & mosaïque</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
@@ -343,11 +349,11 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Pose de meubles vasques and miroiterie</span>
+                      <span>Pose de meubles vasques & miroiterie</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Modification de plomberie and vidage</span>
+                      <span>Modification de plomberie & évacuations</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
@@ -364,26 +370,26 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation s'engage sur la propreté absolue du chantier. Nous protégeons vos sols and évacuons quotidiennement les gravats de démolition. Votre nouvelle salle de bain vous est livrée testée, étanche and prête à l'usage.
+                    Nous gérant votre projet with une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais and d'un chantier propre and sécurisé pour protéger vos espaces de vie.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Concevez votre Salle de Bain à Grenoble" : "Votre Projet Salle de Bain Clé en Main"}
+                  {isGrenoble ? "Un projet salle de bain à Grenoble ?" : "Prêt pour une nouvelle salle de bain ?"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
                   {isGrenoble
-                    ? "Bénéficiez du savoir-faire d'une entreprise générale pour une coordination plomberie-carrelage sans faute."
-                    : "Un seul interlocuteur pour la dépose, les réseaux, la pose and les finitions."}
+                    ? "Nos experts grenoblois conçoivent votre espace de détente."
+                    : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
-                <p className="text-base mb-8 opacity-90 italic">
-                  Visite technique and devis chiffré fournis sous 24h à 48h.
+                <p className="text-base mb-8 opacity-90">
+                  Chiffrage précis and visite technique réalisée sous 48h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   Demander une étude gratuite
                   <div className="flex flex-col items-center ml-2">
@@ -405,7 +411,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Votre rénovation en 4 phases précises
+                Votre rénovation en 4 étapes clés
               </span>
             </h2>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
@@ -455,6 +461,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
       </section>
 
       <section className="py-10 bg-slate-50 relative overflow-hidden">
+        {/* Background Decoration */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
         
@@ -469,32 +476,32 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  DESIGN & ACCOMPAGNEMENT
+                  DESIGN ARCHITECTURAL
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    Conseil d'architecte offert pour votre salle de bain
+                    Accompagnement d'architecte offert pour votre salle de bain
                   </span>
                 </h2>
               </div>
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Optimiser une petite surface ou choisir l'harmonie parfaite entre faïence and meubles vasques nécessite un œil expert. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design.
+                  Optimiser une petite surface ou choisir l'harmonie parfaite entre faïence and meubles vasques nécessite un œil expert. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous scellons un <span className="text-black font-semibold">partenariat with Espaces Alpins</span> pour sublimer vos espaces.
                 </p>
                 <p>
-                  Pour tout projet de rénovation complète de salle de bain, un <span className="text-black font-semibold">architecte d'intérieur vous conseille</span> sur le choix des matériaux and l'agencement optimal des volumes. C'est la garantie d'une pièce d'eau d'exception.
+                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser matières, couleurs and lumière. Votre espace est pensé pour votre bien-être through un <span className="text-black font-semibold">coaching décoration personnalisé</span>.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
                 {[
-                  { title: "Coaching Déco", desc: "Conseils matériaux & couleurs", icon: "🎨" },
-                  { title: "Expertise TCE", desc: "Plomberie & Elec intégrées", icon: "⚡" },
-                  { title: "Plans Plans", desc: "Douches Italiennes & Sanitaires", icon: "🚿" },
-                  { title: "Garantie Totale", desc: "Assurance décennale étanchéité", icon: "🛡️" },
-                  { title: "Gestion Déchets", desc: "Évacuation propre & responsable", icon: "♻️" },
-                  { title: "Proximité Isère", desc: "Équipes basées à proximité", icon: "🏡" }
+                  { title: "Architecte Offert", desc: "Conseil déco & ergonomie inclus", icon: "📐" },
+                  { title: "Douches Pro", desc: "Expertise douches à l'italienne", icon: "🚿" },
+                  { title: "Sols Sécurisés", desc: "Carrelages antidérapants certifiés", icon: "🧼" },
+                  { title: "Garantie Totale", desc: "Décennale sur l'étanchéité", icon: "🛡️" },
+                  { title: "Plans 3D", desc: "Visualisation avant travaux offerte", icon: "🖥️" },
+                  { title: "Savoir-faire Local", desc: "Experts basés au cœur de l'Isère", icon: "📍" }
                 ].map((usp, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <span className="text-2xl">{usp.icon}</span>
@@ -506,17 +513,22 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                 ))}
               </div>
 
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet salle de bain
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
-                </div>
-              </button>
+              <div className="flex flex-wrap gap-6 items-center">
+                <button
+                  onClick={scrollToContactForm}
+                  className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  Créer ma salle de bain idéale
+                  <div className="flex flex-col items-center ml-1">
+                    <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                    <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                  </div>
+                </button>
+              </div>
+              <p className="text-xs text-slate-400 italic mt-4">
+                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -527,17 +539,17 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Salle de Bain Espaces Alpins"
-                  className="w-full h-auto object-contain opacity-90"
+                  alt="Architecture d'intérieur Espaces Alpins"
+                  className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
-                    <p className="text-xl font-semibold">"Sublimer l'utile par l'exceptionnel."</p>
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Espace</p>
+                    <p className="text-xl font-semibold">"L'harmonie de l'eau and du design."</p>
                   </div>
                 </div>
               </div>
@@ -551,7 +563,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "ARTISANS DE L'ISÈRE" : "VOTRE PROJET TCE"}
+                {isGrenoble ? "NOTRE MÉTIER" : "CHAMP D'ACTION"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
@@ -561,7 +573,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la pose de votre salle de bain se déroule sans aucun accroc technique, en respectant les normes NF C 15-100.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos plombiers, carreleurs, électriciens and agenceurs pour que votre salle de bain soit livrée sans compromis técnica.
               </p>
             </div>
 
@@ -569,31 +581,24 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               {[
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M12 21l-8.228-3.085a2 2 0 01-1.272-1.834V5.618a2 2 0 011.272-1.834L12 1l8.228 2.784a2 2 0 011.272 1.834V16.08a2 2 0 01-1.272 1.834L12 21z" />
-                    </svg>
+                    <Ruler className="w-10 h-10" />
                   ),
                   title: "Technique",
-                  items: ["Plomberie certifiée", "Étanchéité SEL/SPEC", "Volumes électriques sécurisés", "Robinetterie thermostatique", "VMC performante"]
+                  items: ["Plomberie certifiée", "Étanchéité SEL/SPEC", "Volumes électriques NF", "Douches plain-pied", "VMC performante"]
                 },
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z" />
-                      <path d="M7 8h10M7 12h10M7 16h4" />
-                    </svg>
+                    <Layout className="w-10 h-10" />
                   ),
                   title: "Matériaux",
-                  items: ["Carrelage grand format", "Mosaïque & Faïence", "Receveurs extra-plats", "Plans Vasques Pierre/Quartz", "Miroiterie sur mesure"]
+                  items: ["Carrelage grand format", "Mosaïque & Faïence", "Meubles sur mesure", "Robinetterie premium", "Miroiterie LED"]
                 },
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <ShieldCheck className="w-10 h-10" />
                   ),
-                  title: "Garantie",
-                  items: ["Décennale étanchéité", "Pose au millimètre", "Chantier propre garanti", "Respect strict des délais", "Assurance RC Pro Isère"]
+                  title: "Engagements",
+                  items: ["Garantie Décennale", "Labels RGE & Qualibat", "Chantier propre", "Délais respectés", "SAV Réactif"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -627,33 +632,36 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              ASSURANCES & NORMES
+              Nos certifications
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Une sécurité certifiée pour vos pièces d'eau
+                Nos certifications and qualifications
               </span>
             </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+            </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Qualité' },
-              { name: 'Plomberie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
-              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'NF C 15-100' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Assurance BTP' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Conformité Gaz' },
-              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Satisfaction +' },
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Accessibilité' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Label Artisan' },
-              { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Eco Énergie' },
-              { name: 'Chauffage', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'PAC & Sanitaire' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Air Qualité' },
-              { name: 'Fluide H', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'Chauffage Haut' },
-              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
-              { name: 'PME Isère', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
-              { name: 'Fluid Handling', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique F' },
-              { name: 'Heating', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' }
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Qualité RGE' },
+              { name: 'Pompe à chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
+              { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Certifié Solaire' },
+              { name: 'Chauffage bois', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Spécialiste Bois' },
+              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'Chauffage HP' },
+              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Expertise Vent' },
+              { name: 'Fluides', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Agréé Fluides' },
+              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Artisan Élec' },
+              { name: 'Manipulation fluide', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Certifié Fluides' },
+              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Agréé Gaz' },
+              { name: 'Installation gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Conformité Gaz' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan Bâtiment' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Qualité' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Accessibilité' },
+              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Spécialiste PMR' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Artisan Qualifié' }
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -671,38 +679,87 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Nos partenaires pour des produits de qualité
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      <ServiceFAQ
-        title="FAQ Rénovation Salle de Bain"
-        description="Les réponses à vos questions techniques and budgétaires."
-        items={[
-          {
-            id: "sb1",
-            question: "Quel budget prévoir pour une rénovation complète de salle de bain ?",
-            answer: "Une rénovation complète (plomberie, carrelage, sanitaires) oscille généralement entre 8 000€ and 18 000€ selon la surface and la gamme des matériaux. Nous fournissons un devis détaillé après une visite technique gratuite."
-          },
-          {
-            id: "sb2",
-            question: "Combien de temps durent les travaux ?",
-            answer: "Pour une salle de bain standard, comptez entre 7 and 12 jours ouvrés. Ce délai comprend la démolition, la modification des réseaux, le temps de séchage de l'étanchéité and la pose finale."
-          },
-          {
-            id: "sb3",
-            question: "Gérez-vous la pose de douches à l'italienne ?",
-            answer: "Oui, c'est notre spécialité. Nous réalisons des douches de plain-pied avec receveurs à carreler ou extra-plats, en assurant une étanchéité périphérique multicouche garantie par notre assurance décennale."
-          },
-          {
-            id: "sb4",
-            question: "Pouvez-vous transformer une baignoire en douche ?",
-            answer: "Tout à fait. C'est une demande fréquente pour gagner de l'espace ou améliorer l'accessibilité. Nous gérons l'adaptation de l'évacuation and la reprise du carrelage mural and de sol pour un rendu invisible."
-          },
-          {
-            id: "sb5",
-            question: "Ma salle de bain sera-t-elle indisponible pendant les travaux ?",
-            answer: "Oui, la pièce est généralement inutilisable pendant toute la durée du chantier. Si vous n'avez qu'une seule salle de bain, nous planifions les travaux de sorte à minimiser au maximum l'indisponibilité des WC si possible."
-          }
-        ]}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+
+      <ServiceFAQ 
+        items={salleDeBainFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Salle de Bain Grenoble" : "FAQ Rénovation Salle de Bain"}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de salles de bain à Grenoble." : "Retrouvez les réponses à vos questions sur l'aménagement de vos espaces de bien-être."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

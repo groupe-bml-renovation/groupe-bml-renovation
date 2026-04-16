@@ -114,7 +114,7 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
@@ -139,8 +139,8 @@ export default defineConfig({
       },
     },
     cssCodeSplit: true,
-    minify: 'terser',
-    terserOptions: {
+    minify: 'oxc',
+    oxcOptions: {
       compress: {
         drop_console: false,
         drop_debugger: true,

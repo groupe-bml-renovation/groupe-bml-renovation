@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Pen } from 'lucide-react';
 import { GradientCTAButton } from './ui/gradient-cta-button';
 import { prefetchPage } from '../lib/prefetch';
@@ -19,6 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({
   setIsMobileMenuOpen
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isGrenoble = location.pathname.includes('/grenoble');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
@@ -106,10 +107,10 @@ const Navigation: React.FC<NavigationProps> = ({
 
     if (['appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'plomberie', 'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'].includes(page)) {
       const prefix = isGrenoble ? '/grenoble' : '';
-      window.location.href = `${prefix}/${page}`;
+      navigate(`${prefix}/${page}`);
     } else if (page === 'home') {
       const prefix = isGrenoble ? '/grenoble' : '';
-      window.location.href = prefix || '/';
+      navigate(prefix || '/');
     } else {
       onNavigate(page);
     }

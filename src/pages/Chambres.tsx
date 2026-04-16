@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Bed, Layout, ShieldCheck, Ruler } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
+import { chambreFAQs } from '../data/service-faqs';
 
 interface ChambresProps {
   onBack: () => void;
@@ -25,8 +24,7 @@ const ImageCarousel = () => {
     'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&q=80',
     'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1200&q=80',
     'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=1200&q=80',
-    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
-    'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80'
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
@@ -35,10 +33,9 @@ const ImageCarousel = () => {
       const itemWidth = 400;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
       const firstSetWidth = itemWithGap * images.length;
 
+      const newPosition = container.scrollLeft - itemWithGap;
       if (newPosition <= 0) {
         container.scrollLeft = firstSetWidth - itemWithGap;
       } else {
@@ -57,7 +54,6 @@ const ImageCarousel = () => {
       const maxScroll = container.scrollWidth - container.clientWidth;
 
       const newPosition = container.scrollLeft + itemWithGap;
-
       if (newPosition >= firstSetWidth - itemWithGap) {
         container.scrollLeft = 0;
       } else if (newPosition >= maxScroll) {
@@ -103,8 +99,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation Chambre ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Chambre Design ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -115,8 +111,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation Chambre ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Chambre Design ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -132,7 +128,7 @@ const ImageCarousel = () => {
 const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.startsWith('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -141,23 +137,36 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Rénovation Chambre Grenoble | Aménagement Suite Parentale | Groupe BML' : 'Rénovation Chambre | Aménagement Intérieur & Confort | Groupe BML Rénovation'}</title>
-        <meta name="description" content={isGrenoble ? "Experts en rénovation de chambre à Grenoble. Création de suites parentales, dressings sur mesure, isolation phonique et décoration raffinée. Devis gratuit." : "Rénovation de vos chambres et espaces de repos. Aménagement de suites parentales, dressings optimisés et confort acoustique. Entreprise de rénovation professionnelle."} />
-        <meta name="keywords" content={isGrenoble ? "rénovation chambre Grenoble, suite parentale Grenoble, dressing Grenoble, aménagement chambre Grenoble, travaux chambre Grenoble, artisan Isère" : "rénovation chambre, aménagement chambre, dressing sur mesure, suite parentale design, travaux rénovation maison, confort acoustique"} />
-        <meta property="og:title" content={isGrenoble ? "Rénovation Chambre Grenoble | Suites & Dressings" : "Rénovation de Chambres & Suites | Groupe BML Rénovation"} />
+        <title>{isGrenoble ? "Rénovation de Chambres à Grenoble | Suites Parentales | BML" : "Rénovation de Chambres & Suites d'Exception | BML"}</title>
+        <meta name="description" content="Créez votre havre de paix. Rénovation complète de chambres, suites parentales, dressings sur mesure with architecte offert." />
+        <meta property="og:title" content="Rénovation de Chambres | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation",
+            "description": isGrenoble ? "Expert en rénovation de chambres à Grenoble" : "Entreprise spécialisée en rénovation de suites parentales",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=1920&q=80"
-            alt="Rénovation Chambre de Luxe"
+            alt="Suite parentale élégante and apaisante"
             className="w-full h-full object-cover"
             priority={true}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/40 to-slate-900/50" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -169,18 +178,18 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
                 <>
-                  Rénovation de<br />chambre à Grenoble
+                  Chambres & suites<br />à Grenoble
                 </>
               ) : (
                 <>
-                  Rénovation de<br />chambres & suites
+                  Chambres & suites<br />d'exception
                 </>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Votre havre de paix sur mesure en Isère" : "L'excellence au service de votre repos"}
+              {isGrenoble ? "Votre sanctuaire privé au cœur de l'Isère" : "L'excellence au service de votre repos"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -189,7 +198,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               className="flex flex-col items-center gap-6"
             >
               <motion.a
-                href="https://www.google.com/search?q=groupe+bml+renovation"
+                href="https://www.google.com/search?q=groupe+bml+renovation&oq=groupe+bml+renovation&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGDwyBggDEEUYPDIGCAQQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgzMTUyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x478af4894336bf9b:0x5e236531336e14ed,1,,,,"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
@@ -231,29 +240,29 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                REPOS & BIEN-ÊTRE
+                VOTRE CHAMBRE
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
                   {isGrenoble 
-                    ? "Redonnez vie à vos nuits avec une chambre sur mesure" 
-                    : "L'intimité sublimée par un aménagement d'exception"}
+                    ? "Sublimez votre espace nuit à Grenoble" 
+                    : "L'art du sanctuaire personnel"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Plus qu'un simple lieu de sommeil, la chambre est votre sanctuaire personnel. Groupe BML Rénovation imagine et réalise des espaces qui favorisent la détente et le ressourcement total.
+                Chaque chambre est une promesse de sérénité. Nous concevons vos espaces de nuit comme de véritables écrins de confort, où l'acoustique, la lumière and les matières s'allient pour un repos absolu.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}vous accompagne dans la <span className="text-black font-semibold">rénovation globale de vos chambres</span>. Nous portons une attention particulière à l'isolation phonique, à la qualité de l'air et à la douceur de l'éclairage.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise l'agencement millimétré des suites parentales. De la création d'un dressing sur mesure à l'intégration d'une salle de bain attenante, nous gérant l'harmonie globale de votre espace.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Que vous habitiez le centre-ville de Grenoble ou les massifs environnants, nous créons des suites parentales qui allient design moderne et confort thermique. De la création de dressings sur mesure à l'intégration de salles d'eau privatives, nous gérons votre projet de A à Z."
-                  : "De la chambre d'enfant ludique à la suite parentale aux allures d'hôtel de luxe, nos artisans qualifiés transforment vos idées en espaces tangibles, durables et esthétiquement parfaits."}
+                  ? "Nos orfèvres du bâtiment grenoblois interviennent avec une minutie extrême. Nous optimisons vos volumes sous combles or transformons vos plateaux en suites de prestige with une isolation phonique and thermique renforcée."
+                  : "Chaque projet est une quête de douceur, où nous intégrons des solutions domotiques discrètes, un éclairage circadien and des finitions artisanales aux teintes apaisantes."}
               </p>
 
               <button
@@ -273,11 +282,11 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-[450px]"
             >
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80"
-                alt="Aménagement Chambre Zen"
+                alt="Aménagement chambre avec éclairage chaleureux"
                 className="w-full h-full object-cover"
                 loading="eager"
               />
@@ -297,22 +306,22 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "CONSEIL & AGENCEMENT" : "SAVOIR-FAIRE"}
+                {isGrenoble ? "ISÈRE CONCEPTION" : "SAVOIR-FAIRE"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Expertise en Isère" : "Savoir-faire en espaces de nuit"}
+                  {isGrenoble ? "Expertise en Suites à Grenoble" : "Le sens du confort"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                La réussite d'une chambre réside dans les détails invisibles : le positionnement idéal des prises de chevet, l'acoustique parfaite des cloisons et l'optimisation millimétrée du rangement. Nous maîtrisons chaque facette de ce défi.
+                Une chambre réussie est avant tout une chambre saine. Nous accordons une importance capitale à la qualité de l'air through l'utilisation de matériaux éco-certifiés and une ventilation optimisée.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Nos équipes interviennent également sur la mise aux normes électriques invisible et l'installation de solutions de chauffage ou climatisation ultra-silencieuses pour des nuits paisibles toute l'année.
+                Notre expertise inclut l'installation de dressings intelligents, la pose de revêtements muraux textiles and le traitement acoustique haute performance pour un silence souverain.
               </p>
             </div>
 
@@ -321,36 +330,34 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z" />
-                      </svg>
+                       <Bed className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Prestations</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Aménagements</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Pose de menuiseries intérieures et phoniques</span>
+                      <span>Suites parentales with salles d'eau</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Création de dressings et placards sur mesure</span>
+                      <span>Dressings sur mesure & Walk-in closets</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Doublage isolant et traitement acoustique</span>
+                      <span>Isolation phonique renforcée (Placoplatre)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Revêtements de sols (moquettes, parquets, joncs)</span>
+                      <span>Éclairage circadien & Scénarios de nuit</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Eclairage indirect et scénarisation lumineuse</span>
+                      <span>Menuiseries intérieures acoustiques</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Peintures à faible taux de COV (Écolabel)</span>
+                      <span>Peintures à faible taux de COV</span>
                     </li>
                   </ul>
                 </div>
@@ -363,29 +370,28 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation s'engage à minimiser les nuisances sonores et les poussières pendant la durée du chantier, particulièrement crucial dans les espaces de nuit. Nous livrons une chambre saine, aérée et prête à vous accueillir.
+                    Nous gérant votre projet with une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais and d'un chantier propre and sécurisé pour protéger vos espaces de vie.
                   </p>
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-r from-blue-950 to-slate-900 rounded-3xl p-12 text-white mt-8 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#38bdf8]/10 rounded-full blur-3xl" />
+              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Concevez Votre Suite Parentale à Grenoble" : "Votre Espace de Nuit Clé en Main"}
+                  {isGrenoble ? "Un projet de chambre à Grenoble ?" : "Prêt pour une nouvelle suite ?"}
                 </h2>
                 <p className="text-lg mb-6 opacity-90">
                   {isGrenoble
-                    ? "Nos experts en agencement grenoblois vous conseillent sur chaque détail technique."
-                    : "Profitez de l'expertise d'une équipe pluridisciplinaire pour un résultat sans faute."}
+                    ? "Nos experts grenoblois dessinent votre havre de paix."
+                    : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
-                <p className="text-base mb-8 opacity-70">
-                  Étude personnalisée et devis gratuit sous 24h.
+                <p className="text-base mb-8 opacity-90">
+                  Chiffrage précis and plans d'agencement réalisés sous 72h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#38bdf8] shadow-lg transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
-                  Obtenir une estimation gratuite
+                  Demander un devis gratuit
                   <div className="flex flex-col items-center ml-2">
                     <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
                     <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
@@ -401,11 +407,11 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              MÉTHODOLOGIE CONFECTION
+              LOGISTIQUE NUIT
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                4 étapes pour une chambre parfaite
+                Votre projet en 4 étapes clés
               </span>
             </h2>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
@@ -415,23 +421,23 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
             {[
               {
                 step: "01",
-                title: "Diagnostic",
-                desc: "Analyse des besoins de rangement, de l'isolation actuelle et de l'implantation électrique."
+                title: "Étude Volumes",
+                desc: "Analyse des circulations, étude d'ensoleillement and plans 3D de l'agencement."
               },
               {
                 step: "02",
                 title: "Préparation",
-                desc: "Dépose des anciens revêtements, modification des cloisons et mise aux normes invisibles."
+                desc: "Protection totale des zones habitées, curage sélectif and réseaux plomberie/élec."
               },
               {
                 step: "03",
-                title: "Agencement",
-                desc: "Montage des dressings, pose des isolants spécifiques et mise en place des réseaux domotiques."
+                title: "Second Œuvre",
+                desc: "Plâtrerie acoustique, pose des menuiseries and préparation soignée des supports."
               },
               {
                 step: "04",
-                title: "Réalisation",
-                desc: "Peintures de finition, pose des sols et réglages finaux de l'éclairage de confort."
+                title: "Mise en Beauté",
+                desc: "Revêtements de sols, peintures déco, pose dressings and mise en lumière."
               }
             ].map((s, i) => (
               <motion.div 
@@ -455,6 +461,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
       </section>
 
       <section className="py-10 bg-slate-50 relative overflow-hidden">
+        {/* Background Decoration */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
         
@@ -469,32 +476,32 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  ACCOMPAGNEMENT DESIGN
+                  DESIGN ARCHITECTURAL
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    L'expertise d'un architecte offerte pour votre espace nuit
+                    Accompagnement d'architecte offert pour votre suite
                   </span>
                 </h2>
               </div>
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Trouver l'équilibre entre des teintes apaisantes, des matières tactiles et une lumière douce demande une sensibilité artistique. C'est pourquoi nous avons scellé un <span className="text-black font-semibold">partenariat unique avec Espaces Alpins</span>.
+                  Concevoir une suite parentale requiert une vision d'ensemble, de l'ergonomie du dressing à l'acoustique de la cloison. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous scellons un <span className="text-black font-semibold">partenariat with Espaces Alpins</span> pour sublimer vos nuits.
                 </p>
                 <p>
-                  Pour chaque signature de projet de rénovation complète de chambre ou suite parentale, nous vous finançons l'expertise d'un <span className="text-black font-semibold">architecte d'intérieur dédié</span>. Il vous aidera à composer un univers personnel unique, du choix de la tête de lit à l'optimisation de votre futur dressing.
+                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser matières, couleurs and lumière. Votre espace est pensé pour votre bien-être through un <span className="text-black font-semibold">coaching décoration personnalisé</span>.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
                 {[
-                  { title: "Architecte Offert", desc: "Étude déco & ergonomie offerte", icon: "📐" },
-                  { title: "Réseau Local", desc: "Équipes basées en Isère", icon: "🗺️" },
-                  { title: "Matériaux Biosourcés", desc: "Peintures et bois éco-responsables", icon: "🌱" },
-                  { title: "Garantie Décennale", desc: "Sérénité totale sur vos travaux", icon: "🛡️" },
-                  { title: "Planning Tenu", desc: "Respect strict de votre calendrier", icon: "📅" },
-                  { title: "Proximité Isère", desc: "Réactivité et suivi personnalisé", icon: "🏡" }
+                  { title: "Architecte Offert", desc: "Conseil déco & ergonomie inclus", icon: "📐" },
+                  { title: "Dressings Pro", desc: "Optimisation millimétrée du rangement", icon: "🧱" },
+                  { title: "Air Sain", desc: "Matériaux certifiés sans COV", icon: "🌱" },
+                  { title: "Garantie Totale", desc: "Décennale sur l'ensemble des lots", icon: "🛡️" },
+                  { title: "Plans 3D", desc: "Visualisation avant travaux offerte", icon: "🖥️" },
+                  { title: "Savoir-faire Local", desc: "Experts basés au cœur de l'Isère", icon: "📍" }
                 ].map((usp, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <span className="text-2xl">{usp.icon}</span>
@@ -506,17 +513,22 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                 ))}
               </div>
 
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Concevoir ma chambre idéale
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
-                </div>
-              </button>
+              <div className="flex flex-wrap gap-6 items-center">
+                <button
+                  onClick={scrollToContactForm}
+                  className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  Créer ma suite parentale
+                  <div className="flex flex-col items-center ml-1">
+                    <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
+                    <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+                  </div>
+                </button>
+              </div>
+              <p className="text-xs text-slate-400 italic mt-4">
+                * Accompagnement offert pour la décoration intérieure and le choix des matériaux pour tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -530,14 +542,14 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Partenariat Espaces Alpins - Architecture Intérieure"
+                  alt="Architecture d'intérieur Espaces Alpins"
                   className="w-full h-auto object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8 text-center px-4">
-                  <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Architectes d'Intérieur</p>
-                    <p className="text-xl font-semibold">"Votre confort nocturne est notre priorité design."</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Espace</p>
+                    <p className="text-xl font-semibold">"Votre repos mérite l'excellence d'un design sur mesure."</p>
                   </div>
                 </div>
               </div>
@@ -551,17 +563,17 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTS GRENOBLOIS" : "COMPÉTENCES GLOBALES"}
+                {isGrenoble ? "EXPERTISE ISÈRE" : "CHAMP D'ACTION"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  Un savoir-faire pluridisciplinaire
+                  L'excellence à chaque étape
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Groupe BML Rénovation maîtrise l'intégralité des métiers pour une chambre sans défauts. Nous coordonnons pour vous soliers, menuisiers et électriciens pour une fluidité totale de chantier et une finition de haut vol.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos parqueteurs, peintres déco, électriciens and agenceurs pour que votre chambre soit un lieu de sérénité absolue.
               </p>
             </div>
 
@@ -569,30 +581,24 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               {[
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
+                    <Ruler className="w-10 h-10" />
                   ),
-                  title: "Aménagement",
-                  items: ["Création de cloisons sèches", "Dressings sur mesure", "Meubles de rangement", "Bibliothèques intégrées", "Optimisation espaces mansardés"]
+                  title: "Espaces",
+                  items: ["Suites Parentales", "Chambres d'enfants", "Chambres d'amis", "Bureaux de nuit", "Optimisation combles"]
                 },
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
+                    <Layout className="w-10 h-10" />
                   ),
-                  title: "Ambiance",
-                  items: ["Éclairages variables (dimmer)", "Isolation phonique renforcée", "Peintures dépolluantes", "Revêtements muraux textiles", "Volets motorisés"]
+                  title: "Lots",
+                  items: ["Dressings sur mesure", "Isolation Phonique", "Peintures Biosourcées", "Électricité & Domotique", "Revêtements de sols"]
                 },
                 {
                   icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" />
-                    </svg>
+                    <ShieldCheck className="w-10 h-10" />
                   ),
-                  title: "Garanties",
-                  items: ["Zéro nuisances chantier", "Air sain dès livraison", "Garantie Décennale", "Matériaux certifiés", "Suivi post-chantier"]
+                  title: "Engagements",
+                  items: ["Garantie Décennale", "Labels RGE & Qualibat", "Propreté Chantier", "Qualité de l'Air", "SAV Réactif"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -626,18 +632,21 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              ASSURANCES
+              Nos certifications
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Labels de qualité et garanties solides
+                Nos certifications and qualifications
               </span>
             </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+            </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise RGE' },
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Qualité RGE' },
               { name: 'Pompe à chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
               { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Certifié Solaire' },
               { name: 'Chauffage bois', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Spécialiste Bois' },
@@ -650,9 +659,9 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               { name: 'Installation gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Conformité Gaz' },
               { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan Bâtiment' },
               { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Qualité' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Nord-Isère' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Accessibilité' },
               { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Spécialiste PMR' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' }
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Artisan Qualifié' }
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -670,38 +679,87 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Nos partenaires pour des produits de qualité
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      <ServiceFAQ
-        title="FAQ Rénovation Chambre"
-        description="Les réponses de nos spécialistes pour créer votre espace de repos idéal."
-        items={[
-          {
-            id: "ch1",
-            question: "Comment améliorer efficacement l'isolation phonique d'une chambre ?",
-            answer: "Nous utilisons des solutions de doublage de cloisons à haute performance acoustique (plaques de plâtre spécifiques, laine de roche haute densité) et la pose de menuiseries intérieures à âme pleine avec joint balai. Cela permet de diviser par deux la perception du bruit extérieur ou des pièces adjacentes."
-          },
-          {
-            id: "ch2",
-            question: "Est-il possible de créer une salle d'eau dans une chambre existante ?",
-            answer: "Oui, c'est tout à fait réalisable en tant que contractant général. Nous étudions les points de raccordement en plomberie (arrivées et évacuations) pour intégrer une douche à l'italienne ou une vasque, tout en gérant l'étanchéité et la ventilation spécifique (VMP) pour protéger votre chambre de l'humidité."
-          },
-          {
-            id: "ch3",
-            question: "Gérez-vous la conception et la pose de dressings sur mesure ?",
-            answer: "Absolument. Nous concevons avec vous l'aménagement intérieur idéal selon votre garde-robe. Nos menuisiers posent ensuite les structures, les tiroirs et les façades (battantes, coulissantes ou ouvertes) pour une intégration esthétique parfaite dans le volume de la chambre."
-          },
-          {
-            id: "ch4",
-            question: "Combien de temps dure la rénovation d'une chambre de 15m² ?",
-            answer: "Pour une rénovation incluant sols, murs, plafonds et électricité, comptez environ 5 à 7 jours ouvrés. Ce délai est crucial pour respecter les temps de séchage des enduits et peintures et vous garantir une livraison sans odeurs et prête à emménager."
-          },
-          {
-            id: "ch5",
-            question: "Quel type de revêtement de sol est le plus adapté pour une chambre saine ?",
-            answer: "Nous recommandons le parquet massif ou contrecollé pour sa chaleur et sa facilité d'entretien, ou des sols naturels comme le jonc de mer. Nous privilégions toujours des colles et vernis sans solvants pour préserver la qualité de l'air de votre espace de nuit."
-          }
-        ]}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      
+
+      <ServiceFAQ 
+        items={chambreFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Chambre Grenoble" : "FAQ Rénovation Chambre"}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de chambres and suites à Grenoble." : "Retrouvez les réponses à vos questions sur l'aménagement de vos espaces de nuit."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

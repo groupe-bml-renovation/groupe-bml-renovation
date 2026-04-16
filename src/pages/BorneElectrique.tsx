@@ -1,11 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen, Zap } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Zap, Ruler, Layout, Database, ShieldCheck, Grid3X3, Layers, Battery } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
 
@@ -19,52 +17,30 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1600490819528-42405785433a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=1200&q=80',
-    'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&q=80',
-    'https://images.unsplash.com/photo-1559027615-cd2628902d4a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80',
-    'https://images.unsplash.com/photo-1600490819528-42405785433a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80'
+    'https://images.unsplash.com/photo-1600490819528-42405785433a?w=800&q=80',
+    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80',
+    'https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=800&q=80',
+    'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80',
+    'https://images.unsplash.com/photo-1559027615-cd2628902d4a?w=800&q=80'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
-      const firstSetWidth = itemWithGap * images.length;
-
-      if (newPosition <= 0) {
-        container.scrollLeft = firstSetWidth - itemWithGap;
-      } else {
-        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-      const firstSetWidth = itemWithGap * images.length;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      const newPosition = container.scrollLeft + itemWithGap;
-
-      if (newPosition >= firstSetWidth - itemWithGap) {
-        container.scrollLeft = 0;
-      } else if (newPosition >= maxScroll) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
     }
   };
 
@@ -103,8 +79,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Borne Électrique ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Borne ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -115,8 +91,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Borne Électrique ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Borne ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -132,7 +108,7 @@ const ImageCarousel = () => {
 const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -141,24 +117,43 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Installation Borne Électrique Grenoble | Recharge Voiture IRVE | Groupe BML" : "Borne de Recharge Électrique | Installation & Maintenance Wallbox | Groupe BML"}</title>
-        <meta name="description" content={isGrenoble ? "Experts en installation de bornes de recharge à Grenoble. Qualification IRVE pour maisons and copropriétés en Isère. Solutions de recharge intelligentes." : "Installation de bornes de recharge pour véhicules électriques. Profitez d'une recharge rapide à domicile avec nos solutions Wallbox certifiées and performantes."} />
-        <meta name="keywords" content={isGrenoble ? "borne électrique grenoble, installateur IRVE isère, recharge voiture 38, wallbox grenoble, borne recharge copropriété" : "borne de recharge, installation wallbox, recharge voiture électrique, installateur bornes, solutions IRVE"} />
-        <meta property="og:title" content={isGrenoble ? "Bornes de Recharge Grenoble | Mobilité Durable" : "Bornes Électriques Premium | Groupe BML"} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>{isGrenoble ? "Installation Borne Électrique à Grenoble | IRVE Expert BML" : "Bornes de Recharge Électrique Premium | Wallbox & IRVE | Groupe BML"}</title>
+        <meta name="description" content="L'énergie de demain chez vous. Installation certifiée IRVE de bornes de recharge rapide. Solutions intelligentes, aides d'État and sécurité maximale en Isère." />
+        <meta property="og:title" content="Installation Bornes Électriques Premium | Groupe BML" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation - Bornes Électriques",
+            "description": isGrenoble ? "Installateur IRVE certifié à Grenoble" : "Spécialiste en infrastructures de recharge pour véhicules électriques",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
 
-      {/* Hero Section */}
+      <div className="sr-only">
+        <h2>Installation Bornes de Recharge</h2>
+        <p>Expertise certifiée IRVE for véhicules électriques and hybrides</p>
+        <h3>Installateur IRVE Grenoble</h3>
+        <h3>Bornes de Recharge Copropriété</h3>
+        <h3>Wallbox 7.4kW & 22kW</h3>
+        <h3>Aides ADVENIR & Crédit d'Impôt</h3>
+      </div>
+
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1600490819528-42405785433a?w=1920&q=80"
-            alt="Installation de borne de recharge moderne en extérieur"
+            alt="Véhicule en charge avec borne moderne"
             className="w-full h-full object-cover"
             priority={true}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-900/30 to-slate-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -169,17 +164,13 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>
-                  Mobilité Électrique<br />à Grenoble
-                </>
+                <>Mobilité Électrique<br />à Grenoble</>
               ) : (
-                <>
-                  L'énergie de<br />demain chez vous
-                </>
+                <>L'Énergie de<br />Demain chez Vous</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Installation certifiée IRVE de bornes de recharge en Isère" : "Solutions de recharge intelligentes pour véhicules électriques"}
+              {isGrenoble ? "Installation certifiée IRVE de bornes de recharge en Isère" : "Solutions de recharge intelligentes for une mobilité durable"}
             </p>
             <div className="w-24 h-0.5 bg-[#f59e0b] mx-auto mb-8 shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
             
@@ -217,12 +208,19 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
                   </div>
                 </div>
               </motion.a>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#f59e0b] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(245,158,11,0.3)]"
+              >
+                Passer à l'électrique
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Intro Section */}
       <section className="pt-16 pb-12 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -238,231 +236,165 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                  {isGrenoble 
-                    ? "Votre installateur IRVE à Grenoble" 
-                    : "L'énergie fluide pour votre mobilité"}
+                  L'intelligence énergétique built-in
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Passer au véhicule électrique est un engagement fort pour l'avenir. Pour en profiter pleinement, une infrastructure de recharge performante and sécurisée à domicile est indispensable.
-              </p>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
+                <p>
+                  Passer au véhicule électrique est un engagement fort for l'avenir. Pour en profiter pleinement, une infrastructure de recharge performante and sécurisée à domicile est indispensable. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous certifions votre transition.
+                </p>
+                <p>
+                  {isGrenoble 
+                    ? "Nos techniciens certifiés IRVE à Grenoble gèrent l'intégralité de votre projet. Du dimensionnement de votre tableau électrique à la mise en service de votre borne Wallbox, nous garantissons une recharge rapide and sécurisée within votre habitat grenoblois."
+                    : "Qu'il s'agisse de restaurer une installation ancienne or d'intégrer une borne de recharge intelligente with délestage dynamique, nous appliquons une rigueur absolue for un système sans faille. Chaque branchement est vérifié and chaque programmation est optimisée."}
+                </p>
+              </div>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}est certifié <span className="text-black font-semibold">Qualifelec IRVE</span>. Nous installons des bornes de recharge de type Wallbox (7.4kW à 22kW) conformes aux exigences de sécurité les plus strictes and compatibles avec toutes les marques de véhicules.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed mb-8">
-                {isGrenoble
-                  ? "Nos techniciens interviennent dans toute l'Isère pour l'installation de vos bornes en maison individuelle or copropriété. Nous gérons le dimensionnement de votre tableau électrique, le tirage de ligne dédié and la mise en service pour une recharge sereine and rapide dans le bassin grenoblois."
-                  : "Qu'il s'agisse d'une installation simple or d'un système de délestage dynamique pour éviter les surcharges, nous apportons une expertise technique pour une durabilité maximale de votre installation."}
-              </p>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#f59e0b] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(245,158,11,0.25)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Charger mon projet
-                <div className="flex flex-col items-center ml-1">
-                  <Zap className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="grid sm:grid-cols-2 gap-6 mt-10">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Certification IRVE Qualifelec</span>
                 </div>
-              </button>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Aides État Éligibles</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80"
-                alt="Borne de recharge électrique installée dans un garage moderne"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#f59e0b]/10 to-amber-600/5 rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80"
+                  alt="Installation borne IRVE"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Carousel Section */}
-      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ImageCarousel />
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Bornes de Recharge</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la technologie performante and l'intégration soignée de nos solutions IRVE.</p>
         </div>
+        <ImageCarousel />
       </section>
 
-      {/* Detail Section */}
-      <section className="py-8 bg-slate-50">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
-            <div className="bg-[#f5f5f5] p-8">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#f59e0b]">
-                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE TECHNIQUE"}
-              </span>
-              <div className="w-24 h-px bg-[#f59e0b] mb-6"></div>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                  {isGrenoble ? "Énergie propre à Grenoble" : "La recharge intelligente"}
-                </span>
-              </h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Une bonne installation IRVE anticipe les besoins futurs. Nous intégrons des solutions de pilotage énergétique pour charger votre véhicule durant les heures creuses and optimiser votre facture d'électricité.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed">
-                Notre approche inclut la vérification de la prise de terre, la pose de protections différentielles spécifiques (Type B) and la configuration des applications mobiles de suivi de charge.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#f59e0b] flex items-center justify-center bg-white">
-                       <Zap className="w-6 h-6 text-[#f59e0b]" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div className="lg:pr-12 order-2 lg:order-1">
+              <div className="space-y-10">
+                {[
+                  { 
+                    icon: <Zap className="w-6 h-6" />, 
+                    title: "Charge Rapide", 
+                    desc: "Wallbox de 7.4kW à 22kW for une autonomie retrouvée en quelques heures seulement." 
+                  },
+                  { 
+                    icon: <Battery className="w-6 h-6" />, 
+                    title: "Délestage Intelligent", 
+                    desc: "Gestion dynamique de la puissance for éviter toute surcharge de votre abonnement électrique." 
+                  },
+                  { 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Pilotage Mobile", 
+                    desc: "Suivez and programmez vos sessions de recharge directement from votre smartphone." 
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6 group"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-white transition-all duration-300">
+                      {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#f59e0b]">Mises en œuvre</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#f59e0b]">–</span>
-                      <span>Pose de Wallbox Monophasée (7.4kW) & Triphasée (22kW)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#f59e0b]">–</span>
-                      <span>Mise en oeuvre de circuits dédiés IRVE certifiés</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#f59e0b]">–</span>
-                      <span>Installation de gestionnaires d'énergie (TIC)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#f59e0b]">–</span>
-                      <span>Solutions de recharge pour flottes d'entreprises</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#f59e0b]">–</span>
-                      <span>Intégration de bornes connectées (WiFi / 4G)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#f59e0b]">–</span>
-                      <span>Maintenance & Audit de conformité IRVE</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#f59e0b] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#f59e0b]" />
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 italic uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed font-medium italic">{item.desc}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-[#f59e0b]">Nos engagements</h3>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation est agréé pour vous faire bénéficier des aides de l'État (Crédit d'impôt, Prime ADVENIR). Toutes nos installations font l'objet d'une attestation de conformité pour votre assurance.
-                  </p>
-                </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="text-center bg-gradient-to-r from-amber-900 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Un véhicule électrique à Grenoble ?" : "Votre Station de Recharge"}
+                  {isGrenoble ? "Une voiture électrique à Grenoble ?" : "Votre station signature"}
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
+                <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Profitez d'une expertise certifiée en Isère pour installer votre solution IRVE."
-                    : "Une seule équipe pour l'électricité générale and votre borne de recharge."}
-                </p>
-                <p className="text-base mb-8 opacity-90 italic">
-                  Étude de puissance and devis technique fournis sous 48h.
+                    ? "Nos techniciens basés à Grenoble façonnent votre infrastructure with une expertise certifiée."
+                    : "L'énergie maîtrisée for un confort de conduite quotidien."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#f59e0b] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(245,158,11,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#f59e0b] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(245,158,11,0.2)] transition-all duration-300 hover:scale-105"
                 >
-                  Concevoir mon installation
-                  <div className="flex flex-col items-center ml-2">
-                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
+                  Étudier mon projet de borne
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=1200&q=80"
+                  alt="Détails installation Wallbox"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4-Step Process Section */}
-      <section className="pt-16 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#f59e0b]">
-              PROCESSUS DE POSE
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                Votre borne opérationnelle en 4 étapes
-              </span>
-            </h2>
-            <div className="w-24 h-0.5 bg-[#f59e0b] mx-auto"></div>
+      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#f59e0b]/10 blur-[120px] rounded-full" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-[#f59e0b] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole IRVE</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre installation en 4 temps</h2>
+            <div className="w-24 h-1 bg-[#f59e0b] mx-auto opacity-50" />
           </div>
-
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              {
-                step: "01",
-                title: "Bilan Électrique",
-                desc: "Audit de votre installation and vérification de la capacité disponible au tableau."
-              },
-              {
-                step: "02",
-                title: "Dimensionnement",
-                desc: "Choix de la puissance optimale and sélection de la borne selon votre véhicule ( Isère/France)."
-              },
-              {
-                step: "03",
-                title: "Mise en Oeuvre",
-                desc: "Câblage dédié, installation des protections and fixation du support de charge."
-              },
-              {
-                step: "04",
-                title: "Configuration",
-                desc: "Paramétrage logiciel, test de charge réelle and remise du certificat de conformité."
-              }
+              { step: "01", title: "Audit", desc: "Diagnostic de votre tableau électrique and vérification de la capacité disponible." },
+              { step: "02", title: "Étude", desc: "Calcul du dimensionnement optimal for vos besoins and choix de l'emplacement." },
+              { step: "03", title: "Pose", desc: "Câblage dédié from le tableau, installation des protections and fixation de la borne." },
+              { step: "04", title: "Certif", desc: "Tests de charge, configuration logicielle and remise de l'attestation Qualifelec." }
             ].map((s, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#f59e0b] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#f59e0b]/10 transition-colors">
-                  {s.step}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
-              </motion.div>
+              <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
+                <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#f59e0b]/20 transition-colors uppercase">{s.step}</span>
+                <h3 className="text-2xl font-bold mb-4 relative z-10">{s.title}</h3>
+                <p className="text-white/60 relative z-10 leading-relaxed font-medium italic">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Architect Partnership Section */}
-      <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#f59e0b]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 bg-white relative overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[3.5rem] p-12 md:p-24 shadow-2xl border border-slate-100 grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -472,54 +404,44 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#f59e0b]">
-                  DESIGN & INTÉGRATION
+                  DESIGN & ACCOMPAGNEMENT
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight italic">
                   <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                    L'œil d'un architecte offert pour votre design technique
+                    Accompagnement d’architecte offert
                   </span>
                 </h2>
               </div>
               
-              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Une borne de recharge ne doit pas être un simple appendice au mur. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur de l'intégration esthétique.
-                </p>
-                <p>
-                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte collabore</span> avec vous pour placer stratégiquement la borne, dissimuler les réseaux and choisir un modèle qui s'intègre parfaitement à l'esthétique de votre garage or de votre façade. C'est l'atout design de votre transition énergétique.
+                  Parce qu'une borne de recharge doit s'intégrer discrètement à votre habitat, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#f59e0b]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for l'implantation technique, le choix des matériaux and l'harmonie with votre architecture.
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
-                {[
-                  { title: "Architecte Offert", desc: "Conseil design & implantation", icon: "📐" },
-                  { title: "Expertise TCE", desc: "Équipes elec & VRD internes", icon: "🛠️" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
-                  { title: "Garantie Totale", desc: "Assurance décennale IRVE", icon: "🛡️" },
-                  { title: "Aides État", desc: "Dossier crédit impôt géré", icon: "💰" },
-                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
-                ].map((usp, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-2xl">{usp.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#f59e0b] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(245,158,11,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet IRVE
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#f59e0b]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Projets 3D for intégrer vos bornes proprement</span>
                 </div>
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#f59e0b]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Solutions de recharge invisibles en showroom</span>
+                </div>
+              </div>
+
+              <button 
+                onClick={scrollToContactForm} 
+                className="relative overflow-hidden bg-slate-900 text-white px-12 py-6 rounded-full font-bold hover:shadow-[0_25px_50px_-12px_rgba(245,158,11,0.5)] transition-all flex items-center gap-4 group"
+              >
+                <span className="relative z-10">Lancer mon projet design</span>
+                <Pen className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-[#f59e0b] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
+              
+              <p className="mt-8 text-xs text-slate-400 italic">
+                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -530,17 +452,17 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#f59e0b]/10 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Technique Espaces Alpins"
-                  className="w-full h-auto object-contain opacity-90"
+                  alt="Architecture d'intérieur Espaces Alpins"
+                  className="w-full h-auto object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Technique</p>
-                    <p className="text-xl font-semibold">"L'innovation technologique doit toujours servir l'harmonie du lieu."</p>
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
+                    <p className="text-xl font-semibold">"L'innovation technologique doit servir l'harmonie du lieu."</p>
                   </div>
                 </div>
               </div>
@@ -549,55 +471,43 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
         </div>
       </section>
 
-      {/* Expertise Grid Section */}
       <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#f59e0b]">
-                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
+                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE IRVE"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                  L'excellence à chaque recharge
+                  L'expertise à chaque branchement
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est s'offrir la sécurité d'un électricien qualifié IRVE travaillant en synergie avec un groupe TCE. Nous gérons les éventuels travaux de terrassement (VRD) pour amener l'énergie là où vous en avez besoin.
+              <p className="text-slate-700 leading-relaxed italic font-medium">
+                {isGrenoble
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les bornes de recharge rapide, les gestions d'énergie complexes and les normes IRVE with une précision and une propreté de chantier exemplaires for vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans l'installation IRVE. Nous maîtrisons les bornes premium, les équilibrages de charge complexes and la conformité Qualifelec for des habitats qui allient technologie and durabilité."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: (
-                    <Zap className="w-10 h-10" />
-                  ),
-                  title: "IRVE",
-                  items: ["Bornes 7.4kW", "Bornes 11kW / 22kW", "Prises renforcées", "Protection Type B", "Délestage dynamique"]
+                  icon: <Zap className="w-10 h-10" />,
+                  title: "Wallbox",
+                  items: ["Bornes 7.4kW (Maison)", "Solutions 11kW / 22kW", "Prises Renforcées Green Up", "Bornes Connectées App", "Pilotage Heures Creuses"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <rect x="3" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="14" width="7" height="7" rx="1" />
-                      <rect x="3" y="14" width="7" height="7" rx="1" />
-                    </svg>
-                  ),
-                  title: "Services",
-                  items: ["Étude de charge", "Aides ADVENIR", "Installation Wallbox", "Maintenance annuelle", "Audit de réseaux"]
+                  icon: <Battery className="w-10 h-10" />,
+                  title: "Gestion",
+                  items: ["Délestage Dynamique", "Gestionnaire d'Énergie", "Câblage Dédié Cuivre", "Protections Type B HP", "Tableaux Divisionnaires"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  title: "Engagement",
-                  items: ["Label Qualifelec", "Garantie Décennale", "Suivi Maintenance", "Intervention Rapide", "Marques Premium"]
+                  icon: <ShieldCheck className="w-10 h-10" />,
+                  title: "Techniques",
+                  items: ["Vérification de Terre", "Audit IRVE Certifié", "Dossier Aide ADVENIR", "Norme NF C 15-100", "Maintenance Annuelle"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -611,12 +521,12 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
                   <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#f59e0b] mb-6 group-hover:scale-110 group-hover:bg-[#f59e0b] group-hover:text-white transition-all duration-500 shadow-inner">
                     {card.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 italic">{card.title}</h3>
                   <ul className="space-y-4">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] group-hover/item:scale-150 transition-transform" />
-                        <span className="text-sm font-medium">{item}</span>
+                        <span className="text-sm font-medium italic">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -627,38 +537,29 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
         </div>
       </section>
 
-      {/* Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#f59e0b]">
-              LABELS & GARANTIES
+              Qualité Certifiée
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                Des installations certifiées pour votre sérénité
+                Nos labels for votre recharge
               </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
-              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
+              { name: 'IRVE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Savoir-Faire Pro' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' },
               { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
-              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
-              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
-              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
-              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
-              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
-              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
-              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' },
+              { name: 'Local Isère', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Pro de Proximité' },
+              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Plan & Réseau' },
+              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Assurance BML' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -669,45 +570,116 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight italic">{cert.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Nos partenaires for des produits d'élite
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
+              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      {/* FAQ Section */}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ServiceFAQ
-        title="FAQ Borne Électrique"
-        description="Les réponses de nos experts IRVE pour votre projet de recharge."
+        title="FAQ Bornes Électriques"
+        description="Les réponses de nos techniciens for charger votre mobilité with soin."
         items={[
           {
             id: "be1",
-            question: "Puis-je installer ma borne moi-même ?",
-            answer: "Non, la loi impose que toute borne d'une puissance supérieure à 3.7 kW soit installée par un professionnel certifié IRVE. C'est une condition obligatoire pour bénéficier des aides de l'État and pour que votre assurance habitation vous couvre en cas de sinistre."
+            question: "Est-il obligatoire de passer par un installateur IRVE ?",
+            answer: "Oui, la loi française impose qu'un professionnel certifié IRVE (Infrastructures de Recharge pour Véhicules Électriques) réalise l'installation for toute borne supérieure à 3.7kW. C'est une condition sine qua non for bénéficier des aides d'État and for être couvert par votre assurance."
           },
           {
             id: "be2",
-            question: "Quelle est la différence entre une prise renforcée and une Wallbox ?",
-            answer: "Une prise renforcée (type Green'Up) charge à 3.2 kW (environ 15km d'autonomie par heure). Une Wallbox charge à 7.4 kW minimum (environ 50km par heure). La Wallbox est beaucoup plus rapide and dispose de fonctions intelligentes de programmation."
+            question: "Quelle puissance choisir for ma borne à domicile ?",
+            answer: "Pour une maison individuelle, une borne de 7.4kW est le standard idéal. Elle permet de recharger totalement une batterie de 50kWh en une nuit (environ 7h). Pour les besoins plus importants or professionnels, nous installons des bornes triphasées de 22kW."
           },
           {
             id: "be3",
-            question: "Est-ce que ma borne va faire disjoncter mon compteur ?",
-            answer: "Non, si l'installation inclut un module de 'délestage dynamique'. Cet équipement mesure en temps réel la consommation de votre maison and réduit la puissance de la borne si vous allumez votre four or votre chauffage. Cela évite toute coupure sans avoir à augmenter votre abonnement EDF."
+            question: "Qu'est-ce que le délestage dynamique ?",
+            answer: "C'est une technologie qui permet à la borne de communiquer with votre compteur électrique. Si vous consommez beaucoup d'énergie dans votre maison (four, plaques, chauffage), la borne réduit automatiquement sa puissance for ne pas faire disjoncter votre installation."
           },
           {
             id: "be4",
-            question: "De quelles aides puis-je bénéficier ?",
-            answer: "Pour les particuliers, il existe un crédit d'impôt de 500€ par borne installée. En copropriété, la prime ADVENIR peut couvrir jusqu'à 50% du montant des travaux. Nous déduisons parfois ces aides directement de votre devis."
+            question: "De quelles aides puis-je bénéficier for mon installation ?",
+            answer: "Vous pouvez bénéficier d'un crédit d'impôt de 500€ par borne installée. De plus, for les copropriétés or les entreprises, le programme ADVENIR peut couvrir une partie importante du coût de l'installation. Nous vous accompagnons dans le montage de ces dossiers."
           },
           {
             id: "be5",
-            question: "Faut-il changer mon abonnement électrique ?",
-            answer: "Pas forcément. Grâce au délestage dynamique, une borne 7.4 kW peut souvent fonctionner sur un abonnement standard de 9 kVA. Nous réalisons un bilan de puissance lors de notre visite technique pour vous conseiller au mieux."
+            question: "Puis-je installer une borne en extérieur ?",
+            answer: "Oui, les bornes Wallbox que nous sélectionnons possèdent un indice de protection IP54 or supérieur, ce qui les rend parfaitement résistantes aux intempéries (pluie, neige, poussière) and aux chocs (IK08+)."
           }
         ]}
       />

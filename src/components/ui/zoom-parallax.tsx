@@ -14,6 +14,14 @@ interface ZoomParallaxProps {
 export const ZoomParallax: React.FC<ZoomParallaxProps> = ({ images }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerHeight, setContainerHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -29,7 +37,7 @@ export const ZoomParallax: React.FC<ZoomParallaxProps> = ({ images }) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full bg-white overflow-hidden py-12"
+      className={`relative w-full bg-white overflow-hidden ${isMobile ? 'py-8' : 'py-12'}`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="space-y-24">
@@ -60,9 +68,9 @@ export const ZoomParallax: React.FC<ZoomParallaxProps> = ({ images }) => {
                 key={index}
                 className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl"
                 style={{
-                  scale,
-                  opacity,
-                  y,
+                  scale: isMobile ? 1 : scale,
+                  opacity: isMobile ? 1 : opacity,
+                  y: isMobile ? 0 : y,
                 }}
               >
                 <img

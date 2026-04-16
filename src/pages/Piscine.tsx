@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen, Droplets } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Droplets, Layout, ShieldCheck, Waves, Maximize, Grid3X3, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
+import { piscineFAQs } from '../data/service-faqs';
 
 interface PiscineProps {
   onBack: () => void;
@@ -19,51 +18,30 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1200&q=80',
-    'https://images.unsplash.com/photo-1675657144285-7daf131132de?w=1200&q=80',
-    'https://images.unsplash.com/photo-1642371594014-b82c20ba4f50?w=1200&q=80',
-    'https://images.unsplash.com/photo-1602774895754-2772f8a08f6b?w=1200&q=80',
-    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80',
-    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1200&q=80',
-    'https://images.unsplash.com/photo-1675657144285-7daf131132de?w=1200&q=80'
+    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=800&q=80',
+    'https://images.unsplash.com/photo-1675657144285-7daf131132de?w=800&q=80',
+    'https://images.unsplash.com/photo-1642371594014-b82c20ba4f50?w=800&q=80',
+    'https://images.unsplash.com/photo-1602774895754-2772f8a08f6b?w=800&q=80',
+    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
-      const firstSetWidth = itemWithGap * images.length;
-
-      if (newPosition <= 0) {
-        container.scrollLeft = firstSetWidth - itemWithGap;
-      } else {
-        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-      const firstSetWidth = itemWithGap * images.length;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      const newPosition = container.scrollLeft + itemWithGap;
-
-      if (newPosition >= firstSetWidth - itemWithGap) {
-        container.scrollLeft = 0;
-      } else if (newPosition >= maxScroll) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
     }
   };
 
@@ -102,8 +80,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Piscine & Bassin ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Piscine & Bassin ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -114,8 +92,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Piscine & Bassin ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Piscine & Bassin ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -131,7 +109,7 @@ const ImageCarousel = () => {
 const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -140,24 +118,43 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Construction & Rénovation Piscine Grenoble | Groupe BML" : "Piscines sur Mesure & Bassins Design | Rénovation & Étanchéité | Groupe BML"}</title>
-        <meta name="description" content={isGrenoble ? "Concepteur de piscines à Grenoble. Construction de bassins béton, rénovation de liners and plages de piscine en Isère. Expertise maçonnerie paysagère premium." : "Réalisation de piscines d'exception. De la structure béton aux finitions mosaïque, nous créons votre espace aquatique sur mesure avec garantie décennale."} />
-        <meta name="keywords" content={isGrenoble ? "piscine grenoble, constructeur piscine isère, rénovation bassin 38, plage piscine grenoble, étanchéité piscine" : "piscine sur mesure, piscine béton, rénovation liner, mosaïque piscine, plage bois piscine"} />
-        <meta property="og:title" content={isGrenoble ? "Piscines & Espaces Détente Grenoble | Excellence Aquatique" : "Piscines Premium | Groupe BML"} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>{isGrenoble ? "Construction & Rénovation Piscine à Grenoble | Bassin & Design | BML" : "Piscines sur Mesure & Bassins d'Exception | Rénovation & Étanchéité | BML"}</title>
+        <meta name="description" content="Réalisation de piscines d'exception. De la structure béton aux finitions mosaïque, nous créons votre espace aquatique sur mesure with garantie décennale and architecte offert." />
+        <meta property="og:title" content="Piscines & Bassins d'Exception | Groupe BML" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation - Piscine",
+            "description": isGrenoble ? "Expert pisciniste à Grenoble and en Isère" : "Spécialiste en construction de piscines haut de gamme",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
 
-      {/* Hero Section */}
+      <div className="sr-only">
+        <h2>Expertise Piscine & Bassin</h2>
+        <p>Construction and rénovation de piscines en béton armé and étanchéité premium</p>
+        <h3>Pisciniste Grenoble</h3>
+        <h3>Piscine à Débordement Design</h3>
+        <h3>Rénovation Liner & PVC Armé</h3>
+        <h3>Architecte d'Extérieur Offert</h3>
+      </div>
+
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1920&q=80"
-            alt="Piscine à débordement avec vue panoramique and design épuré"
+            alt="Piscine de prestige réalisation BML"
             className="w-full h-full object-cover"
             priority={true}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-slate-900/30 to-slate-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -168,17 +165,13 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>
-                  Piscines & Design<br />à Grenoble
-                </>
+                <>Piscines & Design<br />à Grenoble</>
               ) : (
-                <>
-                  L'excellence de<br />l'eau vive
-                </>
+                <>L'Excellence de<br />l'Eau Vive</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Construction and rénovation de bassins d'exception en Isère" : "Conception architecturale d'espaces aquatiques and de bien-être"}
+              {isGrenoble ? "Construction et rénovation de bassins d'exception en Isère" : "Conception architecturale d'espaces aquatiques and de bien-être"}
             </p>
             <div className="w-24 h-0.5 bg-[#0891b2] mx-auto mb-8 shadow-[0_0_15px_rgba(8,145,178,0.5)]" />
             
@@ -216,12 +209,19 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
                   </div>
                 </div>
               </motion.a>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#0891b2] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(8,145,178,0.3)]"
+              >
+                Lancer mon projet aquatique
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Intro Section */}
       <section className="pt-16 pb-12 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -232,238 +232,170 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
-                AMÉNAGEMENT AQUATIQUE
+                SÉRÉNITÉ & DESIGN
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                  {isGrenoble 
-                    ? "Votre expert piscines à Grenoble" 
-                    : "L'art de l'eau dans votre jardin"}
+                  L'orfèvrerie du bassin sur mesure
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Une piscine est le cœur vivant de votre extérieur. Elle structure l'espace, apporte une fraîcheur indispensable and crée un lieu de convivialité unique pour votre famille.
-              </p>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
+                <p>
+                  Une piscine est bien plus qu'un simple bassin, c'est le cœur battant de votre jardin. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous marions expertise technique and esthétique d'exception for créer votre oasis personnelle.
+                </p>
+                <p>
+                  {isGrenoble 
+                    ? "Nos experts piscinistes à Grenoble interviennent for la construction monolithique en béton armé or la rénovation complète de votre étanchéité (PVC armé, liner, mosaïque). Nous maîtrisons les contraintes du sol isérois for vous garantir une structure pérenne and des plages de piscine aux finitions impeccables."
+                    : "De la conception d'une piscine à débordement minimaliste à la restauration d'un bassin ancien, nous appliquons une rigueur absolue. Chaque pièce technique est sélectionnée for sa performance and chaque finition est posée with une précision millimétrée."}
+                </p>
+              </div>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise l'intégralité de la chaîne de construction. De la maçonnerie de bassin structurelle à la pose de liners armés or de mosaïques haut de gamme, nous réalisons des bassins d'une étanchéité and d'une esthétique irréprochables.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed mb-8">
-                {isGrenoble
-                  ? "Nos équipes interviennent dans toute l'Isère pour la création or la rénovation de votre bassin. Nous gérons le terrassement, la maçonnerie étanche, l'installation de la filtration and l'aménagement des plages (bois or pierre) pour un projet clés en main parfaitement intégré au paysage grenoblois."
-                  : "Qu'il s'agisse d'un couloir de nage urbain or d'une piscine familiale aux formes libres, nous appliquons une rigueur de construction pour garantir la pérennité de votre investissement."}
-              </p>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#0891b2] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(8,145,178,0.25)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Plonger dans mon projet
-                <div className="flex flex-col items-center ml-1">
-                  <Droplets className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="grid sm:grid-cols-2 gap-6 mt-10">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-[#0891b2] group-hover:bg-[#0891b2] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Béton Armé & Structure</span>
                 </div>
-              </button>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-[#0891b2] group-hover:bg-[#0891b2] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Garantie Décennale Totale</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1675657144285-7daf131132de?w=1200&q=80"
-                alt="Aménagement de piscine premium avec plage en bois and eau cristalline"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#0891b2]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1675657144285-7daf131132de?w=1200&q=80"
+                  alt="Rénovation piscine design"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Carousel Section */}
-      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ImageCarousel />
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Réalisations Aquatiques</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la pureté and l'élégance de nos bassins et terrasses mobiles.</p>
         </div>
+        <ImageCarousel />
       </section>
 
-      {/* Detail Section */}
-      <section className="py-8 bg-slate-50">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
-            <div className="bg-[#f5f5f5] p-8">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
-                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE MAÇONNERIE"}
-              </span>
-              <div className="w-24 h-px bg-[#0891b2] mb-6"></div>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                  {isGrenoble ? "Espaces d'eau à Grenoble" : "La structure & l'étanchéité"}
-                </span>
-              </h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Une piscine est une structure soumise à de fortes contraintes de pression. Nous dimensionnons nos ferraillages and nos bétons pour garantir une stabilité totale, même en terrain difficile.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed">
-                Notre approche inclut la gestion du drainage périphérique, l'installation de locaux techniques enterrés and une attention particulière aux pièces à sceller (skimmers, buses) pour une circulation d'eau optimale.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#0891b2] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#0891b2]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" />
-                      </svg>
+          <div className="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div className="lg:pr-12 order-2 lg:order-1">
+              <div className="space-y-10">
+                {[
+                  { 
+                    icon: <Waves className="w-6 h-6" />, 
+                    title: "Structure Monolithe", 
+                    desc: "Construction en béton armé banché for une solidité à toute épreuve and une liberté totale de forme." 
+                  },
+                  { 
+                    icon: <Droplets className="w-6 h-6" />, 
+                    title: "Étanchéité Premium", 
+                    desc: "PVC armé haute résistance or mosaïque d'exception for un rendu visuel and une durabilité optimisés." 
+                  },
+                  { 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Équipements Élite", 
+                    desc: "Filtration haute performance, pompes à chaleur économes and domotique de bassin intégrée." 
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6 group"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-[#0891b2] group-hover:bg-[#0891b2] group-hover:text-white transition-all duration-300">
+                      {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#0891b2]">Mises en œuvre</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#0891b2]">–</span>
-                      <span>Construction de bassins en béton banché or parpaings</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#0891b2]">–</span>
-                      <span>Pose de Liner 75/100 or PVC Armé 150/100</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#0891b2]">–</span>
-                      <span>Rénovation d'étanchéité & recherche de fuites</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#0891b2]">–</span>
-                      <span>Création de plages en bois, pierre bleue or grès cérame</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#0891b2]">–</span>
-                      <span>Installation de filtration au chlore, sel or bromure</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#0891b2]">–</span>
-                      <span>Chauffage par Pompe à Chaleur (PAC) full inverter</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#0891b2] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#0891b2]" />
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 italic uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed font-medium italic">{item.desc}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-[#0891b2]">Nos engagements</h3>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation assure des chantiers avec assurance décennale capitalisée. Nous n'utilisons que des liners certifiés NF and des équipements de filtration de marques leaders (Hayward, Zodiac) pour un usage sans souci.
-                  </p>
-                </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="text-center bg-gradient-to-r from-cyan-900 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Un nouveau bassin à Grenoble ?" : "Votre Oasis Privée"}
+                  {isGrenoble ? "Un bassin à construire à Grenoble ?" : "Votre Piscine Signature"}
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
+                <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Profitez d'une expertise reconnue en Isère pour valoriser votre jardin."
-                    : "Une seule équipe pour le terrassement, la maçonnerie and l'aménagement paysager."}
-                </p>
-                <p className="text-base mb-8 opacity-90 italic">
-                  Analyse d'eau and devis structurel fournis sous 72h.
+                    ? "Nos orfèvres du bassin basés à Grenoble façonnent votre projet with une expertise certifiée."
+                    : "L'art de vivre au bord de l'eau, sans compromis."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#0891b2] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(8,145,178,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#0891b2] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(8,145,178,0.2)] transition-all duration-300 hover:scale-105"
                 >
-                  Concevoir ma piscine
-                  <div className="flex flex-col items-center ml-2">
-                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
+                  Étudier mon projet de piscine
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1642371594014-b82c20ba4f50?w=1200&q=80"
+                  alt="Piscine intérieure de luxe"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4-Step Process Section */}
-      <section className="pt-16 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
-              LOGISTIQUE TECHNIQUE
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                Votre projet aquatique en 4 phases expertes
-              </span>
-            </h2>
-            <div className="w-24 h-0.5 bg-[#0891b2] mx-auto"></div>
+      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#0891b2]/10 blur-[120px] rounded-full" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-[#0891b2] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Aquatique</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre projet en 4 temps</h2>
+            <div className="w-24 h-1 bg-[#0891b2] mx-auto opacity-50" />
           </div>
-
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              {
-                step: "01",
-                title: "Terrassement & Fond",
-                desc: "Excavation précise, drainage and réalisation du radier en béton armé ( Isère/France)."
-              },
-              {
-                step: "02",
-                title: "Élévation & Réseaux",
-                desc: "Montage des parois, scellement des pièces techniques and raccordement au local technique."
-              },
-              {
-                step: "03",
-                title: "Étanchéité Liner",
-                desc: "Préparation du support, pose du feutre and ajustement thermique du liner or PVC armé."
-              },
-              {
-                step: "04",
-                title: "Plages & Mise en Eau",
-                desc: "Réalisation des dallages or terrasses bois, mise en service and formation à l'entretien."
-              }
+              { step: "01", title: "Implantation", desc: "Étude de sol and relevé laser for une intégration parfaite dans votre jardin." },
+              { step: "02", title: "Structure", desc: "Coulage du béton monolithique according to les règles de l'art du génie civil." },
+              { step: "03", title: "Appareillage", desc: "Installation des réseaux hydrauliques, filtration and systèmes de traitement automatisés." },
+              { step: "04", title: "Étanchéité", desc: "Pose millimétrée du revêtement final and mise en eau after séchage contrôlé." }
             ].map((s, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(8,145,178,0.15)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#0891b2] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#0891b2]/10 transition-colors">
-                  {s.step}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
-              </motion.div>
+              <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
+                <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#0891b2]/20 transition-colors uppercase">{s.step}</span>
+                <h3 className="text-2xl font-bold mb-4 relative z-10">{s.title}</h3>
+                <p className="text-white/60 relative z-10 leading-relaxed font-medium italic">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Architect Partnership Section */}
-      <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#0891b2]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 bg-white relative overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[3.5rem] p-12 md:p-24 shadow-2xl border border-slate-100 grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -473,54 +405,44 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
-                  DESIGN & PAYSAGE
+                  DESIGN & ACCOMPAGNEMENT
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight italic">
                   <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                    L'œil d'un architecte offert pour votre design aquatique
+                    Accompagnement d’architecte offert
                   </span>
                 </h2>
               </div>
               
-              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Une piscine doit être une extension harmonieuse de votre architecture. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design extérieur.
-                </p>
-                <p>
-                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte collabore</span> avec vous pour placer le bassin selon l'ensoleillement optimal, choisir les matériaux qui dialoguent avec votre façade and intégrer des éléments de design (escaliers sous liner, banquettes immergées). C'est l'assurance d'un projet d'exception.
+                  Parce qu'une piscine sublime un paysage, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#0891b2]">Espaces Alpins</span>. Bénéficiez des conseils d'un architecte paysager for harmoniser votre bassin with votre extérieur : choix des margelles, design des plages and scénographie lumineuse nocturne.
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
-                {[
-                  { title: "Architecte Offert", desc: "Conseil design & implantation", icon: "📐" },
-                  { title: "Expertise TCE", desc: "Équipes gros œuvre & hydraulique", icon: "🛠️" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
-                  { title: "Garantie Totale", desc: "Décennale construction & étanchéité", icon: "🛡️" },
-                  { title: "Showroom Mobile", desc: "Échantillons liner & plage chez vous", icon: "🎨" },
-                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
-                ].map((usp, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-2xl">{usp.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#0891b2] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(8,145,178,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet de bassin
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#0891b2]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Projet 3D d'intégration paysagère offert</span>
                 </div>
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#0891b2]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Conseils décoration et sélection de matériaux premium</span>
+                </div>
+              </div>
+
+              <button 
+                onClick={scrollToContactForm} 
+                className="relative overflow-hidden bg-slate-900 text-white px-12 py-6 rounded-full font-bold hover:shadow-[0_25px_50px_-12px_rgba(8,145,178,0.5)] transition-all flex items-center gap-4 group"
+              >
+                <span className="relative z-10">Lancer mon projet design</span>
+                <Pen className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-[#0891b2] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
+              
+              <p className="mt-8 text-xs text-slate-400 italic">
+                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -531,17 +453,17 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#0891b2]/10 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
-                <OptimizedImage
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <img
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Basin Espaces Alpins"
-                  className="w-full h-auto object-contain opacity-90"
+                  alt="Architecture d'intérieur Espaces Alpins"
+                  className="w-full h-auto object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Aquatique</p>
-                    <p className="text-xl font-semibold">"L'eau est le miroir de votre sérénité au cœur de votre jardin."</p>
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Paysage</p>
+                    <p className="text-xl font-semibold">"L'eau est le miroir de votre horizon."</p>
                   </div>
                 </div>
               </div>
@@ -550,52 +472,43 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Expertise Grid Section */}
       <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
-                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
+                {isGrenoble ? "NOTRE MÉTIER ISÈRE" : "CHAMP D'ACTION"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                  L'excellence à chaque baignade
+                  L'excellence à chaque immersion
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts maçons, hydrauliciens and électriciens pour que la partie piscine de votre chantier soit un succès total.
+              <p className="text-slate-700 leading-relaxed italic font-medium">
+                {isGrenoble
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'art du bassin. Nous gérons terrassement, maçonnerie, filtration and finitions with une propreté de chantier and une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en construction aquatique. Nous coordonnons nos maçons, plombiers and électriciens for que vos piscines soient livrées with un niveau de fiabilité digne des plus grands domaines."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M4 14l3.586-3.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ),
-                  title: "Technique",
-                  items: ["Radier Béton Armé", "Étanchéité PVC Armé", "Filtration Haute Performance", "Chauffage PAC Inverter", "Traitement Automatique"]
+                  icon: <Maximize className="w-10 h-10" />,
+                  title: "Bassins",
+                  items: ["Piscines Béton Armé", "Piscines à Débordement", "Couloirs de Nage", "Mini-Piscines Citadines", "Piscines Intérieures"]
                 },
                 {
-                  icon: (
-                    <Droplets className="w-10 h-10" />
-                  ),
-                  title: "Spécialités",
-                  items: ["Couloirs de Nage", "Bassins Miroirs", "Piscines à Débordement", "Rénovation de Liner", "Plages de Piscine"]
+                  icon: <Droplets className="w-10 h-10" />,
+                  title: "Étanchéité",
+                  items: ["PVC Armé 150/100e", "Liners Haute Qualité", "Mosaïques & Émaux", "Enduits Hydrofuges", "Réparation de Fuites"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  title: "Engagement",
-                  items: ["Décennale Capitalisée", "Marques Leaders", "Entretien Saisonier", "Conformité Sécurité", "Suivi Maintenance"]
+                  icon: <ShieldCheck className="w-10 h-10" />,
+                  title: "Engagements",
+                  items: ["Garantie Décennale TCE", "Labels RGE & Qualibat", "Chantier Millimétré", "Délais Respectés", "SAV Interne Réactif"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -604,17 +517,17 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(8,145,178,0.1)] transition-all duration-500 group"
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#0891b2] mb-6 group-hover:scale-110 group-hover:bg-[#0891b2] group-hover:text-white transition-all duration-500 shadow-inner">
                     {card.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 italic">{card.title}</h3>
                   <ul className="space-y-4">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#0891b2] group-hover/item:scale-150 transition-transform" />
-                        <span className="text-sm font-medium">{item}</span>
+                        <span className="text-sm font-medium italic">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -625,38 +538,29 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
-              LABELS & GARANTIES
+              Nos certifications
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                Une structure saine pour vos moments de fraîcheur
+                Nos labels and qualifications
               </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
-              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
-              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
-              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
-              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
-              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
-              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
-              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
-              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
-              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
+              { name: 'Pompe à chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Chauffage Eau' },
+              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Normes Bassin' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Finition Élite' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Gros Œuvre' },
+              { name: 'Fluides', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Hydraulique Pro' },
+              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Accès Bassin' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Savoir-Faire Isère' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -667,47 +571,92 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight italic">{cert.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#0891b2]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
+              <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
+                Nos partenaires for des produits d'élite
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
+              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      {/* FAQ Section */}
-      <ServiceFAQ
-        title="FAQ Piscine"
-        description="Les réponses de nos techniciens pour préparer votre projet aquatique."
-        items={[
-          {
-            id: "ps1",
-            question: "Combien de temps dure la construction d'une piscine béton ?",
-            answer: "Il faut compter entre 4 and 8 semaines de travaux effectifs, hors temps de séchage du béton (minimum 28 jours avant pose du revêtement). En incluant les phases administratives and les finitions des plages, un projet complet s'étale généralement sur 3 à 4 mois."
-          },
-          {
-            id: "ps2",
-            question: "Liner or PVC Armé : quelle différence ?",
-            answer: "Le liner est une poche d'une seule pièce, plus souple and économique (durée de vie 10-12 ans). Le PVC armé est soudé sur place, il est beaucoup plus épais and résistant aux températures élevées (idéal pour piscines chauffées) avec une durée de vie de plus de 20 ans."
-          },
-          {
-            id: "ps3",
-            question: "Faut-il un permis de construire pour une piscine ?",
-            answer: "De 10m² à 100m², une déclaration préalable de travaux (DP) en mairie est obligatoire. Au-delà de 100m² or si vous ajoutez un abri haut (>1m80), un permis de construire est nécessaire. Nous vous accompagnons dans toutes ces démarches administratives."
-          },
-          {
-            id: "ps4",
-            question: "Est-ce qu'une piscine consomme beaucoup d'électricité ?",
-            answer: "Avec les nouvelles pompes de filtration à vitesse variable and les pompes à chaleur Full Inverter, la consommation a été divisée par 3 en 10 ans. Une piscine bien gérée coûte environ 250€ à 400€ d'électricité par an pour une saison complète."
-          },
-          {
-            id: "ps5",
-            question: "Comment sécuriser ma piscine ?",
-            answer: "La loi impose un dispositif de sécurité normalisé. Nous installons au choix : des volets roulants automatiques (esthétiques and isolants), des bâches à barres, des barrières de protection or des alarmes d'immersion."
-          }
-        ]}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ServiceFAQ 
+        items={piscineFAQs} 
+        title={isGrenoble ? "FAQ Piscine à Grenoble" : "FAQ Piscine & Bassin"}
+        description={isGrenoble ? "Retrouvez les réponses de nos piscinistes sur la construction de bassin à Grenoble." : "Retrouvez les réponses de nos piscinistes sur la création de vos espaces aquatiques."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

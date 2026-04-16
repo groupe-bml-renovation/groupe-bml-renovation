@@ -34,7 +34,7 @@ export default function PartnerCarousel({ partners, scrollDirection = 'left', sl
                       alt={partner.name}
                       className="h-[60px] w-auto object-contain hover:scale-110 transition-transform duration-500"
                       decoding="async"
-                      loading="eager"
+                      loading="lazy"
                     />
                   </div>
                   {partner.description && (

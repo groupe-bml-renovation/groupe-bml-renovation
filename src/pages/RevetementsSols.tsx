@@ -1,11 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Hammer, Ruler, Layout, Database, ShieldCheck, Grid3X3, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
 
@@ -19,52 +17,30 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1613621792067-8e28d16b735c?w=1200&q=80',
-    'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1200&q=80',
-    'https://images.unsplash.com/photo-1630699376289-b62375a35505?w=1200&q=80',
-    'https://images.unsplash.com/photo-1706629503586-2731f65587ae?w=1200&q=80',
-    'https://images.unsplash.com/photo-1547333101-6bb18e609b2f?w=1200&q=80',
-    'https://images.unsplash.com/photo-1560185009-5bf9f2849488?w=1200&q=80',
-    'https://images.unsplash.com/photo-1722248211908-83d943641e6d?w=1200&q=80',
-    'https://images.unsplash.com/photo-1722603931789-aea8bd4f5d01?w=1200&q=80'
+    'https://images.unsplash.com/photo-1613621792067-8e28d16b735c?w=800&q=80',
+    'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&q=80',
+    'https://images.unsplash.com/photo-1630699376289-b62375a35505?w=800&q=80',
+    'https://images.unsplash.com/photo-1706629503586-2731f65587ae?w=800&q=80',
+    'https://images.unsplash.com/photo-1547333101-6bb18e609b2f?w=800&q=80'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
-      const firstSetWidth = itemWithGap * images.length;
-
-      if (newPosition <= 0) {
-        container.scrollLeft = firstSetWidth - itemWithGap;
-      } else {
-        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-      const firstSetWidth = itemWithGap * images.length;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      const newPosition = container.scrollLeft + itemWithGap;
-
-      if (newPosition >= firstSetWidth - itemWithGap) {
-        container.scrollLeft = 0;
-      } else if (newPosition >= maxScroll) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
     }
   };
 
@@ -103,8 +79,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Revêtements Sols ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Sols ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -115,8 +91,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Revêtements Sols ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Sols ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -132,7 +108,7 @@ const ImageCarousel = () => {
 const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -141,20 +117,39 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Pose de Parquet & Carrelage Grenoble | Groupe BML" : "Revêtements de Sols Premium | Parquet, Carrelage & LVT | Groupe BML Rénovation"}</title>
-        <meta name="description" content={isGrenoble ? "Experts en revêtements de sols à Grenoble. Pose de parquet massif, carrelage grand format and sols souples. Devis gratuit and finitions soignées en Isère." : "Travaux de revêtements de sols pour votre rénovation complète. Large choix de parquets, carrelages and sols vinyles haute performance. Entreprise de rénovation experte."} />
-        <meta name="keywords" content={isGrenoble ? "pose parquet grenoble, carrelage grenoble, sol vinyle isère, rénovation sols 38, ragréage grenoble" : "revêtements de sols, pose parquet, carrelage grand format, sol LVT, artisan solier"} />
-        <meta property="og:title" content={isGrenoble ? "Revêtements de Sols & Parquets Grenoble | Design & Durabilité" : "Revêtements de Sols Premium | Groupe BML"} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>{isGrenoble ? "Pose de Parquet & Carrelage à Grenoble | Expert BML" : "Revêtements de Sols Premium | Parquet, Carrelage & LVT | Groupe BML"}</title>
+        <meta name="description" content="L'excellence des sols for votre habitat. Pose de parquet Point de Hongrie, carrelage grand format and sols nobles. Finitions de prestige and durabilité en Isère." />
+        <meta property="og:title" content="Revêtements de Sols Premium | Groupe BML" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation - Revêtements Sols",
+            "description": isGrenoble ? "Expert solier et parqueteur à Grenoble" : "Spécialiste en revêtements de sols haut de gamme",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
 
-      {/* Hero Section */}
+      <div className="sr-only">
+        <h2>Expertise Revêtements de Sols</h2>
+        <p>Pose de parquets, carrelages and revêtements souples haut de gamme</p>
+        <h3>Parqueteur Grenoble</h3>
+        <h3>Carreleur Grand Format</h3>
+        <h3>Parquet Point de Hongrie & Bâtons Rompus</h3>
+        <h3>Sols LVT & Vinyles de Luxe</h3>
+      </div>
+
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1722603931789-aea8bd4f5d01?w=1920&q=80"
-            alt="Parquet en chêne massif and design intérieur"
+            alt="Intérieur avec parquet noble"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -169,19 +164,15 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>
-                  Sols & Parquets<br />à Grenoble
-                </>
+                <>Sols d'Exception<br />à Grenoble</>
               ) : (
-                <>
-                  L'élégance sous<br />vos pas
-                </>
+                <>L'Élégance sous<br />vos pas</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Des revêtements durables and esthétiques pour votre habitat en Isère" : "L'excellence des matériaux au service de votre architecture intérieure"}
+              {isGrenoble ? "Les plus beaux revêtements au service de votre habitat grenoblois" : "L'excellence des matériaux au service de votre architecture intérieure"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -217,12 +208,19 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
                   </div>
                 </div>
               </motion.a>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(56,189,248,0.3)]"
+              >
+                Sublimer mes sols
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Intro Section */}
       <section className="pt-16 pb-12 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -238,233 +236,165 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble 
-                    ? "Votre expert revêtements de sols à Grenoble" 
-                    : "L'art de l'ancrage esthétique sous vos pieds"}
+                  L'ancrage esthétique de votre architecture
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Le sol est la toile de fond de votre décoration. Il définit les volumes, apporte de la chaleur and doit supporter l'épreuve du temps sans perdre sa superbe.
-              </p>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
+                <p>
+                  Le sol est la toile de fond de votre décoration. Il définit les volumes, apporte de la chaleur and doit supporter l'épreuve du temps sans perdre sa superbe. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple pose.
+                </p>
+                <p>
+                  {isGrenoble 
+                    ? "Nos soliers experts à Grenoble maîtrisent toutes les techniques de pose, du carrelage grand format millimétré au parquet Point de Hongrie traditionnel. Nous sélectionnons des matériaux nobles for une pérennité absolue within vos intérieurs grenoblois."
+                    : "Qu'il s'agisse de restaurer un parquet ancien or de poser un grès cérame de prestige, nous appliquons une rigueur absolue for un résultat sans défaut. Chaque découpe est calculée and chaque jointoiement est une promesse d'harmonie."}
+                </p>
+              </div>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise toutes les techniques de pose, du carrelage grand format millimétré au parquet Point de Hongrie traditionnel. Nous sélectionnons des matériaux nobles pour une pérennité absolue.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed mb-8">
-                {isGrenoble
-                  ? "Nos soliers interviennent dans toute l'Isère pour vos projets de rénovation complète. Nous coordonnons la préparation des supports (ragréage, chape) avec la pose finale pour garantir une planéité and des finitions parfaites dans vos intérieurs grenoblois."
-                  : "Qu'il s'agisse de restaurer un parquet ancien ou de poser une résine décorative contemporaine, nous appliquons une rigueur absolue pour un résultat sans défaut."}
-              </p>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Démarrer mon étude de sols
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="grid sm:grid-cols-2 gap-6 mt-10">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Pose Laser Millimétrée</span>
                 </div>
-              </button>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Sélection Matériaux Luxe</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1598718544285-7180f670198b?w=1200&q=80"
-                alt="Pose de carrelage grand format haute précision"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#38bdf8]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1598718544285-7180f670198b?w=1200&q=80"
+                  alt="Pose de carrelage grand format"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Carousel Section */}
-      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ImageCarousel />
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Sols & Parquets</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision de nos calepinages and la noblesse de nos bois.</p>
         </div>
+        <ImageCarousel />
       </section>
 
-      {/* Detail Section */}
-      <section className="py-8 bg-slate-50">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
-            <div className="bg-[#f5f5f5] p-8">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "SAVOIR-FAIRE ISÈRE" : "SAVOIR-FAIRE SOLIER"}
-              </span>
-              <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Confort des sols à Grenoble" : "La précision du support"}
-                </span>
-              </h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                Un beau revêtement commence par un support irréprochable. Nous effectuons systématiquement des tests d'humidité and de planéité avant toute pose pour garantir la tenue and le confort de vos sols.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed">
-                Notre approche intègre l'isolation acoustique sous-couche, la gestion des dilatations and une découpe laser pour des joints and des finitions d'une netteté absolue.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
+          <div className="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div className="lg:pr-12 order-2 lg:order-1">
+              <div className="space-y-10">
+                {[
+                  { 
+                    icon: <Layers className="w-6 h-6" />, 
+                    title: "Supports Parfaits", 
+                    desc: "Ragréages fibrés and barrières anti-remontées d'humidité for une stabilité totale des revêtements." 
+                  },
+                  { 
+                    icon: <Grid3X3 className="w-6 h-6" />, 
+                    title: "Calepinage Design", 
+                    desc: "Étude géométrique des poses for optimiser les perspectives and minimiser les découpes visibles." 
+                  },
+                  { 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Finitions Palais", 
+                    desc: "Pose de plinthes assorties, seuils encastrés and vitrifications haute résistance." 
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6 group"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                      {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Pose de parquets massifs & Point de Hongrie</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Carrelage Grand Format & Grès Cérame</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Ragréage fibré & préparation des supports</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Sols vinyles LVT haute performance</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Béton ciré & Résines décoratives</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Ponçage & Vitrification de parquets anciens</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#38bdf8]" />
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 italic uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed font-medium italic">{item.desc}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation assure des poses certifiées DTU. Nous collaborons avec les meilleures marques (Gerflor, Quick-Step, Porcelanosa) pour garantir la qualité and la résistance de vos revêtements.
-                  </p>
-                </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Un nouveau sol à Grenoble ?" : "Votre Sol Signature"}
+                  {isGrenoble ? "Un nouveau sol à Grenoble ?" : "Votre sol signature"}
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
+                <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Profitez d'une expertise reconnue en Isère pour valoriser vos surfaces au sol."
-                    : "Une seule équipe pour la préparation, la pose and les plinthes de finition."}
-                </p>
-                <p className="text-base mb-8 opacity-90 italic">
-                  Échantillonnages and devis précis fournis sous 24h.
+                    ? "Nos soliers basés à Grenoble façonnent vos surfaces with une précision millimétrée."
+                    : "L'excellence artisanale for un sol qui valorise votre patrimoine."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105"
                 >
                   Étudier mon projet de sol
-                  <div className="flex flex-col items-center ml-2">
-                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1598718544285-7180f670198b?w=1200&q=80"
+                  alt="Détails pose carrelage luxe"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4-Step Process Section */}
-      <section className="pt-16 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              LOGISTIQUE TECHNIQUE
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Votre rénovation de sol en 4 phases expertes
-              </span>
-            </h2>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#38bdf8]/10 blur-[120px] rounded-full" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Solier</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre rénovation en 4 temps</h2>
+            <div className="w-24 h-1 bg-[#38bdf8] mx-auto opacity-50" />
           </div>
-
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              {
-                step: "01",
-                title: "Diagnostic Support",
-                desc: "Test d'humidité, analyse de stabilité and définition de la préparation nécessaire."
-              },
-              {
-                step: "02",
-                title: "Préparation & Primaire",
-                desc: "Ragréage auto-lissant, ponçage and application des ponts d'adhérence."
-              },
-              {
-                step: "03",
-                title: "Pose de Précision",
-                desc: "Collage plein, pose flottante ou clipsée selon le matériau and les contraintes acoustiques."
-              },
-              {
-                step: "04",
-                title: "Finitions & Plinthes",
-                desc: "Pose des jonctions, seuils de porte, plinthes assorties and nettoyage final."
-              }
+              { step: "01", title: "Support", desc: "Diagnostic d'humidité, test de cohésion and ragréage auto-lissant." },
+              { step: "02", title: "Tracé", desc: "Calepinage laser for une symétrie parfaite and des découpes équilibrées." },
+              { step: "03", title: "Pose", desc: "Double encollage or pose flottante acoustique selon les standards DTU." },
+              { step: "04", title: "Soin", desc: "Jointoiement haute résistance, pose de plinthes and nettoyage fin de chantier." }
             ].map((s, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
-                  {s.step}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
-              </motion.div>
+              <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
+                <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
+                <h3 className="text-2xl font-bold mb-4 relative z-10">{s.title}</h3>
+                <p className="text-white/60 relative z-10 leading-relaxed font-medium italic">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Architect Partnership Section */}
-      <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 bg-white relative overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[3.5rem] p-12 md:p-24 shadow-2xl border border-slate-100 grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -474,54 +404,44 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  DESIGN & ACCOMPAGNEMENT
+                  ESTHÉTIQUE & ACCOMPAGNEMENT
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight italic">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    L'œil d'un architecte offert pour votre design de sols
+                    Accompagnement d’architecte offert
                   </span>
                 </h2>
               </div>
               
-              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Un sol réussi demande une vision esthétique autant que technique. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design contemporain.
-                </p>
-                <p>
-                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour harmoniser les teintes de sols avec vos murs, choisir le sens de pose optimal pour agrandir vos volumes and sélectionner des matériaux d'exception. C'est l'assurance d'un intérieur cohérent and luxueux.
+                  Parce qu'un sol définit l'âme de votre intérieur, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for le choix de vos matériaux, le calepinage and l'harmonie with votre décoration.
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
-                {[
-                  { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
-                  { title: "Expertise TCE", desc: "Equipes sol & plomberie internes", icon: "🛠️" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
-                  { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
-                  { title: "Gestion Déchets", desc: "Chantier propre & tri sélectif", icon: "♻️" },
-                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
-                ].map((usp, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-2xl">{usp.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet de sol
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Projets 3D for visualiser vos futurs sols</span>
                 </div>
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Sélection d'échantillons exclusifs en showroom</span>
+                </div>
+              </div>
+
+              <button 
+                onClick={scrollToContactForm} 
+                className="relative overflow-hidden bg-slate-900 text-white px-12 py-6 rounded-full font-bold hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)] transition-all flex items-center gap-4 group"
+              >
+                <span className="relative z-10">Lancer mon projet design</span>
+                <Pen className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-[#38bdf8] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
+              
+              <p className="mt-8 text-xs text-slate-400 italic">
+                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -532,17 +452,17 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Sols Espaces Alpins"
-                  className="w-full h-auto object-contain opacity-90"
+                  alt="Architecture d'intérieur Espaces Alpins"
+                  className="w-full h-auto object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
-                    <p className="text-xl font-semibold">"Le sol est la base immuable de l'harmonie intérieure."</p>
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
+                    <p className="text-xl font-semibold">"Le sol est la symphonie muette qui unit chaque pièce."</p>
                   </div>
                 </div>
               </div>
@@ -551,58 +471,43 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
         </div>
       </section>
 
-      {/* Expertise Grid Section */}
       <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
+                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE SOLIER"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'excellence sous chaque lame
+                  L'expertise à chaque calepinage
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie sols de votre chantier se déroule sans aucun défaut de planéité ou de finition.
+              <p className="text-slate-700 leading-relaxed italic font-medium">
+                {isGrenoble
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les grands formats, les parquets anciens and les résines décoratives with une précision and une propreté de chantier exemplaires for vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la pose de revêtements. Nous maîtrisons les matériaux nobles, les calepinages complexes and la finition haute for des habitats qui allient luxe and durabilité."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
-                    </svg>
-                  ),
-                  title: "Technique",
-                  items: ["Carrelage Rectifié", "Parquet massif collé", "Marches d'escalier", "Ragréage forte épaisseur", "Isolation acoustique"]
+                  icon: <Layout className="w-10 h-10" />,
+                  title: "Carrelage",
+                  items: ["Dalles XXL Grand Format", "Grès Cérame Italien", "Faïence Haut de Gamme", "Carreaux de Ciment", "Douches à l'italienne"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <rect x="3" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="14" width="7" height="7" rx="1" />
-                      <rect x="3" y="14" width="7" height="7" rx="1" />
-                    </svg>
-                  ),
-                  title: "Matériaux",
-                  items: ["Grès cérame italien", "Chêne massif naturel", "LVT haut de gamme", "Résines époxy", "Carreaux de ciment"]
+                  icon: <Hammer className="w-10 h-10" />,
+                  title: "Parquets",
+                  items: ["Chêne Point de Hongrie", "Bâtons Rompus Nobles", "Parquet Massif / Contrecollé", "Rénovation & Vitrification", "Huiles Naturelles Luxes"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  title: "Engagement",
-                  items: ["Respect des DTU", "Audit humidité gratuit", "Garantie décennale", "Suivi post-pose", "Marques Premium"]
+                  icon: <ShieldCheck className="w-10 h-10" />,
+                  title: "Techniques",
+                  items: ["Ragréage Forte Épaisseur", "Sols LVT de Prestige", "Isolation Acoustique Pro", "Béton Ciré Design", "Résines Époxy Loft"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -616,12 +521,12 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
                   <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
                     {card.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 italic">{card.title}</h3>
                   <ul className="space-y-4">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
-                        <span className="text-sm font-medium">{item}</span>
+                        <span className="text-sm font-medium italic">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -632,38 +537,29 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
         </div>
       </section>
 
-      {/* Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              LABELS & GARANTIES
+              Qualité Certifiée
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Une base solide pour vos projets
+                Nos labels for vos surfaces
               </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
-              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
+              { name: 'Solier', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Savoir-Faire Pro' },
+              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' },
               { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
-              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
-              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
-              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
-              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
-              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
-              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
-              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' },
+              { name: 'Local Isère', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Pro de Proximité' },
+              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Plan & Design' },
+              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Assurance BML' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -674,45 +570,116 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight italic">{cert.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Nos partenaires for des produits d'élite
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
+              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      {/* FAQ Section */}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ServiceFAQ
-        title="FAQ Revêtements Sols"
-        description="Les réponses de nos techniciens pour préparer vos surfaces avec soin."
+        title="FAQ Sols & Parquets"
+        description="Les réponses de nos techniciens for sublimer vos surfaces."
         items={[
           {
             id: "rs1",
             question: "Peut-on poser du carrelage sur un ancien carrelage ?",
-            answer: "Oui, c'est tout à fait possible après avoir vérifié la bonne adhérence de l'ancien revêtement. Nous appliquons un primaire d'accrochage spécifique pour garantir une liaison parfaite. Cela permet d'éviter une dépose coûteuse and poussiéreuse."
+            answer: "Oui, c'est possible after avoir vérifié la parfaite adhésion du support. Nous appliquons un primaire d'accrochage spécifique and utilisons un mortier-colle haute performance. Cela permet une rénovation rapide without démolition lourde."
           },
           {
             id: "rs2",
-            question: "Quel est l'avantage du parquet Point de Hongrie ?",
-            answer: "C'est la signature des appartements haussmanniens. Il apporte une dynamique and une perspective unique à une pièce. Sa pose exige une précision extrême dans la découpe des angles (45° ou 50°) and une sélection rigoureuse des lames pour une symétrie parfaite."
+            question: "Quelle est la différence entre un parquet massif and contrecollé ?",
+            answer: "Le massif est composé d'une seule essence de bois sur toute son épaisseur, offrant une longévité multigénérationnelle. Le contrecollé est composé de trois couches, dont un parement en bois noble, offrant une meilleure stabilité dimensionnelle and une compatibilité optimale with le chauffage au sol."
           },
           {
             id: "rs3",
-            question: "Est-ce qu'une sous-couche acoustique est obligatoire ?",
-            answer: "Pour les appartements, elle est indispensable pour le confort de tous and le respect des normes acoustiques. Elle réduit les bruits d'impact and de résonance. Nous sélectionnons des sous-couches haute densité adaptées à chaque type de sol (parquet ou LVT)."
+            question: "Pourquoi choisir un carrelage grand format ?",
+            answer: "Les dalles XXL (type 120x120cm or plus) réduisent drastiquement le nombre de joints, créant une sensation d'espace and de continuité majestueuse. Elles exigent cependant une planéité de support parfaite and une technique de double encollage maîtrisée."
           },
           {
             id: "rs4",
-            question: "Le béton ciré peut-il se fissurer ?",
-            answer: "S'il est posé sur un support instable, oui. C'est pourquoi nous accordons une importance cruciale à la préparation du support (désolidarisation, trame de renfort). Un béton ciré réalisé dans les règles de l'art est aussi résistant qu'un carrelage."
+            question: "Gérez-vous la vitrification des parquets anciens ?",
+            answer: "Absolument. Nos parqueteurs restaurent vos bois anciens par un ponçage fin (grain successif) before d'appliquer une protection haute résistance (vernis PU, huile ou cire) for leur redonner tout leur lustre originel."
           },
           {
             id: "rs5",
-            question: "Combien de temps faut-il attendre avant de marcher sur un nouveau sol ?",
-            answer: "Pour un carrelage, comptez 24h avant de marcher dessus and 48h avant la pose des meubles. Pour un parquet flottant, l'usage est immédiat. Pour un vernis (vitrification), il faut attendre 48h pour un séchage à cœur avant de replacer le mobilier."
+            question: "Combien de temps faut-il for la pose d'un sol ?",
+            answer: "Pour une pièce de 30m², comptez généralement 2 à 3 jours de travail, incluant la préparation du support, la pose and les finitions (plinthes, seuils). Ce délai peut varier selon la complexité du calepinage (Point de Hongrie, motifs)."
           }
         ]}
       />

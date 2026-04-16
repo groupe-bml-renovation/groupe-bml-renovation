@@ -58,7 +58,7 @@ export const TestimonialsColumn = (props: {
                   <div className="text-slate-700 leading-relaxed mb-5">{text}</div>
                   <div className="flex items-center gap-3 mt-5">
                     {image ? (
-                      <img src={image} alt={name} className="h-10 w-10 rounded-full flex-shrink-0 object-cover" />
+                      <img src={image} alt={name} className="h-10 w-10 rounded-full flex-shrink-0 object-cover" loading="lazy" />
                     ) : (
                       <div className={`${getAvatarColor(name)} h-10 w-10 rounded-full flex-shrink-0 flex items-center justify-center`}>
                         <span className="text-white font-semibold text-sm">{getInitial(name)}</span>

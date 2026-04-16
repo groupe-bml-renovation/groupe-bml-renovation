@@ -14,7 +14,7 @@ export const OptimizedImage = ({
   src,
   alt,
   className = '',
-  loading = 'eager',
+  loading = 'lazy',
   priority = false,
   width,
   height

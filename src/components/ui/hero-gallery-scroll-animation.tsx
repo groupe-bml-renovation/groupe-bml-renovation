@@ -45,6 +45,7 @@ const bentoGridVariants = cva(
 
 interface ContainerScrollContextValue {
   scrollYProgress: MotionValue<number>
+  isMobile: boolean
 }
 const ContainerScrollContext = React.createContext<
   ContainerScrollContextValue | undefined
@@ -67,8 +68,17 @@ const ContainerScroll = ({
   const { scrollYProgress } = useScroll({
     target: scrollRef,
   })
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   return (
-    <ContainerScrollContext.Provider value={{ scrollYProgress }}>
+    <ContainerScrollContext.Provider value={{ scrollYProgress, isMobile }}>
       <div
         ref={scrollRef}
         className={cn("relative min-h-screen w-full", className)}
@@ -96,7 +106,7 @@ BentoGrid.displayName = "BentoGrid"
 
 const BentoCell = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
   ({ className, style, ...props }, ref) => {
-    const { scrollYProgress } = useContainerScrollContext()
+    const { scrollYProgress, isMobile } = useContainerScrollContext()
     const translate = useTransform(scrollYProgress, [0.1, 0.9], ["-35%", "0%"])
     const scale = useTransform(scrollYProgress, [0, 0.9], [0.5, 1])
 
@@ -104,7 +114,11 @@ const BentoCell = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
       <motion.div
         ref={ref}
         className={className}
-        style={{ translate, scale, ...style }}
+        style={{
+          translate: isMobile ? "0%" : translate,
+          scale: isMobile ? 1 : scale,
+          ...style,
+        }}
         {...props}
       ></motion.div>
     )
@@ -114,7 +128,7 @@ BentoCell.displayName = "BentoCell"
 
 const ContainerScale = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
   ({ className, style, ...props }, ref) => {
-    const { scrollYProgress } = useContainerScrollContext()
+    const { scrollYProgress, isMobile } = useContainerScrollContext()
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
@@ -127,9 +141,12 @@ const ContainerScale = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         className={cn("left-1/2 top-1/2  size-fit", className)}
         style={{
           translate: "-50% -50%",
-          scale,
-          position,
-          opacity,
+          scale: isMobile ? 1 : scale,
+          position: isMobile ? "relative" : position,
+          opacity: isMobile ? 1 : opacity,
+          top: isMobile ? "auto" : "50%",
+          left: isMobile ? "auto" : "50%",
+          transform: isMobile ? "none" : undefined,
           ...style,
         }}
         {...props}

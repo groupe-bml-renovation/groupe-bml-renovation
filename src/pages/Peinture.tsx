@@ -760,7 +760,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              NOS PARTENAIRES DE CONFIANCE
+              Nos partenaires de confiance
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">

@@ -1,13 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Zap, Cpu, ShieldCheck, Ruler, Layout, Activity, Lightbulb } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
-import PartnersSection from '../components/PartnersSection';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
+import { electriqueFAQs } from '../data/service-faqs';
 
 interface ElectriciteProps {
   onBack: () => void;
@@ -19,52 +18,31 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=1200&q=80',
-    'https://images.unsplash.com/photo-1660330590022-9f4ff56b63f6?w=1200&q=80',
-    'https://images.unsplash.com/photo-1505798577917-a65157d3320a?w=1200&q=80',
-    'https://images.unsplash.com/photo-1454165833011-29743586aa2f?w=1200&q=80',
-    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1200&q=80',
-    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80'
+    'https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=800&q=80',
+    'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80',
+    'https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=800&q=80',
+    'https://images.unsplash.com/photo-1660330590022-9f4ff56b63f6?w=800&q=80',
+    'https://images.unsplash.com/photo-1505798577917-a65157d3320a?w=800&q=80',
+    'https://images.unsplash.com/photo-1454165833011-29743586aa2f?w=800&q=80'
   ];
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-
-      const newPosition = container.scrollLeft - itemWithGap;
-      const firstSetWidth = itemWithGap * images.length;
-
-      if (newPosition <= 0) {
-        container.scrollLeft = firstSetWidth - itemWithGap;
-      } else {
-        container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 400;
+      const itemWidth = 320;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
-      const firstSetWidth = itemWithGap * images.length;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      const newPosition = container.scrollLeft + itemWithGap;
-
-      if (newPosition >= firstSetWidth - itemWithGap) {
-        container.scrollLeft = 0;
-      } else if (newPosition >= maxScroll) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
     }
   };
 
@@ -103,8 +81,8 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Électricité ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Électricité ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -115,8 +93,8 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Expertise Électricité ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Réalisation Électricité ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
                 </div>
@@ -132,7 +110,7 @@ const ImageCarousel = () => {
 const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble/');
+  const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -141,20 +119,39 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Électricité & Mise aux Normes Grenoble | Groupe BML" : "Rénovation Électrique | Mise en Conformité & Domotique | Groupe BML Rénovation"}</title>
-        <meta name="description" content={isGrenoble ? "Électriciens qualifiés à Grenoble. Mise en conformité NF C 15-100, tableaux électriques, domotique et éclairage. Devis gratuit et intervention rapide Isère." : "Travaux d'électricité pour votre rénovation complète. Mise aux normes, domotique et installations électriques haut de gamme. Entreprise de rénovation certifiée."} />
-        <meta name="keywords" content={isGrenoble ? "électricien grenoble, mise aux normes électrique isère, tableau électrique grenoble, domotique grenoble, rénovation électrique 38" : "rénovation électrique, mise aux normes, domotique, électricité bâtiment, artisan électricien"} />
-        <meta property="og:title" content={isGrenoble ? "Électricité & Mise aux Normes Grenoble | Sécurité & Confort" : "Électricité & Domotique Premium | Groupe BML"} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>{isGrenoble ? "Électricité & Mise aux Normes à Grenoble | Expert BML" : "Électricité & Domotique Premium | Mise en Conformité | Groupe BML"}</title>
+        <meta name="description" content="L'intelligence technologique pour votre habitat. Mise aux normes NF C 15-100, domotique avancée et éclairage architectural. Excellence certifiée en Isère." />
+        <meta property="og:title" content="Électricité & Intelligence Habitat | Groupe BML" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation - Électricité",
+            "description": isGrenoble ? "Expert électricien à Grenoble" : "Spécialiste en réseaux électriques et domotique haut de gamme",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
 
-      {/* Hero Section */}
+      <div className="sr-only">
+        <h2>Expertise Électricité & Domotique</h2>
+        <p>Mise en conformité and installation de réseaux électriques intelligents</p>
+        <h3>Électricien Grenoble</h3>
+        <h3>Tableau Électrique NF C 15-100</h3>
+        <h3>Domotique & Maison Connectée</h3>
+        <h3>Bornes de recharge VE</h3>
+      </div>
+
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1592500341743-0d6a36fd5a23?w=1920&q=80"
-            alt="Tableau électrique moderne et câblage"
+            alt="Ingénierie électrique moderne"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -169,19 +166,15 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>
-                  Électricité & Domotique<br />à Grenoble
-                </>
+                <>Électricité & Design<br />à Grenoble</>
               ) : (
-                <>
-                  Électricité & Design<br />lumineux
-                </>
+                <>Architecture &<br />Énergie Intelligente</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Sécurité électrique et intelligence de l'habitat en Isère" : "La puissance domotique au service d'un design moderne"}
+              {isGrenoble ? "La sécurité électrique and l'intelligence de l'habitat à Grenoble" : "L'excellence technologique au service de votre confort futur"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -217,12 +210,19 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   </div>
                 </div>
               </motion.a>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(56,189,248,0.3)]"
+              >
+                Planifier mon réseau intelligent
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Intro Section */}
       <section className="pt-16 pb-12 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -233,238 +233,170 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                SÉCURITÉ & INTELLIGENCE
+                SÉCURITÉ & CONNECTIVITÉ
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble 
-                    ? "Votre expert électricité et domotique à Grenoble" 
-                    : "L'énergie de demain intégrée à votre habitat"}
+                  L'intelligence énergétique au cœur de votre habitat
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                L'électricité ne se limite plus à l'alimentation des appareils. Elle est devenue l'intelligence centrale de votre logement, gérant sécurité, économie d'énergie and scénarios lumineux.
-              </p>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
+                <p>
+                  L'électricité ne se limite plus à l'alimentation des appareils. Elle est devenue l'intelligence centrale de votre logement, gérant sécurité, économie d'énergie and scénarios lumineux. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple conformité.
+                </p>
+                <p>
+                  {isGrenoble 
+                    ? "Nos techniciens grenoblois maîtrisent l'intégralité de la norme NF C 15-100. Du remplacement millimétré de tableau électrique à l'intégration de solutions domotiques complexes, nous sécurisons and connectons vos espaces de vie partout en Isère."
+                    : "Nous concevons des réseaux invisibles, protecteurs and évolutifs, utilisant les marques les plus prestigieuses (Legrand, Schneider, Hager) pour une intelligence domotique qui simplifie votre quotidien durablement."}
+                </p>
+              </div>
 
-              <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}effectue la mise en conformité totale selon la norme NF C 15-100. Du remplacement de tableau électrique à l'intégration de solutions domotiques avancées (KNX, Zigbee), nous sécurisons and modernisons vos réseaux.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed mb-8">
-                {isGrenoble
-                  ? "Nos électriciens interviennent dans toute l'Isère pour vos projets de rénovation complète. Nous collaborons avec nos designers pour créer des ambiances lumineuses uniques qui valorisent vos volumes grenoblois."
-                  : "Qu'il s'agisse de restructurer le Tableau Général Basse Tension ou de déployer des bornes de recharge pour véhicules électriques, nous appliquons une rigueur absolue pour une installation sans compromis."}
-              </p>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Démarrer mon étude électrique
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="grid sm:grid-cols-2 gap-6 mt-10">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Mise aux Normes NF</span>
                 </div>
-              </button>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Expertise Domotique IP</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80"
-                alt="Installation électrique certifiée"
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#38bdf8]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&q=80"
+                  alt="Installation domotique certifiée"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Carousel Section */}
-      <section className="py-8 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ImageCarousel />
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos réalisations connectées</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision du câblage and la magie de l'éclairage architectural.</p>
         </div>
+        <ImageCarousel />
       </section>
 
-      {/* Detail Section */}
-      <section className="py-8 bg-slate-50">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
-            <div className="bg-[#f5f5f5] p-8">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE ÉLECTRIQUE"}
-              </span>
-              <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
-
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Sécurité certifiée à Grenoble" : "La précision technologique"}
-                </span>
-              </h2>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                L'électricité moderne se doit d'être invisible and intelligente. Nous concevons des tableaux communicants permettant de piloter vos consommations en temps réel and de sécuriser chaque pièce de votre habitat.
-              </p>
-
-              <p className="text-slate-700 leading-relaxed">
-                Notre approche intègre la protection contre les surtensions, la gestion de la charge pour VE and une planification rigoureuse des appareillages pour une ergonomie d'usage parfaite.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                       <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
+          <div className="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div className="lg:pr-12 order-2 lg:order-1">
+              <div className="space-y-10">
+                {[
+                  { 
+                    icon: <Activity className="w-6 h-6" />, 
+                    title: "Audit Sécurité", 
+                    desc: "Mesure d'isolement, vérification de la terre and diagnostic de conformité totale Consuel." 
+                  },
+                  { 
+                    icon: <Lightbulb className="w-6 h-6" />, 
+                    title: "Design Lumineux", 
+                    desc: "Étude d'implantation pour sublimer vos espaces par l'éclairage LED architectural indirect." 
+                  },
+                  { 
+                    icon: <Cpu className="w-6 h-6" />, 
+                    title: "Habitat Connecté", 
+                    desc: "Pilotage centralisé du chauffage, des ouvrants and de la sécurité par IP and scénarios." 
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6 group"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                      {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Mise aux normes NF C 15-100 intégrale</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Remplacement de tableaux divisionnaires</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Domotique & pilotage à distance</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Infrastructure de recharge VE (IRVE)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Éclairage LED architectural & encastré</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Alarme & Vidéosurveillance IP</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#38bdf8]" />
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 italic uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed font-medium italic">{item.desc}</p>
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation assure des installations certifiées Consuel si nécessaire. Nous utilisons exclusivement des marques de référence (Legrand, Schneider, Hager) pour garantir la qualité and la pérennité de vos appareillages.
-                  </p>
-                </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="text-center bg-gradient-to-r from-slate-800 to-black rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Expertise IRVE à Grenoble ?" : "Votre Réseau Connecté"}
+                  {isGrenoble ? "Un expert électricien à Grenoble ?" : "Votre réseau haute conformité"}
                 </h2>
-                <p className="text-lg mb-6 opacity-90">
+                <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Profitez d'une expertise certifiée Qualifelec en Isère pour sécuriser vos équipements électriques."
-                    : "Une seule équipe pour l'électricité, les réseaux courants faibles and la décoration."}
-                </p>
-                <p className="text-base mb-8 opacity-90 italic">
-                  Diagnostic sécurité and devis détaillé fournis sous 24h.
+                    ? "Nos techniciens certifiés basés à Grenoble sécurisent l'intégralité de votre énergie."
+                    : "Un accompagnement premium pour une électricité d'exception."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105"
                 >
-                  Étudier mon projet électrique
-                  <div className="flex flex-col items-center ml-2">
-                    <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
+                  Demander un devis détaillé
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1576446468729-7674e99608f5?w=1200&q=80"
+                  alt="Détails tableau électrique Schneider"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4-Step Process Section */}
-      <section className="pt-16 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              LOGISTIQUE TECHNIQUE
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Votre rénovation électrique en 4 phases expertes
-              </span>
-            </h2>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#38bdf8]/10 blur-[120px] rounded-full" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Processus Sécurisé</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre rénovation électrique en 4 étapes</h2>
+            <div className="w-24 h-1 bg-[#38bdf8] mx-auto opacity-50" />
           </div>
-
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              {
-                step: "01",
-                title: "Diagnostic & Audit",
-                desc: "Mesure d'isolement, vérification de la terre and diagnostic de conformité NF C 15-100."
-              },
-              {
-                step: "02",
-                title: "Plans de Distribution",
-                desc: "Dimensionnement des circuits, plan d'implantation des points de commande and domotique."
-              },
-              {
-                step: "03",
-                title: "Installation & Câblage",
-                desc: "Pose des tableaux, tirage des lignes sous gaines and raccordements certifiés."
-              },
-              {
-                step: "04",
-                title: "Vérification Finale",
-                desc: "Tests de continuité, vérification des coupures différentielles and remise des schémas."
-              }
+              { step: "01", title: "Audit", desc: "Test de terre, mesure d'isolement and relevé complet de l'existant." },
+              { step: "02", title: "Plans", desc: "Schémas électriques and implantation 3D des points de commande." },
+              { step: "03", title: "Pose", desc: "Câblage and montage par nos compagnons salariés qualifiés." },
+              { step: "04", title: "Contrôle", desc: "Remise du certificat Consuel and formation au pilotage domotique." }
             ].map((s, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
-                  {s.step}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
-              </motion.div>
+              <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
+                <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
+                <h3 className="text-2xl font-bold mb-4 relative z-10">{s.title}</h3>
+                <p className="text-white/60 relative z-10 leading-relaxed font-medium italic">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Architect Partnership Section */}
-      <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 bg-white relative overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[3.5rem] p-12 md:p-24 shadow-2xl border border-slate-100 grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -476,52 +408,42 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
                   DESIGN & ACCOMPAGNEMENT
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight italic">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    L'œil d'un architecte offert pour votre design lumineux
+                    Accompagnement d’architecte offert
                   </span>
                 </h2>
               </div>
               
-              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  L'électricité réussie demande une vision esthétique autant que technique. Grâce à notre <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>, nous vous offrons le meilleur du design contemporain.
-                </p>
-                <p>
-                  Pour tout projet de rénovation complète, un <span className="text-black font-semibold">architecte d'intérieur collabore</span> avec vous pour le choix des appareillages, les textures des finitions and la chorégraphie lumineuse de vos espaces. C'est l'assurance d'un intérieur cohérent and luxueux.
+                  Parce qu'une électricité réussie demande une vision esthétique autant que technique, nous scellons un partenariat avec <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez des conseils d'un architecte d'intérieur pour le choix de vos appareillages and la chorégraphie lumineuse de vos espaces.
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
-                {[
-                  { title: "Architecte Offert", desc: "Conseil design & agencement", icon: "📐" },
-                  { title: "Expertise TCE", desc: "Equipes elec & plomberie internes", icon: "🛠️" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère", icon: "⚡" },
-                  { title: "Garantie Totale", desc: "Assurance décennale centralisée", icon: "🛡️" },
-                  { title: "Gestion Déchets", desc: "Chantier propre & tri sélectif", icon: "♻️" },
-                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
-                ].map((usp, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-2xl">{usp.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Lancer mon projet technique
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Étude d'ambiance lumineuse 3D</span>
                 </div>
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Sélection d'appareillages design premium</span>
+                </div>
+              </div>
+
+              <button 
+                onClick={scrollToContactForm} 
+                className="relative overflow-hidden bg-slate-900 text-white px-12 py-6 rounded-full font-bold hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)] transition-all flex items-center gap-4 group"
+              >
+                <span className="relative z-10">Lancer mon projet design</span>
+                <Pen className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-[#38bdf8] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
+              
+              <p className="mt-8 text-xs text-slate-400 italic">
+                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -532,16 +454,16 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               className="relative hidden lg:block"
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-black">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design Électricité Espaces Alpins"
-                  className="w-full h-auto object-contain opacity-90"
+                  alt="Architecture d'intérieur Espaces Alpins"
+                  className="w-full h-auto object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
-                  <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
+                  <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
                     <p className="text-xl font-semibold">"La lumière sculpte l'espace and sécurise l'habitat."</p>
                   </div>
                 </div>
@@ -551,57 +473,43 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Expertise Grid Section */}
       <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTS DE L'ISÈRE" : "VOTRE PROJET TCE"}
+                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE ÉLECTRIQUE"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'excellence à chaque connexion
+                  L'expertise à chaque connexion
                 </span>
               </h2>
 
-              <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts internes pour que la partie électrique de votre chantier se déroule sans aucun accroc technique.
+              <p className="text-slate-700 leading-relaxed italic font-medium">
+                {isGrenoble
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations électriques. Nous maîtrisons les systèmes complexes, la domotique de pointe, and la sécurisation absolue des réseaux pour des habitats intelligents."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations électriques. Nous maîtrisons les systèmes complexes, la domotique de pointe, and la sécurisation absolue des réseaux pour des habitats qui traversent le temps avec fiabilité."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  ),
-                  title: "Technique",
-                  items: ["Mise en conformité", "Tableaux divisionnaires", "Colonnes montantes", "Alimentation PAC", "Protections foudre"]
+                  icon: <Zap className="w-10 h-10" />,
+                  title: "Réseaux",
+                  items: ["Mise en conformité", "Tableaux divisionnaires", "Câblage VDI (RJ45)", "Infrastructure VE", "Protections foudre"]
                 },
                 {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <rect x="3" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="14" width="7" height="7" rx="1" />
-                      <rect x="3" y="14" width="7" height="7" rx="1" />
-                    </svg>
-                  ),
+                  icon: <Lightbulb className="w-10 h-10" />,
+                  title: "Lumière",
+                  items: ["Éclairage LED architectural", "Scénarios d'ambiance", "Extérieurs & Façades", "Pilotage DALI/DMX", "Suspensions design"]
+                },
+                {
+                  icon: <Cpu className="w-10 h-10" />,
                   title: "Domotique",
-                  items: ["Scénarios lumineux", "Gestion chauffage", "Contrôle d'accès", "Réseaux VDI (RJ45)", "Vidéosurveillance IP"]
-                },
-                {
-                  icon: (
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                  ),
-                  title: "Engagement",
-                  items: ["Certification Consuel", "Respect NF C 15-100", "Garantie décennale", "Suivi post-pose", "Marques Premium"]
+                  items: ["Pilotage IP centralisé", "Gestion chauffage", "Sécurité & Alarmes", "Vidéosurveillance", "Sonorisation multiroom"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -615,12 +523,12 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
                     {card.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6">{card.title}</h3>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 italic">{card.title}</h3>
                   <ul className="space-y-4">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
                         <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
-                        <span className="text-sm font-medium">{item}</span>
+                        <span className="text-sm font-medium italic">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -631,38 +539,29 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              LABELS & GARANTIES
+              Qualité Certifiée
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Une sécurité certifiée pour vos énergies
+                Nos certifications pour votre énergie
               </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire Qualité' },
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Qualité RGE' },
               { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Conformité Élec' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan BTP' },
-              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Local Isère' },
-              { name: 'Pompe Chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
-              { name: 'Solar', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Énergie Vert' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Flux & Air' },
-              { name: 'Fluid Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Certifié Fluides' },
-              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'HP Qualité' },
-              { name: 'Gaz Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Installation G' },
-              { name: 'Fluides Control', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Technique Pro' },
-              { name: 'Heat System', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Artisan Chauff' },
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' }
+              { name: 'Domotique', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Expertise IP' },
+              { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Photovoltaïque' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement BML' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' },
+              { name: 'Local Isère', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Acteur Isère' },
+              { name: 'Sécurité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Protection Totale' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -673,47 +572,92 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight italic">{cert.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <PartnersSection />
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+              Nos partenaires de confiance
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
+              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                Nos partenaires pour des produits d'élite
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
+              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+            </p>
+          </div>
 
-      {/* FAQ Section */}
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-6 md:gap-8 items-center justify-items-center">
+            {[
+              { name: 'Tollens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/tollens%402x%20(1).jpg' },
+              { name: 'Gauthier', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gauthier%402x.jpg' },
+              { name: 'Zolpan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/logo-partenaire-zolpan.png' },
+              { name: 'Seigneurerie', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/seigneurerie%402x.jpg' },
+              { name: 'Grohe', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/grohe%402x.jpg' },
+              { name: 'Jacob', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/jacob%402x.jpg' },
+              { name: 'Roca', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/roca%402x.jpg' },
+              { name: 'Thermor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/thermor%402x.jpg' },
+              { name: 'Atlantic', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/atlantic%402x.jpg' },
+              { name: 'Geberit', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/geberit%402x.jpg' },
+              { name: 'Schneider', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/schneider%402x.jpg' },
+              { name: 'Legrand', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/legrand%402x.jpg' },
+              { name: 'Siemens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/siemens%402x.jpg' },
+              { name: 'Scrigno', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/scrigno%402x.jpg' },
+              { name: 'Vachette', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/vachette%402x.jpg' },
+              { name: 'Cuisinella', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cuisinella%402x.jpg' },
+              { name: 'Bricard', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/bricard%402x.jpg' },
+              { name: 'Euro Wall', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/euro-wall%402x.jpg' },
+              { name: 'Homs', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/homs%402x.jpg' },
+              { name: 'Udirev', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/udirev%402x.jpg' },
+              { name: 'Gerflor', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/gerflor%402x.jpg' },
+              { name: 'Quick-Step', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/quick-step%402x.jpg' },
+              { name: 'Saloni', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saloni%402x.jpg' },
+              { name: 'Artens', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/artens%402x.jpg' },
+              { name: 'Marazzi', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/marazzi%402x.jpg' },
+              { name: 'Porcelanosa', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/porcellanosa%402x.jpg' },
+              { name: 'Rexel', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/rexel-logo_mpyv5e.avif' },
+              { name: 'Decoceram', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/decoceram-logo_dgsdlz.avif' },
+              { name: 'Leroy Merlin', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/leroy-merlin-logo_tx0qpv.avif' },
+              { name: 'Saint Maclou', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/saint-maclou-logo_nqvk1a.avif' },
+              { name: 'Samse', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/samse-logo_mqsetl.avif' },
+              { name: 'La Platforme', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/la-platforme-logo_zbjmrm.avif' },
+              { name: 'Point P', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/point-p-logo_mq6r8c.avif' },
+              { name: 'Cedeo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/cedeo-logo_gulsqe.avif' },
+              { name: 'Le Comptoir', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/le-comptoir-logo_dvd4rc.avif' },
+              { name: 'Solmur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/solmur-logo_ke5lve.avif' },
+              { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
+              { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
+              { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
+              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: i * 0.015 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center transition-all duration-300 hover:scale-110"
+              >
+                <img src={p.logoUrl} alt={p.name} className="max-h-11 md:max-h-12 w-auto object-contain" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ServiceFAQ
         title="FAQ Électricité"
-        description="Les réponses de nos techniciens pour sécuriser votre installation haut de gamme."
-        items={[
-          {
-            id: "el1",
-            question: "Mon installation date des années 80, dois-je tout changer ?",
-            answer: "Une installation des années 80 manque souvent de dispositifs différentiels 30mA and de mise à la terre sur tous les circuits. Nous effectuons un audit complet pour déterminer s'il faut une rénovation totale ou une mise en sécurité (remplacement du tableau and ajout des protections vitales)."
-          },
-          {
-            id: "el2",
-            question: "Est-il possible d'ajouter de la domotique sans gros travaux ?",
-            answer: "Absolument. Grâce aux technologies sans fil (Zigbee, Bluetooth Mesh), nous pouvons automatiser votre éclairage, vos volets and votre chauffage sans créer de nouvelles saignées dans vos murs, en remplaçant simplement vos interrupteurs existants."
-          },
-          {
-            id: "el3",
-            question: "Installez-vous des prises de recharge pour voitures électriques ?",
-            answer: "Oui, nous sommes certifiés IRVE (Infrastructure de Recharge pour Véhicules Électriques). Nous installons des bornes (Wallbox) ou des prises renforcées adaptées à la puissance de votre compteur and à votre usage quotidien."
-          },
-          {
-            id: "el4",
-            question: "Comment gérez-vous le passage des câbles pour que ce soit esthétique ?",
-            answer: "En rénovation haut de gamme, nous privilégions l'encastrement par saignées rebouchées avec soin ou le passage dans les faux-plafonds and doublages. Si l'apparent est inévitable, nous utilisons des goulottes design minimalistes parfaitement intégrées aux plinthes."
-          },
-          {
-            id: "el5",
-            question: "Fournissez-vous l'attestation de conformité Consuel ?",
-            answer: "Oui, pour toute rénovation totale avec remplacement du tableau, nous gérons la visite du Consuel and la remise de l'attestation de conformité indispensable pour vos assurances and votre fournisseur d'énergie."
-          }
-        ]}
+        description="Les réponses de nos techniciens for sécuriser votre installation haut de gamme."
+        items={electriqueFAQs}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

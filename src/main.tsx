@@ -32,11 +32,11 @@ import StickyDemandeCTA from './components/StickyDemandeCTA';
 import Plomberie from './pages/Plomberie';
 import Electricite from './pages/Electricite';
 import Climatisation from './pages/Climatisation';
-import Chauffage from './components/Chauffage';
+import Chauffage from './pages/Chauffage';
 import Menuiserie from './pages/Menuiserie';
 import Amiante from './pages/Amiante';
 import RevetementsSols from './pages/RevetementsSols';
-import WallCoverings from './pages/WallCoverings';
+import RevetementsMuraux from './pages/RevetementsMuraux';
 import BorneElectrique from './pages/BorneElectrique';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -117,7 +117,7 @@ const AppRouter = () => {
       <Route path="/devenir-artisan-partenaire" element={<PageLayout><DevenirArtisanPartenairePage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/peinture" element={<PageLayout><Peinture onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/plomberie" element={<PageLayout><Plomberie onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
-      <Route path="/electricite" element={<PageLayout><Electricite onBack={() => navigate('/')} /></PageLayout>} />
+      <Route path="/electricite" element={<PageLayout><Electricite onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/chauffage" element={<PageLayout><Chauffage onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/climatisation" element={<PageLayout><Climatisation onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/menuiserie" element={<PageLayout><Menuiserie onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
@@ -125,7 +125,7 @@ const AppRouter = () => {
       <Route path="/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
-      <Route path="/revetements-muraux" element={<PageLayout><WallCoverings onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/revetements-muraux" element={<PageLayout><RevetementsMuraux onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/amenagement" element={<PageLayout currentPageName="amenagement"><Amenagement onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/blog" element={<PageLayout><Blog onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/blog/:slug" element={<PageLayout><BlogPost /></PageLayout>} />
@@ -162,7 +162,7 @@ const AppRouter = () => {
       <Route path="/grenoble/devenir-artisan-partenaire" element={<PageLayout><DevenirArtisanPartenairePage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/peinture" element={<PageLayout><Peinture onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/plomberie" element={<PageLayout><Plomberie onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
-      <Route path="/grenoble/electricite" element={<PageLayout><Electricite onBack={() => navigate('/grenoble')} /></PageLayout>} />
+      <Route path="/grenoble/electricite" element={<PageLayout><Electricite onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/chauffage" element={<PageLayout><Chauffage onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/climatisation" element={<PageLayout><Climatisation onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/menuiserie" element={<PageLayout><Menuiserie onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
@@ -170,7 +170,7 @@ const AppRouter = () => {
       <Route path="/grenoble/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
-      <Route path="/grenoble/revetements-muraux" element={<PageLayout><WallCoverings onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+      <Route path="/grenoble/revetements-muraux" element={<PageLayout><RevetementsMuraux onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/amenagement" element={<PageLayout currentPageName="amenagement"><Amenagement onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/blog" element={<PageLayout><Blog onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
       <Route path="/grenoble/blog/:slug" element={<PageLayout><BlogPost /></PageLayout>} />

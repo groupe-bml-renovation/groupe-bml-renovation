@@ -1,14 +1,13 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen, Hammer, Ruler, Layout, Database, ShieldCheck, TreePine, DoorOpen } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, ThermometerSun, Layout, ShieldCheck, Zap, Cog, Activity, Flame } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
-import { menuiserieFAQs } from '../data/service-faqs';
 
-interface MenuiserieProps {
+interface ChauffageProps {
   onBack: () => void;
   onNavigate: (page: string) => void;
 }
@@ -18,11 +17,11 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1719381502987-058c2140df08?w=800&q=80',
-    'https://images.unsplash.com/photo-1697538022270-f3f3e8f9cf32?w=800&q=80',
-    'https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=800&q=80',
-    'https://images.unsplash.com/photo-1687995673177-053cfb879128?w=800&q=80',
-    'https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=800&q=80'
+    'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80',
+    'https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?w=800&q=80',
+    'https://images.unsplash.com/photo-1669725807131-a518ee3ec1cc?w=800&q=80',
+    'https://images.unsplash.com/photo-1738168299283-4117c3dfb8ac?w=800&q=80',
+    'https://images.unsplash.com/photo-1621905252507-b352220730b8?w=800&q=80'
   ];
 
   const scrollLeft = () => {
@@ -80,7 +79,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Réalisation Menuiserie ${index + 1}`}
+                    alt={`Réalisation Chauffage ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -92,7 +91,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Réalisation Menuiserie ${index + 1}`}
+                    alt={`Réalisation Chauffage ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -106,7 +105,7 @@ const ImageCarousel = () => {
   );
 };
 
-const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
+const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
@@ -118,15 +117,15 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Menuiserie Sur Mesure & Agencement à Grenoble | BML" : "Menuiserie & Agencement Bois Premium | Sur Mesure | Groupe BML"}</title>
-        <meta name="description" content="L'excellence artisanale for votre habitat. Agencements sur mesure, dressings, bibliothèques and parquets nobles. Travail du bois d'exception certifié en Isère." />
-        <meta property="og:title" content="Menuiserie & Agencement d'Art | Groupe BML" />
+        <title>{isGrenoble ? "Chauffage & Pompe à Chaleur à Grenoble | Expert BML" : "Rénovation Chauffage & Confort Thermique Haute Performance | Groupe BML"}</title>
+        <meta name="description" content="Solution de chauffage éco-responsable and haute performance. Installation de PAC air-eau, chaudières THPE and planchers chauffants. Expertise certifiée RGE en Isère." />
+        <meta property="og:title" content="Chauffage & Ingénierie Thermique | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Menuiserie",
-            "description": isGrenoble ? "Artisan menuisier d'art à Grenoble" : "Spécialiste en menuiserie et agencement bois haut de gamme",
+            "name": "Groupe BML Rénovation - Chauffage",
+            "description": isGrenoble ? "Expert chauffagiste RGE à Grenoble" : "Spécialiste en génie thermique et chauffage haute performance",
             "url": "https://groupe-bml-renovation.fr",
             "telephone": "+33756915997",
             "address": {
@@ -138,19 +137,19 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
       </Helmet>
 
       <div className="sr-only">
-        <h2>Expertise Menuiserie & Agencement</h2>
-        <p>Conception and fabrication d'ouvrages bois sur mesure and pose de menuiseries</p>
-        <h3>Menuisier Grenoble</h3>
-        <h3>Dressing Sur Mesure</h3>
-        <h3>Bibliothèque Architecturale</h3>
-        <h3>Parquet Noble & Finition Haute</h3>
+        <h2>Expertise Génie Thermique</h2>
+        <p>Installation and rénovation de systèmes de chauffage central and pompes à chaleur</p>
+        <h3>Chauffagiste Grenoble</h3>
+        <h3>Pompe à Chaleur Air-Eau</h3>
+        <h3>Chaudière Gaz Condensation THPE</h3>
+        <h3>Plancher Chauffant & Radiateurs Design</h3>
       </div>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1687995673177-053cfb879128?w=1920&q=80"
-            alt="Atelier de menuiserie de précision"
+            src="https://images.unsplash.com/photo-1649797375414-613144f2d124?w=1920&q=80"
+            alt="Ingénierie thermique haut de gamme"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -165,13 +164,13 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>Menuiserie d'Art<br />à Grenoble</>
+                <>Chauffage &<br />Expertise à Grenoble</>
               ) : (
-                <>La Noblesse du Sur-Mesure</>
+                <>L'Énergie du<br />Confort Durable</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "L'artisanat bois d'excellence au service de votre habitat grenoblois" : "L'excellence artisanale au service de vos agencements les plus ambitieux"}
+              {isGrenoble ? "Ingénierie thermique certifiée RGE and économies d'énergie à Grenoble" : "Conception de systèmes thermiques haute performance for un habitat serein"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -214,7 +213,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 onClick={scrollToContactForm}
                 className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(56,189,248,0.3)]"
               >
-                Concevoir mon agencement
+                Planifier mon réseau thermique
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>
@@ -232,23 +231,23 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                L'ESSENCE DU BOIS
+                L'ART DU BIEN-ÊTRE
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  Le sur-mesure pour un intérieur qui vous ressemble
+                  L'intelligence thermique au service de votre excellence
                 </span>
               </h2>
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Le bois est l'âme de votre intérieur. Vivant, chaleureux and intemporel, il exige une main experte for révéler tout son potentiel and s'ajuster parfaitement à vos volumes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons l'ébénisterie.
+                  Le chauffage est le pilier du bien-être domestique. Au-delà de la simple température, il s'agit d'une gestion intelligente de l'énergie for un confort constant and des factures maîtrisées. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous concevons des cœurs thermiques d'exception.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos menuisiers d'art grenoblois conçoivent des agencements uniques for valoriser votre patrimoine. Du dressing suspendu millimétré à la bibliothèque magistrale, nous marions essences nobles and finitions de prestige within tous vos projets alpins."
-                    : "Nous donnons vie à vos projets les plus complexes, de la restauration de menuiseries historiques à la création de mobilier contemporain épuré. Chaque coupe est une promesse de perfection and chaque assemblage une garantie de pérennité."}
+                    ? "Nos techniciens RGE basés à Grenoble maîtrisent l'intégralité des systèmes haute performance adaptés au climat montagnard. De la pompe à chaleur air-eau dernière génération à la chaudière gaz THPE, nous garantissons une installation thermodynamique millimétrée partout en Isère."
+                    : "Nous installons des solutions de génie thermique d'élite, utilisant les technologies les plus sobres and les plus durables du marché. Chaque projet est une étude de déperdition précise for un confort acoustique and thermique qui respecte votre architecture."}
                 </p>
               </div>
 
@@ -257,13 +256,13 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
                     <Check className="w-5 h-5" />
                   </div>
-                  <span className="font-semibold text-slate-900">Agencement Laser Précis</span>
+                  <span className="font-semibold text-slate-900">Expertise RGE Certifiée</span>
                 </div>
                 <div className="flex items-center gap-3 group">
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
                     <Check className="w-5 h-5" />
                   </div>
-                  <span className="font-semibold text-slate-900">Essences Certifiées Luxe</span>
+                  <span className="font-semibold text-slate-900">Économies d'Énergie THPE</span>
                 </div>
               </div>
             </motion.div>
@@ -277,8 +276,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               <div className="absolute -inset-4 bg-gradient-to-tr from-[#38bdf8]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
-                  src="https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=1200&q=80"
-                  alt="Agencement bois haut de gamme"
+                  src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?w=1200&q=80"
+                  alt="Installation chauffage haute performance"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -289,8 +288,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Menuiserie</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la finesse de nos réalisations and l'élégance du travail du bois.</p>
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Signature Thermique</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision de nos chaufferies and la discrétion de nos émetteurs design.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -302,19 +301,19 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               <div className="space-y-10">
                 {[
                   { 
-                    icon: <TreePine className="w-6 h-6" />, 
-                    title: "Essences Nobles", 
-                    desc: "Sélection rigoureuse de chênes, noyers and bois exotiques certifiés for une stabilité dimensionnelle absolue." 
+                    icon: <Flame className="w-6 h-6" />, 
+                    title: "Audit Thermique", 
+                    desc: "Analyse des déperditions and calcul de puissance calorifique for un système dimensionné au plus juste." 
                   },
                   { 
-                    icon: <Ruler className="w-6 h-6" />, 
-                    title: "Usinage de Précision", 
-                    desc: "Assemblages traditionnels and découpes numériques for un ajustage parfait au millimètre près." 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Pose & Raccordement", 
+                    desc: "Installation par nos compagnons chauffagistes with raccordements certifiés and désembouage systématique." 
                   },
                   { 
-                    icon: <DoorOpen className="w-6 h-6" />, 
-                    title: "Menuiserie Intérieure", 
-                    desc: "Portes, chambranles and claustras conçus comme des éléments d'architecture décorative." 
+                    icon: <Activity className="w-6 h-6" />, 
+                    title: "Gestion Connectée", 
+                    desc: "Régulation intelligente par pièce and pilotage à distance for une efficacité énergétique maximale." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -338,18 +337,18 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
               <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Un meuble unique à Grenoble ?" : "Votre agencement signature"}
+                  {isGrenoble ? "Un expert chauffagiste à Grenoble ?" : "Votre confort sans compromis"}
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos menuisiers basés à Grenoble façonnent vos rêves with une précision ancestrale."
-                    : "L'excellence artisanale for un intérieur d'exception."}
+                    ? "Nos techniciens basés en Isère assurent une installation millimétrée de votre génie thermique."
+                    : "Un accompagnement technique d'élite for une chaleur durable."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105"
                 >
-                  Étudier mon projet bois
+                  Demander un bilan thermique
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -358,8 +357,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
             <div className="order-1 lg:order-2">
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
                 <OptimizedImage
-                  src="https://images.unsplash.com/photo-1719381502987-058c2140df08?w=1200&q=80"
-                  alt="Détails menuiserie sur mesure"
+                  src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80"
+                  alt="Détails techniques chaufferie"
                   className="w-full h-auto"
                 />
               </div>
@@ -372,16 +371,16 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#38bdf8]/10 blur-[120px] rounded-full" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
-            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Artisan</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre agencement bois en 4 temps</h2>
+            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Expert</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre système thermique en 4 étapes</h2>
             <div className="w-24 h-1 bg-[#38bdf8] mx-auto opacity-50" />
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Cote", desc: "Prise de mesures laser and relevé architectural des supports." },
-              { step: "02", title: "Trace", desc: "Modélisation 3D and validation des essences and des quincailleries." },
-              { step: "03", title: "Grain", desc: "Usinage en atelier, ponçage haute finition and pré-montage." },
-              { step: "04", title: "Pose", desc: "Installation millimétrée, ajustages and jointoiements invisibles." }
+              { step: "01", title: "Audit", desc: "Diagnostic des conduits, isolation and calcul des besoins calorifiques." },
+              { step: "02", title: "Étude", desc: "Choix de l'énergie (PAC, Gaz THPE) and plan d'implantation du réseau." },
+              { step: "03", title: "Mise en œuvre", desc: "Pose des générateurs, colonnes and émetteurs par nos salariés." },
+              { step: "04", title: "Optimisation", desc: "Mise en service certifiée, équilibrage and contrat d'entretien." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,18 +415,18 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une menuiserie réussie demande une vision architecturale autant que technique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for la conception de vos meubles sur mesure and l'harmonisation with votre décoration.
+                  Parce qu'un chauffage réussi doit se faire discret, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez des conseils d'un architecte d'intérieur for l'implantation de vos radiateurs design ou l'intégration invisible de vos planchers chauffants.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Modélisation 3D photoréaliste de vos meubles</span>
+                  <span className="italic">Sélection d'émetteurs design premium</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Sélection d'échantillons and d'essences en showroom</span>
+                  <span className="italic">Optimisation esthétique des colonnes & vannes</span>
                 </div>
               </div>
 
@@ -463,7 +462,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
-                    <p className="text-xl font-semibold">"Le bois sculpte la lumière and définit l'espace."</p>
+                    <p className="text-xl font-semibold">"La chaleur sculpte l'espace and rassure l'habitant."</p>
                   </div>
                 </div>
               </div>
@@ -477,38 +476,38 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE MENUISIÈRE"}
+                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE THERMIQUE"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'ébénisterie à chaque ajustement
+                  L'expertise à chaque degré
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède un atelier de menuiserie de pointe. Nous maîtrisons les essences nobles, les agencements complexes and la pose millimétrée de vos ouvrages bois for des intérieurs d'exception."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'ouvrages menuisés. Nous maîtrisons les essences nobles, les agencements complexes and la finition haute for des habitats qui allient luxe and fonctionnalité."}
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception de chaufferies. Nous maîtrisons les systèmes complexes (PAC, Gaz THPE), les planchers chauffants hydrauliques and la régulation de pointe for des habitats économes."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de chauffage. Nous maîtrisons les systèmes complexes, les planchers chauffants hydrauliques and la régulation de pointe for des habitats qui traversent les hivers with fiabilité."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: <Layout className="w-10 h-10" />,
-                  title: "Agencement",
-                  items: ["Dressings sur mesure", "Bibliothèques Murales", "Espaces de travail", "Cuisines artisanales", "Suites parentales"]
+                  icon: <Flame className="w-10 h-10" />,
+                  title: "Générateurs",
+                  items: ["Pompes à Chaleur Air-Eau", "Chaudières Gaz THPE", "PAC Hybrides", "Relève de chaudière", "Chaufferies centralisées"]
                 },
                 {
-                  icon: <Hammer className="w-10 h-10" />,
-                  title: "Ouvrages",
-                  items: ["Escaliers & Garde-corps", "Verrières bois design", "Portes intérieures", "Claustras & Séparateurs", "Moulures & Boiseries"]
+                  icon: <ThermometerSun className="w-10 h-10" />,
+                  title: "Émetteurs",
+                  items: ["Planchers chauffants", "Radiateurs design", "Ventilo-convecteurs", "Radiants électriques", "Sèche-serviettes luxe"]
                 },
                 {
-                  icon: <ShieldCheck className="w-10 h-10" />,
-                  title: "Sols & Murs",
-                  items: ["Parquet Point de Hongrie", "Bâtons Rompus", "Parquet Massif / Collé", "Panneaux muraux", "Sous-couches acoustiques"]
+                  icon: <Cog className="w-10 h-10" />,
+                  title: "Engagement",
+                  items: ["Certification RGE", "Label QualiBOIS / PAC", "Garantie décennale", "Désembouage hydro", "Contrat Maintenance"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -542,25 +541,25 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              Qualité Certifiée
+              Technicité Certifiée
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for vos bois
+                Nos certifications for votre confort
               </span>
             </h2>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
-              { name: 'Menuiserie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Maître Artisan' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' },
-              { name: 'PEFC', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Bois Durable' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Savoir-Faire RGE' },
+              { name: 'QualiPAC', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expertise PAC' },
+              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Qualité Gaz' },
+              { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Expert Solaire' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement BML' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' },
               { name: 'Local Isère', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Pro de Proximité' },
-              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Deisgn & Plans' },
-              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Décennale BML' },
+              { name: 'Conformité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Label Qualité' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -654,9 +653,35 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
       </section>
 
       <ServiceFAQ
-        title="FAQ Menuiserie"
-        description="Les réponses de nos artisans for vos projets d'agencement bois."
-        items={menuiserieFAQs}
+        title="FAQ Chauffage"
+        description="Les réponses de nos techniciens for sécuriser votre installation thermique haut de gamme."
+        items={[
+          {
+            id: "ch1",
+            question: "Pompe à chaleur ou chaudière gaz THPE : comment choisir ?",
+            answer: "Le choix dépend de votre isolation, de vos émetteurs (radiateurs ou plancher) and de vos objectifs d'économies. La PAC est idéale for la rénovation globale with basse température, tandis que la chaudière gaz THPE reste performante for des besoins en haute température and un investissement initial moindre."
+          },
+          {
+            id: "ch2",
+            question: "Le plancher chauffant est-il possible en rénovation ?",
+            answer: "Oui, grâce aux systèmes 'minces' (environ 2cm hors finition), nous pouvons installer un plancher chauffant hydraulique without surcharger les dalles ou trop réhausser les sols. C'est le confort thermique absolu."
+          },
+          {
+            id: "ch3",
+            question: "Pourquoi faire un désembouage avant de changer de chaudière ?",
+            answer: "Un réseau emboué réduit l'efficacité de 20 à 30% and risque d'endommager prématurément votre nouvel équipement. Nous effectuons systématiquement un désembouage hydrodynamique for garantir la performance and la garantie constructeur."
+          },
+          {
+            id: "ch4",
+            question: "Quelles sont les aides disponibles with le label RGE ?",
+            answer: "En tant qu'entreprise certifiée RGE, nos installations ouvrent droit à MaPrimeRénov', aux Certificats d'Économie d'Énergie (CEE) and à l'Éco-PTZ. Nous vous accompagnons for maximiser ces financements."
+          },
+          {
+            id: "ch5",
+            question: "Proposez-vous des contrats d'entretien ?",
+            answer: "Oui, la maintenance annuelle est obligatoire and cruciale for la sécurité and la longévité. Nos contrats incluent le nettoyage, les réglages de combustion and le dépannage prioritaire."
+          }
+        ]}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
@@ -664,4 +689,4 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
   );
 };
 
-export default Menuiserie;
+export default Chauffage;

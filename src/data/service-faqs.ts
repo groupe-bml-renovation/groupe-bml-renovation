@@ -96,3 +96,322 @@ export const boutiqueFAQs = [
     answer: 'Oui, selon la nature des travaux, notamment électricité, ventilation, et sécurité ERP. L\'objectif est un chantier propre et conforme.'
   }
 ];
+
+export const salonFAQs = [
+  {
+    id: 'salon-1',
+    question: 'Quelles sont les étapes pour rénover mon salon ?',
+    answer: 'Nous commençons par une étude de vos besoins et de l\'espace. Ensuite, nous gérons tout : dépose, électricité, peinture, sols et finitions.'
+  },
+  {
+    id: 'salon-2',
+    question: 'Combien de temps faut-il pour rénover un séjour complet ?',
+    answer: 'Généralement entre 2 et 4 semaines selon l\'ampleur des travaux (peinture seule vs rénovation lourde avec sols et plafonds).'
+  },
+  {
+    id: 'salon-3',
+    question: 'Proposez-vous des conseils en décoration ?',
+    answer: 'Oui, nous offrons un accompagnement avec un architecte d\'intérieur pour le choix des matériaux et des couleurs pour tout devis signé.'
+  }
+];
+
+export const chambreFAQs = [
+  {
+    id: 'chambre-1',
+    question: 'Peut-on créer une suite parentale avec salle d\'eau attenante ?',
+    answer: 'Absolument. Nous gérons la plomberie, l\'étanchéité et l\'agencement pour transformer votre chambre en véritable suite parentale.'
+  },
+  {
+    id: 'chambre-2',
+    question: 'Comment améliorer l\'isolation phonique d\'une chambre ?',
+    answer: 'Nous utilisons des plaques de plâtre acoustiques et des isolants performants pour vous garantir un calme absolu.'
+  }
+];
+
+export const cuisineFAQs = [
+  {
+    id: 'cuisine-1',
+    question: 'Gérez-vous la pose de la cuisine et l\'électroménager ?',
+    answer: 'Oui, nous gérons l\'installation complète, les raccordements techniques (eau, gaz, électricité) et la pose du plan de travail.'
+  },
+  {
+    id: 'cuisine-2',
+    question: 'Puis-je changer l\'implantation de ma cuisine ?',
+    answer: 'Oui, nous pouvons déplacer les arrivées d\'eau et les prises électriques pour optimiser l\'ergonomie de votre espace.'
+  }
+];
+
+export const amenagementFAQs = [
+  {
+    id: 'amen-1',
+    question: 'Comment optimiser les petits espaces ?',
+    answer: 'Nous utilisons des solutions de rangement sur mesure, des cloisons légères et un éclairage stratégique pour maximiser chaque mètre carré.'
+  }
+];
+
+export const salleDeBainFAQs = [
+  {
+    id: 'sdb-1',
+    question: 'Quelle est la durée moyenne d\'une rénovation de salle de bain ?',
+    answer: 'Il faut compter environ 10 à 15 jours ouvrés pour une rénovation complète (dépose, plomberie, faïence, pose des sanitaires).'
+  }
+];
+
+export const salleDeBainPMRFAQs = [
+  {
+    id: 'pmr-1',
+    question: 'Quelles sont les aides pour l\'adaptation PMR ?',
+    answer: 'Il existe diverses aides comme MaPrimeAdapt\' ou des crédits d\'impôt. Nous vous accompagnons dans la constitution de votre dossier technique.'
+  }
+];
+
+export const piscineFAQs = [
+  {
+    id: "ps1",
+    question: "Combien de temps dure la construction d'une piscine béton ?",
+    answer: "Il faut compter entre 4 et 8 semaines de travaux effectifs, hors temps de séchage du béton. En incluant les phases administratives et les finitions des plages, un projet complet s'étale généralement sur quelques mois selon la complexité."
+  },
+  {
+    id: "ps2",
+    question: "Liner ou PVC Armé : quelle différence ?",
+    answer: "Le liner est une poche d'une seule pièce, souple et économique. Le PVC armé est soudé sur place, il est beaucoup plus épais et résistant aux températures élevées, avec une durée de vie supérieure à 20 ans."
+  },
+  {
+    id: "ps3",
+    question: "Faut-il un permis de construire pour une piscine ?",
+    answer: "De 10m² à 100m², une déclaration préalable de travaux (DP) en mairie est obligatoire. Au-delà de 100m², un permis de construire est nécessaire. Nous vous accompagnons dans toutes ces démarches administratives."
+  },
+  {
+    id: "ps4",
+    question: "Est-ce qu'une piscine consomme beaucoup d'électricité ?",
+    answer: "Avec les nouvelles pompes de filtration à vitesse variable et les pompes à chaleur Full Inverter, la consommation a été drastiquement réduite. Une piscine bien gérée est aujourd'hui très éonome en énergie."
+  },
+  {
+    id: "ps5",
+    question: "Comment sécuriser ma piscine ?",
+    answer: "La loi impose un dispositif de sécurité normalisé. Nous installons au choix : des volets roulants automatiques, des bâches à barres, des barrières de protection ou des alarmes d'immersion performantes."
+  }
+];
+
+export const terrasseBoisFAQs = [
+  {
+    id: 'tb1',
+    question: 'Quel bois choisir pour ma terrasse : Naturel ou Composite ?',
+    answer: 'Le bois naturel (Exotique ou Classe 4) offre une authenticité et une noblesse inégalées. Le composite demande moins d\'entretient mais chauffe plus au soleil. Nous conseillons généralement l\'Ipé ou le Cumaru pour leur durabilité exceptionnelle.'
+  },
+  {
+    id: 'tb2',
+    question: 'Quelle est la durée de vie d\'une terrasse en bois exotique ?',
+    answer: 'Une terrasse en Ipé ou Cumaru bien posée peut durer plus de 30 à 40 ans. La structure sous-jacente est l\'élément clé : nous utilisons des lambourdes en bois exotique ou en aluminium pour garantir cette longévité.'
+  },
+  {
+    id: 'tb3',
+    question: 'Faut-il entretenir sa terrasse bois chaque année ?',
+    answer: 'Le bois va naturellement griser avec le temps. Pour conserver sa couleur d\'origine, un saturateur annuel est conseillé. Sinon, un simple nettoyage haute pression (modéré) une fois par an suffit pour l\'aspect sanitaire.'
+  },
+  {
+    id: 'tb4',
+    question: 'Peut-on poser une terrasse bois sur de la terre ?',
+    answer: 'Jamais directement. Il faut stabiliser le sol, poser un géotextile, puis utiliser des plots réglables ou créer des fondations (vis de fondation ou plots béton) pour assurer une ventilation parfaite sous la structure.'
+  },
+  {
+    id: 'tb5',
+    question: 'Quel est le prix au m² pour une terrasse bois premium ?',
+    answer: 'Le budget varie selon l\'essence (Ipé, Cumaru, Mélèze) et la complexité de la structure. Pour un projet durable clés en main (fourniture et pose), prévoyez une fourchette entre 180€ et 350€ HT / m².'
+  }
+];
+
+export const espaceVerreFAQs = [
+  {
+    id: 'ev1',
+    question: 'Verrière intérieure : Acier ou Aluminium ?',
+    answer: 'L\'acier offre la finesse authentique des ateliers d\'artistes et une robustesse structurante. l\'Aluminium est plus léger et économique. Pour un rendu premium et durable, nous préconisons l\'acier avec finition thermolaquée.'
+  },
+  {
+    id: 'ev2',
+    question: 'Quel type de vitrage choisir pour une verrière ?',
+    answer: 'Nous utilisons exclusivement du verre feuilleté (type 33.2) pour la sécurité : en cas de choc, le verre reste solidaire. Pour l\'intimité, nous proposons des verres flûtés, sablés ou teintés.'
+  },
+  {
+    id: 'ev3',
+    question: 'Peut-on intégrer une porte dans une verrière existante ?',
+    answer: 'Oui, tout est possible en sur-mesure. Nous pouvons créer des portes battantes, coulissantes ou en accordéon (type repliable) parfaitement intégrées au design de la verrière.'
+  },
+  {
+    id: 'ev4',
+    question: 'Combien de temps dure l\'installation d\'une verrière ?',
+    answer: 'Après la phase de fabrication sur mesure (4-6 semaines), la pose sur place dure généralement une seule journée. Nous assurons une installation propre, sans gros travaux de maçonnerie.'
+  },
+  {
+    id: 'ev5',
+    question: 'Comment entretenir les structures en acier ?',
+    answer: 'Le thermolaquage cuit au four protège l\'acier durablement. Un simple nettoyage au chiffon doux avec un produit vitres ou de l\'eau savonneuse suffit pour conserver l\'éclat du métal et du verre.'
+  }
+];
+
+export const chauffageFAQs = [
+  {
+    id: "ch1",
+    question: "Quel est le meilleur moment pour remplacer sa chaudière ?",
+    answer: "Idéalement au printemps or en été pour ne pas subir de coupure de chauffage en hiver. Une chaudière de plus de 15 ans consomme souvent 20 à 30% de plus qu'un modèle à condensation moderne."
+  },
+  {
+    id: "ch2",
+    question: "La pompe à chaleur (PAC) est-elle efficace en climat montagneux (Isère) ?",
+    answer: "Oui, les modèles actuels (basse température or haute température) sont conçus pour fonctionner jusqu'à -20°C. À Grenoble, elles offrent un excellent rendement (COP) and permettent de diviser par 3 vos factures de chauffage électrique."
+  },
+  {
+    id: "ch3",
+    question: "C'est quoi le désembouage d'un circuit de chauffage ?",
+    answer: "Il s'agit d'un nettoyage haute pression and chimique du réseau pour éliminer les boues and dépôts qui s'accumulent. Un circuit propre améliore le rendement de 15% and évite les pannes de circulateurs or de vannes."
+  },
+  {
+    id: "ch4",
+    question: "Peut-on installer un plancher chauffant en rénovation ?",
+    answer: "Oui, il existe aujourd'hui des solutions 'minces' (moins de 2cm) or des planchers secs qui ne nécessitent pas de coulage de chape lourde. C'est idéal pour gagner en confort sans surépaisseur importante."
+  },
+  {
+    id: "ch5",
+    question: "Quelles aides pour la rénovation énergétique en 2024 ?",
+    answer: "Grâce à notre label RGE, vous pouvez prétendre à MaPrimeRénov', aux Certificats d'Économie d'Énergie (CEE) and à l'Éco-Prêt à Taux Zéro. Nous vous accompagnons dans le montage technique de ces dossiers."
+  }
+];
+
+export const amianteFAQs = [
+  {
+    id: "am1",
+    question: "Dois-je faire un diagnostic avant les travaux ?",
+    answer: "Oui, le Repérage Amiante Avant Travaux est obligatoire pour tout bâtiment construit avant 1997 dès lors que des travaux impactent la structure ou les finitions. Il permet de protéger les ouvriers identification les zones à risques."
+  },
+  {
+    id: "am2",
+    question: "Puis-je retirer moi-même du fibrociment ?",
+    answer: "C'est fortement déconseillé and réglementé. La manipulation de fibrociment libère des fibres d'amiante invisibles and cancérigènes. Un professionnel utilise des équipements de protection and des protocoles d'humidification pour neutraliser la poussière."
+  },
+  {
+    id: "am3",
+    question: "Qu'est-ce qu'un Bordereau de Suivi des Déchets d'Amiante ?",
+    answer: "C'est le passeport de vos déchets. Il garantit que l'amiante retiré de chez vous a bien été transporté par un véhicule agréé and éliminé dans un centre de stockage certifié. Ce document vous dédouane de toute responsabilité pénale."
+  },
+  {
+    id: "am4",
+    question: "Combien de temps dure un désamiantage ?",
+    answer: "La phase préparatoire est la plus longue. Pour une pièce standard, comptez 3 à 5 jours incluant le temps de séchage du fixateur and les tests d'air libératoires obligatoires après retrait."
+  },
+  {
+    id: "am5",
+    question: "Travaillez-vous en 'Sous-Section 4' ?",
+    answer: "Oui, nous sommes habilités SS4. Cela nous permet d'intervenir ponctuellement sur des supports amiantés sans avoir à lancer un plan de retrait global, tout en garantissant la sécurité."
+  }
+];
+export const plomberieFAQs = [
+  {
+    id: "pl1",
+    question: "Comment détecter une fuite d'eau invisible ?",
+    answer: "Nous utilisons des outils d'écoute acoustique and des caméras thermiques for localiser les fuites sans casser vos murs. Une surconsommation sur votre facture d'eau est souvent le premier signe d'alerte d'une fuite encastrée."
+  },
+  {
+    id: "pl2",
+    question: "Peut-on installer une douche à l'italienne pendant une rénovation ?",
+    answer: "Oui, c'est notre spécialité. Cela demande une étude de la pente d'évacuation and une étanchéité parfaite (nappe d'étanchéité certifiée). Si le sol ne permet pas d'encastrer le receveur, nous créons une légère surélévation esthétique."
+  },
+  {
+    id: "pl3",
+    question: "Qu'est-ce qu'un adoucisseur d'eau and est-ce nécessaire ?",
+    answer: "En Isère, l'eau est souvent calcaire. Un adoucisseur protège vos canalisations, votre chaudière and vos appareils ménagers contre l'entartrage, and améliore le confort de votre peau and de votre linge."
+  },
+  {
+    id: "pl4",
+    question: "Pourquoi choisir le Multicouche plutôt que le Cuivre ?",
+    answer: "Le multicouche combine les avantages du plastique (pas de corrosion, pas d'entartrage) and de l'aluminium (mémoire de forme, barrière anti-oxygène). C'est plus rapide à poser, plus fiable and plus silencieux que le cuivre traditionnel."
+  },
+  {
+    id: "pl5",
+    question: "Gérez-vous le débouchage d'urgence ?",
+    answer: "Oui, nous intervenons for les urgences sanitaires and les débouchages complexes demandant un hydrocurage ou une inspection vidéo des canalisations for identifier l'origine du blocage."
+  }
+];
+
+export const electriqueFAQs = [
+  {
+    id: "el1",
+    question: "Mon installation date des années 80, dois-je tout changer ?",
+    answer: "Une installation des années 80 manque souvent de dispositifs différentiels 30mA and de mise à la terre sur tous les circuits. Nous effectuons un audit complet for déterminer s'il faut une rénovation totale or une mise en sécurité (remplacement du tableau and ajout des protections vitales)."
+  },
+  {
+    id: "el2",
+    question: "Est-il possible d'ajouter de la domotique sans gros travaux ?",
+    answer: "Absolument. Grâce aux technologies sans fil (Zigbee, Bluetooth Mesh), nous pouvons automatiser votre éclairage, vos volets and votre chauffage sans créer de nouvelles saignées dans vos murs, en remplaçant simplement vos interrupteurs existants."
+  },
+  {
+    id: "el3",
+    question: "Installez-vous des prises de recharge for voitures électriques ?",
+    answer: "Oui, nous sommes certifiés IRVE (Infrastructure de Recharge for Véhicules Électriques). Nous installons des bornes (Wallbox) or des prises renforcées adaptées à la puissance de votre compteur and à votre usage quotidien."
+  },
+  {
+    id: "el4",
+    question: "Comment gérez-vous le passage des câbles for que ce soit esthétique ?",
+    answer: "En rénovation haut de gamme, nous privilégions l'encastrement par saignées rebouchées with soin or le passage dans les faux-plafonds and doublages. Si l'apparent est inévitable, nous utilisons des goulottes design minimalistes parfaitement intégrées aux plinthes."
+  },
+  {
+    id: "el5",
+    question: "Fournissez-vous l'attestation de conformité Consuel ?",
+    answer: "Oui, for toute rénovation totale with remplacement du tableau, nous gérons la visite du Consuel and la remise de l'attestation de conformité indispensable for vos assurances and votre fournisseur d'énergie."
+  }
+];
+
+export const climFAQs = [
+  {
+    id: "cl1",
+    question: "Qu'est-ce qu'une climatisation réversible ?",
+    answer: "Une climatisation réversible est une pompe à chaleur air-air. Elle capte les calories de l'air extérieur for chauffer votre intérieur en hiver, and inverse le cycle en été for évacuer la chaleur vers l'extérieur. C'est l'un des systèmes les plus économes car il restitue environ 4 fois plus d'énergie qu'il n'en consomme."
+  },
+  {
+    id: "cl2",
+    question: "Un système gainable est-il vraiment invisible ?",
+    answer: "Oui, c'est la solution premium par excellence. L'unité intérieure est installée dans un faux-plafond (souvent dans un couloir). L'air est ensuite distribué dans chaque pièce via des gaines isolées aboutissant à des grilles de diffusion design. Seules ces grilles sont visibles en plafond."
+  },
+  {
+    id: "cl3",
+    question: "Quelle est la durée de vie d'une installation ?",
+    answer: "Avec un entretien régulier effectué par nos techniciens, une climatisation de grande marque (Daikin, Mitsubishi) a une durée de vie comprise entre 15 and 20 ans. La qualité de la mise en service (tirage au vide, étanchéité) est le facteur n°1 de longévité."
+  },
+  {
+    id: "cl4",
+    question: "Est-ce que l'installation fait du bruit ?",
+    answer: "Les unités modernes sont extrêmement silencieuses. En mode 'nuit', le niveau sonore descend autour de 19dB(A), ce qui est à peine perceptible (plus silencieux qu'un chuchotement). Nous sélectionnons les emplacements for éviter toute nuisance sonore vis-à-vis des voisins."
+  },
+  {
+    id: "cl5",
+    question: "Faut-il une autorisation for installer une unité extérieure ?",
+    answer: "En copropriété or en lotissement, une déclaration préalable de travaux (DP) en mairie est généralement nécessaire car l'unité extérieure modifie l'aspect de la façade. Nous vous accompagnons dans la constitution de ce dossier technique."
+  }
+];
+
+export const menuiserieFAQs = [
+  {
+    id: "me1",
+    question: "Quelles sont les essences de bois que vous travaillez ?",
+    answer: "Nous travaillons une large gamme d'essences adaptées à chaque usage. Le CHÊNE for sa noblesse and résistance (parquets, escaliers), le FRÊNE for sa clarté contemporaine, le NOYER for son prestige, and des résineux comme le MÉLÈZE for les ouvrages extérieurs."
+  },
+  {
+    id: "me2",
+    question: "Est-il possible de créer un dressing with des portes coulissantes invisibles ?",
+    answer: "Absolument. En tant qu'experts en agencement, nous installons des systèmes de rails encastrés and des finitions affleurantes qui permettent une intégration parfaite dans vos cloisons, for une esthétique minimaliste sans aucune visserie apparente."
+  },
+  {
+    id: "me3",
+    question: "Réalisez-vous la pose de parquets sur d'anciens sols ?",
+    answer: "Oui, c'est possible après une préparation rigoureuse du support. Nous maîtrisons la pose de parquets massifs collés, de parquets contrecollés flottants and même la restauration de parquets anciens with ponçage and vitrification."
+  },
+  {
+    id: "me4",
+    question: "Combien de temps faut-il for fabriquer un meuble sur mesure ?",
+    answer: "La fabrication en atelier dépend de la complexité de l'ouvrage. Comptez généralement 4 à 6 semaines entre la validation des plans 3D and la pose finale. Ce délai garantit le temps nécessaire au séchage des finitions and à la précision de l'ajustage."
+  },
+  {
+    id: "me5",
+    question: "Gérez-vous également la peinture or le vernis des meubles ?",
+    answer: "Oui, nos ouvrages sont livrés totalement finis. Nous disposons d'une cabine de finition for l'application de laqués, de vernis polyuréthanes or d'huiles naturelles, selon le rendu souhaité (mat, satiné or brillant)."
+  }
+];

@@ -82,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         loop
         playsInline
         poster={posterUrl}
-        preload="auto"
+        preload="metadata"
         onLoadedData={() => setIsVideoReady(true)}
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture
@@ -117,7 +117,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <motion.span
                     key={index}
                     className="absolute font-bold bg-gradient-to-r from-[#38bdf8] from-30% via-gray-200 via-70% to-gray-400 bg-clip-text text-transparent whitespace-nowrap"
-                    initial={{ opacity: 0, y: window.innerWidth < 768 ? 0 : "-100" }}
+                    initial={{ opacity: 0, y: window.innerWidth < 1024 ? 0 : "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
                       titleNumber === index
@@ -126,7 +126,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           opacity: 1,
                         }
                         : {
-                          y: window.innerWidth < 768 ? 0 : (titleNumber > index ? -80 : 80),
+                          y: window.innerWidth < 1024 ? 0 : (titleNumber > index ? -80 : 80),
                           opacity: 0,
                         }
                     }
@@ -154,7 +154,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               href={reviewLink}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: window.innerWidth < 768 ? 0 : 20 }}
+              initial={{ opacity: 0, y: window.innerWidth < 1024 ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="inline-flex flex-col items-center justify-center gap-3 sm:gap-4 pt-4"

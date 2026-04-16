@@ -1,17 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Layout, Ruler, ShieldCheck, ShoppingBag, Grid3X3, Layers, Maximize } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
 import { boutiqueFAQs } from '../data/service-faqs';
 
-
 interface BoutiquesBureauxProps {
   onBack: () => void;
-  onNavigate?: (page: string) => void;
+  onNavigate: (page: string) => void;
 }
 
 const ImageCarousel = () => {
@@ -19,35 +18,30 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80',
-    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80',
-    'https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=1200&q=80',
-    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=80',
-    'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=1200&q=80',
-    'https://images.unsplash.com/photo-1497366858526-0766cadbe8fa?w=1200&q=80',
-    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80',
-    'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200&q=80'
+    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80',
+    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
+    'https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&q=80',
+    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80',
+    'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80'
   ];
-
-  const handleScroll = () => {
-    if (!scrollContainerRef.current) return;
-    const container = scrollContainerRef.current;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-
-    if (container.scrollLeft >= maxScroll - 50) {
-      container.scrollLeft = container.scrollWidth / 2 - container.clientWidth;
-    }
-  };
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+      const container = scrollContainerRef.current;
+      const itemWidth = 320;
+      const gap = 24;
+      const itemWithGap = itemWidth + gap;
+      container.scrollBy({ left: -itemWithGap, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      const container = scrollContainerRef.current;
+      const itemWidth = 320;
+      const gap = 24;
+      const itemWithGap = itemWidth + gap;
+      container.scrollBy({ left: itemWithGap, behavior: 'smooth' });
     }
   };
 
@@ -74,7 +68,6 @@ const ImageCarousel = () => {
           ref={scrollContainerRef}
           className="scroll-container w-full max-w-6xl overflow-x-auto scrollbar-hide"
           style={{ scrollBehavior: 'smooth' }}
-          onScroll={handleScroll}
         >
           <div
             className="infinite-scroll flex gap-6 w-max"
@@ -87,30 +80,21 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Rénovation Pro ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="eager"
                   />
                 </div>
               ))}
             </div>
-            <div className="flex gap-6 animate-scroll">
+            <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Rénovation ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex gap-6 animate-scroll">
-              {images.map((img, index) => (
-                <div key={`set3-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <OptimizedImage
-                    src={img}
-                    alt={`Rénovation ${index + 1}`}
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
+                    alt={`Rénovation Pro ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="eager"
                   />
                 </div>
               ))}
@@ -125,7 +109,7 @@ const ImageCarousel = () => {
 const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isGrenoble = location.pathname.includes('/grenoble');
+  const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
 
   const scrollToContactForm = () => {
     navigate('/?scrollTo=contact-form');
@@ -134,20 +118,40 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Rénovation Boutiques & Bureaux Grenoble | BML Rénovation' : 'Rénovation Boutiques & Bureaux - Groupe BML Rénovation'}</title>
-        <meta name="description" content={isGrenoble ? 'Rénovation complète de boutiques et bureaux à Grenoble et en Isère. Agencement commercial, normes ERP, modernisation d\'espaces professionnels. Entreprise spécialisée. Devis gratuit.' : 'Rénovation complète de boutiques et bureaux. Agencement commercial, normes ERP, modernisation d\'espaces professionnels. Devis gratuit.'} />
-        <meta name="keywords" content={isGrenoble ? 'rénovation boutiques bureaux grenoble, agencement commercial grenoble, rénovation espaces professionnels grenoble, normes ERP grenoble' : 'rénovation boutiques bureaux, agencement commercial, rénovation espaces professionnels, normes ERP'} />
-        <meta property="og:title" content={isGrenoble ? 'Rénovation Boutiques & Bureaux Grenoble | BML Rénovation' : 'Rénovation Boutiques & Bureaux - Groupe BML Rénovation'} />
-        <meta property="og:description" content={isGrenoble ? 'Rénovation professionnelle de boutiques et bureaux à Grenoble. Agencement, normes ERP et modernisation d\'espaces commerciaux.' : 'Rénovation complète de boutiques et bureaux avec expertise en agencement commercial et normes ERP.'} />
-        <link rel="canonical" href={isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble/boutiques-bureaux' : 'https://groupe-bml-renovation.fr/boutiques-bureaux'} />
-        <meta name="geo.region" content={isGrenoble ? 'FR-38' : 'FR'} />
+        <title>{isGrenoble ? "Rénovation Boutiques & Bureaux à Grenoble | Agencement Pro | BML" : "Rénovation Boutiques & Bureaux Premium | Agencement Commercial | BML"}</title>
+        <meta name="description" content="Transformation d'espaces professionnels, boutiques and bureaux. Agencement commercial and mise aux normes ERP avec garantie décennale and architecte offert." />
+        <meta property="og:title" content="Rénovation d'Espaces Professionnels | Groupe BML" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation - Tertiaire",
+            "description": isGrenoble ? "Expert en rénovation de commerces à Grenoble" : "Entreprise spécialisée en rénovation tertiaire premium",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR"
+            }
+          })}
+        </script>
       </Helmet>
+
+      <div className="sr-only">
+        <h2>Expertise Rénovation Tertiaire & Commerciale</h2>
+        <p>Aménagement de bureaux, boutiques and espaces de vente for professionnels</p>
+        <h3>Agencement Boutique Grenoble</h3>
+        <h3>Rénovation de Bureau Isère</h3>
+        <h3>Mise aux Normes ERP RGE</h3>
+        <h3>Architecte d'Intérieur Offert</h3>
+      </div>
+
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%20Hero%20-%20After.png"
-            alt="Rénovation Boutiques et Bureaux"
-            className="w-full h-full"
+            alt="Espace professionnel de prestige agencé par BML"
+            className="w-full h-full object-cover"
             priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
@@ -160,12 +164,16 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
-              Rénovations de<br />{isGrenoble ? 'boutiques et bureaux à Grenoble' : 'boutiques et bureaux'}
+              {isGrenoble ? (
+                <>Boutiques & Bureaux<br />à Grenoble</>
+              ) : (
+                <>Espaces Pro<br />& Tertiaires</>
+              )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? 'Interventions clés en main pour transformer vos espaces professionnels à Grenoble et en Isère' : 'Interventions clés en main pour transformer vos espaces professionnels'}
+              {isGrenoble ? "Agencement commercial & tertiaire haute performance en Isère" : "L'excellence de la rénovation Tout Corps d'État for votre activité"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -174,7 +182,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               className="flex flex-col items-center gap-6"
             >
               <motion.a
-                href="https://www.google.com/search?q=groupe+bml+renovation&oq=groupe+bml+renovation&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGDwyBggDEEUYPDIGCAQQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgzMTUyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x478af4894336bf9b:0x5e236531336e14ed,1,,,,"
+                href="https://www.google.com/search?q=groupe+bml+renovation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
@@ -189,7 +197,9 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
                 </svg>
 
                 <div className="flex flex-col items-center gap-2">
-                  <span className="text-white font-semibold text-lg">Excellent</span>
+                  <span className="text-white font-semibold text-lg">
+                    Excellent
+                  </span>
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <svg key={i} className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
@@ -199,216 +209,193 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
                   </div>
                 </div>
               </motion.a>
+
+              <button
+                onClick={scrollToContactForm}
+                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(56,189,248,0.3)]"
+              >
+                Valoriser mon espace pro
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="pt-16 pb-12 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 transform translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                BOUTIQUES ET BUREAUX
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                STRATÉGIE & DESIGN D'ESPACE
               </span>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight">
-                <span className="text-[#38bdf8] font-normal">Créer l'espace professionnel</span>{' '}
-                <span className="text-slate-900">qui</span><br />
-                <span className="text-slate-900">valorise votre activité.</span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  L'intelligence de l'espace au service du business
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                {isGrenoble ? 'Transformez vos locaux commerciaux à Grenoble en espaces modernes et fonctionnels, optimisés pour accueillir vos clients et améliorer la productivité de vos équipes tout en respectant les normes ERP et d\'accessibilité.' : 'Transformez vos locaux commerciaux en espaces modernes et fonctionnels, optimisés pour accueillir vos clients et améliorer la productivité de vos équipes tout en respectant les normes ERP.'}
-              </p>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
+                <p>
+                  L'agencement de vos locaux professionnels est le levier majeur de votre image de marque and de la productivité de vos équipes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transformons vos boutiques and bureaux en gérant l'optimisation des flux, l'esthétique contemporaine and le confort tertiaire.
+                </p>
+                <p>
+                  {isGrenoble 
+                    ? "Nos experts en agencement commercial à Grenoble maîtrisent les contraintes ERP and tertiaires de l'Isère. De la mise aux normes PMR à la création de concepts 'Open Ready' within Grenoble, nous orchestrons votre transformation with une agilité maximale for limiter l'impact sur votre exploitation."
+                    : "Qu'il s'agisse de redynamiser une boutique de luxe or de restructurer un plateau de bureaux tertiaires, nous appliquons une rigueur de conduite de travaux absolue. Chaque lot technique est piloté with une précision industrielle for un résultat sans compromis."}
+                </p>
+              </div>
 
-              <p className="text-base text-slate-600 leading-relaxed mb-4">
-                <strong>Groupe BML Rénovation</strong> vous accompagne {isGrenoble ? 'à Grenoble et en Isère ' : ''}dans la <strong>rénovation
-                complète</strong> de vos boutiques et bureaux. <strong>Notre équipe vous conseille et vous
-                accompagne</strong> dans le choix des éléments pour vous apporter la solution idéale.
-              </p>
-
-              <p className="text-base text-slate-600 leading-relaxed mb-8">
-                {isGrenoble ? 'Que vous souhaitiez moderniser une boutique, réaménager des bureaux ou créer des espaces de coworking à Grenoble, nos experts en rénovation mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui reflète votre image de marque et répond à vos besoins professionnels.' : 'Que vous souhaitiez moderniser une boutique, réaménager des bureaux ou créer des espaces de coworking, nos experts en rénovation mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui reflète votre image de marque et répond à vos besoins professionnels.'}
-              </p>
-
-              <button
-                onClick={scrollToContactForm}
-                className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_30px_rgba(56,189,248,0.25)]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                Demander un devis gratuit
-                <div className="flex flex-col items-center ml-1">
-                  <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                  <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
+              <div className="grid sm:grid-cols-2 gap-6 mt-10">
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Mise aux Normes ERP / PMR</span>
                 </div>
-              </button>
+                <div className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <span className="font-semibold text-slate-900">Architecte Tertiaire Offert</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-xl overflow-hidden shadow-2xl h-[450px]"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
             >
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
-                alt="Rénovation Boutique et Bureau"
-                className="w-full h-full"
-                loading="eager"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#38bdf8]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
+                  alt="Espace de bureau design réalisation BML"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-b from-white to-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ImageCarousel />
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Réalisations Professionnelles</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez comment nous réinventons les codes du tertiaire and du commerce.</p>
         </div>
+        <ImageCarousel />
       </section>
 
-      <section className="py-8 bg-slate-50">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
-            <div className="bg-[#f5f5f5] p-8">
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                RÉNOVATION BOUTIQUES & BUREAUX
-              </span>
-              <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center flex-row-reverse">
+            <div className="lg:pr-12 order-2 lg:order-1">
+              <div className="space-y-10">
+                {[
+                  { 
+                    icon: <Maximize className="w-6 h-6" />, 
+                    title: "Agencement ERP", 
+                    desc: "Conception and mise aux normes for Établissements Recevant du Public (sécurité incendie, accessibilité)." 
+                  },
+                  { 
+                    icon: <Grid3X3 className="w-6 h-6" />, 
+                    title: "Lots Techniques Pro", 
+                    desc: "Maîtrise de l'électricité tertiaire, climatisation réversible and courants faibles haute performance." 
+                  },
+                  { 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Excellence Acoustique", 
+                    desc: "Solutions d'isolation and de traitement acoustique for des espaces de travail productifs and sereins." 
+                  }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex gap-6 group"
+                  >
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-slate-900 mb-2 italic uppercase tracking-wide">{item.title}</h4>
+                      <p className="text-slate-600 leading-relaxed font-medium italic">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
 
-              <h2 className="text-3xl md:text-4xl font-light text-[#38bdf8] mb-6 leading-tight">
-                Transformer vos<br />espaces professionnels
-              </h2>
-
-              <p className="text-base text-slate-600 leading-relaxed mb-6">
-                {isGrenoble ? 'Groupe BML Rénovation, basée à Grenoble, conçoit et réalise des rénovations complètes d\'espaces professionnels en Isère et ses alentours. De l\'étude de conception à la réalisation, nos équipes vous accompagnent tout au long de votre projet personnalisé en respectant les normes ERP et d\'accessibilité.' : 'Groupe BML Rénovation tout corps d\'état conçoit et réalise des rénovations complètes d\'espaces professionnels. De l\'étude de conception à la réalisation, nos équipes vous accompagnent tout au long de votre projet personnalisé en respectant les normes ERP et d\'accessibilité.'}
-              </p>
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                {isGrenoble ? 'Notre approche globale garantit une prise en charge complète de votre projet grenoblois : analyse de vos besoins, recommandations sur les matériaux et équipements, et suivi rigoureux de chaque étape de réalisation dans le respect des délais.' : 'Notre approche globale garantit une prise en charge complète de votre projet : analyse de vos besoins, recommandations sur les matériaux et équipements, et suivi rigoureux de chaque étape de réalisation.'}
-              </p>
+              <div className="text-center bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 text-white mt-8 shadow-2xl">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  {isGrenoble ? "Un local pro à rénover à Grenoble ?" : "Votre Boutique Signature"}
+                </h2>
+                <p className="text-lg mb-8 opacity-90">
+                  {isGrenoble
+                    ? "Nos experts tertiaires basés à Grenoble façonnent votre réussite within un délai record."
+                    : "L'art de l'agencement commercial, au service de votre rentabilité."}
+                </p>
+                <button
+                  onClick={scrollToContactForm}
+                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.2)] transition-all duration-300 hover:scale-105"
+                >
+                  Étudier mon projet professionnel
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Votre projet</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation complète de boutique</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Réaménagement de bureaux</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Optimisation des espaces de travail</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Modernisation de l'agencement</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Amélioration de l'accueil client</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#38bdf8]">–</span>
-                      <span>Mise aux normes ERP</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <Check className="w-6 h-6 text-[#38bdf8]" />
-                    </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Groupe BML Rénovation Tout Corps D'état vous propose une expertise complète en rénovation d'espaces professionnels, que ce soit pour moderniser une boutique existante ou créer des bureaux entièrement sur mesure et conformes aux normes actuelles.
-                  </p>
-                  <button
-                    onClick={scrollToContactForm}
-                    className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  >
-                    Demander un devis gratuit
-                    <div className="flex flex-col items-center ml-2">
-                      <Pen className="w-5 h-5 flex-shrink-0" strokeWidth={2.5} />
-                      <div className="w-7 h-0.5 bg-current rounded-full mt-1"></div>
-                    </div>
-                  </button>
-                </div>
+            <div className="order-1 lg:order-2">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
+                <OptimizedImage
+                  src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=1200&q=80"
+                  alt="Détails de bureau tertiaire premium"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="pt-16 pb-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              NOTRE MÉTHODE
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                {isGrenoble ? "Votre projet professionnel à Grenoble en 4 étapes" : "Votre projet professionnel en 4 étapes"}
-              </span>
-            </h2>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
+      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#38bdf8]/10 blur-[120px] rounded-full" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Tertiaire</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre projet en 4 temps</h2>
+            <div className="w-24 h-1 bg-[#38bdf8] mx-auto opacity-50" />
           </div>
-
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Conception", desc: "Cahier des charges détaillé, plans ERP et sélection des finitions pro." },
-              { step: "02", title: "Planification", desc: "Organisation en horaires décalés si besoin pour limiter l'impact sur l'activité." },
-              { step: "03", title: "Exécution", desc: "Travaux TCE pilotés par un conducteur de travaux dédié." },
-              { step: "04", title: "Vérification", desc: "Contrôle de conformité ERP, nettoyage fin de chantier et remise des clés." }
+              { step: "01", title: "Audit ERP", desc: "Diagnostic technique and étude de faisabilité according to les normes de sécurité en vigueur." },
+              { step: "02", title: "Ingénierie", desc: "Étude des flux, conception des réseaux techniques and validation architecturale pro." },
+              { step: "03", title: "Célérité", desc: "Exécution millimétrée with coordination agile for minimiser votre arrêt d'activité." },
+              { step: "04", title: "Conformité", desc: "Contrôle final, levée des réserves and passage de la commission de sécurité ERP." }
             ].map((s, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative p-8 bg-white border border-slate-100 rounded-2xl group hover:shadow-[0_20px_50px_rgba(56,189,248,0.15)] transition-all duration-500 overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#38bdf8] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                <span className="text-5xl font-black text-slate-100 absolute top-4 right-4 group-hover:text-[#38bdf8]/10 transition-colors">
-                  {s.step}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 relative z-10">{s.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed relative z-10">{s.desc}</p>
-              </motion.div>
+              <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
+                <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
+                <h3 className="text-2xl font-bold mb-4 relative z-10">{s.title}</h3>
+                <p className="text-white/60 relative z-10 leading-relaxed font-medium italic">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Architect Offer Section */}
-      <section className="py-10 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-xl border border-slate-100 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-20 bg-white relative overflow-hidden border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-slate-50 rounded-[3.5rem] p-12 md:p-24 shadow-2xl border border-slate-100 grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -418,56 +405,44 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  NOTRE ENGAGEMENT PROFESSIONNEL
+                  STRATÉGIE & DESIGN
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight italic">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    Accompagnement d'architecte offert pour vos locaux
+                    Accompagnement d’architecte offert
                   </span>
                 </h2>
               </div>
               
-              <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
+              <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous savons que l'agencement d'un espace professionnel est un levier de performance. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>.
-                </p>
-                <p>
-                  Pour chaque projet de rénovation tertiaire ou commerciale, nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> dédié pour optimiser vos flux et valoriser votre identité visuelle.
+                  Parce qu'un espace pro doit allier performance and esthétique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez des conseils d'un architecte d'intérieur for co-concevoir votre concept : ergonomie des postes, scénographie de vente and identité de marque spatiale.
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
-                {[
-                  { title: "Architecte Offert", desc: "Optimisation des flux & aménagement", icon: "📐" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale Isère & Grenoble", icon: "⚡" },
-                  { title: "Normes ERP/PMR", desc: "Mise en conformité réglementaire", icon: "🛡️" },
-                  { title: "Garantie Décennale", desc: "Sérénité totale sur vos travaux", icon: "🏢" },
-                  { title: "Planning Tenu", desc: "Respect strict des délais d'ouverture", icon: "📅" },
-                  { title: "Savoir-faire Local", desc: "Experts basés au cœur de l'Isère", icon: "📍" }
-                ].map((usp, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="text-2xl">{usp.icon}</span>
-                    <div>
-                      <h4 className="font-bold text-slate-900 text-sm italic uppercase tracking-wider">{usp.title}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{usp.desc}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Projet 3D d'implantation tertiaire offert</span>
+                </div>
+                <div className="flex items-center gap-4 text-slate-800 font-medium">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
+                  <span className="italic">Conseils décoration et sélection de matériaux haute résistance premium</span>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-6 items-center">
-                <button
-                  onClick={scrollToContactForm}
-                  className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                  Valoriser mes locaux maintenant
-                  <div className="flex flex-col items-center ml-1">
-                    <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
-                    <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
-                  </div>
-                </button>
-              </div>
+              <button 
+                onClick={scrollToContactForm} 
+                className="relative overflow-hidden bg-slate-900 text-white px-12 py-6 rounded-full font-bold hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)] transition-all flex items-center gap-4 group"
+              >
+                <span className="relative z-10">Lancer mon projet pro design</span>
+                <Pen className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-[#38bdf8] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              </button>
+              
+              <p className="mt-8 text-xs text-slate-400 italic">
+                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+              </p>
             </motion.div>
 
             <motion.div
@@ -479,16 +454,16 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
             >
               <div className="absolute -inset-4 bg-gradient-to-br from-[#38bdf8]/10 to-transparent rounded-[3rem] blur-2xl" />
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
-                <OptimizedImage
+                <img
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Partenariat Espaces Alpins - Architecte d'intérieur"
+                  alt="Architecture tertiaire Espaces Alpins"
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
-                    <p className="text-xl font-semibold">"L'expertise de l'architecture pour vos espaces de travail."</p>
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Tertiaire</p>
+                    <p className="text-xl font-semibold">"L'espace est l'outil premier de votre réussite humaine."</p>
                   </div>
                 </div>
               </div>
@@ -497,202 +472,95 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
         </div>
       </section>
 
-      <section className="pt-8 pb-8 bg-white">
+      <section className="pt-10 pb-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
-              <span className="inline-block text-[#38bdf8] text-xs font-bold uppercase tracking-widest mb-3">
-                COMPÉTENCES
+              <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
+                {isGrenoble ? "EXPERTISE PRO ISÈRE" : "CHAMP D'ACTION"}
               </span>
 
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 mb-6 leading-tight">
-                Notre savoir-faire à<br />votre service
+              <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
+                  L'excellence à chaque mètre carré
+                </span>
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed">
-                {isGrenoble ? 'Groupe BML Rénovation, fort de son expérience à Grenoble et en Isère, possède une solide expertise dans la rénovation complète d\'espaces professionnels. Notre savoir-faire couvre tous les aspects de la transformation : agencement commercial, menuiserie sur mesure, électricité et éclairage, plomberie, climatisation, revêtements sols et murs, et solutions adaptées pour optimiser l\'accueil et la fonctionnalité.' : 'Groupe BML Rénovation Tout Corps D\'état possède une solide expérience dans la rénovation complète d\'espaces professionnels. Notre expertise couvre tous les aspects de la transformation : agencement commercial, menuiserie sur mesure, électricité et éclairage, plomberie, climatisation, revêtements sols et murs, et solutions adaptées pour optimiser l\'accueil et la fonctionnalité.'}
+              <p className="text-slate-700 leading-relaxed italic font-medium">
+                {isGrenoble
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'agencement commercial. Nous coordonnons maçonnerie, électricité tertiaire and finitions haut de gamme with une propreté de chantier and une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en rénovation tertiaire. Nous coordonnons nos électriciens, plombiers and agenceurs for que vos espaces pro soient livrés with un niveau de fiabilité digne des plus grands standards pro."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M3 21V9L12 3L21 9V21H3Z" strokeLinejoin="round" />
-                  <rect x="9" y="11" width="6" height="10" />
-                  <line x1="6" y1="14" x2="8" y2="14" />
-                  <line x1="6" y1="17" x2="8" y2="17" />
-                  <line x1="16" y1="14" x2="18" y2="14" />
-                  <line x1="16" y1="17" x2="18" y2="17" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Espaces</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Boutiques et commerces</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Bureaux et open spaces</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Salles de réunion</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Espaces d'accueil</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Espaces de coworking</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Métiers</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Agencement et menuiserie</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Électricité et éclairage</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Climatisation et VMC</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Plomberie et sanitaires</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Peinture décorative</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Revêtements sols et murs</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-white overflow-hidden">
-              <div className="relative h-40 bg-gradient-to-br from-[#38bdf8] to-[#0ea5e9] flex flex-col items-center justify-center text-white pb-4" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%)' }}>
-                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeLinejoin="round" />
-                  <path d="M2 17L12 22L22 17" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" strokeLinejoin="round" />
-                </svg>
-                <h3 className="text-lg font-bold uppercase tracking-wider">Services</h3>
-              </div>
-              <div className="px-6 pt-8 pb-6">
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Étude et conception</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Respect des normes ERP</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Coordination multi-corps d'état</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Travaux en horaires décalés</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#38bdf8] mt-0.5 font-bold">›</span>
-                    <span>Gestion clés en main</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              {[
+                {
+                  icon: <ShoppingBag className="w-10 h-10" />,
+                  title: "Espaces",
+                  items: ["Boutiques de Luxe", "Plateaux de Bureaux", "Espaces de Coworking", "Concepts Stores", "Cabinets Médicaux"]
+                },
+                {
+                  icon: <Ruler className="w-10 h-10" />,
+                  title: "Techniques",
+                  items: ["Électricité Tertiaire", "Courants Faibles / Data", "Cloisonnement Amovible", "Chauffage / CVC Pro", "Solutions Acoustiques"]
+                },
+                {
+                  icon: <ShieldCheck className="w-10 h-10" />,
+                  title: "Garanties",
+                  items: ["Garantie Décennale TCE", "Conformité ERP Totale", "Chantier Millimétré", "Délais Open Ready", "SAV Pro Réactif"]
+                }
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgba(56,189,248,0.1)] transition-all duration-500 group"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-[#38bdf8] mb-6 group-hover:scale-110 group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-500 shadow-inner">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 italic">{card.title}</h3>
+                  <ul className="space-y-4">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-center gap-3 text-slate-600 group/item">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] group-hover/item:scale-150 transition-transform" />
+                        <span className="text-sm font-medium italic">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full px-4 md:px-8 lg:px-12 xl:px-16 py-8">
-        <div className="w-full max-w-none">
-          <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {isGrenoble ? 'Créez un Espace Professionnel Qui Valorise Votre Activité à Grenoble' : 'Créez un Espace Professionnel Qui Valorise Votre Activité'}
-            </h2>
-            <p className="text-lg mb-6 opacity-90">
-              {isGrenoble ? 'Nos réalisations de boutiques et bureaux à Grenoble et en Isère témoignent de notre savoir-faire en aménagement professionnel.' : 'Nos réalisations de boutiques et bureaux témoignent de notre savoir-faire en aménagement professionnel.'}
-            </p>
-            <p className="text-base mb-8 opacity-90">
-              Obtenez un devis gratuit et personnalisé pour transformer vos locaux commerciaux.
-            </p>
-            <button
-              onClick={scrollToContactForm}
-              className="inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <Phone className="w-5 h-5" />
-              Demander un devis gratuit
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <ServiceFAQ 
-        items={boutiqueFAQs} 
-        title={isGrenoble ? "FAQ Rénovation Boutiques & Bureaux Grenoble" : "FAQ Rénovation Boutiques & Bureaux"}
-        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de locaux commerciaux à Grenoble." : "Retrouvez les réponses à vos questions sur la rénovation d'espaces professionnels."}
-      />
-
-      {/* Nos Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              Nos certifications
+              Standards Professionnels
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications et qualifications
+                Nos labels and qualifications pro
               </span>
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
-            </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
-              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Qualité RGE' },
-              { name: 'Pompe à chaleur', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', desc: 'Expert PAC' },
-              { name: 'Solaire', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', desc: 'Certifié Solaire' },
-              { name: 'Chauffage bois', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', desc: 'Spécialiste Bois' },
-              { name: 'Chauffage HP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', desc: 'Chauffage HP' },
-              { name: 'Ventilation', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', desc: 'Expertise Vent' },
-              { name: 'Fluides', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Agréé Fluides' },
-              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Artisan Élec' },
-              { name: 'Manipulation fluide', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Certifié Fluides' },
-              { name: 'Gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Agréé Gaz' },
-              { name: 'Installation gaz', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', desc: 'Conformité Gaz' },
-              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Artisan Bâtiment' },
-              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Qualité' },
-              { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Accessibilité' },
-              { name: 'PMR', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Spécialiste PMR' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Artisan Qualifié' }
+              { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
+              { name: 'ERP', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', desc: 'Sécurité Public' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Finition Élite' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Savoir-Faire Pro' },
+              { name: 'Électricité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', desc: 'Tertiaire Normé' },
+              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Étude Technique' },
+              { name: 'Bâtiment', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Gros Œuvre' },
+              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Garantie BML' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -703,27 +571,27 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
                 className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <img src={cert.logo} alt={cert.name} className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" />
-                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight">{cert.desc}</p>
+                <p className="text-[10px] md:text-xs font-semibold text-slate-600 leading-tight italic">{cert.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Nos Partenaires - Static Grid */}
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              NOS PARTENAIRES DE CONFIANCE
+              Nos partenaires de confiance
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires pour des produits de qualité
+                Nos partenaires for des produits d'élite
               </span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Nous collaborons exclusivement avec les plus grandes enseignes pour garantir la perfection de vos projets.
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
+              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -785,8 +653,13 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
         </div>
       </section>
 
-      <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
+      <ServiceFAQ 
+        items={boutiqueFAQs} 
+        title={isGrenoble ? "FAQ Rénovation Pro à Grenoble" : "FAQ Espace Pro & Tertiaire"}
+        description={isGrenoble ? "Retrouvez les réponses de nos experts sur la rénovation commerciale à Grenoble." : "Retrouvez les réponses de nos experts sur la transformation de vos locaux professionnels."}
+      />
 
+      <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
     </div>
   );
 };

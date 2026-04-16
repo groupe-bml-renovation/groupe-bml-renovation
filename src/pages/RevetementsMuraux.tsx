@@ -1,14 +1,13 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen, Hammer, Ruler, Layout, Database, ShieldCheck, TreePine, DoorOpen } from 'lucide-react';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Paintbrush, Ruler, Layout, Database, ShieldCheck, Grid3X3, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import { OptimizedImage } from '../components/OptimizedImage';
 import ServiceFAQ from '../components/ServiceFAQ';
-import { menuiserieFAQs } from '../data/service-faqs';
 
-interface MenuiserieProps {
+interface RevetementsMurauxProps {
   onBack: () => void;
   onNavigate: (page: string) => void;
 }
@@ -18,11 +17,11 @@ const ImageCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const images = [
-    'https://images.unsplash.com/photo-1719381502987-058c2140df08?w=800&q=80',
-    'https://images.unsplash.com/photo-1697538022270-f3f3e8f9cf32?w=800&q=80',
-    'https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=800&q=80',
-    'https://images.unsplash.com/photo-1687995673177-053cfb879128?w=800&q=80',
-    'https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?w=800&q=80'
+    'https://images.unsplash.com/photo-1761679296802-09d4d4687723?w=800&q=80',
+    'https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=800&q=80',
+    'https://images.unsplash.com/photo-1753911371949-9a07fa627a8d?w=800&q=80',
+    'https://images.unsplash.com/photo-1611066415956-91ab6f1f57cc?w=800&q=80',
+    'https://images.unsplash.com/photo-1753911371937-250bd2cb9ec1?w=800&q=80'
   ];
 
   const scrollLeft = () => {
@@ -80,7 +79,7 @@ const ImageCarousel = () => {
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Réalisation Menuiserie ${index + 1}`}
+                    alt={`Réalisation Murale ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -92,7 +91,7 @@ const ImageCarousel = () => {
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
                   <OptimizedImage
                     src={img}
-                    alt={`Réalisation Menuiserie ${index + 1}`}
+                    alt={`Réalisation Murale ${index + 1}`}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="eager"
                   />
@@ -106,7 +105,7 @@ const ImageCarousel = () => {
   );
 };
 
-const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
+const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isGrenoble = useMemo(() => location.pathname.includes('/grenoble'), [location.pathname]);
@@ -118,15 +117,15 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Menuiserie Sur Mesure & Agencement à Grenoble | BML" : "Menuiserie & Agencement Bois Premium | Sur Mesure | Groupe BML"}</title>
-        <meta name="description" content="L'excellence artisanale for votre habitat. Agencements sur mesure, dressings, bibliothèques and parquets nobles. Travail du bois d'exception certifié en Isère." />
-        <meta property="og:title" content="Menuiserie & Agencement d'Art | Groupe BML" />
+        <title>{isGrenoble ? "Revêtements Muraux & Décoration à Grenoble | Expert BML" : "Revêtements Muraux Premium | Papier Peint & Enduits | Groupe BML"}</title>
+        <meta name="description" content="Sublimez vos parois with des revêtements d'exception. Papier peint panoramique, stucs italiens and habillages bois. Finitions de prestige and conseil design en Isère." />
+        <meta property="og:title" content="Revêtements Muraux Premium | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Menuiserie",
-            "description": isGrenoble ? "Artisan menuisier d'art à Grenoble" : "Spécialiste en menuiserie et agencement bois haut de gamme",
+            "name": "Groupe BML Rénovation - Revêtements Muraux",
+            "description": isGrenoble ? "Expert en décoration murale et papier peint à Grenoble" : "Spécialiste en revêtements muraux haut de gamme",
             "url": "https://groupe-bml-renovation.fr",
             "telephone": "+33756915997",
             "address": {
@@ -138,19 +137,19 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
       </Helmet>
 
       <div className="sr-only">
-        <h2>Expertise Menuiserie & Agencement</h2>
-        <p>Conception and fabrication d'ouvrages bois sur mesure and pose de menuiseries</p>
-        <h3>Menuisier Grenoble</h3>
-        <h3>Dressing Sur Mesure</h3>
-        <h3>Bibliothèque Architecturale</h3>
-        <h3>Parquet Noble & Finition Haute</h3>
+        <h2>Expertise Revêtements Muraux</h2>
+        <p>Pose de papiers peints design, enduits décoratifs and habillages muraux</p>
+        <h3>Papier Peint Grenoble</h3>
+        <h3>Stuc Vénitien & Tadelakt</h3>
+        <h3>Panneaux Muraux 3D</h3>
+        <h3>Béton Ciré Mural</h3>
       </div>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1687995673177-053cfb879128?w=1920&q=80"
-            alt="Atelier de menuiserie de précision"
+            src="https://images.unsplash.com/photo-1758548157276-00c54fd4a9fa?w=1920&q=80"
+            alt="Intérieur avec revêtement mural texturé"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -165,13 +164,13 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-light text-white mb-8 leading-tight tracking-wide">
               {isGrenoble ? (
-                <>Menuiserie d'Art<br />à Grenoble</>
+                <>Design Mural<br />à Grenoble</>
               ) : (
-                <>La Noblesse du Sur-Mesure</>
+                <>La Poésie des<br />Surfaces</>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "L'artisanat bois d'excellence au service de votre habitat grenoblois" : "L'excellence artisanale au service de vos agencements les plus ambitieux"}
+              {isGrenoble ? "Texture and caractère for vos intérieurs d'exception en Isère" : "L'excellence des finitions au service de votre identité visuelle"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -214,7 +213,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 onClick={scrollToContactForm}
                 className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(56,189,248,0.3)]"
               >
-                Concevoir mon agencement
+                Habiller mes murs
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>
@@ -232,23 +231,23 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6 }}
             >
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                L'ESSENCE DU BOIS
+                ESTHÉTIQUE & MATIÈRES
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  Le sur-mesure pour un intérieur qui vous ressemble
+                  La vibration murale au service de vos volumes
                 </span>
               </h2>
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Le bois est l'âme de votre intérieur. Vivant, chaleureux and intemporel, il exige une main experte for révéler tout son potentiel and s'ajuster parfaitement à vos volumes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons l'ébénisterie.
+                  Vos murs sont le visage de votre intérieur. Ils captent la lumière, créent la profondeur and apportent cette texture indispensable à une ambiance de caractère. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple surface.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos menuisiers d'art grenoblois conçoivent des agencements uniques for valoriser votre patrimoine. Du dressing suspendu millimétré à la bibliothèque magistrale, nous marions essences nobles and finitions de prestige within tous vos projets alpins."
-                    : "Nous donnons vie à vos projets les plus complexes, de la restauration de menuiseries historiques à la création de mobilier contemporain épuré. Chaque coupe est une promesse de perfection and chaque assemblage une garantie de pérennité."}
+                    ? "Nos experts en décoration murale à Grenoble maîtrisent l'intégralité du panel décoratif. Du stuc vénitien traditionnel au papier peint panoramique haute couture, nous transformons vos parois en véritables œuvres d'art within vos espaces grenoblois."
+                    : "Qu'il s'agisse de poser un habillage acoustique bois or d'appliquer un béton ciré mural, nous appliquons une rigueur millimétrée for un résultat premium. Chaque lé est aligné with soin and chaque passage de ferrage est une signature d'excellence."}
                 </p>
               </div>
 
@@ -257,13 +256,13 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
                     <Check className="w-5 h-5" />
                   </div>
-                  <span className="font-semibold text-slate-900">Agencement Laser Précis</span>
+                  <span className="font-semibold text-slate-900">Préparation Q4 Prestige</span>
                 </div>
                 <div className="flex items-center gap-3 group">
                   <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-white transition-all duration-300">
                     <Check className="w-5 h-5" />
                   </div>
-                  <span className="font-semibold text-slate-900">Essences Certifiées Luxe</span>
+                  <span className="font-semibold text-slate-900">Matériaux Haute Couture</span>
                 </div>
               </div>
             </motion.div>
@@ -277,8 +276,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               <div className="absolute -inset-4 bg-gradient-to-tr from-[#38bdf8]/10 to-blue-600/5 rounded-[3rem] blur-2xl" />
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
-                  src="https://images.unsplash.com/photo-1630444945539-b7be5e46c78d?w=1200&q=80"
-                  alt="Agencement bois haut de gamme"
+                  src="https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=1200&q=80"
+                  alt="Application enduit décoratif"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -289,8 +288,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Menuiserie</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la finesse de nos réalisations and l'élégance du travail du bois.</p>
+          <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Design Mural</h2>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Visualisez la finesse de nos enduits and la poésie de nos papiers peints.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -302,19 +301,19 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               <div className="space-y-10">
                 {[
                   { 
-                    icon: <TreePine className="w-6 h-6" />, 
-                    title: "Essences Nobles", 
-                    desc: "Sélection rigoureuse de chênes, noyers and bois exotiques certifiés for une stabilité dimensionnelle absolue." 
+                    icon: <Layers className="w-6 h-6" />, 
+                    title: "Enduits Minéraux", 
+                    desc: "Stucs, chaux and tadelakt ferrés à la main for une vibration organique and une profondeur unique." 
                   },
                   { 
-                    icon: <Ruler className="w-6 h-6" />, 
-                    title: "Usinage de Précision", 
-                    desc: "Assemblages traditionnels and découpes numériques for un ajustage parfait au millimètre près." 
+                    icon: <Grid3X3 className="w-6 h-6" />, 
+                    title: "Papiers Peints Luxe", 
+                    desc: "Marouflage de précision de panoramiques and revêtements textiles des plus grandes manufactures." 
                   },
                   { 
-                    icon: <DoorOpen className="w-6 h-6" />, 
-                    title: "Menuiserie Intérieure", 
-                    desc: "Portes, chambranles and claustras conçus comme des éléments d'architecture décorative." 
+                    icon: <Check className="w-6 h-6" />, 
+                    title: "Parements Design", 
+                    desc: "Habillages muraux en chêne, tasseaux acoustiques and béton ciré for une architecture affirmée." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -336,20 +335,20 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 ))}
               </div>
 
-              <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8 shadow-2xl">
+              <div className="text-center bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-12 text-white mt-8 shadow-2xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Un meuble unique à Grenoble ?" : "Votre agencement signature"}
+                  {isGrenoble ? "Un nouveau décor à Grenoble ?" : "Votre mur signature"}
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos menuisiers basés à Grenoble façonnent vos rêves with une précision ancestrale."
+                    ? "Nos applicateurs basés à Grenoble transforment vos parois with une maîtrise ancestrale."
                     : "L'excellence artisanale for un intérieur d'exception."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
-                  className="group inline-flex items-center gap-2 bg-white text-[#38bdf8] px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center gap-2 bg-[#38bdf8] text-white px-8 py-4 rounded-full font-semibold hover:shadow-[0_15px_30px_rgba(56,189,248,0.2)] transition-all duration-300 hover:scale-105"
                 >
-                  Étudier mon projet bois
+                  Étudier mon projet mural
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -358,8 +357,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
             <div className="order-1 lg:order-2">
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl -skew-y-2">
                 <OptimizedImage
-                  src="https://images.unsplash.com/photo-1719381502987-058c2140df08?w=1200&q=80"
-                  alt="Détails menuiserie sur mesure"
+                  src="https://images.unsplash.com/photo-1753911372224-2b56c07cc737?w=1200&q=80"
+                  alt="Détails enduit minéral luxe"
                   className="w-full h-auto"
                 />
               </div>
@@ -372,16 +371,16 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#38bdf8]/10 blur-[120px] rounded-full" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
-            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Artisan</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre agencement bois en 4 temps</h2>
+            <span className="text-[#38bdf8] font-bold uppercase tracking-widest text-sm mb-4 block">Protocole Décoratif</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 italic">Votre rénovation en 4 temps</h2>
             <div className="w-24 h-1 bg-[#38bdf8] mx-auto opacity-50" />
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Cote", desc: "Prise de mesures laser and relevé architectural des supports." },
-              { step: "02", title: "Trace", desc: "Modélisation 3D and validation des essences and des quincailleries." },
-              { step: "03", title: "Grain", desc: "Usinage en atelier, ponçage haute finition and pré-montage." },
-              { step: "04", title: "Pose", desc: "Installation millimétrée, ajustages and jointoiements invisibles." }
+              { step: "01", title: "Lissage", desc: "Ratissage complet for une finition Q4 (sans aucun spectre visuel)." },
+              { step: "02", title: "Impression", desc: "Application d'un primaire spécifique for bloquer le support and optimiser l'accroche." },
+              { step: "03", title: "Parure", desc: "Mise en œuvre du revêtement (papier peint or enduit) with une précision millimétrée." },
+              { step: "04", title: "Soin", desc: "Protection (vernis or cire) for garantir la durabilité and la lavabilité du décor." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,18 +415,18 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une menuiserie réussie demande une vision architecturale autant que technique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for la conception de vos meubles sur mesure and l'harmonisation with votre décoration.
+                  Parce qu'un mur habillé with soin demande une vision décorative globale, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for le choix de vos textures, le calepinage and l'harmonie with votre mobilier.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Modélisation 3D photoréaliste de vos meubles</span>
+                  <span className="italic">Projets 3D for visualiser vos futurs décors muraux</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Sélection d'échantillons and d'essences en showroom</span>
+                  <span className="italic">Sélection d'échantillons exclusifs en showroom</span>
                 </div>
               </div>
 
@@ -463,7 +462,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
-                    <p className="text-xl font-semibold">"Le bois sculpte la lumière and définit l'espace."</p>
+                    <p className="text-xl font-semibold">"La paroi est une invitation à l'immersion sensorielle."</p>
                   </div>
                 </div>
               </div>
@@ -477,38 +476,38 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE MENUISIÈRE"}
+                {isGrenoble ? "NOTRE SAVOIR-FAIRE ISÈRE" : "EXCELLENCE MURALE"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'ébénisterie à chaque ajustement
+                  L'expertise à chaque millimètre
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède un atelier de menuiserie de pointe. Nous maîtrisons les essences nobles, les agencements complexes and la pose millimétrée de vos ouvrages bois for des intérieurs d'exception."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'ouvrages menuisés. Nous maîtrisons les essences nobles, les agencements complexes and la finition haute for des habitats qui allient luxe and fonctionnalité."}
+                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les papiers peints panoramiques, les enduits vénitiens and les habillages bois with une précision and une propreté de chantier exemplaires for vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la pose de revêtements. Nous maîtrisons les manufactures de luxe, les enduits minéraux complexes and la finition haute for des habitats qui allient luxe and harmonie."}
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: <Layout className="w-10 h-10" />,
-                  title: "Agencement",
-                  items: ["Dressings sur mesure", "Bibliothèques Murales", "Espaces de travail", "Cuisines artisanales", "Suites parentales"]
+                  icon: <Paintbrush className="w-10 h-10" />,
+                  title: "Décoration",
+                  items: ["Papiers Peints Design", "Panoramiques XXL", "Revêtements Textiles", "Béton Ciré Mural", "Enduits Décoratifs"]
                 },
                 {
-                  icon: <Hammer className="w-10 h-10" />,
-                  title: "Ouvrages",
-                  items: ["Escaliers & Garde-corps", "Verrières bois design", "Portes intérieures", "Claustras & Séparateurs", "Moulures & Boiseries"]
+                  icon: <Layers className="w-10 h-10" />,
+                  title: "Matières",
+                  items: ["Stuc Vénitien Noble", "Tadelakt Traditionnel", "Chaux & Minéraux", "Badigeons à l'Ancienne", "Ferrage Artisanal"]
                 },
                 {
                   icon: <ShieldCheck className="w-10 h-10" />,
-                  title: "Sols & Murs",
-                  items: ["Parquet Point de Hongrie", "Bâtons Rompus", "Parquet Massif / Collé", "Panneaux muraux", "Sous-couches acoustiques"]
+                  title: "Habillages",
+                  items: ["Claustras & Bois", "Tasseaux Acoustiques", "Parements de Pierre", "Moulures Prestige", "Panneaux 3D Design"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -546,7 +545,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for vos bois
+                Nos labels for vos parois
               </span>
             </h2>
           </div>
@@ -554,13 +553,13 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-6">
             {[
               { name: 'RGE', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Expertise Bâtiment' },
-              { name: 'Menuiserie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Maître Artisan' },
+              { name: 'Décoration', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', desc: 'Savoir-Faire Pro' },
               { name: 'Accessibilité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', desc: 'Artisan PMR' },
-              { name: 'PEFC', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Bois Durable' },
-              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Excellence Pro' },
+              { name: 'Qualité', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', desc: 'Engagement Q' },
+              { name: 'Artisan', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', desc: 'Maître Artisan' },
               { name: 'Local Isère', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', desc: 'Pro de Proximité' },
-              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Deisgn & Plans' },
-              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Décennale BML' },
+              { name: 'Audit', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', desc: 'Décor & Design' },
+              { name: 'Garantie', logo: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', desc: 'Assurance BML' },
             ].map((cert, i) => (
               <motion.div
                 key={i}
@@ -654,9 +653,35 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
       </section>
 
       <ServiceFAQ
-        title="FAQ Menuiserie"
-        description="Les réponses de nos artisans for vos projets d'agencement bois."
-        items={menuiserieFAQs}
+        title="FAQ Revêtements Muraux"
+        description="Les réponses de nos techniciens for sublimer vos parois with soin."
+        items={[
+          {
+            id: "rm1",
+            question: "Qu'est-ce qu'une finition Q4 par rapport à une finition standard ?",
+            answer: "La finition Q4 est le plus haut niveau de préparation de support. Elle exige un ratissage complet de la surface with un enduit de lissage extra-fin and un ponçage manuel méticuleux under lumière rasante. C'est le support indispensable for les papiers peints de luxe or les laques satinées."
+          },
+          {
+            id: "rm2",
+            question: "Le papier peint panoramique est-il adapté aux pièces humides ?",
+            answer: "Oui, à condition de choisir un support vinyle or intissé haute densité and d'appliquer une protection hydrofuge spécifique after la pose. Cela permet d'installer des décors majestueux dans vos salles de bain without risque de décollement."
+          },
+          {
+            id: "rm3",
+            question: "Réalisez-vous des enduits à la chaux traditionnels ?",
+            answer: "Absolument. Nous maîtrisons les techniques ancestrales du stuc vénitien, du tadelakt and des badigeons de chaux. Ces revêtements 'respirent', régulent l'humidité and offrent une vibration lumineuse incomparable."
+          },
+          {
+            id: "rm4",
+            question: "Qu'est-ce qu'un habillage mural acoustique ?",
+            answer: "Il s'agit de panneaux souvent composés de tasseaux de bois sur un feutre absorbant. Ils permettent de corriger la résonance d'une pièce tout en apportant une touche design scandinave très élégante."
+          },
+          {
+            id: "rm5",
+            question: "Peut-on poser un nouveau revêtement sur une toile de verre existante ?",
+            answer: "Il est préférable de la retirer for une finition parfaite. Si cela n'est pas possible, nous pouvons réaliser un enduit de rebouchage spécifique for lisser totalement la maille before d'appliquer votre nouveau revêtement décoratif."
+          }
+        ]}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
@@ -664,4 +689,4 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
   );
 };
 
-export default Menuiserie;
+export default RevetementsMuraux;

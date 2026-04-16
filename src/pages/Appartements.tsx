@@ -1,17 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Phone, Check, ChevronLeft, ChevronRight, Pen } from 'lucide-react';
-import { GradientCTAButton } from '../components/ui/gradient-cta-button';
+import { Phone, Check, ChevronLeft, ChevronRight, Pen, Layout, Ruler, Clock, ShieldCheck, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 import { OptimizedImage } from '../components/OptimizedImage';
+import PartnersSection from '../components/PartnersSection';
 import ServiceFAQ from '../components/ServiceFAQ';
 import { appartementFAQs } from '../data/service-faqs';
 
 interface AppartementsProps {
   onBack: () => void;
-  onNavigate?: (page: string, target?: string) => void;
+  onNavigate: (page: string) => void;
 }
 
 const ImageCarousel = () => {
@@ -26,7 +26,11 @@ const ImageCarousel = () => {
     'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80',
     'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80',
     'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=1200&q=80',
-    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1200&q=80'
+    'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1200&q=80',
+    'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=1200&q=80',
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&q=80',
+    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80'
   ];
 
   const scrollLeft = () => {
@@ -35,6 +39,7 @@ const ImageCarousel = () => {
       const itemWidth = 400;
       const gap = 24;
       const itemWithGap = itemWidth + gap;
+
       const newPosition = container.scrollLeft - itemWithGap;
       const firstSetWidth = itemWithGap * images.length;
 
@@ -54,6 +59,7 @@ const ImageCarousel = () => {
       const itemWithGap = itemWidth + gap;
       const firstSetWidth = itemWithGap * images.length;
       const maxScroll = container.scrollWidth - container.clientWidth;
+
       const newPosition = container.scrollLeft + itemWithGap;
 
       if (newPosition >= firstSetWidth - itemWithGap) {
@@ -139,27 +145,38 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Rénovation Appartements à Grenoble | Entreprise Rénovation | BML' : 'Rénovation Appartements Complète | Entreprise Rénovation | BML Travaux'}</title>
-        <meta name="description" content={isGrenoble ? "Rénovation d'appartements à Grenoble (38). Entreprise spécialisée en rénovation complète d'appartements anciens et modernes. Travaux intérieurs et aménagements sur mesure. Devis gratuit et estimation personnalisée." : "Rénovation d'appartements complète à Grenoble. Entreprise de rénovation spécialisée en travaux de rénovation intérieure, extérieure et aménagement d'appartements. Rénover votre appartement avec nos artisans. Prix et coût rénovation compétitifs. Devis gratuit."} />
-        <meta name="keywords" content={isGrenoble ? "rénovation appartement Grenoble, rénovation Isère, rénover un appartement à Grenoble, rénovation complète Grenoble, aménagement appartement Grenoble, rénovation intérieure extérieure, travaux de rénovation Grenoble, entreprise rénovation Grenoble, artisan rénovation Grenoble, devis rénovation gratuit Grenoble" : "rénovation appartement, renovation appartement, rénover un appartement, rénovation, rénovations, entreprise de rénovation, travaux de rénovation appartement, rénovation appartement complète, rénovation appartement ancien, coût rénovation appartement, prix rénovation appartement, rénovation intérieure, rénovation extérieure, artisan rénovation appartement, aménagement appartement, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de peinture bâtiment, entreprise bâtiment rénovation"} />
-        <meta property="og:title" content={isGrenoble ? "Rénovation Appartements à Grenoble - Entreprise Expert | BML Rénovation" : "Rénovation Appartements Complète - Entreprise Rénovation d'Appartements | BML"} />
-        <meta property="og:description" content={isGrenoble ? "Transformez votre appartement à Grenoble avec notre expertise. Rénovation complète, intérieure et extérieure. Dévis gratuit. Satisfaction client garantie." : "Transformation complète de votre appartement. Rénovation intérieure et extérieure professionnelle. Travaux de rénovation clés en main. Devis gratuit."} />
+        <title>{isGrenoble ? "Rénovation d'Appartements à Grenoble | Expertise Complète | BML" : "Rénovation d'Appartements Complète | Isère & Auvergne-Rhône-Alpes | BML"}</title>
+        <meta name="description" content={isGrenoble ? "Expert en rénovation d'appartements à Grenoble. De la conception à la réalisation, transformez votre intérieur avec un interlocuteur unique. Devis gratuit sous 24h." : "Transformez votre appartement avec nos solutions de rénovation clés en main. Expertise en optimisation d'espace, design d'intérieur et rénovation thermique."} />
+        <meta name="keywords" content={isGrenoble ? "rénovation appartement grenoble, rénover appartement grenoble, travaux appartement grenoble, architecte d'intérieur grenoble" : "rénovation appartement, rénovation complète, aménagement intérieur, travaux bâtiment"} />
+        <meta property="og:title" content={isGrenoble ? "Rénovation d'Appartements à Grenoble | Groupe BML" : "Rénovation d'Appartements Complète | Groupe BML"} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={isGrenoble ? "Rénovation Appartements à Grenoble | BML" : "Rénovation Appartements Complète | BML Rénovation"} />
-        <meta name="twitter:description" content={isGrenoble ? "Rénovation d'appartements à Grenoble - Services complètes de rénovation. Demandez votre devis gratuit." : "Entreprise de rénovation d'appartements - Rénovation complète, intérieure et extérieure. Artisan professionnel. Devis gratuit."} />
-        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/appartements" : "https://groupe-bml-renovation.fr/appartements"} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Groupe BML Rénovation",
+            "description": isGrenoble ? "Expert en rénovation d'appartements à Grenoble" : "Entreprise spécialisée en rénovation d'appartements",
+            "url": "https://groupe-bml-renovation.fr",
+            "telephone": "+33756915997",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "FR",
+              ...(isGrenoble && { "addressLocality": "Grenoble", "postalCode": "38000" })
+            }
+          })}
+        </script>
       </Helmet>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600&q=80"
-            alt="Rénovation Appartements"
+            alt="Intérieur d'appartement magnifiquement rénové"
             className="w-full h-full object-cover"
             priority={true}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/40 to-slate-900/50" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -175,14 +192,14 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                 </>
               ) : (
                 <>
-                  Rénovation d'appartements<br />en Isère
+                  Rénovation d'appartements<br />d'exception
                 </>
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? 'Rénover votre appartement à Grenoble en espace moderne et fonctionnel' : 'Transformez votre appartement en espace moderne et fonctionnel'}
+              {isGrenoble ? "L'art de la transformation intérieure en Isère" : "Conception and réalisation d'espaces de vie haut de gamme"}
             </p>
-            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8" />
+            <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -191,7 +208,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
               className="flex flex-col items-center gap-6"
             >
               <motion.a
-                href="https://www.google.com/search?q=groupe+bml+renovation&oq=groupe+bml+renovation&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGDwyBggDEEUYPDIGCAQQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgzMTUyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x478af4894336bf9b:0x5e236531336e14ed,1,,,,"
+                href="https://www.google.com/search?q=groupe+bml+renovation&oq=groupe+bml+renovation"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-col items-center justify-center gap-4 group mt-8"
@@ -206,7 +223,9 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                 </svg>
 
                 <div className="flex flex-col items-center gap-2">
-                  <span className="text-white font-semibold text-lg">Excellent</span>
+                  <span className="text-white font-semibold text-lg">
+                    Excellent
+                  </span>
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <svg key={i} className="w-5 h-5 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
@@ -237,25 +256,23 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
                   {isGrenoble 
-                    ? "Rénovation d'appartements à Grenoble pour un intérieur sur mesure" 
-                    : "Rénovation d'appartements en Isère pour sublimer votre espace"}
+                    ? "Rénover votre appartement à Grenoble" 
+                    : "L'art de vivre dans votre nouvel appartement"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                {isGrenoble
-                  ? "À Grenoble, Groupe BML Rénovation excelle dans tous vos projets de rénovation complète d'appartements. Transformez votre appartement grenoblois en un espace de vie moderne, lumineux et parfaitement adapté à vos besoins."
-                  : "Transformez votre appartement en un espace de vie moderne, lumineux et parfaitement adapté à vos besoins, tout en respectant les contraintes de copropriété."}
+                Un appartement est bien plus qu'une surface, c'est un volume à optimiser, une lumière à apprivoiser and un confort à réinventer. Nous transformons les contraintes de l'ancien en atouts de modernité.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}possède une expertise reconnue dans la <span className="text-black font-semibold">rénovation complète d'appartements</span>. Notre équipe locale <span className="text-black font-semibold">vous conseille et vous accompagne</span> dans le choix des matériaux et des aménagements.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}maîtrise chaque aspect de votre projet. De la restructuration des volumes à l'installation de cuisines and salles de bain design, nous gérant l'intégralité des corps de métier.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Que vous occupiez un T3 en copropriété à Grenoble, un studio au centre-ville ou un loft à rénover, nos experts mettent leur savoir-faire à votre service pour réaliser un projet sur mesure qui valorise votre investissement immobilier en Isère."
-                  : "Que vous souhaitiez moderniser un appartement ancien, réaménager les espaces de vie ou optimiser chaque mètre carré, nos experts réalisent un projet sur mesure qui valorise votre patrimoine."}
+                  ? "Nos équipes interviennent dans toute l'Isère pour redonner vie à vos appartements en copropriété or vos lofts. Nous gérant la logistique complexe des chantiers urbains pour une livraison sereine and millimétrée."
+                  : "Chaque rénovation est une page blanche où nous appliquons une rigueur technique and un sens esthétique pour valoriser votre patrimoine and améliorer votre quotidien."}
               </p>
 
               <button
@@ -275,7 +292,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <video
                 src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Pour%20appartement.mp4"
@@ -302,22 +319,22 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12">
             <div className="bg-[#f5f5f5] p-8">
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "EXPERTISE À GRENOBLE" : "NOTRE SAVOIR-FAIRE"}
+                {isGrenoble ? "EXPERTISE ISÈRE" : "SAVOIR-FAIRE"}
               </span>
               <div className="w-24 h-px bg-[#38bdf8] mb-6"></div>
 
               <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Expert rénovation à Grenoble" : "Expertise en rénovation complète"}
+                  {isGrenoble ? "Modernité & Caractère à Grenoble" : "La structure & le détail"}
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                {isGrenoble ? "Groupe BML Rénovation conçoit et réalise des rénovations complètes d'appartements à Grenoble et en Isère. De l'étude de conception à la réalisation, nos équipes greobloises vous accompagnent avec rigueur." : "Groupe BML Rénovation conçoit et réalise des rénovations complètes d'appartements. De l'étude de conception à la réalisation, nos équipes vous accompagnent avec rigueur."}
+                Rénover un appartement exige une coordination parfaite entre les différents lots techniques. Nous optimisons chaque mètre carré tout en respectant les normes de copropriété and les contraintes architecturales.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre approche globale garantit une prise en charge complète de votre projet : analyse des besoins, étude architecturale, et suivi millimétré de chaque corps d'état.
+                Notre approche inclut la maîtrise des réseaux (fluides, électricité), l'isolation phonique renforcée and les finitions décoratives haut de gamme pour un rendu irréprochable.
               </p>
             </div>
 
@@ -326,32 +343,34 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                 <div>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
-                      <svg className="w-6 h-6 text-[#38bdf8]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
+                      <Layout className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Votre projet</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Mises en œuvre</h3>
                   </div>
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Optimisation des volumes et espaces</span>
+                      <span>Restructuration des volumes and cloisons</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation cuisine et salle de bain</span>
+                      <span>Rénovation de cuisines and salles de bain</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Mise aux normes électriques & fluides</span>
+                      <span>Mise aux normes électriques and domotique</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Isolation acoustique & thermique</span>
+                      <span>Revêtements de sols (parquets, carrelages XXL)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Revêtements sols & murs premium</span>
+                      <span>Éclairages architecturaux and peintures premium</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#38bdf8]">–</span>
+                      <span>Agencement sur mesure and menuiseries</span>
                     </li>
                   </ul>
                 </div>
@@ -361,20 +380,25 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                     <div className="w-12 h-12 rounded-full border-2 border-[#38bdf8] flex items-center justify-center bg-white">
                       <Check className="w-6 h-6 text-[#38bdf8]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos solutions</h3>
+                    <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Nous vous proposons une expertise Tout Corps d'État (TCE) pour une rénovation sereine, conforme aux normes actuelles et aux contraintes de copropriété.
+                    Groupe BML Rénovation assure des chantiers propres, organisés and respectueux de l'environnement de vie. Nous fournissons une garantie décennale centralisée and un suivi de projet hebdomadaire.
                   </p>
                 </div>
               </div>
 
               <div className="text-center bg-gradient-to-r from-[#38bdf8] to-blue-600 rounded-3xl p-12 text-white mt-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {isGrenoble ? "Prêt à Transformer Votre Appartement à Grenoble ?" : "Prêt pour votre Rénovation d'Appartement ?"}
+                  {isGrenoble ? "Prêt pour votre rénovation d'appartement à Grenoble ?" : "Prêt pour une transformation sur mesure ?"}
                 </h2>
-                <p className="text-lg mb-8 opacity-90">
-                  Contactez-nous pour un devis gratuit et personnalisé adapté à vos besoins et à votre budget.
+                <p className="text-lg mb-6 opacity-90">
+                  {isGrenoble
+                    ? "Profitez d'une expertise reconnue en Isère pour valoriser votre intérieur."
+                    : "Une seule équipe pour la conception, le pilotage and la réalisation."}
+                </p>
+                <p className="text-base mb-8 opacity-90">
+                  Étude de faisabilité and devis détaillé fournis sous 48h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -396,11 +420,11 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              NOTRE MÉTHODE
+              LOGISTIQUE MÉTIER
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                {isGrenoble ? "Votre projet rénovation à Grenoble en 4 étapes" : "Votre projet rénovation en 4 étapes"}
+                Votre rénovation en 4 phases expertes
               </span>
             </h2>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto"></div>
@@ -408,10 +432,26 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Conception", desc: "Étude architecturale, plans 2D/3D et sélection des matériaux premium." },
-              { step: "02", title: "Préparation", desc: "Organisation logistique, protection des parties communes et démolition." },
-              { step: "03", title: "Réalisation", desc: "Exécution millimétrée par nos experts en électricité, plomberie et finitions." },
-              { step: "04", title: "Livraison", desc: "Nettoyage soigné, contrôle qualité rigoureux et levée des réserves." }
+              {
+                step: "01",
+                title: "Conception",
+                desc: "Analyse des besoins, relevé technique and modélisation de votre futur intérieur."
+              },
+              {
+                step: "02",
+                title: "Préparation",
+                desc: "Protection des communs, dépose sélective and mise à nu des structures."
+              },
+              {
+                step: "03",
+                title: "Travaux",
+                desc: "Coordination des métiers (élec, plomberie, plâtrerie) and contrôle qualité."
+              },
+              {
+                step: "04",
+                title: "Livraison",
+                desc: "Pose des équipements, peintures soignées and nettoyage complet."
+              }
             ].map((s, i) => (
               <motion.div 
                 key={i}
@@ -448,32 +488,32 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
             >
               <div>
                 <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                  NOTRE ENGAGEMENT EXCEPTIONNEL
+                  DESIGN D'INTÉRIEUR
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
                   <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                    Accompagnement d'architecte offert pour votre décoration
+                    Accompagnement d’architecte offert pour la décoration intérieure et le choix des matériaux pour tout devis signé.
                   </span>
                 </h2>
               </div>
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons qu'un appartement réussi repose sur une architecture intérieure cohérente. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>.
+                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous pensons que la technique ne va pas sans l'esthétique. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>.
                 </p>
                 <p>
-                  Pour chaque projet de rénovation complète, nous vous offrons un <span className="text-black font-semibold">coaching décoration personnalisé</span>. Un architecte d'intérieur vous accompagne dans l'optimisation des volumes et le <span className="text-black font-semibold">choix des finitions</span>.
+                  Pour chaque projet de rénovation complète, nous vous offrons un <span className="text-black font-semibold">coaching design personnalisé</span>. Un architecte spécialisé collabore avec vous pour optimiser vos plans, choisir vos matériaux and peaufiner vos finitions.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6 pt-4 pb-8">
                 {[
-                  { title: "Architecte Offert", desc: "Conseil déco & aménagement inclus", icon: "📐" },
-                  { title: "Réponse 24h", desc: "Réactivité maximale Isère & Grenoble", icon: "⚡" },
-                  { title: "TCE Intégré", desc: "Interlocuteur unique pour tous les lots", icon: "🏢" },
-                  { title: "Garantie Décennale", desc: "Sérénité totale sur vos travaux", icon: "🛡️" },
-                  { title: "Plans 3D", desc: "Visualisation avant travaux offerte", icon: "🖥️" },
-                  { title: "Experts Locaux", desc: "Savoir-faire basé au cœur de l'Isère", icon: "📍" }
+                  { title: "Architecte Offert", desc: "Coaching déco & plans", icon: "📐" },
+                  { title: "Expertise TCE", desc: "Équipes internes tous corps d'état", icon: "🛠️" },
+                  { title: "Réponse 24h", desc: "Réactivité maximale en Isère & Rhône", icon: "⚡" },
+                  { title: "Garantie Totale", desc: "Décennale installation certifiée", icon: "🛡️" },
+                  { title: "Showroom Privé", desc: "Choix des matériaux accompagné", icon: "🎨" },
+                  { title: "Suivi Local", desc: "Interlocuteur unique à Grenoble", icon: "🏡" }
                 ].map((usp, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <span className="text-2xl">{usp.icon}</span>
@@ -491,13 +531,16 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
                   className="group relative inline-flex items-center gap-3 bg-[#38bdf8] text-white px-10 py-5 rounded-full font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_50px_-12px_rgba(56,189,248,0.5)]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                  Transformer mon appartement maintenant
+                  Lancer mon projet d'appartement
                   <div className="flex flex-col items-center ml-1">
                     <Pen className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
                     <div className="w-6 h-0.5 bg-current rounded-full mt-1"></div>
                   </div>
                 </button>
               </div>
+              <p className="text-xs text-slate-400 italic mt-4">
+                * Offre réservée aux projets de rénovation complète en Isère
+              </p>
             </motion.div>
 
             <motion.div
@@ -511,14 +554,14 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Partenariat Espaces Alpins - Architecte d'intérieur"
+                  alt="Design Architectural Espaces Alpins"
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
-                    <p className="text-xl font-semibold">"L'excellence de l'architecture d'intérieur pour vos finitions."</p>
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Design</p>
+                    <p className="text-xl font-semibold">"L'art de transformer un appartement en un sanctuaire personnel."</p>
                   </div>
                 </div>
               </div>
@@ -532,36 +575,42 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
           <div className="grid lg:grid-cols-[1fr,2fr] gap-12 items-start">
             <div>
               <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-                {isGrenoble ? "NOTRE SAVOIR-FAIRE" : "COMPÉTENCES"}
+                {isGrenoble ? "EXPERTISE À GRENOBLE" : "SAVOIR-FAIRE"}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  {isGrenoble ? "Notre expertise appartement à Grenoble" : "Notre savoir-faire à votre service"}
+                  L'excellence à chaque mètre carré
                 </span>
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Groupe BML Rénovation possède une solide expérience dans tous les aspects de la rénovation d'appartements. De l'aménagement intérieur à la menuiserie sur mesure, nous coordonnons chaque lot pour une livraison clés en main.
+                Choisir Groupe BML Rénovation, c'est choisir la tranquillité d'un interlocuteur unique. Nous coordonnons nos experts maçons, électriciens and décorateurs pour que la rénovation de votre appartement soit un succès total.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  icon: <Check className="w-10 h-10" />,
+                  icon: (
+                    <Ruler className="w-10 h-10" />
+                  ),
                   title: "Espaces",
-                  items: ["Studios & T1", "Appartements familiaux", "Lofts & plateaux", "Duplex d'exception", "Vieux Grenoble"]
+                  items: ["Studios & T1", "Appartements T3/T4", "Lofts & Plateaux", "Ancien & Haussmannien", "Rénovation Énergétique"]
                 },
                 {
-                  icon: <Check className="w-10 h-10" />,
+                  icon: (
+                    <Layout className="w-10 h-10" />
+                  ),
                   title: "Métiers",
-                  items: ["Plomberie & Sanitaires", "Électricité & Domotique", "Isolation & Cloisons", "Sols & Peintures", "Menuiserie sur mesure"]
+                  items: ["Agencement & Mobilier", "Électricité & Fluides", "Plâtrerie & Isolation", "Sols & Carrelages", "Peinture Décorative"]
                 },
                 {
-                  icon: <Check className="w-10 h-10" />,
+                  icon: (
+                    <ShieldCheck className="w-10 h-10" />
+                  ),
                   title: "Engagements",
-                  items: ["Conseils matériaux", "Diagnostic technique", "Étude de copropriété", "Garantie décennale", "Respect des délais"]
+                  items: ["Labels Qualibat & RGE", "Garantie Décennale", "Planning Maîtrisé", "Budget Transparent", "Suivi Maintenance"]
                 }
               ].map((card, i) => (
                 <motion.div
@@ -591,7 +640,6 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Nos Certifications Section */}
       <section className="py-16 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
@@ -604,7 +652,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
               </span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
+              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
             </p>
           </div>
 
@@ -643,12 +691,13 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      {/* Nos Partenaires - Static Grid */}
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
+      {/* Nos Partenaires de Confiance Section - Static Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wide text-[#38bdf8]">
-              NOS PARTENAIRES DE CONFIANCE
+              Nos partenaires de confiance
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
@@ -656,7 +705,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Nous collaborons exclusivement avec les plus grandes enseignes pour garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -718,10 +767,12 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
         </div>
       </section>
 
-      <ServiceFAQ 
-        items={appartementFAQs} 
+      
+
+      <ServiceFAQ
         title={isGrenoble ? "FAQ Rénovation Appartement Grenoble" : "FAQ Rénovation Appartement"}
-        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation d'appartements à Grenoble et en Isère." : "Retrouvez les réponses à vos questions sur la rénovation complète d'appartements."}
+        description="Retrouvez les réponses à vos questions sur la rénovation complète d'appartements."
+        items={appartementFAQs}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />
