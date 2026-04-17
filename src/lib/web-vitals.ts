@@ -27,16 +27,16 @@ export const reportWebVitals = (metric: WebVitalsMetric) => {
 };
 
 export const loadWebVitalsMetrics = () => {
-  try {
-    const { getCLS, getFID, getFCP, getLCP, getTTFB } = require('web-vitals');
-
-    getCLS(reportWebVitals);
-    getFID(reportWebVitals);
-    getFCP(reportWebVitals);
-    getLCP(reportWebVitals);
-    getTTFB(reportWebVitals);
-  } catch (error) {
-    console.warn('Web Vitals library not available:', error);
+  if (typeof window !== 'undefined') {
+    import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+      onCLS(reportWebVitals);
+      onFID(reportWebVitals);
+      onFCP(reportWebVitals);
+      onLCP(reportWebVitals);
+      onTTFB(reportWebVitals);
+    }).catch(error => {
+      console.warn('Web Vitals library not available:', error);
+    });
   }
 };
 

@@ -141,7 +141,7 @@ const InteractiveSelectorSpecialized = () => {
         ))}
       </div>
 
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes slideFadeIn {
           0% {
             opacity: 0;
@@ -207,7 +207,7 @@ const InteractiveSelectorSpecialized = () => {
             min-width: 30px !important;
           }
         }
-      `}</style>
+      ` }} />
     </div>
   );
 };
