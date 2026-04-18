@@ -1,7 +1,8 @@
 export const heroConfigs = {
   bmlRenovation: {
-    videoUrl: "https://pub-fad5314e0b4f4ac9ac1d628fe5865ddf.r2.dev/Hero.mp4",
-    posterUrl: "/hero-poster.webp",
+    videoUrl: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-h264.mp4",
+    videoUrlH265: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-h265.mp4",
+    posterUrl: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-poster.jpg",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
     mainHeadlineLineBreak: "et Appartement",
@@ -13,7 +14,8 @@ export const heroConfigs = {
     primaryHeading: ""
   },
   grenoble: {
-    videoUrl: "https://pub-fad5314e0b4f4ac9ac1d628fe5865ddf.r2.dev/Hero.mp4",
+    videoUrl: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-h264.mp4",
+    videoUrlH265: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-h265.mp4",
     posterUrl: "/hero-poster.webp",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
@@ -26,7 +28,7 @@ export const heroConfigs = {
     primaryHeading: ""
   },
   default: {
-    videoUrl: "https://pub-fad5314e0b4f4ac9ac1d628fe5865ddf.r2.dev/Hero.mp4",
+    videoUrl: "/assets/remote/76dce47b62364d7a161403f7bffa3d02.mp4",
     posterUrl: "",
     badgeText: "YOUR BADGE TEXT",
     mainHeadlinePrefix: "YOUR MAIN HEADLINE",

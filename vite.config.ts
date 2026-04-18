@@ -1,110 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({
-      registerType: 'autoUpdate',
-      injectRegister: false,
-      includeAssets: ['favicon.ico', 'favicon-32x32.png', 'favicon-16x16.png', 'apple-touch-icon.png', 'robots.txt', 'sitemap.xml'],
-      manifest: {
-        name: 'G BML Rénovation',
-        short_name: 'G BML',
-        description: 'L\'interlocuteur unique pour tous vos projets de rénovation',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: 'favicon-32x32.png',
-            sizes: '32x32',
-            type: 'image/png'
-          },
-          {
-            src: 'favicon.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'favicon.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
-          }
-        ]
-      },
-      workbox: {
-        maximumFileSizeToCacheInBytes: 5000000,
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
-        globIgnores: ['**/og-image.png'],
-        cleanupOutdatedCaches: true,
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'gstatic-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-            },
-          },
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico|mp4)$/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'images-cache',
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
-              },
-            },
-          },
-          {
-            urlPattern: /\.(?:js|css)$/i,
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'static-resources',
-              expiration: {
-                maxEntries: 200,
-                maxAgeSeconds: 60 * 60 * 24 * 7, // 7 Days
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/.*\.(?:js|css|json)$/i,
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'external-resources',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7, // 7 Days
-              },
-            },
-          }
-        ],
-      },
-    }),
   ],
   resolve: {
     alias: {
@@ -115,43 +16,16 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
-    rolldownOptions: {
+    rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) {
-              return 'react-vendor';
-            }
-            if (id.includes('framer-motion')) {
-              return 'motion-vendor';
-            }
-            if (id.includes('lucide-react')) {
-              return 'ui-vendor';
-            }
-            if (id.includes('@supabase')) {
-              return 'supabase-vendor';
-            }
-            if (id.includes('react-router-dom')) {
-              return 'router-vendor';
-            }
-            return 'vendor';
-          }
-        },
+        manualChunks: undefined,
       },
     },
     cssCodeSplit: true,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: false,
-        drop_debugger: true,
-      },
-      output: {
-        comments: false,
-      },
-    },
-    chunkSizeWarningLimit: 1000,
-    sourcemap: false,
-    reportCompressedSize: false,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 500,
+    sourcemap: true,
+    reportCompressedSize: true,
   },
 });
+

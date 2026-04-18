@@ -104,7 +104,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation boutiques',
     description: 'Votre surface de vente est votre première vitrine. Nous réalisons la **transformation de vos boutiques et points de vente** pour optimiser le parcours client. Un accompagnement de la conception à la réalisation finale, avec un respect rigoureux de votre image de marque.',
     pageId: 'boutiques-bureaux',
-    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/blake-wisz.jpg',
+    image: '/assets/remote/4c1d0534b09360c181e231e24c7b4210.jpg',
     icon: 'Store',
     category: 'professionnels'
   },
@@ -149,7 +149,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Climatisation',
     description: 'Systèmes de climatisation modernes pour votre confort optimal.',
     pageId: 'climatisation',
-    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/photo-1603872921216-b500ee404467.jpeg',
+    image: '/assets/remote/2454a18ef5980d85fe1fed5f65baf47c.jpeg',
     icon: 'Wind',
     category: 'particuliers'
   },

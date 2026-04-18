@@ -14,7 +14,7 @@ export const renovationSectionsConfig: SectionContent[] = [
     galleryImages: [
       'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/a4a23d2a-e60e-48a4-aceb-a8996afb580c_htgckp%20(1).jpg',
       'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/99bc0d67-c27f-414b-b223-6c1f194bbd7a_lamuod%20(2).jpg',
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0044.jpg',
+      '/assets/remote/a86eb69490834e9fc9e90bacee5a818d.jpg',
       'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/d296e8a5-5cb3-446d-93b0-00f1a722c16b_jq4nyi%20(1).jpg',
     ],
     galleryImagesAlt: [
@@ -39,16 +39,16 @@ export const renovationSectionsConfig: SectionContent[] = [
       prefix: 'UNE ÉQUIPE D\'EXPERTS',
       highlight: 'À VOTRE SERVICE',
     },
-    imageUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-10-13_at_12.53.51_eskjdi.jpg',
+    imageUrl: '/assets/remote/9bf6bc363c6760bd53b8764c380849d8.jpg',
     imageAlt: 'Équipe d\'experts partenaires',
     buttonText: 'Demande devis gratuit',
     reverseLayout: false,
     hideImage: false,
     multiImageLayout: true,
     galleryImages: [
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0036_tjkv9r.jpg',
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0037_lm9udg.jpg',
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0040_izcj1t.jpg',
+      '/assets/remote/67f658b9cbbbcf615934d02ccd934d03.jpg',
+      '/assets/remote/0ce27308b504b0601239697716fa4859.jpg',
+      '/assets/remote/1cfcdfb4b0f2e3b82b72bdcdd5c69c01.jpg',
     ],
     galleryImagesAlt: [
       'Artisan professionnel réalisant des travaux de menuiserie de haute qualité',
@@ -118,9 +118,9 @@ export const renovationSectionsConfig: SectionContent[] = [
     useAnimatedGallery: true,
     galleryImages: [
       'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0014_jg0xyb%20(2).jpg',
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0036.jpg',
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/IMG-20250909-WA0040_izcj1t.jpg',
-      'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/08c9784d-a6ba-4494-8ba9-b6935de010d6_kaax7w.jpg',
+      '/assets/remote/cb24c65d0a6188791387d1915bef75e2.jpg',
+      '/assets/remote/1cfcdfb4b0f2e3b82b72bdcdd5c69c01.jpg',
+      '/assets/remote/a498449e7256106fae29eb87f2932c5d.jpg',
     ],
     galleryImagesAlt: [
       'Équipe de rénovation travaillant sur un chantier de rénovation intérieure',

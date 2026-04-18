@@ -21,15 +21,12 @@ export default function DemandDevisForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const validateForm = (): boolean => {
-    return formData.workType !== '' && formData.budget !== '' && formData.address !== '' && formData.city !== '' && formData.postalCode !== '' && formData.projectDescription !== '' && formData.civilite !== '' && formData.firstName !== '' && formData.lastName !== '' && formData.phone !== '' && formData.email !== '';
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) {
-      setErrorMessage('Veuillez remplir tous les champs obligatoires');
-      setTimeout(() => setErrorMessage(''), 3000);
+    const form = e.currentTarget as HTMLFormElement;
+    
+    if (!form.checkValidity()) {
+      form.reportValidity();
       return;
     }
 
@@ -278,6 +275,8 @@ export default function DemandDevisForm() {
                 value={formData.postalCode}
                 onChange={handleChange}
                 placeholder="74000"
+                pattern="[0-9]{5}"
+                title="5 chiffres requis"
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />

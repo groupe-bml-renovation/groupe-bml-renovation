@@ -95,12 +95,16 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       behavior: 'smooth'
     });
 
-    // We still update the position after a shorter delay to refresh button states
-    setTimeout(() => {
+    // Use requestAnimationFrame for a smoother, frame-synced update
+    const updatePosition = () => {
       if (scrollContainerRef.current) {
         setCarouselPosition(scrollContainerRef.current.scrollLeft);
       }
-    }, 300);
+    };
+    
+    requestAnimationFrame(updatePosition);
+    // Keep a small timeout as a safety fallback for the end of the smooth scroll
+    setTimeout(updatePosition, 300);
   };
 
   const scrollThreshold = 10;

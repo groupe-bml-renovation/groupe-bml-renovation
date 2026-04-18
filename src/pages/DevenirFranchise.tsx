@@ -588,6 +588,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
               marginWidth={0}
               className="w-full"
               title="Formulaire de candidature franchise"
+              loading="lazy"
             >
               Chargement…
             </iframe>

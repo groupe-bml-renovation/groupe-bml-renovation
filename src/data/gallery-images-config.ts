@@ -12,7 +12,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '1',
       project_slug: 'salle-bain-pmr',
-      image_url: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/G%20BML%20-%2001%20-%20Sdb%20pmr%201mois%2013000%E2%82%AC%20-%2007.png',
+      image_url: '/assets/remote/54a851714648a8d1110728e5df7b4b94.png',
       caption: 'Phase de réalisation - Douche accessible et équipements',
       display_order: 1,
       is_process_image: true,
@@ -20,7 +20,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '2',
       project_slug: 'salle-bain-pmr',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2002.JPG',
+      image_url: '/assets/remote/ee45edf827d5fdde80757969931eabaf.JPG',
       caption: 'Détails des installations et finitions',
       display_order: 2,
       is_process_image: true,
@@ -28,7 +28,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '3',
       project_slug: 'salle-bain-pmr',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2003.jpeg',
+      image_url: '/assets/remote/b7f438c44ef2c0baf2a13fca2f08ea0a.jpeg',
       caption: 'Installation des équipements sanitaires',
       display_order: 3,
       is_process_image: true,
@@ -38,7 +38,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '1',
       project_slug: 'renovation-sejour',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2002%20-%2001.JPG',
+      image_url: '/assets/remote/dd70fb2c601e2e3d82f165f3d25eccd5.JPG',
       caption: 'Vue initiale du séjour avant rénovation',
       display_order: 1,
       is_process_image: true,
@@ -46,7 +46,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '2',
       project_slug: 'renovation-sejour',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2002%20-%2002.JPG',
+      image_url: '/assets/remote/f6bbce78bc0dd84e93181b3697f781e6.JPG',
       caption: 'Phase de démolition et restructuration',
       display_order: 2,
       is_process_image: true,
@@ -54,7 +54,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '3',
       project_slug: 'renovation-sejour',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2002%20-%2004.JPG',
+      image_url: '/assets/remote/92a9e59a4138cbce23a85c3d30290315.JPG',
       caption: 'Installation des systèmes et aménagements',
       display_order: 3,
       is_process_image: true,
@@ -62,7 +62,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '4',
       project_slug: 'renovation-sejour',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2002%20-%2003.JPG',
+      image_url: '/assets/remote/13ea89e6df7f311a8ffac744a0efe43d.JPG',
       caption: 'Finitions et détails des revêtements',
       display_order: 4,
       is_process_image: true,
@@ -70,7 +70,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '5',
       project_slug: 'renovation-sejour',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2002%20-%2005.JPG',
+      image_url: '/assets/remote/f6df5a522a85d1b86e38c9070340b0cb.JPG',
       caption: 'Résultat final - Séjour rénové haut de gamme',
       display_order: 5,
       is_process_image: true,
@@ -80,7 +80,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '1',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%20Before.png',
+      image_url: '/assets/remote/58559ceaf64797c15028de09c08ad936.png',
       caption: 'État initial - Bureau avant rénovation',
       display_order: 1,
       is_process_image: true,
@@ -88,7 +88,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '2',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2001.jpeg',
+      image_url: '/assets/remote/95238021be94c89ce49e651e44af2c7d.jpeg',
       caption: 'Espace rénové - Vue 1',
       display_order: 2,
       is_process_image: true,
@@ -96,7 +96,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '3',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2002.jpeg',
+      image_url: '/assets/remote/e80a52e29a51c1faf14c4d92d9bb659e.jpeg',
       caption: 'Espace rénové - Vue 2',
       display_order: 3,
       is_process_image: true,
@@ -104,7 +104,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '4',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2003.jpeg',
+      image_url: '/assets/remote/7f9b22c0eb82f57122caad991bf95b43.jpeg',
       caption: 'Espace rénové - Vue 3',
       display_order: 4,
       is_process_image: true,
@@ -112,7 +112,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '5',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2004.jpeg',
+      image_url: '/assets/remote/b780fc2d10c5814443297b74157a5bd0.jpeg',
       caption: 'Espace rénové - Vue 4',
       display_order: 5,
       is_process_image: true,
@@ -120,7 +120,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '6',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2005.jpeg',
+      image_url: '/assets/remote/e7952376458d71b95632dea31a820d80.jpeg',
       caption: 'Espace rénové - Vue 5',
       display_order: 6,
       is_process_image: true,
@@ -128,7 +128,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '7',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2006.jpeg',
+      image_url: '/assets/remote/0a09a27719ade0126f9a5d50cc8b7e39.jpeg',
       caption: 'Espace rénové - Vue 6',
       display_order: 7,
       is_process_image: true,
@@ -136,7 +136,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '8',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2007.jpeg',
+      image_url: '/assets/remote/d99443ef5af2699c3747c5b10c0e96a3.jpeg',
       caption: 'Espace rénové - Vue 7',
       display_order: 8,
       is_process_image: true,
@@ -144,7 +144,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '9',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2008.jpeg',
+      image_url: '/assets/remote/8c69ee9451d3441fa27364843ed809b2.jpeg',
       caption: 'Espace rénové - Vue 8',
       display_order: 9,
       is_process_image: true,
@@ -152,7 +152,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '10',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2009.jpeg',
+      image_url: '/assets/remote/02a94e8e8d53d1ebb8eb3d8baef339d1.jpeg',
       caption: 'Espace rénové - Vue 9',
       display_order: 10,
       is_process_image: true,
@@ -160,7 +160,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '11',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2010.jpeg',
+      image_url: '/assets/remote/3e83b0814d1a83ecbe040693f80b289b.jpeg',
       caption: 'Espace rénové - Vue 10',
       display_order: 11,
       is_process_image: true,
@@ -168,7 +168,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '12',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2011.jpeg',
+      image_url: '/assets/remote/0b8de67187931e834916ff4f55563ab4.jpeg',
       caption: 'Espace rénové - Vue 11',
       display_order: 12,
       is_process_image: true,
@@ -176,7 +176,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '13',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2012.jpeg',
+      image_url: '/assets/remote/b8c26345f1bbf65008df117e7acdf4b2.jpeg',
       caption: 'Espace rénové - Vue 12',
       display_order: 13,
       is_process_image: true,
@@ -184,7 +184,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '14',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2013.jpeg',
+      image_url: '/assets/remote/672d063ac8e443f0cbc99adb9175419c.jpeg',
       caption: 'Espace rénové - Vue 13',
       display_order: 14,
       is_process_image: true,
@@ -192,7 +192,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '15',
       project_slug: 'renovation-bureau',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2014.jpeg',
+      image_url: '/assets/remote/b68eaa6182400380c346bf0d9af6d548.jpeg',
       caption: 'Espace rénové - Vue 14',
       display_order: 15,
       is_process_image: true,
@@ -202,7 +202,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '1',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2001.jpg',
+      image_url: '/assets/remote/dfee2b1d2f63cc7c688d0121d176c941.jpg',
       caption: 'Nettoyage haute pression - Étape 1',
       display_order: 1,
       is_process_image: true,
@@ -210,7 +210,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '2',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%20Before.png',
+      image_url: '/assets/remote/bac6f1953a2651fa5c27d8e51046aa4a.png',
       caption: 'État initial - Façade avant rénovation',
       display_order: 2,
       is_process_image: true,
@@ -218,7 +218,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '3',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2002.jpg',
+      image_url: '/assets/remote/c60ec00fc188c4d4eca9911e9dd7f4a3.jpg',
       caption: 'Nettoyage haute pression - Étape 2',
       display_order: 3,
       is_process_image: true,
@@ -226,7 +226,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '4',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2003.jpg',
+      image_url: '/assets/remote/b8da34740c1755600200404b4d734a1c.jpg',
       caption: 'Traitement et préparation de la surface',
       display_order: 4,
       is_process_image: true,
@@ -234,7 +234,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '5',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2004.jpg',
+      image_url: '/assets/remote/46d466ab0566e573e433838a2fd82e70.jpg',
       caption: 'Jointoiement et finitions',
       display_order: 5,
       is_process_image: true,
@@ -242,7 +242,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '6',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2005.jpg',
+      image_url: '/assets/remote/94752ae8636ab5a6b22ddf7268da863e.jpg',
       caption: 'Application de peinture premium',
       display_order: 6,
       is_process_image: true,
@@ -250,7 +250,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '7',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2006.jpg',
+      image_url: '/assets/remote/7125eb15e04e3ef5c17a9f5d889f52e3.jpg',
       caption: 'Détails et finitions de qualité',
       display_order: 7,
       is_process_image: true,
@@ -258,7 +258,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '8',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2007.jpg',
+      image_url: '/assets/remote/9646718111de99dec84c7be48a17dfc6.jpg',
       caption: 'Résultat intermédiaire - Progression',
       display_order: 8,
       is_process_image: true,
@@ -266,7 +266,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '9',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2008.jpg',
+      image_url: '/assets/remote/385a47caaa93291701fa139180c9b875.jpg',
       caption: 'Finalisations de la transformation',
       display_order: 9,
       is_process_image: true,
@@ -274,7 +274,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '10',
       project_slug: 'facade-maison',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2004%20-%2009.jpg',
+      image_url: '/assets/remote/401c7484074dd3269895812eaea01b73.jpg',
       caption: 'Résultat final - Façade comme neuve',
       display_order: 10,
       is_process_image: true,
@@ -284,7 +284,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '1',
       project_slug: 'renovation-salle-de-bain',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%20Hero%20-%20After.jpeg.png',
+      image_url: '/assets/remote/8c9c9d635db069f930a4c1a821e2c41b.png',
       caption: 'Résultat final - Salle de bain rénovée et moderne',
       display_order: 1,
       is_process_image: true,
@@ -292,7 +292,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '2',
       project_slug: 'renovation-salle-de-bain',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2001.jpeg',
+      image_url: '/assets/remote/7d9296b7092e395abe50ed5f2fc09907.jpeg',
       caption: 'Détail des installations et finitions',
       display_order: 2,
       is_process_image: true,
@@ -300,7 +300,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '3',
       project_slug: 'renovation-salle-de-bain',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2002.JPG',
+      image_url: '/assets/remote/ee45edf827d5fdde80757969931eabaf.JPG',
       caption: 'Phase de réalisation - Travaux en cours',
       display_order: 3,
       is_process_image: true,
@@ -308,7 +308,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '4',
       project_slug: 'renovation-salle-de-bain',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%2003.jpeg',
+      image_url: '/assets/remote/b7f438c44ef2c0baf2a13fca2f08ea0a.jpeg',
       caption: 'Installation des équipements sanitaires',
       display_order: 4,
       is_process_image: true,
@@ -316,7 +316,7 @@ export const galleryImagesConfig: Record<string, GalleryImageConfig[]> = {
     {
       id: '5',
       project_slug: 'renovation-salle-de-bain',
-      image_url: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2005%20-%20Before.png',
+      image_url: '/assets/remote/cede5926d20adc7e22b15deb36181c8c.png',
       caption: 'État initial - Salle de bain avant rénovation',
       display_order: 5,
       is_process_image: true,

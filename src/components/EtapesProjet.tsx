@@ -6,6 +6,7 @@ import { GradientCTAButton } from '../components/ui/gradient-cta-button';
 import CTASection from './CTASection';
 import { FooterSection } from '../components/footer-section';
 import { ScrollingFeatureShowcase } from './ScrollingFeatureShowcase';
+import { OptimizedImage } from './OptimizedImage';
 
 interface EtapesProjetProps {
   onBack: () => void;
@@ -67,10 +68,10 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll">
               {images.map((img, index) => (
                 <div key={`set1-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Étape de projet ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               ))}
@@ -78,10 +79,10 @@ const ImageCarousel = () => {
             <div className="flex gap-6 animate-scroll" aria-hidden="true">
               {images.map((img, index) => (
                 <div key={`set2-${index}`} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                  <img
+                  <OptimizedImage
                     src={img}
                     alt={`Étape de projet ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               ))}
@@ -104,10 +105,11 @@ const EtapesProjet: React.FC<EtapesProjetProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260"
             alt="Les étapes clés de votre projet"
-            className="w-full h-full object-cover"
+            className="w-full h-full"
+            priority={true}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-900/50 to-slate-900/60" />
         </div>
@@ -171,10 +173,10 @@ const EtapesProjet: React.FC<EtapesProjetProps> = ({ onBack, onNavigate }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-xl overflow-hidden shadow-2xl"
             >
-              <img
+              <OptimizedImage
                 src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260"
                 alt="Gestion de projet de rénovation"
-                className="w-full h-[450px] object-cover"
+                className="w-full h-[450px]"
               />
             </motion.div>
           </div>

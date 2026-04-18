@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface GalleryImage {
   name: string;
@@ -168,11 +168,13 @@ export default function ProjectGallerySection({
                   {galleryImages.map((image, index) => (
                     <div key={`set1-${index}`} data-gallery-card className="flex-shrink-0 w-80 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-0 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                       <div className="w-full h-64 flex items-center justify-center overflow-hidden bg-gray-100">
-                        <img
+                        <OptimizedImage
                           src={image.imageUrl}
                           alt={image.name}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                          decoding="async"
+                          width={400}
+                          height={300}
+                          sizes="(max-width: 768px) 100vw, 400px"
                         />
                       </div>
                       {image.description && (
@@ -187,11 +189,13 @@ export default function ProjectGallerySection({
                   {galleryImages.map((image, index) => (
                     <div key={`set2-${index}`} className="flex-shrink-0 w-80 flex flex-col items-center justify-center rounded-lg overflow-hidden bg-white p-0 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                       <div className="w-full h-64 flex items-center justify-center overflow-hidden bg-gray-100">
-                        <img
+                        <OptimizedImage
                           src={image.imageUrl}
                           alt={image.name}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                          decoding="async"
+                          width={400}
+                          height={300}
+                          sizes="(max-width: 768px) 100vw, 400px"
                         />
                       </div>
                       {image.description && (

@@ -51,6 +51,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { OptimizedImage } from './OptimizedImage';
 
 interface ImageItem {
   id: number;
@@ -339,7 +340,7 @@ export default function ExistingImagesGallery() {
                         onClick={() => openModal(image)}
                       >
                         <div className="aspect-[4/3] overflow-hidden">
-                          <img
+                          <OptimizedImage
                             src={image.src}
                             alt={image.alt}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -501,11 +502,10 @@ export default function ExistingImagesGallery() {
                   onTouchEnd={handleTouchEnd}
                   style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
                 >
-                  <img
+                  <OptimizedImage
                     src={selectedImage.src}
                     alt={selectedImage.alt}
                     className="w-full h-auto max-h-[85vh] object-contain rounded-lg pointer-events-none"
-                    draggable="false"
                   />
 
                   {/* Image Info */}

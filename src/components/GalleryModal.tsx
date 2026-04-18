@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { OptimizedImage } from './OptimizedImage';
 
 interface GalleryImage {
   id: string;
@@ -118,7 +119,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose, ima
                       exit={{ opacity: 0 }}
                       className="relative w-full aspect-video bg-black/90 flex items-center justify-center"
                     >
-                      <img
+                      <OptimizedImage
                         src={images[lightboxIndex].image_url}
                         alt={images[lightboxIndex].caption}
                         className="max-w-full max-h-full object-contain"
@@ -154,11 +155,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose, ima
                             setLightboxOpen(true);
                           }}
                         >
-                          <motion.img
-                            key={selectedIndex}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.3 }}
+                          <OptimizedImage
                             src={images[selectedIndex].image_url}
                             alt={images[selectedIndex].caption}
                             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
@@ -208,7 +205,7 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({ isOpen, onClose, ima
                                 index === selectedIndex ? 'ring-2 ring-cyan-500 ring-offset-2' : ''
                               }`}
                             >
-                              <img
+                              <OptimizedImage
                                 src={image.image_url}
                                 alt={image.caption}
                                 className="w-full h-full object-contain hover:opacity-75 transition-opacity"

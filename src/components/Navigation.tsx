@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Pen } from 'lucide-react';
 import { GradientCTAButton } from './ui/gradient-cta-button';
-import { prefetchPage } from '../lib/prefetch';
 import { OptimizedImage } from './OptimizedImage';
 
 interface NavigationProps {
@@ -418,17 +417,17 @@ const Navigation: React.FC<NavigationProps> = ({
         <div className="md:hidden ml-auto flex items-center gap-2 -mr-1">
           <a
             href="tel:0756915997"
-            className="px-2.5 py-1 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center gap-2 leading-none"
+            className="px-4 py-2 rounded-full border-2 border-sky-400 text-sky-400 font-semibold text-xs hover:bg-sky-50 transition-colors flex items-center gap-2 leading-none min-h-[44px]"
           >
             <Phone className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} />
             <div className="flex flex-col items-center">
-              <span className="text-[10px] leading-tight">07 56 91 59 97</span>
-              <span className="text-[8px] font-bold opacity-90 leading-tight">Appel gratuit</span>
+              <span className="text-[11px] leading-tight font-bold">07 56 91 59 97</span>
+              <span className="text-[9px] font-bold opacity-90 leading-tight">Appel gratuit</span>
             </div>
           </a>
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            className="md:hidden p-3 rounded-lg hover:bg-slate-100 transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (

@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-ro
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import NotFound from './components/NotFound';
-import { measureComponentRenderTime } from './lib/web-vitals';
 import PageLoader from './components/PageLoader';
 
 // Lazy load all page components
@@ -55,6 +54,7 @@ const Realisations = lazy(() => import('./pages/Realisations'));
 const Amenagement = lazy(() => import('./pages/Amenagement'));
 
 import { initPhoneTracking } from './lib/phone-tracking';
+import { useVoiceflow } from './hooks/useVoiceflow';
 import './index.css';
 
 initPhoneTracking();
@@ -98,6 +98,7 @@ const PageLayout = ({ children, currentPageName = '' }: { children: React.ReactN
 
 const AppRouter = () => {
   const navigate = useNavigate();
+  useVoiceflow();
   
   return (
     <Suspense fallback={<PageLoader />}>
@@ -208,14 +209,3 @@ createRoot(document.getElementById('root')!).render(
     </HelmetProvider>
   </StrictMode>
 );
-
-// Manual Service Worker registration to avoid render-blocking
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      navigator.serviceWorker.register('/sw.js', { scope: '/' })
-        .then(reg => console.log('SW registered:', reg))
-        .catch(err => console.log('SW error:', err));
-    }, 5000); // Delay of 5 seconds to ensure everything else is loaded
-  });
-}

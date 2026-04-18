@@ -5,12 +5,10 @@ const RETRY_DELAY_MS = 2000;
 const VOICEFLOW_CDN = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
 const VOICEFLOW_RUNTIME = 'https://general-runtime.voiceflow.com';
 const VOICEFLOW_VOICE_URL = 'https://runtime-api.voiceflow.com';
-const VOICEFLOW_INIT_DELAY = 6000;
 
 export const useVoiceflow = () => {
   const retryCountRef = useRef(0);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
-  const initTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const projectID = import.meta.env.VITE_VOICEFLOW_PROJECT_ID;
@@ -76,28 +74,16 @@ export const useVoiceflow = () => {
       document.body.appendChild(scriptRef.current);
     };
 
-    const startSequence = () => {
-      initTimerRef.current = window.setTimeout(() => {
-        loadVoiceflowScript();
-      }, VOICEFLOW_INIT_DELAY);
-    };
-
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(startSequence);
-    } else {
-      startSequence();
-    }
+    loadVoiceflowScript();
 
     return () => {
-      if (initTimerRef.current) {
-        clearTimeout(initTimerRef.current);
-      }
       if (scriptRef.current?.parentNode) {
         scriptRef.current.parentNode.removeChild(scriptRef.current);
       }
     };
   }, []);
 };
+
 
 export const openVoiceflowChat = () => {
   if (window.voiceflow?.chat?.open) {

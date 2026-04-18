@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { OptimizedImage } from '../OptimizedImage';
 
 interface HeroSectionProps {
   videoUrl: string;
+  videoUrlH265?: string;
   posterUrl?: string;
   badgeText: string;
   mainHeadlinePrefix: string;
@@ -17,6 +19,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   videoUrl,
+  videoUrlH265,
   posterUrl,
   badgeText,
   mainHeadlinePrefix,
@@ -71,11 +74,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
       {/* Background Poster fallback that renders instantly */}
       {posterUrl && (
-        <img 
+        <OptimizedImage 
           src={posterUrl} 
           alt="Hero background" 
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-40'}`}
-          {...({ fetchPriority: "high" } as any)}
+          priority={true}
           width={1920}
           height={1080}
         />
@@ -101,6 +104,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           onContextMenu={(e) => e.preventDefault()}
           {...({ fetchPriority: "high" } as any)}
         >
+          {videoUrlH265 && <source src={videoUrlH265} type='video/mp4; codecs="hvc1"' />}
           <source src={videoUrl} type="video/mp4" />
         </video>
       )}

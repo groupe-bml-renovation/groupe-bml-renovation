@@ -1,5 +1,4 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { measureComponentRenderTime } from './lib/web-vitals';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -9,6 +8,8 @@ import { generateGlobalSeoSchemas } from './lib/seo-global-schema';
 import HeroSection from './components/ui/hero-section';
 import PartnerCarouselOnly from './components/PartnerCarouselOnly';
 import { heroConfigs } from './data/hero-config';
+
+// Lazy Pages
 const Amenagement = lazy(() => import('./pages/Amenagement'));
 const BoutiquesBureaux = lazy(() => import('./pages/BoutiquesBureaux'));
 const Appartements = lazy(() => import('./pages/Appartements'));
@@ -43,27 +44,28 @@ const ConditionsUtilisation = lazy(() => import('./pages/ConditionsUtilisation')
 const MentionsLegales = lazy(() => import('./pages/MentionsLegales'));
 const ForumConverter = lazy(() => import('./pages/ForumConverter'));
 const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
+
 import PageLoader from './components/PageLoader';
+import ArchitectPartnershipSection from './components/ArchitectPartnershipSection';
+import RenovationArchitectureSection from './components/RenovationArchitectureSection';
+import ProjectStepsSection from './components/ProjectStepsSection';
+import SocialProofBannerGrenoble from './components/SocialProofBannerGrenoble';
+import PartnersSection from './components/PartnersSection';
+import NotreSecteur from './components/NotreSecteur';
+import ProjectsCarousel from './components/ProjectsCarousel';
+import ServicesTabbedCarousel from './components/ServicesTabbedCarousel';
+import GoogleReviews from './components/GoogleReviews';
+import UnifiedContactForm from './components/UnifiedContactForm';
+import EbookPresentationSection from './components/EbookPresentationSection';
+import HomePageFAQ from './components/HomePageFAQ';
+import { FooterSection } from './components/footer-section';
 
-const ArchitectPartnershipSection = lazy(() => import('./components/ArchitectPartnershipSection'));
-const RenovationArchitectureSection = lazy(() => import('./components/RenovationArchitectureSection'));
-const ProjectStepsSection = lazy(() => import('./components/ProjectStepsSection'));
-const SocialProofBannerGrenoble = lazy(() => import('./components/SocialProofBannerGrenoble'));
-const PartnersSection = lazy(() => import('./components/PartnersSection'));
-const NotreSecteur = lazy(() => import('./components/NotreSecteur'));
-const ProjectsCarousel = lazy(() => import('./components/ProjectsCarousel'));
-
-import { useVoiceflow } from './hooks/useVoiceflow';
 import { renovationSectionsConfig } from './data/renovation-sections-config';
 import { renovationSectionsConfigGrenoble } from './data/renovation-sections-config-grenoble';
 import Navigation from './components/Navigation';
 import StickyDemandeCTA from './components/StickyDemandeCTA';
-const ServicesTabbedCarousel = lazy(() => import('./components/ServicesTabbedCarousel'));
-const GoogleReviews = lazy(() => import('./components/GoogleReviews'));
-const UnifiedContactForm = lazy(() => import('./components/UnifiedContactForm'));
-const EbookPresentationSection = lazy(() => import('./components/EbookPresentationSection'));
-const HomePageFAQ = lazy(() => import('./components/HomePageFAQ'));
-const FooterSection = lazy(() => import('./components/footer-section').then(module => ({ default: module.FooterSection })));
+
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -72,7 +74,6 @@ function App() {
   const location = useLocation();
   const isGrenoble = location.pathname.includes('/grenoble');
 
-  useVoiceflow();
 
   const handleNavigate = (page: string, target?: string) => {
     setCurrentPage(page);
@@ -89,10 +90,12 @@ function App() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const scrollTo = params.get('scrollTo');
-    if (scrollTo && currentPage === 'home') {
-      setScrollTarget(scrollTo);
+    const hash = location.hash.replace('#', '');
+    
+    if ((scrollTo || hash) && currentPage === 'home') {
+      setScrollTarget(scrollTo || hash);
     }
-  }, [location.search, currentPage]);
+  }, [location.search, location.hash, currentPage]);
 
   useEffect(() => {
     if (scrollTarget && currentPage === 'home') {
@@ -467,6 +470,7 @@ function App() {
           </Helmet>
           <HeroSection
             videoUrl={selectedHeroConfig.videoUrl}
+            videoUrlH265={selectedHeroConfig.videoUrlH265}
             badgeText={selectedHeroConfig.badgeText}
             mainHeadlinePrefix={selectedHeroConfig.mainHeadlinePrefix}
             mainHeadlineLineBreak={selectedHeroConfig.mainHeadlineLineBreak}
@@ -477,80 +481,19 @@ function App() {
             reviewLink={selectedHeroConfig.reviewLink}
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
-          {measureComponentRenderTime('ProjectsCarousel').start()}
           <PartnerCarouselOnly />
           <SocialProofBannerGrenoble />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
           <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
-
           <NotreSecteur />
-
           <ProjectStepsSection onNavigate={handleNavigate} />
-          <div ref={(el) => { if (el) measureComponentRenderTime('ProjectsCarousel').end(); }}>
-            <ProjectsCarousel onNavigate={handleNavigate} />
-          </div>
-
+          <ProjectsCarousel onNavigate={handleNavigate} />
           <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
-
           <SocialProofBannerGrenoble />
-
-          <div ref={(el) => { if (el) measureComponentRenderTime('GoogleReviews').end(); }}>
-            {measureComponentRenderTime('GoogleReviews').start()}
-            <GoogleReviews />
-          </div>
-
-          <div ref={(el) => { if (el) measureComponentRenderTime('UnifiedContactForm').end(); }}>
-            {measureComponentRenderTime('UnifiedContactForm').start()}
-            <UnifiedContactForm />
-          </div>
-
-
-          {/* <ServicesTabbedCarousel
-              onNavigate={!isGrenoble ? handleNavigate : () => { }}
-              headerText="NOS SERVICES"
-              title="Quels types de travaux recherchez-vous ?"
-              description="Explorez nos services adaptés à vos besoins spécifiques"
-              isGrenoble={isGrenoble}
-            /> */}
-
-
-
-
-
-          {/* <PartnersSection scrollDirection="right" slowAnimation={true} />
-            <PartnersSection showHeader={false} reducedPadding={true} slowAnimation={true} />
-            <PartnersSection
-              scrollDirection="right"
-              title="Nos certifications qui protègent votre projet"
-              description="Nos équipes disposent de certifications reconnues en rénovation, chauffage, solaire, ventilation et électricité. Pour vous, cela veut dire des travaux plus sûrs, plus fiables, et réalisés par des professionnels qualifiés."
-              topSpacing="mt-8"
-              slowAnimation={false}
-              partners={[
-                { name: 'RGE', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', description: 'Entreprise certifiée et qualifiée RGE' },
-                { name: 'Pompe à chaleur', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2012.png', description: 'Installateur qualifié pompe à chaleur certifié' },
-                { name: 'Solaire', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2001.png', description: 'Installateur qualifié solaire certifié' },
-                { name: 'Chauffage bois', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2005.png', description: 'Spécialiste qualifié chauffage bois' },
-                { name: 'Chauffage HP', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2002.png', description: 'Chauffage haute performance qualifié' },
-                { name: 'Ventilation', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2008.png', description: 'Ventilation qualifiée et certifiée' },
-                { name: 'Fluides', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2006.png', description: 'Attestation qualifiée capacité fluides' },
-                { name: 'Électricité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2003.png', description: 'Entreprise électricité qualifiée et certifiée' },
-                { name: 'Manipulation fluide', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2004.png', description: 'Manipulation fluide qualifiée et certifiée' },
-                { name: 'Gaz', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2011.png', description: 'Professionnel qualifié du gaz' },
-                { name: 'Installation gaz', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2009.png', description: 'Installation gaz conforme et qualifiée' },
-                { name: 'Bâtiment', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2007.png', description: 'Entreprise bâtiment qualifiée et certifiée' },
-                { name: 'Qualité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2013.png', description: 'Label qualité reconnu et agréé' },
-                { name: 'Accessibilité', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2010.png', description: 'Accessibilité handicap qualifiée' },
-                { name: 'PMR', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2015.png', description: 'Adaptation qualifiée logement PMR' },
-                { name: 'Artisan', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2016.png', description: 'Artisan qualifié et enregistré' }
-              ]}
-            /> */}
-
-
-
+          <GoogleReviews />
+          <UnifiedContactForm />
           <HomePageFAQ />
-
           <EbookPresentationSection />
-
           <FooterSection onNavigateToServices={handleNavigateToServices} onNavigate={handleNavigate} />
         </div>
       </Suspense>
@@ -558,9 +501,9 @@ function App() {
   };
 
 
+
   return (
     <div className="w-full overflow-x-hidden">
-      <PageLoader />
       <Navigation
         currentPage={currentPage}
         onNavigate={handleNavigate}

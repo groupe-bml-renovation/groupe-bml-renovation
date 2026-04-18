@@ -402,6 +402,7 @@ const DevenirArtisanPartenairePage: React.FC<DevenirArtisanPartenairePageProps> 
               marginHeight={0}
               marginWidth={0}
               className="w-full"
+              loading="lazy"
             >
               Chargement…
             </iframe>
