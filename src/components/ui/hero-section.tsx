@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { MapPin, Clock, Phone, Calendar, Facebook, Instagram, Linkedin, ArrowRight, Pen } from 'lucide-react';
 import { OptimizedImage } from '../OptimizedImage';
 
 interface HeroSectionProps {
@@ -35,11 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === rotatingTitles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
+      setTitleNumber((prev) => (prev === rotatingTitles.length - 1 ? 0 : prev + 1));
     }, 4000);
     return () => clearTimeout(timeoutId);
   }, [titleNumber, rotatingTitles]);
@@ -62,142 +59,207 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     if (shouldLoadVideo && videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
-      
       const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {});
+        playPromise.catch(() => { });
       }
     }
   }, [videoUrl, shouldLoadVideo]);
 
   return (
-    <section className="relative h-[100dvh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      {/* Background Poster fallback that renders instantly */}
-      {posterUrl && (
-        <OptimizedImage 
-          src={posterUrl} 
-          alt="Hero background" 
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-40'}`}
-          priority={true}
-          width={1920}
-          height={1080}
-        />
-      )}
-      
-      {shouldLoadVideo && (
-        <video
-          key={videoUrl}
-          ref={videoRef}
-          className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${
-            isVideoReady ? 'opacity-40' : 'opacity-0'
-          }`}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={posterUrl}
-          preload="metadata"
-          onLoadedData={() => setIsVideoReady(true)}
-          controlsList="nodownload nofullscreen noremoteplayback"
-          disablePictureInPicture
-          disableRemotePlayback
-          onContextMenu={(e) => e.preventDefault()}
-          {...({ fetchPriority: "high" } as any)}
-        >
-          {videoUrlH265 && <source src={videoUrlH265} type='video/mp4; codecs="hvc1"' />}
-          <source src={videoUrl} type="video/mp4" />
-        </video>
-      )}
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center">
-        {primaryHeading && (
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-8 leading-tight">
-            {primaryHeading}
-          </h2>
+    <section className="relative flex flex-col w-full bg-white font-sans">
+      {/* 1. Top Area: Image/Video Banner (Matches illiCO proportion perfectly) */}
+      <div className="relative w-full h-[45vh] lg:h-[480px] bg-slate-900 border-b-[6px] border-[#0a4d8c] overflow-hidden">
+        {posterUrl && (
+          <OptimizedImage
+            src={posterUrl}
+            alt="Hero background"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-75'}`}
+            priority={true}
+            width={1920}
+            height={1080}
+          />
         )}
-        <div className="mb-0">
-          <span className="inline-block text-[#38bdf8] text-[11px] min-[375px]:text-[13px] sm:text-base font-medium tracking-wider sm:tracking-widest whitespace-nowrap mb-6">
-            {badgeText}
-          </span>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        {shouldLoadVideo && (
+          <video
+            key={videoUrl}
+            ref={videoRef}
+            className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${isVideoReady ? 'opacity-70' : 'opacity-0'
+              }`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={posterUrl}
+            preload="metadata"
+            onLoadedData={() => setIsVideoReady(true)}
+            controlsList="nodownload nofullscreen noremoteplayback"
+            disablePictureInPicture
+            disableRemotePlayback
+            {...({ fetchPriority: "high" } as any)}
+          >
+            {videoUrlH265 && <source src={videoUrlH265} type='video/mp4; codecs="hvc1"' />}
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        )}
+
+        {/* Gradient Overlay for Text Readability in the center */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+
+        {/* Banner Content (Centered Text over Video) */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center px-4 z-10 pointer-events-none">
+          {primaryHeading && (
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight pointer-events-auto text-center">
+              {primaryHeading}
+            </h2>
+          )}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight flex flex-col items-center pointer-events-auto text-center">
             <span className="text-white">
               {mainHeadlinePrefix}
-              <br />
+              <span className="hidden sm:inline"><br /></span>
+              <span className="sm:hidden"> </span>
               {mainHeadlineLineBreak}
-              <br />
             </span>
-            <span className="bg-gradient-to-r from-[#38bdf8] via-green-400 to-yellow-400 bg-clip-text text-transparent">
-              <span className="relative flex w-full justify-center overflow-hidden text-center h-12 md:h-16">
-                {rotatingTitles.map((title, index) => (
-                  <motion.span
-                    key={index}
-                    className="absolute font-bold bg-gradient-to-r from-[#38bdf8] from-30% via-gray-200 via-70% to-gray-400 bg-clip-text text-transparent whitespace-nowrap"
-                    initial={{ opacity: 0, y: window.innerWidth < 1024 ? 0 : "-100" }}
-                    transition={{ type: "spring", stiffness: 50 }}
-                    animate={
-                      titleNumber === index
-                        ? {
-                          y: 0,
-                          opacity: 1,
-                        }
-                        : {
-                          y: window.innerWidth < 1024 ? 0 : (titleNumber > index ? -80 : 80),
-                          opacity: 0,
-                        }
-                    }
-                  >
+            <div className="relative overflow-hidden w-[350px] sm:w-[500px] lg:w-[650px] h-10 sm:h-14 lg:h-16">
+              {rotatingTitles.map((title, index) => (
+                <motion.div
+                  key={index}
+                  className="absolute inset-x-0 w-full flex justify-center top-0 pointer-events-none"
+                  initial={{ opacity: 0, y: window.innerWidth < 1024 ? 0 : -100 }}
+                  transition={{ type: "spring", stiffness: 50 }}
+                  animate={
+                    titleNumber === index
+                      ? {
+                        y: 0,
+                        opacity: 1,
+                      }
+                      : {
+                        y: window.innerWidth < 1024 ? 0 : (titleNumber > index ? -80 : 80),
+                        opacity: 0,
+                      }
+                  }
+                >
+                  <span className="font-bold bg-gradient-to-r from-[#38bdf8] from-30% via-gray-200 via-70% to-gray-400 bg-clip-text text-transparent whitespace-nowrap px-2 pt-1 pb-2">
                     {title}
-                  </motion.span>
-                ))}
-              </span>
-            </span>
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </h1>
 
-          <div className="max-w-2xl mx-auto space-y-4 sm:space-y-8 lg:space-y-4">
-            <div>
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed px-4">
-                {subheadline.split('\n\n')[0]}
-              </p>
-            </div>
-            <div>
-              <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed px-4">
-                {subheadline.split('\n\n')[1]}
-              </p>
-            </div>
+        </div>
 
-            <motion.a
-              href={reviewLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: window.innerWidth < 1024 ? 0 : 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-flex flex-col items-center justify-center gap-3 sm:gap-4 pt-4"
-            >
-              <svg className="h-10 w-auto sm:h-12" viewBox="0 0 272 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335" />
-                <path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05" />
-                <path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4" />
-                <path d="M225 3v65h-9.5V3h9.5z" fill="#34A853" />
-                <path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335" />
-                <path d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z" fill="#4285F4" />
-              </svg>
+        {/* Action Buttons (Bottom Center on Mobile, Bottom Right on Desktop) over Banner */}
+        <div className="absolute bottom-4 lg:bottom-6 inset-x-0 lg:inset-x-auto lg:right-6 flex justify-center lg:justify-end items-center gap-3 z-20 px-4 lg:px-0 pointer-events-none">
+          <div className="flex gap-4 pointer-events-auto">
+            <a href="tel:0756915997" className="p-3 lg:py-2.5 lg:px-5 rounded-full bg-white shadow-lg hover:scale-105 transition-transform text-[#0a4d8c] font-bold border border-slate-200 flex items-center gap-2">
+              <Phone className="w-5 h-5 lg:w-5 lg:h-5 text-blue-600 shrink-0" />
+              <span className="hidden lg:inline text-[15px] whitespace-nowrap">07 56 91 59 97</span>
+            </a>
+            <a href="#contact-form" className="p-3 lg:py-2.5 lg:px-5 rounded-full bg-[#38bdf8] hover:bg-[#0284c7] text-white shadow-lg hover:scale-105 transition-transform font-bold uppercase flex items-center gap-2">
+              <Pen className="w-5 h-5 lg:w-5 lg:h-5 shrink-0" />
+              <span className="hidden lg:inline text-[15px] whitespace-nowrap">Demander un devis gratuit</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
-              <div className="flex flex-col items-center gap-2 sm:gap-3">
-                <span className="text-white font-semibold text-lg sm:text-xl">
-                  {reviewText}
-                </span>
-                <div className="flex gap-1">
-                  {[...Array(reviewStars)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                    </svg>
-                  ))}
+      {/* 2. White Section Below Banner (Matches the layout structure exactly) */}
+      <div className="relative bg-white w-full border-b border-gray-200 z-30 pb-4 lg:pb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-4 lg:pt-6 lg:pb-4">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
+
+            <div className="flex flex-row lg:flex-col items-start lg:items-center lg:w-[160px] shrink-0 -mt-[20px] sm:-mt-[35px] lg:-mt-[110px] relative z-40 gap-4 lg:gap-0">
+              <div className="w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] lg:w-[140px] lg:h-[140px] rounded-full shadow-xl overflow-hidden bg-white lg:mb-4 border border-slate-200 p-1 lg:p-1.5 relative shrink-0">
+                <img src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" alt="BML Rénovation" className="w-full h-full object-cover rounded-full bg-slate-50 border border-slate-100" />
+              </div>
+              <div className="flex flex-col items-start lg:items-center mt-[20px] sm:mt-[35px] lg:mt-0">
+                <h2 className="text-[16px] sm:text-[17px] font-black text-[#0a4d8c] text-left lg:text-center mb-2 lg:mb-3 leading-tight tracking-wide">
+                  Groupe BML <span className="lg:hidden">Rénovation</span><br className="hidden lg:block" />
+                  <span className="hidden lg:inline">Rénovation</span>
+                </h2>
+                <div className="flex justify-start lg:justify-center gap-2">
+                  <a href="https://www.facebook.com/profile.php?id=61583239311358" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#0a4d8c] hover:bg-[#0a4d8c] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
+                    <Facebook className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                  </a>
+                  <a href="https://www.instagram.com/groupe_bml_renovation_tce/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#0a4d8c] hover:bg-[#0a4d8c] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
+                    <Instagram className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/groupe-bml-r%C3%A9novation-tout-corps-d-%C3%A9tat-86aa693b1/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#0a4d8c] hover:bg-[#0a4d8c] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
+                    <Linkedin className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                  </a>
                 </div>
               </div>
-            </motion.a>
-            
+            </div>
+
+            {/* Middle content: Text (Using the requested old big font styles wrapped in illiCO structure) */}
+            <div className="flex-1 space-y-6 pt-2">
+              <div className="max-w-2xl space-y-4 sm:space-y-8 lg:space-y-4">
+                {subheadline.split('\n\n').map((paragraph, index) => paragraph && (
+                  <div key={index}>
+                    <p 
+                      className="text-slate-700 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: paragraph }}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="pt-2">
+                <a href="/realisations" className="inline-flex items-center gap-2 text-[#38bdf8] font-black hover:text-[#0284c7] transition-colors text-base sm:text-lg">
+                  Réalisations de l'agence <ArrowRight className="w-5 h-5 bg-transparent" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right content: Contact + Reviews + Stats */}
+            <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-8 pt-2">
+
+              {/* Address and Contact Block */}
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-[#38bdf8] shrink-0" strokeWidth={1.5} />
+                  <div className="text-slate-800 text-sm lg:text-[15px] leading-snug">
+                    <p>5 Av. Paul Verlaine,<br />38100 Grenoble</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <Clock className="w-6 h-6 text-[#38bdf8] shrink-0" strokeWidth={1.5} />
+                  <div className="text-slate-800 text-sm lg:text-[15px] leading-snug">
+                    <p className="font-black text-slate-900 mb-0.5">Nous sommes joignables</p>
+                    <p>Du lundi au vendredi : 08h00 - 18h00</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Reviews Header Layout */}
+              <div className="flex items-center gap-8 pt-3 pb-1 border-t border-slate-100">
+                {/* Google Reviews */}
+                <a href={reviewLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                  <div className="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5 shrink-0">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" /><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" /><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" /><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" /><path d="M1 1h22v22H1z" fill="none" /></svg>
+                  </div>
+                  <div>
+                    <div className="font-black text-[17px] text-slate-900 leading-none">4.9/5</div>
+                    <div className="flex gap-0.5 mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="#FFB800" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+
+                {/* RGE Logo */}
+                <div className="shrink-0 select-none">
+                  <img src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/RGE.png" alt="Certification RGE" className="h-[44px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" />
+                </div>
+              </div>
+
+
+
+            </div>
           </div>
         </div>
       </div>
@@ -206,3 +268,4 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 export default HeroSection;
+
