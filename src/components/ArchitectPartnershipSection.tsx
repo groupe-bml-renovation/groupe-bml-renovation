@@ -84,6 +84,18 @@ export const ArchitectPartnershipSection: React.FC<ArchitectPartnershipSectionPr
                   className="max-h-full max-w-full object-contain"
                 />
               </div>
+              
+              <div 
+                onClick={() => openModal('https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg', 'Architecte Espaces Alpins')}
+                className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#38bdf8]/20 shadow-sm shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg" 
+                  alt="Architecte Espaces Alpins" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               <div className="flex flex-col">
                 <span className="font-bold text-gray-900 leading-tight">Espaces Alpins</span>
                 <span className="text-xs text-slate-500 uppercase tracking-wider">Architecture & Décoration Intérieur</span>
