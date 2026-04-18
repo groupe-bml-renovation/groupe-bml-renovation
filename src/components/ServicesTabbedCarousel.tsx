@@ -212,12 +212,12 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
           <span className="text-[#38bdf8] text-sm font-semibold uppercase tracking-wide">
             {headerText}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
             <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
               {title}
             </span>
           </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-700 text-base max-w-2xl mx-auto leading-relaxed">
             {description}
           </p>
         </div>

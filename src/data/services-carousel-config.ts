@@ -14,7 +14,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation de Maison',
     description: '**Moderniser, réorganiser, transformer** : vous avez un projet de rénovation de maison ? Votre interlocuteur **Groupe BML Rénovation** prend le temps de vous écouter, vous conseille avec attention et constitue pour vous une équipe travaux sur mesure. Objectif : un chantier fluide, des artisans fiables, et un lieu de vie qui vous ressemble.',
     pageId: 'maisons-villas',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/99bc0d67-c27f-414b-b223-6c1f194bbd7a_lamuod%20(2).jpg',
     icon: 'Home',
     category: 'particuliers'
   },
@@ -23,7 +23,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation d\'Appartement',
     description: 'Une cuisine trop étroite, une chambre partagée entre ados, des pièces à réinventer ? Il est temps d\'oser la transformation. Votre expert **Groupe BML Rénovation** vous accompagne pour **rénover, réagencer ou remettre aux normes votre appartement**, en toute sérénité. À la clé : un lieu de vie lumineux, fonctionnel, adapté à votre quotidien.',
     pageId: 'appartements',
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80',
+    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Re%CC%81novation%20d'Appartement.png",
     icon: 'Building2',
     category: 'particuliers'
   },
@@ -32,7 +32,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation de Salle de Bain',
     description: 'Votre expert **Groupe BML Rénovation** vous aide à **imaginer un espace à la fois esthétique, fonctionnel et adapté à votre foyer**, même nombreux. En choisissant notre offre de service, vous bénéficiez d\'un suivi précis de votre projet jusqu\'à la réception des travaux et des finitions.',
     pageId: 'salles-de-bain',
-    image: 'https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=1920&q=80',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/SDB%20PMR%2001.png',
     icon: 'Droplets',
     category: 'particuliers'
   },
@@ -41,7 +41,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation de Cuisine',
     description: 'Cœur battant de la maison, la cuisine mérite une attention particulière. Nous vous accompagnons pour **concevoir et réaliser une cuisine moderne et conviviale**. De l\'optimisation des rangements au choix des **matériaux durables**, nous créons un espace qui allie design et praticité pour vos moments de vie.',
     pageId: 'cuisines',
-    image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=80',
+    image: '/assets/remote/a86eb69490834e9fc9e90bacee5a818d.jpg',
     icon: 'UtensilsCrossed',
     category: 'particuliers'
   },
@@ -50,7 +50,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation Piscine',
     description: 'Grâce à nos services, vous allez pouvoir profiter de votre **piscine en toute simplicité**. De la réfection de l\'étanchéité à la modernisation des équipements, nous sommes à vos côtés pour que vous puissiez profiter rapidement de votre nouvel espace extérieur, parfaitement intégré à votre habitat.',
     pageId: 'piscine',
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80',
+    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/a4a23d2a-e60e-48a4-aceb-a8996afb580c_htgckp%20(1).jpg',
     icon: 'Waves',
     category: 'particuliers'
   },
@@ -59,16 +59,16 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Menuiserie et Portes',
     description: 'Une porte qui grince, des fenêtres mal isolées ou un besoin de rangements sur mesure ? Votre confort thermique et acoustique passe par une menuiserie de qualité. Nos experts vous guident dans le choix des **matériaux isolants (bois, PVC, aluminium)** et réalisent une pose soignée pour valoriser votre habitat.',
     pageId: 'menuiserie',
-    image: 'https://images.unsplash.com/photo-1697538022268-c565529e616f?w=800&q=80',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/WhatsApp%20Image%202026-04-09%20at%2019.19.32%20(2).jpeg',
     icon: 'Hammer',
     category: 'particuliers'
   },
   {
     id: 'peinture',
-    title: 'Peinture & Décoration',
+    title: 'Travaux de peinture',
     description: 'Envie de changer d\'atmosphère ? La peinture est le moyen le plus efficace de transformer votre intérieur. Nous utilisons des **peintures premium, respectueuses de l\'environnement**, pour garantir un rendu impeccable, sans odeur et durable sur vos murs et plafonds.',
     pageId: 'peinture',
-    image: 'https://images.unsplash.com/photo-1634822929331-ee4dc2c97fc4?w=1600&q=80',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Travaux%20de%20peinture.png',
     icon: 'Palette',
     category: 'particuliers'
   },
@@ -86,7 +86,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Revêtements & Sols',
     description: 'Parquet massif, carrelage grand format ou sols souples techniques : le sol définit le style de vos pièces. Nous maîtrisons toutes les techniques de pose (collée, flottante, scellée) pour vous offrir un résultat à la fois **esthétique et résistant**.',
     pageId: 'revetements-sols',
-    image: 'https://images.unsplash.com/photo-1722603931789-aea8bd4f5d01?w=1600&q=80',
+    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Reve%CC%82tements%20%26%20Sols.JPG",
     icon: 'SquareStack',
     category: 'particuliers'
   },
@@ -122,7 +122,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Espace Verre',
     description: 'Verrières et installations en verre pour bureaux et locaux commerciaux.',
     pageId: 'espace-verre',
-    image: 'https://images.unsplash.com/photo-1672139664252-9e56a5c79ca6?w=1600&q=80',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Espace%20Verre.JPG',
     icon: 'Eye',
     category: 'particuliers'
   },
@@ -131,7 +131,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Terrasse Bois',
     description: 'Création et rénovation de terrasses en bois pour votre espace extérieur.',
     pageId: 'terrasse-bois',
-    image: 'https://images.unsplash.com/photo-1760067537956-a206c6181f56?w=1600&q=80',
+    image: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-10-13_at_12.53.51_1_mpbczz%20(1).jpg',
     icon: 'Trees',
     category: 'particuliers'
   },
@@ -140,7 +140,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Revêtements Muraux',
     description: 'Papiers peints, peintures et revêtements muraux modernes et durables.',
     pageId: 'revetements-muraux',
-    image: 'https://images.unsplash.com/photo-1758548157276-00c54fd4a9fa?w=1600&q=80',
+    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2009.jpeg",
     icon: 'Layers',
     category: 'particuliers'
   },
@@ -169,6 +169,15 @@ export const servicesCarouselConfig: ServiceItem[] = [
     pageId: 'electricite',
     image: 'https://images.unsplash.com/photo-1660330589827-da8ab7dd3c02?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3132',
     icon: 'Zap',
+    category: 'particuliers'
+  },
+  {
+    id: 'toiture',
+    title: 'Travaux de toiture',
+    description: 'Rénovation complète de toiture : couverture, zinguerie, isolation et charpente pour protéger durablement votre habitat.',
+    pageId: 'toiture',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Travaux%20de%20toiture.png',
+    icon: 'Home',
     category: 'particuliers'
   },
 ];

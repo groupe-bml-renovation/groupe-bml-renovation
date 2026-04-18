@@ -16,7 +16,7 @@ export const heroConfigs = {
   grenoble: {
     videoUrl: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-h264.mp4",
     videoUrlH265: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-h265.mp4",
-    posterUrl: "/hero-poster.webp",
+    posterUrl: "/assets/remote/76dce47b62364d7a161403f7bffa3d02-poster.jpg",
     badgeText: "Besoin d'un interlocuteur unique pour vos travaux ?",
     mainHeadlinePrefix: "Rénovation Maison",
     mainHeadlineLineBreak: "et Appartement",

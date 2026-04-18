@@ -11,14 +11,14 @@ import { createClient } from '@supabase/supabase-js';
 export interface ConsultationFormData {
   workType: string;
   budget?: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
   email: string;
   phone: string;
   address: string;
   postalCode?: string;
-  city?: string;
-  projectDescription: string;
+  projectDescription?: string;
   appointmentDate?: string;
   calendlyEventUri?: string;
   calendlyScheduledTime?: string;
@@ -38,11 +38,9 @@ function validateConsultationData(data: ConsultationFormData): string | null {
   const workTypeError = validateRequired(data.workType, 'Type de travaux');
   if (workTypeError) return workTypeError;
 
-  const firstNameError = validateRequired(data.firstName, 'Prénom');
-  if (firstNameError) return firstNameError;
-
-  const lastNameError = validateRequired(data.lastName, 'Nom');
-  if (lastNameError) return lastNameError;
+  if (!data.fullName && (!data.firstName || !data.lastName)) {
+    return 'Le nom complet est requis';
+  }
 
   const emailError = validateRequired(data.email, 'Email');
   if (emailError) return emailError;
@@ -56,9 +54,6 @@ function validateConsultationData(data: ConsultationFormData): string | null {
 
   const addressError = validateRequired(data.address, 'Adresse');
   if (addressError) return addressError;
-
-  const descriptionError = validateRequired(data.projectDescription, 'Description du projet');
-  if (descriptionError) return descriptionError;
 
   return null;
 }
@@ -87,14 +82,14 @@ export async function submitConsultation(
       id: consultationId,
       workType: data.workType,
       budget: data.budget,
-      firstName: data.firstName,
-      lastName: data.lastName,
+      firstName: data.firstName || data.fullName?.split(' ')[0],
+      lastName: data.lastName || data.fullName?.split(' ').slice(1).join(' '),
+      fullName: data.fullName,
       email: data.email,
       phone: data.phone,
       address: data.address,
       postalCode: data.postalCode,
-      city: data.city,
-      projectDescription: data.projectDescription,
+      projectDescription: data.projectDescription || '',
       appointmentDate: data.appointmentDate,
       civilite: data.civilite || '',
       submittedAt: now,
@@ -113,14 +108,14 @@ export async function submitConsultation(
             id: consultationId,
             work_type: data.workType,
             budget: data.budget || null,
-            first_name: data.firstName,
-            last_name: data.lastName,
+            first_name: data.firstName || data.fullName?.split(' ')[0] || null,
+            last_name: data.lastName || data.fullName?.split(' ').slice(1).join(' ') || null,
+            full_name: data.fullName || null,
             email: data.email,
             phone: data.phone,
             address: data.address,
             postal_code: data.postalCode || null,
-            city: data.city || null,
-            project_description: data.projectDescription,
+            project_description: data.projectDescription || null,
             civilite: data.civilite || null,
             created_at: now,
             updated_at: now,

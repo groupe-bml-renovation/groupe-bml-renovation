@@ -59,16 +59,16 @@ async function sendWebhook(payload: WebhookPayload): Promise<void> {
 
 export async function sendConsultationWebhook(data: {
   id?: string;
-  civilite: string;
+  civilite?: string;
   workType: string;
   budget?: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
   email: string;
   phone: string;
   address: string;
   postalCode?: string;
-  city?: string;
   projectDescription: string;
   appointmentDate?: string;
   submittedAt?: string;
@@ -77,16 +77,16 @@ export async function sendConsultationWebhook(data: {
     type: 'consultation_form',
     submissionId: data.id,
     submittedAt: data.submittedAt || new Date().toISOString(),
-    civilite: data.civilite,
+    civilite: data.civilite || null,
     workType: data.workType,
     budget: data.budget || null,
-    firstName: data.firstName,
-    lastName: data.lastName,
+    firstName: data.firstName || data.fullName?.split(' ')[0] || null,
+    lastName: data.lastName || data.fullName?.split(' ').slice(1).join(' ') || null,
+    fullName: data.fullName || `${data.firstName || ''} ${data.lastName || ''}`.trim() || null,
     email: data.email,
     phone: data.phone,
     address: data.address,
     postalCode: data.postalCode || null,
-    city: data.city || null,
     projectDescription: data.projectDescription,
     appointmentDate: data.appointmentDate || null,
   };

@@ -9,8 +9,8 @@ const services = [
   },
   {
     icon: PaintBucket,
-    title: 'Peinture & Décoration',
-    description: 'Travaux de peinture intérieure et extérieure, revêtements muraux et finitions décoratives.'
+    title: 'Travaux de peinture',
+    description: 'Travaux de peinture intérieure et extérieure, revêtements muraux et finitions décoratives d\'excellence.'
   },
   {
     icon: Wrench,

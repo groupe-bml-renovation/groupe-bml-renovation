@@ -12,7 +12,6 @@ export function Contact() {
     email: '',
     phone: '',
     subject: '',
-    budget: '',
     message: ''
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -28,14 +27,13 @@ export function Contact() {
       email: formData.email,
       phone: formData.phone,
       subject: formData.subject,
-      budget: formData.budget,
       message: formData.message,
       source: 'contact'
     });
 
     if (result.success) {
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', subject: '', budget: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       setTimeout(() => setStatus('idle'), 3000);
     } else {
       setStatus('error');
@@ -195,34 +193,15 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <Label htmlFor="budget" className="block mb-2 text-slate-700">
-                  Type de bien ? *
-                </Label>
-                <select
-                  id="budget"
-                  name="budget"
-                  required
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all"
-                >
-                  <option value="">Sélectionnez le type de bien</option>
-                  <option value="maison">Maison</option>
-                  <option value="appartement">Appartement</option>
-                  <option value="local-professionnel">Local professionnel / Bureaux</option>
-                  <option value="autre">Autre</option>
-                </select>
-              </div>
+
 
               <div className="mb-6">
                 <Label htmlFor="message" className="block mb-2 text-slate-700">
-                  Message *
+                  Message (Optionnel)
                 </Label>
                 <Textarea
                   id="message"
                   name="message"
-                  required
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Décrivez votre projet..."

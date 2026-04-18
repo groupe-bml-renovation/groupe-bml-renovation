@@ -30,14 +30,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       <div className={`flex flex-col gap-5 ${onClick ? 'cursor-pointer' : ''}`}>
         {/* Image with overlaid badges */}
-        <div className="relative h-64 md:h-72 rounded-[1.75rem] overflow-hidden shadow-sm group-hover:shadow-lg transition-shadow duration-500">
+        <div className="relative aspect-square rounded-[1.75rem] overflow-hidden shadow-sm group-hover:shadow-lg transition-shadow duration-500">
           <OptimizedImage
             src={image}
             alt={title}
-            className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+            className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out object-cover"
             priority={false}
             width={384}
-            height={288}
+            height={384}
           />
 
           {/* Subtle overlay on hover */}

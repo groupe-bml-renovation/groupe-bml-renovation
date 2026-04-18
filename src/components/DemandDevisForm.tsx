@@ -6,14 +6,10 @@ import { trackQuoteRequest } from '@/lib/analytics';
 
 export default function DemandDevisForm() {
   const [formData, setFormData] = useState({
-    civilite: '',
     workType: '',
-    budget: '',
-    firstName: '',
-    lastName: '',
+    fullName: '',
     address: '',
     postalCode: '',
-    city: '',
     phone: '',
     email: '',
     projectDescription: ''
@@ -35,38 +31,28 @@ export default function DemandDevisForm() {
 
     try {
       await sendConsultationWebhook({
-        civilite: formData.civilite,
         workType: formData.workType,
-        budget: formData.budget,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
+        fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
         address: formData.address,
         postalCode: formData.postalCode,
-        city: formData.city,
         projectDescription: formData.projectDescription,
         submittedAt: new Date().toISOString()
       });
 
       trackQuoteRequest({
         workType: formData.workType,
-        budget: formData.budget,
         email: formData.email,
-        firstName: formData.firstName,
-        lastName: formData.lastName
+        fullName: formData.fullName
       });
 
       setStatus('success');
       setFormData({
-        civilite: '',
         workType: '',
-        budget: '',
-        firstName: '',
-        lastName: '',
+        fullName: '',
         address: '',
         postalCode: '',
-        city: '',
         phone: '',
         email: '',
         projectDescription: ''
@@ -122,87 +108,19 @@ export default function DemandDevisForm() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Type de bien ? <span className="text-red-500">*</span>
+              Nom & Prénom <span className="text-red-500">*</span>
             </label>
-            <select
-              name="budget"
-              value={formData.budget}
+            <input
+              type="text"
+              name="fullName"
+              value={formData.fullName}
               onChange={handleChange}
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
+              placeholder="Votre nom et prénom"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
               required
-            >
-              <option value="">Sélectionnez le bien</option>
-              <option value="maison">Maison</option>
-              <option value="appartement">Appartement</option>
-              <option value="local-professionnel">Local pro / Bureaux</option>
-              <option value="autre">Autre</option>
-            </select>
+            />
           </div>
         </div>
-
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Civilité <span className="text-red-500">*</span>
-            </label>
-            <div className="flex gap-4 sm:gap-6">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="civilite"
-                  value="M"
-                  checked={formData.civilite === 'M'}
-                  onChange={handleChange}
-                  className="w-4 h-4 text-cyan-500 border-gray-300 focus:ring-cyan-500"
-                  required
-                />
-                <span className="text-sm sm:text-base text-gray-700">Monsieur</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="civilite"
-                  value="Mme"
-                  checked={formData.civilite === 'Mme'}
-                  onChange={handleChange}
-                  className="w-4 h-4 text-cyan-500 border-gray-300 focus:ring-cyan-500"
-                  required
-                />
-                <span className="text-sm sm:text-base text-gray-700">Madame</span>
-              </label>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Nom <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder="Votre nom"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Prénom <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                placeholder="Votre prénom"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
-                required
-              />
-            </div>
-          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -235,32 +153,17 @@ export default function DemandDevisForm() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Adresse <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Adresse complète du projet"
-              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Ville <span className="text-red-500">*</span>
+                Adresse <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                name="city"
-                value={formData.city}
+                name="address"
+                value={formData.address}
                 onChange={handleChange}
-                placeholder="Annecy"
+                placeholder="Adresse complète du projet"
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors text-sm"
                 required
               />
@@ -285,7 +188,7 @@ export default function DemandDevisForm() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Description de votre projet <span className="text-red-500">*</span>
+              Description de votre projet (Optionnel)
             </label>
             <textarea
               name="projectDescription"
@@ -294,7 +197,6 @@ export default function DemandDevisForm() {
               placeholder="Détails : surface, travaux, délais..."
               rows={2}
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 bg-white hover:border-gray-400 transition-colors resize-none text-sm"
-              required
             ></textarea>
           </div>
         </div>

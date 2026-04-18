@@ -149,7 +149,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1687995673177-053cfb879128?w=1920&q=80"
+            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/WhatsApp%20Image%202026-04-09%20at%2019.19.32%20(2).jpeg"
             alt="Atelier de menuiserie de précision"
             className="w-full h-full object-cover"
             priority={true}

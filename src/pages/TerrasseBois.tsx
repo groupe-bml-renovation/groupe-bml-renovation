@@ -177,7 +177,7 @@ const TerrasseBois: React.FC<TerrasseBoisProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1590059132718-568ebf39bfbc?w=1920&q=80"
+            src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-10-13_at_12.53.51_1_mpbczz%20(1).jpg"
             alt="Terrasse bois d'exception"
             className="w-full h-full object-cover"
             priority={true}

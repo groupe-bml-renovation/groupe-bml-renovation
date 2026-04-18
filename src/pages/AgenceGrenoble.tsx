@@ -28,7 +28,7 @@ const AgenceGrenoble: React.FC = () => {
 
     const renovationTypes = [
         ["Rénovation maison ancienne", "Rénovation appartement canut", "Maçonnerie & Gros œuvre", "Façade & Isolation", "Menuiseries extérieures"],
-        ["Aménagement de combles Lyon", "Cuisine haut de gamme", "Salle de bain sur mesure", "Peinture & Décoration", "Revêtements de sols"],
+        ["Aménagement de combles Lyon", "Cuisine haut de gamme", "Salle de bain sur mesure", "Travaux de peinture", "Revêtements de sols"],
         ["Devis travaux Grenoble", "Artisan maçon Isère", "Peintre en bâtiment 38", "Électricien professionnel", "Plombier chauffagiste"]
     ];
 

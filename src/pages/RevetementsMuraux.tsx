@@ -148,7 +148,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1758548157276-00c54fd4a9fa?w=1920&q=80"
+            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2003%20-%2009.jpeg"
             alt="Intérieur avec revêtement mural texturé"
             className="w-full h-full object-cover"
             priority={true}

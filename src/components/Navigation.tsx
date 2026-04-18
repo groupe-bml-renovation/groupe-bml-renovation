@@ -104,7 +104,7 @@ const Navigation: React.FC<NavigationProps> = ({
     setOpenDropdown(null);
     setMobileOpenDropdown(null);
 
-    if (['appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'plomberie', 'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'].includes(page)) {
+    if (['appartements', 'maisons-et-villas', 'boutiques-bureaux', 'salons', 'cuisines', 'chambres', 'salles-de-bain', 'salles-de-bain-pmr', 'amenagement', 'terrasse-bois', 'espace-verre', 'piscine', 'a-propos', 'blog', 'faq', 'realisations', 'contact', 'devenir-franchise', 'devenir-artisan-partenaire', 'peinture', 'toiture', 'plomberie', 'electricite', 'climatisation', 'chauffage', 'menuiserie', 'amiante', 'etapes-de-projet', 'revetements-sols', 'revetements-muraux', 'borne-electrique', 'financement'].includes(page)) {
       const prefix = isGrenoble ? '/grenoble' : '';
       navigate(`${prefix}/${page}`);
     } else if (page === 'home') {
@@ -150,6 +150,7 @@ const Navigation: React.FC<NavigationProps> = ({
     'Amiante',
     'Revêtements de sols',
     'Revêtements muraux',
+    'Travaux de toiture',
     'Installation de borne électrique'
   ];
 
@@ -325,6 +326,8 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('revetements-sols');
                       } else if (item === 'Revêtements muraux') {
                         handleNavigation('revetements-muraux');
+                      } else if (item === 'Travaux de toiture') {
+                        handleNavigation('toiture');
                       } else {
                         handleNavigation('services');
                       }
@@ -358,25 +361,7 @@ const Navigation: React.FC<NavigationProps> = ({
             Réalisations
           </button>
 
-          <button
-            onClick={() => handleNavigation('blog')}
-            className={`text-sm font-medium transition-colors ${currentPage === 'blog'
-              ? 'text-[#38bdf8]'
-              : 'text-gray-700 hover:text-[#38bdf8]'
-              }`}
-          >
-            Blog
-          </button>
 
-          <button
-            onClick={() => handleNavigation('faq')}
-            className={`text-sm font-medium transition-colors ${currentPage === 'faq'
-              ? 'text-[#38bdf8]'
-              : 'text-gray-700 hover:text-[#38bdf8]'
-              }`}
-          >
-            FAQ
-          </button>
 
           <button
             onClick={() => handleNavigation('contact')}
@@ -599,6 +584,8 @@ const Navigation: React.FC<NavigationProps> = ({
                         handleNavigation('revetements-sols');
                       } else if (item === 'Revêtements muraux') {
                         handleNavigation('revetements-muraux');
+                      } else if (item === 'Travaux de toiture') {
+                        handleNavigation('toiture');
                       } else {
                         handleNavigation('services');
                       }
@@ -642,25 +629,7 @@ const Navigation: React.FC<NavigationProps> = ({
             À Propos
           </button>
 
-          <button
-            onClick={() => handleNavigation('blog')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'blog'
-              ? 'text-[#38bdf8] font-medium'
-              : 'text-slate-600 hover:text-slate-800'
-              }`}
-          >
-            Blog
-          </button>
 
-          <button
-            onClick={() => handleNavigation('faq')}
-            className={`block w-full text-left transition-colors py-2 ${currentPage === 'faq'
-              ? 'text-[#38bdf8] font-medium'
-              : 'text-slate-600 hover:text-slate-800'
-              }`}
-          >
-            FAQ
-          </button>
 
           <button
             onClick={() => handleNavigation('contact')}

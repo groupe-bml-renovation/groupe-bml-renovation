@@ -28,6 +28,7 @@ const Piscine = lazy(() => import('./pages/Piscine'));
 const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
 const DevenirArtisanPartenairePage = lazy(() => import('./pages/DevenirArtisanPartenaire'));
 const Peinture = lazy(() => import('./pages/Peinture'));
+const Toiture = lazy(() => import('./pages/Toiture'));
 const EtapesProjet = lazy(() => import('./components/EtapesProjet'));
 const Navigation = lazy(() => import('./components/Navigation'));
 const StickyDemandeCTA = lazy(() => import('./components/StickyDemandeCTA'));
@@ -51,6 +52,7 @@ const ProjetRenovationBureau = lazy(() => import('./pages/ProjetRenovationBureau
 const ProjetRenovationSalleDeBain = lazy(() => import('./pages/ProjetRenovationSalleDeBain'));
 const RenovationSejour = lazy(() => import('./pages/RenovationSejour'));
 const Realisations = lazy(() => import('./pages/Realisations'));
+const ProjetTerrasseExterieure = lazy(() => import('./pages/ProjetTerrasseExterieure'));
 const Amenagement = lazy(() => import('./pages/Amenagement'));
 
 import { initPhoneTracking } from './lib/phone-tracking';
@@ -132,6 +134,7 @@ const AppRouter = () => {
         <Route path="/climatisation" element={<PageLayout><Climatisation onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/menuiserie" element={<PageLayout><Menuiserie onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/amiante" element={<PageLayout><Amiante onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+        <Route path="/toiture" element={<PageLayout currentPageName="toiture"><Toiture onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
@@ -147,6 +150,7 @@ const AppRouter = () => {
         <Route path="/projet-renovation-sejour" element={<PageLayout currentPageName="projet-renovation-sejour"><ProjetRenovationSejour /></PageLayout>} />
         <Route path="/projet-renovation-bureau" element={<PageLayout currentPageName="projet-renovation-bureau"><ProjetRenovationBureau /></PageLayout>} />
         <Route path="/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
+        <Route path="/projet-terrasse-exterieure" element={<PageLayout currentPageName="projet-terrasse-exterieure"><ProjetTerrasseExterieure /></PageLayout>} />
         <Route path="/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
 
         <Route path="/grenoble" element={<App />} />
@@ -177,6 +181,7 @@ const AppRouter = () => {
         <Route path="/grenoble/climatisation" element={<PageLayout><Climatisation onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/menuiserie" element={<PageLayout><Menuiserie onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/amiante" element={<PageLayout><Amiante onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+        <Route path="/grenoble/toiture" element={<PageLayout currentPageName="toiture"><Toiture onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/borne-electrique" element={<PageLayout currentPageName="borne-electrique"><BorneElectrique onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/etapes-de-projet" element={<PageLayout><EtapesProjet onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/revetements-sols" element={<PageLayout><RevetementsSols onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
@@ -192,6 +197,7 @@ const AppRouter = () => {
         <Route path="/grenoble/projet-renovation-sejour" element={<PageLayout currentPageName="projet-renovation-sejour"><ProjetRenovationSejour /></PageLayout>} />
         <Route path="/grenoble/projet-renovation-bureau" element={<PageLayout currentPageName="projet-renovation-bureau"><ProjetRenovationBureau /></PageLayout>} />
         <Route path="/grenoble/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
+        <Route path="/grenoble/projet-terrasse-exterieure" element={<PageLayout currentPageName="projet-terrasse-exterieure"><ProjetTerrasseExterieure /></PageLayout>} />
         <Route path="/grenoble/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
 
         <Route path="*" element={<NotFound />} />

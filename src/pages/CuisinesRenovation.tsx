@@ -160,7 +160,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1556911223-e1530286862d?w=1200&q=80"
+            src="/assets/remote/a86eb69490834e9fc9e90bacee5a818d.jpg"
             alt="Cuisine moderne and lumineuse"
             className="w-full h-full object-cover"
             priority={true}

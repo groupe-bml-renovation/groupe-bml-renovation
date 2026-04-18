@@ -149,7 +149,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? 'Peinture Grenoble | Peintre en Bâtiment | Rénovation Maison | Groupe BML' : 'Rénovation Maison Peinture | Peintre en Bâtiment | Travaux de Rénovation | Groupe BML'}</title>
+        <title>{isGrenoble ? 'Travaux de peinture Grenoble | Peintre en Bâtiment | Rénovation Maison | Groupe BML' : 'Travaux de peinture | Peintre en Bâtiment | Travaux de Rénovation | Groupe BML'}</title>
         <meta name="description" content={isGrenoble ? "Travaux de peinture à Grenoble et région. Peintre en bâtiment professionnel, peintures intérieure et extérieure, ravalement de façade, devis gratuit. Spécialiste rénovation maison Grenoble." : "Rénovation maison avec travaux de peinture intérieure et extérieure. Peintre en bâtiment professionnel, peintures écologiques, ravalement de façade. Entreprise de rénovation, devis gratuit."} />
         <meta name="keywords" content={isGrenoble ? "peinture Grenoble, peintre Grenoble, travaux peinture Grenoble, rénovation Grenoble, rénovation maison Grenoble, peintre en bâtiment Grenoble, travaux rénovation Grenoble, peinture intérieure Grenoble, peinture extérieure Grenoble, ravalement façade Grenoble, devis peinture Grenoble" : "rénovation maison, renovation maison, rénover une maison, rénovation, rénovations, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de rénovation maison, entreprise de rénovation, travaux maison, rénovation maison complète, rénovation maison ancienne, coût rénovation maison, prix rénovation maison, rénovation intérieure, rénovation extérieure, travaux de peinture bâtiment, artisan rénovation maison, entreprise bâtiment rénovation"} />
         <meta property="og:title" content={isGrenoble ? "Peinture Grenoble | Peintre en Bâtiment | Rénovation Maison" : "Rénovation Maison Peinture | Peintre en Bâtiment | Groupe BML"} />
@@ -211,7 +211,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1634822929331-ee4dc2c97fc4?w=1600&q=80"
+            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Travaux%20de%20peinture.png"
             alt="Travaux de Peinture"
             className="w-full h-full object-cover"
             priority={true}
@@ -337,7 +337,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
               className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
             >
               <OptimizedImage
-                src="https://images.unsplash.com/photo-1678762200388-51e11225d4de?w=1200&q=80"
+                src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Travaux%20de%20peinture.png"
                 alt="Travaux de Peinture"
                 className="w-full h-full object-cover"
                 loading="eager"

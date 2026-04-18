@@ -20,6 +20,7 @@ const Piscine = lazy(() => import('./pages/Piscine'));
 const MaisonsVillas = lazy(() => import('./pages/MaisonsVillas'));
 const Menuiserie = lazy(() => import('./pages/Menuiserie'));
 const Peinture = lazy(() => import('./pages/Peinture'));
+const Toiture = lazy(() => import('./pages/Toiture'));
 const Amiante = lazy(() => import('./pages/Amiante'));
 const BorneElectrique = lazy(() => import('./pages/BorneElectrique'));
 const SallesDeBainPMR = lazy(() => import('./pages/SallesDeBainPMR'));
@@ -44,6 +45,7 @@ const ConditionsUtilisation = lazy(() => import('./pages/ConditionsUtilisation')
 const MentionsLegales = lazy(() => import('./pages/MentionsLegales'));
 const ForumConverter = lazy(() => import('./pages/ForumConverter'));
 const DevenirFranchisePage = lazy(() => import('./pages/DevenirFranchise'));
+const ProjetTerrasseExterieure = lazy(() => import('./pages/ProjetTerrasseExterieure'));
 
 import PageLoader from './components/PageLoader';
 import ArchitectPartnershipSection from './components/ArchitectPartnershipSection';
@@ -177,6 +179,14 @@ function App() {
       return (
         <Suspense fallback={<PageLoader />}>
           <Amiante onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
+        </Suspense>
+      );
+    }
+
+    if (currentPage === 'toiture') {
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <Toiture onBack={() => handleNavigate('home')} onNavigate={(p: string) => handleNavigate(p)} />
         </Suspense>
       );
     }
@@ -414,6 +424,14 @@ function App() {
       );
     }
 
+    if (currentPage === 'projet-terrasse-exterieure') {
+      return (
+        <Suspense fallback={<PageLoader />}>
+          <ProjetTerrasseExterieure />
+        </Suspense>
+      );
+    }
+
     const selectedSectionsConfig = isGrenoble ? renovationSectionsConfigGrenoble : renovationSectionsConfig;
     const selectedHeroConfig = isGrenoble ? heroConfigs.grenoble : heroConfigs.bmlRenovation;
     const canonicalUrl = isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble' : 'https://groupe-bml-renovation.fr/';
@@ -438,6 +456,18 @@ function App() {
             <link rel="canonical" href={canonicalUrl} />
             <meta name="language" content="fr" />
             <meta name="geo.region" content={geoRegion} />
+            
+            {/* Speed Optimizations: Preconnect to external asset domains */}
+            <link rel="preconnect" href="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev" />
+            <link rel="preconnect" href="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev" />
+            <link rel="preconnect" href="https://images.pexels.com" />
+            
+            {/* Speed Optimizations: Preload LCP assets */}
+            <link rel="preload" as="image" href={selectedHeroConfig.posterUrl} />
+            {selectedHeroConfig.videoUrl && (
+              <link rel="preload" as="video" href={selectedHeroConfig.videoUrl} type="video/mp4" />
+            )}
+            
             {!isGrenoble && globalSeoSchemas && (
               <>
                 <script type="application/ld+json">
@@ -486,6 +516,14 @@ function App() {
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
           <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
           <NotreSecteur />
+          <ServicesTabbedCarousel
+            onNavigate={handleNavigate}
+            headerText="NOS SERVICES"
+            title="Quels types de travaux recherchez-vous ?"
+            description="Explorez nos services adaptés à vos besoins spécifiques"
+            showTabs={true}
+            isGrenoble={isGrenoble}
+          />
           <ProjectStepsSection onNavigate={handleNavigate} />
           <ProjectsCarousel onNavigate={handleNavigate} />
           <RenovationArchitectureSection content={selectedSectionsConfig[4]} />

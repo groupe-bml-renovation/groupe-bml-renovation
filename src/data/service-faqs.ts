@@ -415,3 +415,31 @@ export const menuiserieFAQs = [
     answer: "Oui, nos ouvrages sont livrés totalement finis. Nous disposons d'une cabine de finition for l'application de laqués, de vernis polyuréthanes or d'huiles naturelles, selon le rendu souhaité (mat, satiné or brillant)."
   }
 ];
+
+export const toitureFAQs = [
+  {
+    id: "to1",
+    question: "Quelle est la durée de vie d'une toiture ?",
+    answer: "La longévité dépend du matériau : l'ardoise peut durer plus de 100 ans, la tuile terre cuite entre 50 et 80 ans, alors que le zinc offre une excellente résistance à la corrosion pour environ 80 ans. Un entretien régulier permet de prolonger significativement ces durées."
+  },
+  {
+    id: "to2",
+    question: "Comment savoir s'il faut refaire sa toiture ou juste la réparer ?",
+    answer: "Un diagnostic visuel permet d'identifier les tuiles cassées ou poreuses, les traces d'humidité dans les combles ou les déformations de la charpente. Si les réparations ponctuelles deviennent trop fréquentes ou si l'étanchéité globale est compromise, une rénovation complète est préférable."
+  },
+  {
+    id: "to3",
+    question: "Réalisez-vous l'isolation des combles par l'extérieur (Sarking) ?",
+    answer: "Oui, c'est la solution la plus performante. Elle consiste à poser l'isolant sur les chevrons, sous la couverture. Cela supprime tous les ponts thermiques, protège la charpente et permet de conserver tout le volume intérieur de vos combles."
+  },
+  {
+    id: "to4",
+    question: "Quelles sont les obligations en cas de rénovation de toiture ?",
+    answer: "Une déclaration préalable de travaux en mairie est obligatoire dès lors que l'aspect extérieur est modifié (changement de matériau, de couleur ou ajout de fenêtres de toit). Nous vous accompagnons dans la constitution du dossier administratif."
+  },
+  {
+    id: "to5",
+    question: "Gérez-vous également la zinguerie et les gouttières ?",
+    answer: "Absolument. Une toiture performante repose sur une évacuation efficace des eaux pluviales. Nous maîtrisons la pose de chenaux, de gouttières et de descentes en zinc, cuivre ou aluminium, ainsi que l'étanchéité des souches de cheminée."
+  }
+];

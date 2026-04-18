@@ -161,7 +161,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1920&q=80"
+            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/SDB%20PMR%2001.png"
             alt="Salle de bain moderne and raffinée"
             className="w-full h-full object-cover"
             priority={true}

@@ -149,7 +149,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1920&q=80"
+            src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/a4a23d2a-e60e-48a4-aceb-a8996afb580c_htgckp%20(1).jpg"
             alt="Piscine de prestige réalisation BML"
             className="w-full h-full object-cover"
             priority={true}

@@ -84,16 +84,7 @@ export const featuredProjects: Project[] = [
     image: "https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-09-30_at_22.00.36_g9akl6%20(1).jpg",
     budget: "7 300€",
     duration: "2 semaines",
-    description: "Installation électrique complète avec mise aux normes NF, borne de recharge électrique et système d'éclairage LED moderne et certifié Consuel."
-  },
-  {
-    id: 5,
-    title: "Rénovation énergétique appartement T5",
-    category: "Isolation et Chauffage",
-    image: "/assets/remote/89df86769b6c800c14093ed74c0bc067.jpg",
-    budget: "36 000€",
-    duration: "5 semaines",
-    description: "Rénovation énergétique avec isolation des murs, combles et extérieur, matériaux écologiques pour réaliser des économies d'énergie significatives."
+    description: "Installation électrique complète with mise aux normes NF, borne de recharge électrique et système d'éclairage LED moderne et certifié Consuel."
   },
   {
     id: 6,
@@ -141,14 +132,24 @@ export const featuredProjects: Project[] = [
     description: "Transformation complète d'une salle de bain avec modernisation, aménagement optimisé et finitions premium",
     route: "/projet-renovation-salle-de-bain"
   },
+  {
+    id: 17,
+    title: "Rénovation de terrasses extérieure",
+    category: "Aménagement Extérieur",
+    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2010%20-%2001.JPG",
+    budget: "6 250€",
+    duration: "15 jour",
+    description: "Rénovation complète de terrasse extérieure avec des matériaux durables et une finition premium.",
+    route: "/projet-terrasse-exterieure"
+  },
 ];
 
 export const featuredProjects_sorted = [
-  featuredProjects[3],
   featuredProjects[1],
   featuredProjects[0],
   featuredProjects[2],
+  featuredProjects[3],
   featuredProjects[13],
-  ...featuredProjects.slice(4, 13),
-  ...featuredProjects.slice(14)
+  featuredProjects[12],
+  ...featuredProjects.slice(4, 12)
 ];

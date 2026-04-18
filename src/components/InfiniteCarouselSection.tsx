@@ -35,8 +35,8 @@ const defaultCards: CarouselCard[] = [
   {
     id: 'peinture',
     image: 'https://images.pexels.com/photos/3587620/pexels-photo-3587620.jpeg?w=600&h=400&fit=crop',
-    title: 'Peinture & Décoration',
-    description: 'Services de peinture certifiée professionnels.\nDonnez vie à vos murs avec excellence reconnue.',
+    title: 'Travaux de peinture',
+    description: 'Services de peinture certifiée professionnels.\nDonnez vie à vos murs avec une excellence reconnue.',
     buttonText: 'Découvrir',
     buttonAction: () => {}
   },

@@ -37,7 +37,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       className="flex-shrink-0 w-80 md:w-96 cursor-pointer group snap-start bg-transparent"
       data-service-card
     >
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5">
         <div className="relative h-80 md:h-[380px] rounded-[2rem] overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
           <OptimizedImage
             src={image}
@@ -54,12 +54,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           </div>
         </div>
 
-        <div className="px-2 space-y-3">
-          <h3 className="text-2xl md:text-3xl font-bold text-[#0f172a] leading-tight group-hover:text-[#38bdf8] transition-colors duration-300">
+        <div className="px-1 space-y-2">
+          <h3 className="text-xl md:text-2xl font-bold text-[#0f172a] leading-tight group-hover:text-[#38bdf8] transition-colors duration-300 line-clamp-2">
             {title}
           </h3>
 
-          <p className="text-slate-600 text-sm md:text-base leading-relaxed line-clamp-3">
+          <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
             {renderDescription(description)}
           </p>
 
