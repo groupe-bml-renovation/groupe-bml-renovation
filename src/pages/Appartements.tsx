@@ -171,7 +171,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
-            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Re%CC%81novation%20d'Appartement.png"
+            src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Reve%CC%82tements%20%26%20Sols.JPG"
             alt="Intérieur d'appartement magnifiquement rénové"
             className="w-full h-full object-cover"
             priority={true}

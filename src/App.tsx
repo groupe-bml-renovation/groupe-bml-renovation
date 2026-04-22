@@ -526,7 +526,9 @@ function App() {
           />
           <ProjectStepsSection onNavigate={handleNavigate} />
           <ProjectsCarousel onNavigate={handleNavigate} />
-          <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
+          <div className="pt-4 md:pt-6">
+            <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
+          </div>
           <SocialProofBannerGrenoble />
           <GoogleReviews />
           <UnifiedContactForm />

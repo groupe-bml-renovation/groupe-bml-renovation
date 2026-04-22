@@ -23,7 +23,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Rénovation d\'Appartement',
     description: 'Une cuisine trop étroite, une chambre partagée entre ados, des pièces à réinventer ? Il est temps d\'oser la transformation. Votre expert **Groupe BML Rénovation** vous accompagne pour **rénover, réagencer ou remettre aux normes votre appartement**, en toute sérénité. À la clé : un lieu de vie lumineux, fonctionnel, adapté à votre quotidien.',
     pageId: 'appartements',
-    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Re%CC%81novation%20d'Appartement.png",
+    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Reve%CC%82tements%20%26%20Sols.JPG",
     icon: 'Building2',
     category: 'particuliers'
   },
@@ -55,15 +55,6 @@ export const servicesCarouselConfig: ServiceItem[] = [
     category: 'particuliers'
   },
   {
-    id: 'menuiserie',
-    title: 'Menuiserie et Portes',
-    description: 'Une porte qui grince, des fenêtres mal isolées ou un besoin de rangements sur mesure ? Votre confort thermique et acoustique passe par une menuiserie de qualité. Nos experts vous guident dans le choix des **matériaux isolants (bois, PVC, aluminium)** et réalisent une pose soignée pour valoriser votre habitat.',
-    pageId: 'menuiserie',
-    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/WhatsApp%20Image%202026-04-09%20at%2019.19.32%20(2).jpeg',
-    icon: 'Hammer',
-    category: 'particuliers'
-  },
-  {
     id: 'peinture',
     title: 'Travaux de peinture',
     description: 'Envie de changer d\'atmosphère ? La peinture est le moyen le plus efficace de transformer votre intérieur. Nous utilisons des **peintures premium, respectueuses de l\'environnement**, pour garantir un rendu impeccable, sans odeur et durable sur vos murs et plafonds.',
@@ -86,7 +77,7 @@ export const servicesCarouselConfig: ServiceItem[] = [
     title: 'Revêtements & Sols',
     description: 'Parquet massif, carrelage grand format ou sols souples techniques : le sol définit le style de vos pièces. Nous maîtrisons toutes les techniques de pose (collée, flottante, scellée) pour vous offrir un résultat à la fois **esthétique et résistant**.',
     pageId: 'revetements-sols',
-    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Reve%CC%82tements%20%26%20Sols.JPG",
+    image: "https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Re%CC%81novation%20d'Appartement.png",
     icon: 'SquareStack',
     category: 'particuliers'
   },
@@ -109,24 +100,6 @@ export const servicesCarouselConfig: ServiceItem[] = [
     category: 'professionnels'
   },
   {
-    id: 'borne-electrique',
-    title: 'Borne Électrique',
-    description: 'Installation de bornes de recharge pour véhicules électriques.',
-    pageId: 'borne-electrique',
-    image: 'https://images.unsplash.com/photo-1600490819528-42405785433a?w=800&q=80',
-    icon: 'Zap',
-    category: 'particuliers'
-  },
-  {
-    id: 'espace-verre',
-    title: 'Espace Verre',
-    description: 'Verrières et installations en verre pour bureaux et locaux commerciaux.',
-    pageId: 'espace-verre',
-    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Espace%20Verre.JPG',
-    icon: 'Eye',
-    category: 'particuliers'
-  },
-  {
     id: 'terrasse-bois',
     title: 'Terrasse Bois',
     description: 'Création et rénovation de terrasses en bois pour votre espace extérieur.',
@@ -145,6 +118,15 @@ export const servicesCarouselConfig: ServiceItem[] = [
     category: 'particuliers'
   },
   {
+    id: 'borne-electrique',
+    title: 'Borne Électrique',
+    description: 'Installation de bornes de recharge pour véhicules électriques.',
+    pageId: 'borne-electrique',
+    image: 'https://images.unsplash.com/photo-1600490819528-42405785433a?w=800&q=80',
+    icon: 'Zap',
+    category: 'particuliers'
+  },
+  {
     id: 'climatisation',
     title: 'Climatisation',
     description: 'Systèmes de climatisation modernes pour votre confort optimal.',
@@ -160,6 +142,24 @@ export const servicesCarouselConfig: ServiceItem[] = [
     pageId: 'chauffage',
     image: 'https://images.unsplash.com/photo-1738168299283-4117c3dfb8ac?w=800&q=80',
     icon: 'Flame',
+    category: 'particuliers'
+  },
+  {
+    id: 'menuiserie',
+    title: 'Menuiserie et Portes',
+    description: 'Une porte qui grince, des fenêtres mal isolées ou un besoin de rangements sur mesure ? Votre confort thermique et acoustique passe par une menuiserie de qualité. Nos experts vous guident dans le choix des **matériaux isolants (bois, PVC, aluminium)** et réalisent une pose soignée pour valoriser votre habitat.',
+    pageId: 'menuiserie',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/WhatsApp%20Image%202026-04-09%20at%2019.19.32%20(2).jpeg',
+    icon: 'Hammer',
+    category: 'particuliers'
+  },
+  {
+    id: 'espace-verre',
+    title: 'Espace Verre',
+    description: 'Verrières et installations en verre pour bureaux et locaux commerciaux.',
+    pageId: 'espace-verre',
+    image: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Espace%20Verre.JPG',
+    icon: 'Eye',
     category: 'particuliers'
   },
   {

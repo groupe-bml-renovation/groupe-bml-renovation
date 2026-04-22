@@ -205,8 +205,52 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
     }, 100);
   };
 
+  // Intersection Observer for visibility detection
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+
+    if (isInView && !isUserScrolling && !isAnimating) {
+      intervalId = setInterval(() => {
+        if (canScrollRight) {
+          scroll('right');
+        } else {
+          if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          }
+        }
+      }, 8000);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [isInView, canScrollRight, isUserScrolling, isAnimating]);
+
   return (
-    <section className="w-full pt-8 md:pt-12 pb-8 md:pb-10 bg-white overflow-hidden">
+    <section ref={sectionRef} className="w-full pt-8 md:pt-12 pb-8 md:pb-10 bg-white overflow-hidden">
       <div className="mb-6">
         <div className="text-center mb-8 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <span className="text-[#38bdf8] text-sm font-semibold uppercase tracking-wide">
@@ -276,8 +320,8 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
               } ${isMobile ? '-left-2 md:left-0' : 'left-0'}`}
               style={{ touchAction: 'manipulation' }}
               aria-label="Services précédents"
-              whileHover={canScrollLeft && !isAnimating ? { scale: 1.1 } : {}}
-              whileTap={canScrollLeft && !isAnimating ? { scale: 0.95 } : {}}
+              whileHover={{}}
+              whileTap={{}}
             >
               <motion.div
                 animate={{ x: canScrollLeft && !isAnimating ? 0 : 2 }}
@@ -346,8 +390,8 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
               } ${isMobile ? '-right-2 md:right-0' : 'right-0'}`}
               style={{ touchAction: 'manipulation' }}
               aria-label="Services suivants"
-              whileHover={canScrollRight && !isAnimating ? { scale: 1.1 } : {}}
-              whileTap={canScrollRight && !isAnimating ? { scale: 0.95 } : {}}
+              whileHover={{}}
+              whileTap={{}}
             >
               <motion.div
                 animate={{ x: canScrollRight && !isAnimating ? 0 : -2 }}

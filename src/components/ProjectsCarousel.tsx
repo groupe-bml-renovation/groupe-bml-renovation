@@ -166,6 +166,50 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
     setIsUserScrolling(false);
   };
 
+  // Intersection Observer for visibility detection
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-scroll logic
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+
+    if (isInView && !isUserScrolling) {
+      intervalId = setInterval(() => {
+        if (canScrollRight) {
+          scroll('right');
+        } else {
+          if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          }
+        }
+      }, 8000);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [isInView, canScrollRight, isUserScrolling]);
+
   const handleProjectClick = (project: typeof featuredProjects_sorted[0]) => {
     if (project.route && !isUserScrolling) {
       navigate(project.route);
@@ -173,7 +217,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
   };
 
   return (
-    <section className="w-full pt-16 md:pt-8 pb-8 md:pb-12 bg-white overflow-hidden">
+    <section ref={sectionRef} className="w-full pt-16 md:pt-8 pb-8 md:pb-12 bg-white overflow-hidden">
       <div className="mb-12">
         <div className="text-center mb-12 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <span className="text-[#38bdf8] text-sm font-semibold uppercase tracking-wide">

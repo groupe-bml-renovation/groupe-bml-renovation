@@ -69,7 +69,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative flex flex-col w-full bg-white font-sans">
       {/* 1. Top Area: Image/Video Banner (Matches illiCO proportion perfectly) */}
-      <div className="relative w-full h-[45vh] lg:h-[480px] bg-slate-900 border-b-[6px] border-[#38bdf8] overflow-hidden">
+      <div className="relative w-full h-[45vh] lg:h-[520px] bg-slate-900 border-b-[6px] border-[#38bdf8] overflow-hidden">
         {posterUrl && (
           <OptimizedImage
             src={posterUrl}
@@ -167,7 +167,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* 2. White Section Below Banner (Matches the layout structure exactly) */}
       <div className="relative bg-white w-full border-b border-gray-200 z-30 pb-4 lg:pb-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-4 lg:pt-6 lg:pb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-4 lg:pt-10 lg:pb-4">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
 
             <div className="flex flex-row lg:flex-col items-start lg:items-center lg:w-[160px] shrink-0 -mt-[20px] sm:-mt-[35px] lg:-mt-[110px] relative z-40 gap-4 lg:gap-0">
