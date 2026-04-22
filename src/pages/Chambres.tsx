@@ -148,7 +148,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation",
             "description": isGrenoble ? "Expert en rénovation de chambres à Grenoble" : "Entreprise spécialisée en rénovation de suites parentales",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

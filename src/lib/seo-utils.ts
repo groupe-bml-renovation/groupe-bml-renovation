@@ -1,8 +1,8 @@
 export const SITE_CONFIG = {
-  domain: 'groupe-bml-renovation.fr',
+  domain: 'groupe-bml-renovation.com',
   businessName: 'Groupe BML Rénovation',
   phone: '+33123456789',
-  email: 'contact@groupe-bml-renovation.fr',
+  email: 'contact@groupe-bml-renovation.com',
   address: {
     streetAddress: 'Adresse à définir',
     addressLocality: 'Paris',

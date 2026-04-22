@@ -113,7 +113,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Franchise Rénovation Maison | BML Rénovation" />
         <meta name="twitter:description" content="Devenir franchisé en rénovation maison - Travaux de rénovation intérieure, extérieure, peinture bâtiment et maison ancienne." />
-        <link rel="canonical" href="https://groupe-bml-renovation.fr/devenir-franchise" />
+        <link rel="canonical" href="https://groupe-bml-renovation.com/devenir-franchise" />
         <meta name="language" content="fr" />
         <meta name="geo.region" content="FR" />
         <script type="application/ld+json">
@@ -123,9 +123,9 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
             "name": "BML Rénovation Franchise",
             "description": "Franchise spécialisée en rénovation maison complète, travaux de rénovation intérieure et extérieure, peinture bâtiment",
             "image": "https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251206_1902_E%CC%81quipe%20Pre%CC%82te%20a%CC%80%20Aider_simple_compose_01kbtd5xrvfwns9taht56aya0q.png",
-            "url": "https://groupe-bml-renovation.fr/devenir-franchise",
+            "url": "https://groupe-bml-renovation.com/devenir-franchise",
             "sameAs": [
-              "https://groupe-bml-renovation.fr"
+              "https://groupe-bml-renovation.com"
             ],
             "contactPoint": {
               "@type": "ContactPoint",
@@ -145,7 +145,7 @@ const DevenirFranchisePage: React.FC<DevenirFranchisePageProps> = ({ onBack, onN
             "name": "BML Rénovation Franchise",
             "image": "https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/20251206_1902_E%CC%81quipe%20Pre%CC%82te%20a%CC%80%20Aider_simple_compose_01kbtd5xrvfwns9taht56aya0q.png",
             "description": "Franchise en rénovation maison - Entreprise de rénovation spécialisée en travaux de rénovation complète, peinture bâtiment, rénovation intérieure et extérieure",
-            "url": "https://groupe-bml-renovation.fr/devenir-franchise",
+            "url": "https://groupe-bml-renovation.com/devenir-franchise",
             "telephone": "+33",
             "priceRange": "€€",
             "areaServed": {

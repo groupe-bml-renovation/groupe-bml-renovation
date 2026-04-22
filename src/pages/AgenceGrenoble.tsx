@@ -38,7 +38,7 @@ const AgenceGrenoble: React.FC = () => {
                 <Helmet>
                     <title>Groupe BML Rénovation Grenoble | Entreprise de Travaux Isère</title>
                     <meta name="description" content="Découvrez notre agence de rénovation à Grenoble. Groupe BML vous accompagne dans tous vos projets : maison, appartement, extension. Devis sous 24h." />
-                    <link rel="canonical" href="https://groupe-bml-renovation.fr/agence-grenoble" />
+                    <link rel="canonical" href="https://groupe-bml-renovation.com/agence-grenoble" />
                 </Helmet>
 
                 {/* Sub-header / Breadcrumb like Illico */}

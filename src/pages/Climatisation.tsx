@@ -127,7 +127,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Climatisation",
             "description": isGrenoble ? "Expert climaticien à Grenoble" : "Spécialiste en génie climatique et confort thermique haut de gamme",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

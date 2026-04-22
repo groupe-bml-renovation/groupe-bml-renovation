@@ -434,7 +434,7 @@ function App() {
 
     const selectedSectionsConfig = isGrenoble ? renovationSectionsConfigGrenoble : renovationSectionsConfig;
     const selectedHeroConfig = isGrenoble ? heroConfigs.grenoble : heroConfigs.bmlRenovation;
-    const canonicalUrl = isGrenoble ? 'https://groupe-bml-renovation.fr/grenoble' : 'https://groupe-bml-renovation.fr/';
+    const canonicalUrl = isGrenoble ? 'https://groupe-bml-renovation.com/grenoble' : 'https://groupe-bml-renovation.com/';
     const geoRegion = isGrenoble ? 'FR-38' : 'FR';
 
     const globalSeoSchemas = !isGrenoble ? generateGlobalSeoSchemas() : null;

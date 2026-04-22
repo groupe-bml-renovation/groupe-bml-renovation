@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import DemandDevisForm from './DemandDevisForm';
 import ImageModal from './ImageModal';
+import { OptimizedImage } from './OptimizedImage';
 
 const certifications = [
   { name: 'RGE', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Certifications%20logos%2014.png', desc: 'Qualité RGE' },
@@ -233,7 +234,7 @@ export default function UnifiedContactForm() {
                   onClick={() => openModal(cert.logoUrl, cert.name)}
                   className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group"
                 >
-                  <img 
+                  <OptimizedImage 
                     src={cert.logoUrl} 
                     alt={cert.name} 
                     className="h-10 md:h-12 w-auto mb-3 object-contain transition-transform duration-300 group-hover:scale-110" 
@@ -271,7 +272,7 @@ export default function UnifiedContactForm() {
                   onClick={() => openModal(partner.logoUrl, partner.name)}
                   className="flex items-center justify-center p-2 hover:-translate-y-1 transition-all duration-300 cursor-pointer group h-20"
                 >
-                  <img 
+                  <OptimizedImage 
                     src={partner.logoUrl} 
                     alt={partner.name} 
                     className="h-8 sm:h-10 lg:h-12 max-w-[85%] w-auto object-contain transition-all duration-500 group-hover:scale-105" 

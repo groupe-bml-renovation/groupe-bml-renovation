@@ -172,7 +172,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             <div className="flex flex-row lg:flex-col items-start lg:items-center lg:w-[160px] shrink-0 -mt-[20px] sm:-mt-[35px] lg:-mt-[110px] relative z-40 gap-4 lg:gap-0">
               <div className="w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] lg:w-[140px] lg:h-[140px] rounded-full shadow-xl overflow-hidden bg-white lg:mb-4 border border-slate-200 p-1 lg:p-1.5 relative shrink-0">
-                <img src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" alt="BML Rénovation" className="w-full h-full object-cover rounded-full bg-slate-50 border border-slate-100" />
+                <OptimizedImage 
+                  src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" 
+                  alt="BML Rénovation" 
+                  className="w-full h-full object-cover rounded-full bg-slate-50 border border-slate-100" 
+                  priority={true}
+                />
               </div>
               <div className="flex flex-col items-start lg:items-center mt-[20px] sm:mt-[35px] lg:mt-0">
                 <h2 className="text-[16px] sm:text-[17px] font-black text-[#38bdf8] text-left lg:text-center mb-2 lg:mb-3 leading-tight tracking-wide">

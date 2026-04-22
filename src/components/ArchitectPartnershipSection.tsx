@@ -78,7 +78,7 @@ export const ArchitectPartnershipSection: React.FC<ArchitectPartnershipSectionPr
                 onClick={() => openModal('https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png', 'Espaces Alpins')}
                 className="w-14 h-14 flex items-center justify-center shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <img 
+                <OptimizedImage 
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png" 
                   alt="Espaces Alpins Logo" 
                   className="max-h-full max-w-full object-contain"
@@ -89,7 +89,7 @@ export const ArchitectPartnershipSection: React.FC<ArchitectPartnershipSectionPr
                 onClick={() => openModal('https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg', 'Architecte Espaces Alpins')}
                 className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#38bdf8]/20 shadow-sm shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <img 
+                <OptimizedImage 
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg" 
                   alt="Architecte Espaces Alpins" 
                   className="w-full h-full object-cover"

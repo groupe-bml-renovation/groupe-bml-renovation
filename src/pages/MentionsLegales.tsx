@@ -23,7 +23,7 @@ const MentionsLegales: React.FC<LegalNoticePageProps> = ({ onBack }) => {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Identification du Site et de l'Entreprise</h2>
             <p className="mb-4">
-              Le site web www.bml-renovation.fr (le "Site") est exploité par :
+              Le site web www.groupe-bml-renovation.com (le "Site") est exploité par :
             </p>
             <div className="p-4 bg-gray-50 rounded-lg space-y-2 text-sm">
               <p><strong>Raison Sociale :</strong> Groupe BML Rénovation tout corps d'état</p>

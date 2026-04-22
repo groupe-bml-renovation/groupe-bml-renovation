@@ -126,7 +126,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Amiante",
             "description": isGrenoble ? "Expert désamiantage certifié à Grenoble" : "Spécialiste en retrait d'amiante et gestion des risques sanitaires",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

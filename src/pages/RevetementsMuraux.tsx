@@ -126,7 +126,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Revêtements Muraux",
             "description": isGrenoble ? "Expert en décoration murale et papier peint à Grenoble" : "Spécialiste en revêtements muraux haut de gamme",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

@@ -126,7 +126,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Bornes Électriques",
             "description": isGrenoble ? "Installateur IRVE certifié à Grenoble" : "Spécialiste en infrastructures de recharge pour véhicules électriques",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

@@ -148,7 +148,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation",
             "description": isGrenoble ? "Expert en rénovation de salle de bain à Grenoble" : "Entreprise spécialisée en salles de bain de prestige",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

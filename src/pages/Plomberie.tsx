@@ -128,7 +128,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Plomberie",
             "description": isGrenoble ? "Expert plombier chauffagiste à Grenoble" : "Spécialiste en plomberie et génie climatique haut de gamme",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

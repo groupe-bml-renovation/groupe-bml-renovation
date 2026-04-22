@@ -66,32 +66,32 @@ const ConfirmationDevis: React.FC<ConfirmationDevisProps> = ({ onBack, onNavigat
         "@type": "ListItem",
         "position": 1,
         "name": "Accueil",
-        "item": "https://groupe-bml-renovation.fr"
+        "item": "https://groupe-bml-renovation.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Grenoble",
-        "item": "https://groupe-bml-renovation.fr/grenoble"
+        "item": "https://groupe-bml-renovation.com/grenoble"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Confirmation de devis",
-        "item": "https://groupe-bml-renovation.fr/grenoble/confirmation-devis"
+        "item": "https://groupe-bml-renovation.com/grenoble/confirmation-devis"
       }
     ] : [
       {
         "@type": "ListItem",
         "position": 1,
         "name": "Accueil",
-        "item": "https://groupe-bml-renovation.fr"
+        "item": "https://groupe-bml-renovation.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Confirmation de devis",
-        "item": "https://groupe-bml-renovation.fr/confirmation-devis"
+        "item": "https://groupe-bml-renovation.com/confirmation-devis"
       }
     ]
   };
@@ -126,8 +126,8 @@ const ConfirmationDevis: React.FC<ConfirmationDevisProps> = ({ onBack, onNavigat
         <meta
           property="og:url"
           content={isGrenoble
-            ? 'https://groupe-bml-renovation.fr/grenoble/confirmation-devis'
-            : 'https://groupe-bml-renovation.fr/confirmation-devis'}
+            ? 'https://groupe-bml-renovation.com/grenoble/confirmation-devis'
+            : 'https://groupe-bml-renovation.com/confirmation-devis'}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -145,8 +145,8 @@ const ConfirmationDevis: React.FC<ConfirmationDevisProps> = ({ onBack, onNavigat
         <link
           rel="canonical"
           href={isGrenoble
-            ? 'https://groupe-bml-renovation.fr/grenoble/confirmation-devis'
-            : 'https://groupe-bml-renovation.fr/confirmation-devis'}
+            ? 'https://groupe-bml-renovation.com/grenoble/confirmation-devis'
+            : 'https://groupe-bml-renovation.com/confirmation-devis'}
         />
         <script type="application/ld+json">{JSON.stringify(schemaMarkup)}</script>
       </Helmet>

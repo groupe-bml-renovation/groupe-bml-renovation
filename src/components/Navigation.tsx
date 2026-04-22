@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone, Pen } from 'lucide-react';
 import { GradientCTAButton } from './ui/gradient-cta-button';
 import { OptimizedImage } from './OptimizedImage';
@@ -115,6 +115,12 @@ const Navigation: React.FC<NavigationProps> = ({
     }
   };
 
+  const getPageUrl = (page: string) => {
+    const prefix = isGrenoble ? '/grenoble' : '';
+    if (page === 'home') return prefix || '/';
+    return `${prefix}/${page}`;
+  };
+
   const handleCtaClick = () => {
     const form = document.getElementById('contact-form');
     if (form) {
@@ -166,8 +172,8 @@ const Navigation: React.FC<NavigationProps> = ({
   return (
     <nav ref={navRef} className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50 transition-all duration-300">
       <div className="max-w-full mx-auto px-4 md:px-12 flex items-center md:justify-center">
-        <button
-          onClick={() => handleNavigation('home')}
+        <Link
+          to={getPageUrl('home')}
           className="hover:opacity-80 transition-opacity flex items-center flex-shrink-0 md:-ml-4 -ml-2"
         >
           <img
@@ -179,28 +185,28 @@ const Navigation: React.FC<NavigationProps> = ({
             loading="eager"
             fetchPriority="high"
           />
-        </button>
+        </Link>
 
         <div className="hidden md:flex items-center space-x-6 flex-1 justify-center">
-          <button
-            onClick={() => handleNavigation('home')}
+          <Link
+            to={getPageUrl('home')}
             className={`text-sm font-medium transition-colors ${currentPage === 'home'
               ? 'text-[#38bdf8]'
               : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Accueil
-          </button>
+          </Link>
 
-          <button
-            onClick={() => handleNavigation('a-propos')}
+          <Link
+            to={getPageUrl('a-propos')}
             className={`text-sm font-medium transition-colors ${currentPage === 'a-propos'
               ? 'text-[#38bdf8]'
               : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             À Propos
-          </button>
+          </Link>
 
           <div
             className="relative flex items-center"
@@ -217,23 +223,17 @@ const Navigation: React.FC<NavigationProps> = ({
             {openDropdown === 'renovation' && (
               <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
                 {renovationItems.map((item) => (
-                  <button
+                  <Link
                     key={item}
+                    to={getPageUrl(item === 'Appartements' ? 'appartements' : item === 'Maisons et villas' ? 'maisons-et-villas' : 'boutiques-bureaux')}
                     onClick={() => {
-                      if (item === 'Appartements') {
-                        handleNavigation('appartements');
-                      } else if (item === 'Maisons et villas') {
-                        handleNavigation('maisons-et-villas');
-                      } else if (item === 'Boutiques et Bureaux') {
-                        handleNavigation('boutiques-bureaux');
-                      } else {
-                        handleNavigation('services');
-                      }
+                      setOpenDropdown(null);
+                      setIsMobileMenuOpen(false);
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
                   >
                     {item}
-                  </button>
+                  </Link>
                 ))}
               </div>
             )}
@@ -254,35 +254,17 @@ const Navigation: React.FC<NavigationProps> = ({
             {openDropdown === 'espaces' && (
               <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
                 {espacesItems.map((item) => (
-                  <button
+                  <Link
                     key={item}
+                    to={getPageUrl(item === 'Salons' ? 'salons' : item === 'Cuisines' ? 'cuisines' : item === 'Chambres' ? 'chambres' : item === 'Salles de bain' ? 'salles-de-bain' : item === 'Salles de bain PMR' ? 'salles-de-bain-pmr' : item === 'Aménagement' ? 'amenagement' : item === 'Terrasse bois' ? 'terrasse-bois' : item === 'Espace Verre' ? 'espace-verre' : item === 'Installation piscine' ? 'piscine' : 'services')}
                     onClick={() => {
-                      if (item === 'Salons') {
-                        handleNavigation('salons');
-                      } else if (item === 'Cuisines') {
-                        handleNavigation('cuisines');
-                      } else if (item === 'Chambres') {
-                        handleNavigation('chambres');
-                      } else if (item === 'Salles de bain') {
-                        handleNavigation('salles-de-bain');
-                      } else if (item === 'Salles de bain PMR') {
-                        handleNavigation('salles-de-bain-pmr');
-                      } else if (item === 'Aménagement') {
-                        handleNavigation('amenagement');
-                      } else if (item === 'Terrasse bois') {
-                        handleNavigation('terrasse-bois');
-                      } else if (item === 'Espace Verre') {
-                        handleNavigation('espace-verre');
-                      } else if (item === 'Installation piscine') {
-                        handleNavigation('piscine');
-                      } else {
-                        handleNavigation('services');
-                      }
+                      setOpenDropdown(null);
+                      setIsMobileMenuOpen(false);
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
                   >
                     {item}
-                  </button>
+                  </Link>
                 ))}
               </div>
             )}
@@ -303,75 +285,51 @@ const Navigation: React.FC<NavigationProps> = ({
             {openDropdown === 'metiers' && (
               <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
                 {metiersItems.map((item) => (
-                  <button
+                  <Link
                     key={item}
+                    to={getPageUrl(item === 'Peinture' ? 'peinture' : item === 'Électricité' ? 'electricite' : item === 'Installation de borne électrique' ? 'borne-electrique' : item === 'Plomberie' ? 'plomberie' : item === 'Climatisation' ? 'climatisation' : item === 'Chauffage' ? 'chauffage' : item === 'Menuiserie' ? 'menuiserie' : item === 'Amiante' ? 'amiante' : item === 'Revêtements de sols' ? 'revetements-sols' : item === 'Revêtements muraux' ? 'revetements-muraux' : item === 'Travaux de toiture' ? 'toiture' : 'services')}
                     onClick={() => {
-                      if (item === 'Peinture') {
-                        handleNavigation('peinture');
-                      } else if (item === 'Électricité') {
-                        handleNavigation('electricite');
-                      } else if (item === 'Installation de borne électrique') {
-                        handleNavigation('borne-electrique');
-                      } else if (item === 'Plomberie') {
-                        handleNavigation('plomberie');
-                      } else if (item === 'Climatisation') {
-                        handleNavigation('climatisation');
-                      } else if (item === 'Chauffage') {
-                        handleNavigation('chauffage');
-                      } else if (item === 'Menuiserie') {
-                        handleNavigation('menuiserie');
-                      } else if (item === 'Amiante') {
-                        handleNavigation('amiante');
-                      } else if (item === 'Revêtements de sols') {
-                        handleNavigation('revetements-sols');
-                      } else if (item === 'Revêtements muraux') {
-                        handleNavigation('revetements-muraux');
-                      } else if (item === 'Travaux de toiture') {
-                        handleNavigation('toiture');
-                      } else {
-                        handleNavigation('services');
-                      }
+                      setOpenDropdown(null);
+                      setIsMobileMenuOpen(false);
                     }}
                     className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-slate-50 hover:text-[#38bdf8] transition-colors"
                   >
                     {item}
-                  </button>
+                  </Link>
                 ))}
               </div>
             )}
           </div>
 
-          <button
-            onClick={() => handleNavigation('financement')}
+          <Link
+            to={getPageUrl('financement')}
             className={`text-sm font-medium transition-colors ${currentPage === 'financement'
               ? 'text-[#38bdf8]'
               : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Financement
-          </button>
+          </Link>
 
-          <button
-            onClick={() => handleNavigation('realisations')}
+          <Link
+            to={getPageUrl('realisations')}
             className={`text-sm font-medium transition-colors ${currentPage === 'realisations'
               ? 'text-[#38bdf8]'
               : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Réalisations
-          </button>
+          </Link>
 
-
-
-          <button
-            onClick={() => handleNavigation('contact')}
+          <Link
+            to={getPageUrl('contact')}
             className={`text-sm font-medium transition-colors ${currentPage === 'contact'
               ? 'text-[#38bdf8]'
               : 'text-gray-700 hover:text-[#38bdf8]'
               }`}
           >
             Contact
-          </button>
+          </Link>
 
         </div>
 
@@ -462,15 +420,16 @@ const Navigation: React.FC<NavigationProps> = ({
         </div>
 
         <div className="px-6 py-4 bg-white space-y-4 pb-8 w-full overflow-x-hidden">
-          <button
-            onClick={() => handleNavigation('home')}
+          <Link
+            to={getPageUrl('home')}
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`block w-full text-left transition-colors py-2 ${currentPage === 'home'
               ? 'text-[#38bdf8] font-medium'
               : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Accueil
-          </button>
+          </Link>
 
           <div>
             <button
@@ -599,47 +558,51 @@ const Navigation: React.FC<NavigationProps> = ({
             )}
           </div>
 
-          <button
-            onClick={() => handleNavigation('financement')}
+          <Link
+            to={getPageUrl('financement')}
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`block w-full text-left transition-colors py-2 ${currentPage === 'financement'
               ? 'text-[#38bdf8] font-medium'
               : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Financement
-          </button>
+          </Link>
 
-          <button
-            onClick={() => handleNavigation('realisations')}
+          <Link
+            to={getPageUrl('realisations')}
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`block w-full text-left transition-colors py-2 ${currentPage === 'realisations'
               ? 'text-[#38bdf8] font-medium'
               : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Réalisations
-          </button>
+          </Link>
 
-          <button
-            onClick={() => handleNavigation('a-propos')}
+          <Link
+            to={getPageUrl('a-propos')}
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`block w-full text-left transition-colors py-2 ${currentPage === 'a-propos'
               ? 'text-[#38bdf8] font-medium'
               : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             À Propos
-          </button>
+          </Link>
 
 
 
-          <button
-            onClick={() => handleNavigation('contact')}
+          <Link
+            to={getPageUrl('contact')}
+            onClick={() => setIsMobileMenuOpen(false)}
             className={`block w-full text-left transition-colors py-2 ${currentPage === 'contact'
               ? 'text-[#38bdf8] font-medium'
               : 'text-slate-600 hover:text-slate-800'
               }`}
           >
             Contact
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

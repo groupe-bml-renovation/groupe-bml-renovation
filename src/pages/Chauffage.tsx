@@ -126,7 +126,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Chauffage",
             "description": isGrenoble ? "Expert chauffagiste RGE à Grenoble" : "Spécialiste en génie thermique et chauffage haute performance",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

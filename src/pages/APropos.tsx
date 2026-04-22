@@ -122,7 +122,7 @@ const AProposPage: React.FC<AProposPageProps> = ({ onBack, onNavigate }) => {
         <meta name="twitter:card" content="summary_large_image" />
         {isGrenoble && <meta name="geo.region" content="FR-38" />}
         {isGrenoble && <meta name="geo.placename" content="Grenoble" />}
-        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.fr/grenoble/a-propos" : "https://groupe-bml-renovation.fr/a-propos"} />
+        <link rel="canonical" href={isGrenoble ? "https://groupe-bml-renovation.com/grenoble/a-propos" : "https://groupe-bml-renovation.com/a-propos"} />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

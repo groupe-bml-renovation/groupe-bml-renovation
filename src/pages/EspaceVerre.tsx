@@ -127,7 +127,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Espace Verre",
             "description": isGrenoble ? "Expert en verrières sur mesure à Grenoble" : "Spécialiste en agencement vitré haut de gamme",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

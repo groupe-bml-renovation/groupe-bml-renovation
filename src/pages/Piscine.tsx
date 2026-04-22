@@ -127,7 +127,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Piscine",
             "description": isGrenoble ? "Expert pisciniste à Grenoble and en Isère" : "Spécialiste en construction de piscines haut de gamme",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

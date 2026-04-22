@@ -127,7 +127,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation - Tertiaire",
             "description": isGrenoble ? "Expert en rénovation de commerces à Grenoble" : "Entreprise spécialisée en rénovation tertiaire premium",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

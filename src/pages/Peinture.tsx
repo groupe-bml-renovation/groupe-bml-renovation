@@ -164,7 +164,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation",
             "description": isGrenoble ? "Entreprise de peinture à Grenoble spécialisée en travaux de peinture intérieure et extérieure, rénovation maison, peintre en bâtiment" : "Entreprise de rénovation spécialisée en peinture intérieure et extérieure, travaux de rénovation maison, peintre en bâtiment",
-            "url": "https://groupe-bml-renovation.fr",
+            "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
               "@type": "PostalAddress",

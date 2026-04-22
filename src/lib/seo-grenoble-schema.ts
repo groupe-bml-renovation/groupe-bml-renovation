@@ -2,10 +2,10 @@ export const generateGrenobleSeoSchemas = () => {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
-    '@id': 'https://groupe-bml-renovation.fr/grenoble/#localbusiness',
+    '@id': 'https://groupe-bml-renovation.com/grenoble/#localbusiness',
     name: 'Groupe BML Rénovation Grenoble',
     description: 'Expert en rénovation complète maison et appartement à Grenoble (38). Plus de 10 ans d\'expérience, 300+ chantiers réalisés en Isère. Interlocuteur unique, devis gratuit 24h, garantie décennale et certification RGE.',
-    url: 'https://groupe-bml-renovation.fr/grenoble',
+    url: 'https://groupe-bml-renovation.com/grenoble',
     telephone: '+33756915997',
     address: {
       '@type': 'PostalAddress',
@@ -67,7 +67,7 @@ export const generateGrenobleSeoSchemas = () => {
     '@type': 'Service',
     name: 'Rénovation Maison Grenoble & Isère',
     provider: {
-      '@id': 'https://groupe-bml-renovation.fr/grenoble/#localbusiness'
+      '@id': 'https://groupe-bml-renovation.com/grenoble/#localbusiness'
     },
     description: 'Rénovation globale de villas et maisons individuelles en Isère. Maîtrise d\'œuvre, extension, isolation RGE et aménagement intérieur haut de gamme.',
     areaServed: {
@@ -103,7 +103,7 @@ export const generateGrenobleSeoSchemas = () => {
     '@type': 'Service',
     name: 'Rénovation Appartement Grenoble',
     provider: {
-      '@id': 'https://groupe-bml-renovation.fr/grenoble/#localbusiness'
+      '@id': 'https://groupe-bml-renovation.com/grenoble/#localbusiness'
     },
     description: 'Rénovation d\'appartements anciens (Haussmannien) et contemporains à Grenoble. Optimisation d\'espace, cuisines et salles de bain clé en main.',
     areaServed: {

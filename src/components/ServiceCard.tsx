@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { OptimizedImage } from './OptimizedImage';
 
@@ -8,7 +9,6 @@ interface ServiceCardProps {
   description: string;
   image: string;
   iconName: string;
-  href?: string;
   onClick?: () => void;
 }
 

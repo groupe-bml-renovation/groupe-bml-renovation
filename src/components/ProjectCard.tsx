@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Euro } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { OptimizedImage } from './OptimizedImage';
 
 interface ProjectCardProps {

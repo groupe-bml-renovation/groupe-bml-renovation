@@ -1,9 +1,9 @@
 # Redirect www to non-www
-https://www.bml-renovation.fr/* https://bml-renovation.fr/:splat 301!
-http://www.bml-renovation.fr/* https://bml-renovation.fr/:splat 301!
+https://www.groupe-bml-renovation.com/* https://groupe-bml-renovation.com/:splat 301!
+http://www.groupe-bml-renovation.com/* https://groupe-bml-renovation.com/:splat 301!
 
 # Redirect http to https
-http://bml-renovation.fr/* https://bml-renovation.fr/:splat 301!
+http://groupe-bml-renovation.com/* https://groupe-bml-renovation.com/:splat 301!
 
 # Exclude static assets, favicons, and manifest files from SPA fallback
 /favicon.ico /favicon.ico 200

@@ -12,10 +12,10 @@ export const generateGlobalSeoSchemas = () => {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://groupe-bml-renovation.fr/#organization',
+    '@id': 'https://groupe-bml-renovation.com/#organization',
     name: 'Groupe BML Rénovation',
     alternateName: 'BML Rénovation',
-    url: 'https://groupe-bml-renovation.fr',
+    url: 'https://groupe-bml-renovation.com',
     logo: {
       '@type': 'ImageObject',
       url: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo.png',
@@ -56,10 +56,10 @@ export const generateGlobalSeoSchemas = () => {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
-    '@id': 'https://groupe-bml-renovation.fr/#localbusiness',
+    '@id': 'https://groupe-bml-renovation.com/#localbusiness',
     name: 'Groupe BML Rénovation',
     description: 'Expert en rénovation complète d’appartements et de maisons depuis plus de 10 ans. Travaux de rénovation clé en main avec interlocuteur unique, artisans qualifiés RGE et garantie décennale.',
-    url: 'https://groupe-bml-renovation.fr',
+    url: 'https://groupe-bml-renovation.com',
     telephone: '+33756915997',
     address: {
       '@type': 'PostalAddress',
@@ -100,7 +100,7 @@ export const generateGlobalSeoSchemas = () => {
       worstRating: '1'
     },
     brand: {
-      '@id': 'https://groupe-bml-renovation.fr/#organization'
+      '@id': 'https://groupe-bml-renovation.com/#organization'
     },
     hasCertification: [
       'Qualibat RGE',
@@ -121,7 +121,7 @@ export const generateGlobalSeoSchemas = () => {
     '@type': 'Service',
     name: 'Rénovation de Maison et Appartement Clé en Main',
     provider: {
-      '@id': 'https://groupe-bml-renovation.fr/#organization'
+      '@id': 'https://groupe-bml-renovation.com/#organization'
     },
     areaServed: {
       '@type': 'Country',
