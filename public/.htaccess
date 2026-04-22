@@ -85,9 +85,14 @@
   # Note: Replace 'groupe-bml.com' with your actual domain if different
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
-  RewriteRule ^(.*)$ https://groupe-bml-renovation.fr/$1 [L,R=301]
+  RewriteRule ^(.*)$ https://groupe-bml-renovation.com/$1 [L,R=301]
 
   # 2. Prevent trailing slash redirects for files
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+  # 3. SPA Fallback: Serve index.html for all non-file/non-directory requests
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
 </IfModule>

@@ -256,9 +256,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </a>
 
-                {/* RGE Logo */}
-                <div className="shrink-0 select-none">
-                  <img src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/RGE.png" alt="Certification RGE" className="h-[44px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" />
+                {/* RGE Logos */}
+                <div className="flex items-center gap-8 shrink-0 select-none">
+                  <img 
+                    src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/RGE.png" 
+                    alt="Certification RGE" 
+                    className="h-[44px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" 
+                  />
+                  <img 
+                    src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/RGE%20QUALIBAT.png" 
+                    alt="Certification RGE Qualibat" 
+                    className="h-[44px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" 
+                  />
                 </div>
               </div>
 
