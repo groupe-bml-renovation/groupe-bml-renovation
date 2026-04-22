@@ -69,7 +69,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative flex flex-col w-full bg-white font-sans">
       {/* 1. Top Area: Image/Video Banner (Matches illiCO proportion perfectly) */}
-      <div className="relative w-full h-[45vh] lg:h-[480px] bg-slate-900 border-b-[6px] border-[#0a4d8c] overflow-hidden">
+      <div className="relative w-full h-[45vh] lg:h-[480px] bg-slate-900 border-b-[6px] border-[#38bdf8] overflow-hidden">
         {posterUrl && (
           <OptimizedImage
             src={posterUrl}
@@ -153,8 +153,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Action Buttons (Bottom Center on Mobile, Bottom Right on Desktop) over Banner */}
         <div className="absolute bottom-4 lg:bottom-6 inset-x-0 lg:inset-x-auto lg:right-6 flex justify-center lg:justify-end items-center gap-3 z-20 px-4 lg:px-0 pointer-events-none">
           <div className="flex gap-4 pointer-events-auto">
-            <a href="tel:0756915997" className="p-3 lg:py-2.5 lg:px-5 rounded-full bg-white shadow-lg hover:scale-105 transition-transform text-[#0a4d8c] font-bold border border-slate-200 flex items-center gap-2">
-              <Phone className="w-5 h-5 lg:w-5 lg:h-5 text-blue-600 shrink-0" />
+            <a href="tel:0756915997" className="p-3 lg:py-2.5 lg:px-5 rounded-full bg-white shadow-lg hover:scale-105 transition-transform text-[#38bdf8] font-bold border border-slate-200 flex items-center gap-2">
+              <Phone className="w-5 h-5 lg:w-5 lg:h-5 text-[#38bdf8] shrink-0" />
               <span className="hidden lg:inline text-[15px] whitespace-nowrap">07 56 91 59 97</span>
             </a>
             <a href="#contact-form" className="p-3 lg:py-2.5 lg:px-5 rounded-full bg-[#38bdf8] hover:bg-[#0284c7] text-white shadow-lg hover:scale-105 transition-transform font-bold uppercase flex items-center gap-2">
@@ -175,18 +175,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <img src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" alt="BML Rénovation" className="w-full h-full object-cover rounded-full bg-slate-50 border border-slate-100" />
               </div>
               <div className="flex flex-col items-start lg:items-center mt-[20px] sm:mt-[35px] lg:mt-0">
-                <h2 className="text-[16px] sm:text-[17px] font-black text-[#0a4d8c] text-left lg:text-center mb-2 lg:mb-3 leading-tight tracking-wide">
+                <h2 className="text-[16px] sm:text-[17px] font-black text-[#38bdf8] text-left lg:text-center mb-2 lg:mb-3 leading-tight tracking-wide">
                   Groupe BML <span className="lg:hidden">Rénovation</span><br className="hidden lg:block" />
                   <span className="hidden lg:inline">Rénovation</span>
                 </h2>
                 <div className="flex justify-start lg:justify-center gap-2">
-                  <a href="https://www.facebook.com/profile.php?id=61583239311358" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#0a4d8c] hover:bg-[#0a4d8c] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
+                  <a href="https://www.facebook.com/profile.php?id=61583239311358" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
                     <Facebook className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                   </a>
-                  <a href="https://www.instagram.com/groupe_bml_renovation_tce/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#0a4d8c] hover:bg-[#0a4d8c] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
+                  <a href="https://www.instagram.com/groupe_bml_renovation_tce/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
                     <Instagram className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                   </a>
-                  <a href="https://www.linkedin.com/in/groupe-bml-r%C3%A9novation-tout-corps-d-%C3%A9tat-86aa693b1/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#0a4d8c] hover:bg-[#0a4d8c] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
+                  <a href="https://www.linkedin.com/in/groupe-bml-r%C3%A9novation-tout-corps-d-%C3%A9tat-86aa693b1/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
                     <Linkedin className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                   </a>
                 </div>
