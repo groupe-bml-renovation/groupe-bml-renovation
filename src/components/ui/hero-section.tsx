@@ -160,7 +160,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-4 lg:pt-6 lg:pb-4">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
 
-            <div className="flex flex-row lg:flex-col items-start lg:items-center lg:w-[160px] shrink-0 -mt-[20px] sm:-mt-[35px] lg:-mt-[110px] relative z-40 gap-4 lg:gap-0">
+            <div className="flex flex-row lg:flex-col items-center lg:w-[160px] shrink-0 -mt-[20px] sm:-mt-[35px] lg:-mt-[110px] relative z-40 gap-4 lg:gap-0">
               <div className="w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] lg:w-[140px] lg:h-[140px] rounded-full shadow-xl overflow-hidden bg-white lg:mb-4 border border-slate-200 p-1 lg:p-1.5 relative shrink-0">
                 <OptimizedImage 
                   src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" 
@@ -175,8 +175,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <span className="hidden lg:inline">Rénovation</span>
                 </h2>
 
-                {/* Exact Stats List - Left Aligned */}
-                <div className="flex flex-col gap-y-2 mt-3 w-full">
+                {/* Exact Stats List - Left Aligned, 2x2 on Mobile */}
+                <div className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2 mt-1 w-full">
                   <div className="flex flex-col items-start leading-none">
                     <span className="text-base font-black text-[#38bdf8]">10 ans</span>
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">D'EXPÉRIENCE</span>

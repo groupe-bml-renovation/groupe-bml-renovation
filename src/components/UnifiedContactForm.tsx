@@ -111,7 +111,7 @@ export default function UnifiedContactForm() {
             className="order-1 lg:order-2 lg:col-start-2 space-y-6 pt-4 lg:pt-12"
           >
             <p className="text-slate-700 leading-relaxed text-base">
-              Après réception du devis, vous aurez une <strong>estimation détaillée</strong> de vos travaux de rénovation.
+              <strong>Après réception du devis</strong>, vous aurez une <strong>estimation détaillée</strong> de vos travaux de rénovation.
             </p>
 
             <p className="text-slate-700 leading-relaxed text-base">
@@ -127,7 +127,7 @@ export default function UnifiedContactForm() {
             </p>
 
             <p className="text-slate-700 leading-relaxed text-base">
-              Demandez un devis et recevez un <strong>appel sous 24h</strong> pour <strong>fixer un rendez-vous</strong>.
+              Demandez un devis et <strong>recevez un appel sous 24h pour fixer un rendez-vous.</strong>
             </p>
           </motion.div>
 

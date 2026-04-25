@@ -18,7 +18,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       src={src}
       alt={alt}
       className={className}
-      loading={priority ? 'eager' : 'lazy'}
+      loading="eager"
       {...({ fetchPriority: fetchPriority || (priority ? 'high' : undefined) } as any)}
       {...props}
     />

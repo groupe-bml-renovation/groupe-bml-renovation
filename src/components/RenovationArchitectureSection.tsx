@@ -206,14 +206,15 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
             >
               <div className={`relative rounded-2xl overflow-hidden shadow-2xl flex-1 min-h-96 ${content.videoUrl ? 'lg:min-h-full' : content.landscapeImage ? 'h-96' : 'h-full'}`}>
                 {content.videoUrl ? (
-                  <video
-                    src={content.videoUrl}
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  />
+                    <video
+                      src={content.videoUrl}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                    />
                 ) : (
                   <OptimizedImage
                     src={content.imageUrl}
