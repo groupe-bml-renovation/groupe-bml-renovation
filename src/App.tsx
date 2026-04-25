@@ -61,6 +61,7 @@ import UnifiedContactForm from './components/UnifiedContactForm';
 import EbookPresentationSection from './components/EbookPresentationSection';
 import HomePageFAQ from './components/HomePageFAQ';
 import { FooterSection } from './components/footer-section';
+import FinancePartnershipSection from './components/FinancePartnershipSection';
 
 import { renovationSectionsConfig } from './data/renovation-sections-config';
 import { renovationSectionsConfigGrenoble } from './data/renovation-sections-config-grenoble';
@@ -463,9 +464,9 @@ function App() {
             <link rel="preconnect" href="https://images.pexels.com" />
             
             {/* Speed Optimizations: Preload LCP assets */}
-            <link rel="preload" as="image" href={selectedHeroConfig.posterUrl} />
+            <link rel="preload" as="image" href={selectedHeroConfig.posterUrl} {...({ fetchpriority: "high" } as any)} />
             {selectedHeroConfig.videoUrl && (
-              <link rel="preload" as="video" href={selectedHeroConfig.videoUrl} type="video/mp4" />
+              <link rel="preload" as="video" href={selectedHeroConfig.videoUrl} type="video/mp4" {...({ fetchpriority: "high" } as any)} />
             )}
             
             {!isGrenoble && globalSeoSchemas && (
@@ -501,6 +502,7 @@ function App() {
           <HeroSection
             videoUrl={selectedHeroConfig.videoUrl}
             videoUrlH265={selectedHeroConfig.videoUrlH265}
+            posterUrl={selectedHeroConfig.posterUrl}
             badgeText={selectedHeroConfig.badgeText}
             mainHeadlinePrefix={selectedHeroConfig.mainHeadlinePrefix}
             mainHeadlineLineBreak={selectedHeroConfig.mainHeadlineLineBreak}
@@ -512,9 +514,9 @@ function App() {
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
           <PartnerCarouselOnly />
-          <SocialProofBannerGrenoble />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
           <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
+          <FinancePartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
           <NotreSecteur />
           <ServicesTabbedCarousel
             onNavigate={handleNavigate}

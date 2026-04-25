@@ -547,7 +547,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que la peinture n'est pas seulement une question de couleur, mais une composante essentielle de votre architecture intérieure. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Espaces Alpins</span>.
+                  Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que la peinture n'est pas seulement une question de couleur, mais une composante essentielle de votre architecture intérieure. C'est pourquoi nous avons mis en place un <span className="text-black font-semibold">partenariat exclusif avec Anaïs</span>.
                 </p>
                 <p>
                   Pour chaque projet de peinture signé, nous vous offrons un <span className="text-black font-semibold">coaching décoration personnalisé</span>. Un architecte d'intérieur dédié vous accompagne dans l'étude de la luminosité, le <span className="text-black font-semibold">choix des finitions</span> et l'harmonisation globale de vos espaces.
@@ -602,13 +602,13 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Partenariat Espaces Alpins - Architecte d'intérieur"
+                  alt="Partenariat Anaïs - Architecte d'intérieur"
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Anaïs</p>
                     <p className="text-xl font-semibold">"L'excellence de l'architecture d'intérieur pour vos finitions."</p>
                   </div>
                 </div>
@@ -813,7 +813,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
               { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
               { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
               { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
-              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+              { name: 'Anaïs', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
             ].map((p, i) => (
               <motion.div
                 key={i}
@@ -853,7 +853,7 @@ const Peinture: React.FC<PeintureProps> = ({ onBack, onNavigate }) => {
           {
             id: "q4",
             question: "Proposez-vous un service de conseil pour le choix des couleurs ?",
-            answer: "Oui, grâce à notre partenariat avec Espaces Alpins, nous vous proposons un accompagnement d'architecte d'intérieur offert pour tout devis signé. Cela inclut le conseil sur les harmonies colorées, les types de finitions (mat, velours, satin) et l'impact de la luminosité sur votre rendu final."
+            answer: "Oui, grâce à notre partenariat avec Anaïs, nous vous proposons un accompagnement d'architecte d'intérieur offert pour tout devis signé. Cela inclut le conseil sur les harmonies colorées, les types de finitions (mat, velours, satin) et l'impact de la luminosité sur votre rendu final."
           },
           {
             id: "q5",

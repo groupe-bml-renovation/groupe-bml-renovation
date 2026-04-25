@@ -28,26 +28,22 @@ module.exports = {
           '100%': { transform: 'translate(-40px, 0)', opacity: '0' },
         },
         'scroll': {
-          '0%': {
-            transform: 'translateX(0)'
-          },
-          '100%': {
-            transform: 'translateX(-100%)'
-          }
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' }
         },
         'scroll-reverse': {
-          '0%': {
-            transform: 'translateX(-100%)'
-          },
-          '100%': {
-            transform: 'translateX(0)'
-          }
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' }
         },
         'blob': {
           '0%': { transform: 'translate(0px, 0px) scale(1)' },
           '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
           '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
           '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         }
       },
       animation: {
@@ -58,6 +54,7 @@ module.exports = {
         'scroll-slow': 'scroll 120s linear infinite',
         'scroll-reverse-slow': 'scroll-reverse 120s linear infinite',
         'blob': 'blob 7s infinite',
+        'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite',
       }
     },
   },

@@ -416,7 +416,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'un espace pro doit allier performance and esthétique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Espaces Alpins</span>. Bénéficiez des conseils d'un architecte d'intérieur for co-concevoir votre concept : ergonomie des postes, scénographie de vente and identité de marque spatiale.
+                  Parce qu'un espace pro doit allier performance and esthétique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur for co-concevoir votre concept : ergonomie des postes, scénographie de vente and identité de marque spatiale.
                 </p>
               </div>
 
@@ -456,7 +456,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <img
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Architecture tertiaire Espaces Alpins"
+                  alt="Architecture tertiaire Anaïs"
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -636,7 +636,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
               { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
               { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
-              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+              { name: 'Anaïs', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
             ].map((p, i) => (
               <motion.div
                 key={i}

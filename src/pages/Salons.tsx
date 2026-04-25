@@ -495,7 +495,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Un salon d'exception ne s'improvise pas. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que l'architecture d'intérieur doit être accessible. C'est pourquoi nous avons scellé un <span className="text-black font-semibold">partenariat avec Espaces Alpins</span>.
+                  Un salon d'exception ne s'improvise pas. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que l'architecture d'intérieur doit être accessible. C'est pourquoi nous avons scellé un <span className="text-black font-semibold">partenariat avec Anaïs</span>.
                 </p>
                 <p>
                   Pour chaque projet de rénovation complète de séjour, nous vous offrons un <span className="text-black font-semibold">coaching décoration personnalisé</span>. Un architecte d'intérieur vous accompagne dans l'optimisation des volumes and le <span className="text-black font-semibold">choix des finitions</span>.
@@ -550,7 +550,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Design d'intérieur Espaces Alpins"
+                  alt="Design d'intérieur Anaïs"
                   className="w-full h-auto object-contain"
                   width={600}
                   height={800}
@@ -754,7 +754,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
               { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
               { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
-              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+              { name: 'Anaïs', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
             ].map((p, i) => (
               <motion.div
                 key={i}

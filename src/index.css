@@ -67,3 +67,35 @@ button, a, [role="button"] {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Body Text Normalization: Remove all bolding from paragraphs and list items by default */
+p, li, blockquote, address, .text-slate-700, .text-gray-600 {
+  font-weight: 400 !important;
+}
+
+/* Ensure nested emphasis tags don't add weight in body text containers */
+p strong, p b, p span:not(.font-bold):not(.font-semibold):not(.font-black), 
+li strong, li b, li span:not(.font-bold):not(.font-semibold):not(.font-black),
+.text-slate-700 strong, .text-slate-700 b,
+.text-gray-600 strong, .text-gray-600 b {
+  font-weight: 400 !important;
+}
+
+/* Allow explicit bolding utility classes to override the reset */
+.font-bold, .font-semibold, .font-black, .force-bold {
+  font-weight: 700 !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+}
+
+/* Maintain bolding only for Headings and specific UI elements */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; /* Preserve heading weights */
+}
+
+/* Keep button text legible */
+button span, .GradientCTAButton span {
+  font-weight: inherit;
+}

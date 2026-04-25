@@ -228,26 +228,6 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
     };
   }, []);
 
-  // Auto-scroll logic
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    if (isInView && !isUserScrolling && !isAnimating) {
-      intervalId = setInterval(() => {
-        if (canScrollRight) {
-          scroll('right');
-        } else {
-          if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-          }
-        }
-      }, 8000);
-    }
-
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, [isInView, canScrollRight, isUserScrolling, isAnimating]);
 
   return (
     <section ref={sectionRef} className="w-full pt-8 md:pt-12 pb-8 md:pb-10 bg-white overflow-hidden">

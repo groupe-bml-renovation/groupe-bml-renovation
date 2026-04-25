@@ -189,26 +189,6 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
     };
   }, []);
 
-  // Auto-scroll logic
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    if (isInView && !isUserScrolling) {
-      intervalId = setInterval(() => {
-        if (canScrollRight) {
-          scroll('right');
-        } else {
-          if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-          }
-        }
-      }, 8000);
-    }
-
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, [isInView, canScrollRight, isUserScrolling]);
 
   const handleProjectClick = (project: typeof featuredProjects_sorted[0]) => {
     if (project.route && !isUserScrolling) {

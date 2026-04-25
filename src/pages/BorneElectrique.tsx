@@ -415,7 +415,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une borne de recharge doit s'intégrer discrètement à votre habitat, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#f59e0b]">Espaces Alpins</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for l'implantation technique, le choix des matériaux and l'harmonie with votre architecture.
+                  Parce qu'une borne de recharge doit s'intégrer discrètement à votre habitat, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#f59e0b]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for l'implantation technique, le choix des matériaux and l'harmonie with votre architecture.
                 </p>
               </div>
 
@@ -455,13 +455,13 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl">
                 <OptimizedImage
                   src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg"
-                  alt="Architecture d'intérieur Espaces Alpins"
+                  alt="Architecture d'intérieur Anaïs"
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
-                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Espaces Alpins</p>
+                    <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Anaïs</p>
                     <p className="text-xl font-semibold">"L'innovation technologique doit servir l'harmonie du lieu."</p>
                   </div>
                 </div>
@@ -635,7 +635,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               { name: 'Forbo', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/forbo2_g4baag%20(1).jpg' },
               { name: 'LMS', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Logo_LMS_insta_Plan_de_travail_1_Plan_de_travail_1_c8ybfl%20(1).jpg' },
               { name: 'Brun', logoUrl: 'https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/233f5492189448a4f76cf952714f_gmen2x%20(1).png' },
-              { name: 'Espaces Alpins', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
+              { name: 'Anaïs', logoUrl: 'https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20logo%20image.png' }
             ].map((p, i) => (
               <motion.div
                 key={i}

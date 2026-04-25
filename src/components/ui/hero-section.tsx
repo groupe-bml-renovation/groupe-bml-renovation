@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, Calendar, Facebook, Instagram, Linkedin, ArrowRight, Pen } from 'lucide-react';
+import { MapPin, Clock, Phone, Calendar, Facebook, Instagram, Linkedin, ArrowRight, Pen, ShieldCheck } from 'lucide-react';
 import { OptimizedImage } from '../OptimizedImage';
 
 interface HeroSectionProps {
@@ -43,20 +43,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoReady, setIsVideoReady] = useState(false);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(true);
 
   useEffect(() => {
-    const nav = navigator as any;
-    if (nav.connection) {
-      if (nav.connection.saveData || (nav.connection.effectiveType && ['slow-2g', '2g', '3g'].includes(nav.connection.effectiveType))) {
-        setShouldLoadVideo(false);
-        return;
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (shouldLoadVideo && videoRef.current) {
+    if (videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
       const playPromise = videoRef.current.play();
@@ -64,7 +53,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         playPromise.catch(() => { });
       }
     }
-  }, [videoUrl, shouldLoadVideo]);
+  }, [videoUrl]);
 
   return (
     <section className="relative flex flex-col w-full bg-white font-sans">
@@ -74,35 +63,34 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <OptimizedImage
             src={posterUrl}
             alt="Hero background"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-75'}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoReady ? 'opacity-0' : 'opacity-100'}`}
             priority={true}
             width={1920}
             height={1080}
           />
         )}
 
-        {shouldLoadVideo && (
-          <video
-            key={videoUrl}
-            ref={videoRef}
-            className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${isVideoReady ? 'opacity-70' : 'opacity-0'
-              }`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={posterUrl}
-            preload="metadata"
-            onLoadedData={() => setIsVideoReady(true)}
-            controlsList="nodownload nofullscreen noremoteplayback"
-            disablePictureInPicture
-            disableRemotePlayback
-            {...({ fetchPriority: "high" } as any)}
-          >
-            {videoUrlH265 && <source src={videoUrlH265} type='video/mp4; codecs="hvc1"' />}
-            <source src={videoUrl} type="video/mp4" />
-          </video>
-        )}
+        <video
+          key={videoUrl}
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-700 ${isVideoReady ? 'opacity-70' : 'opacity-0'
+            }`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={posterUrl}
+          preload="auto"
+          onLoadedData={() => setIsVideoReady(true)}
+          onCanPlay={() => setIsVideoReady(true)}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
+          {...({ fetchPriority: "high" } as any)}
+        >
+          {videoUrlH265 && <source src={videoUrlH265} type='video/mp4; codecs="hvc1"' />}
+          <source src={videoUrl} type="video/mp4" />
+        </video>
 
         {/* Gradient Overlay for Text Readability in the center */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
@@ -165,6 +153,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
+
+
       {/* 2. White Section Below Banner (Matches the layout structure exactly) */}
       <div className="relative bg-white w-full border-b border-gray-200 z-30 pb-4 lg:pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-4 lg:pt-6 lg:pb-4">
@@ -184,16 +174,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   Groupe BML <span className="lg:hidden">Rénovation</span><br className="hidden lg:block" />
                   <span className="hidden lg:inline">Rénovation</span>
                 </h2>
-                <div className="flex justify-start lg:justify-center gap-2">
-                  <a href="https://www.facebook.com/profile.php?id=61583239311358" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
-                    <Facebook className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
-                  </a>
-                  <a href="https://www.instagram.com/groupe_bml_renovation_tce/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
-                    <Instagram className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/groupe-bml-r%C3%A9novation-tout-corps-d-%C3%A9tat-86aa693b1/" target="_blank" rel="noopener noreferrer" className="p-1.5 lg:p-2 bg-slate-50 text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white transition-colors rounded-md shadow-sm border border-slate-100 lg:border-none">
-                    <Linkedin className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
-                  </a>
+
+                {/* Exact Stats List - Left Aligned */}
+                <div className="flex flex-col gap-y-2 mt-3 w-full">
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-base font-black text-[#38bdf8]">10 ans</span>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">D'EXPÉRIENCE</span>
+                  </div>
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-base font-black text-[#38bdf8]">+300</span>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">PROJETS RÉALISÉS</span>
+                  </div>
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-base font-black text-[#38bdf8]">+75</span>
+                    <span className="text-[10px] font-bold text-slate-500 mt-0.5">Artisans <span className="uppercase">PARTENAIRES</span></span>
+                  </div>
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-base font-black text-[#38bdf8]">01</span>
+                    <span className="text-[10px] font-bold text-slate-500 mt-0.5">Interlocuteur unique</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
+import { OptimizedImage } from './OptimizedImage';
+
 interface Partner {
   name: string;
   logoUrl: string;
@@ -32,12 +34,11 @@ export default function PartnerCarouselOnly() {
 
   const PartnerCard = ({ partner }: { partner: Partner }) => (
     <div className="flex-shrink-0 flex flex-col items-center justify-center p-3 bg-transparent transition-all duration-300 w-36 h-28 gap-2 cursor-pointer group">
-      <img
+      <OptimizedImage
         src={partner.logoUrl}
         alt={partner.name}
         className="h-10 md:h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-        loading="eager"
-        decoding="async"
+        priority={true}
         width={144}
         height={44}
       />

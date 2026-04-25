@@ -2,6 +2,7 @@ import React from 'react';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   priority?: boolean;
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
 export const OptimizedImage: React.FC<OptimizedImageProps> = ({ 
@@ -9,6 +10,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   alt, 
   className, 
   priority = false, 
+  fetchPriority,
   ...props 
 }) => {
   return (
@@ -17,6 +19,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       alt={alt}
       className={className}
       loading={priority ? 'eager' : 'lazy'}
+      {...({ fetchPriority: fetchPriority || (priority ? 'high' : undefined) } as any)}
       {...props}
     />
   );
