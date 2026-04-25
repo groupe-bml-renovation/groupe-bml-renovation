@@ -197,7 +197,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
   };
 
   return (
-    <section ref={sectionRef} className="w-full pt-16 md:pt-8 pb-8 md:pb-12 bg-white overflow-hidden">
+    <section ref={sectionRef} className="w-full pt-16 md:pt-8 pb-4 md:pb-6 bg-white overflow-hidden">
       <div className="mb-12">
         <div className="text-center mb-12 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <span className="text-[#38bdf8] text-sm font-semibold uppercase tracking-wide">

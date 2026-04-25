@@ -95,6 +95,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700; /* Preserve heading weights */
 }
 
+/* Specific exception for the contact form estimation text */
+#contact-form strong {
+  font-weight: 700 !important;
+  display: inline !important;
+}
+
 /* Keep button text legible */
 button span, .GradientCTAButton span {
   font-weight: inherit;

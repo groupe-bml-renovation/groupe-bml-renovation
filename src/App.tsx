@@ -514,10 +514,12 @@ function App() {
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
           <PartnerCarouselOnly />
+          <UnifiedContactForm hideLogos={true} />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
           <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
           <FinancePartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
           <NotreSecteur />
+          {/* 
           <ServicesTabbedCarousel
             onNavigate={handleNavigate}
             headerText="NOS SERVICES"
@@ -527,8 +529,9 @@ function App() {
             isGrenoble={isGrenoble}
           />
           <ProjectStepsSection onNavigate={handleNavigate} />
+          */}
           <ProjectsCarousel onNavigate={handleNavigate} />
-          <div className="pt-4 md:pt-6">
+          <div className="py-6 sm:py-10">
             <RenovationArchitectureSection content={selectedSectionsConfig[4]} />
           </div>
           <SocialProofBannerGrenoble />
