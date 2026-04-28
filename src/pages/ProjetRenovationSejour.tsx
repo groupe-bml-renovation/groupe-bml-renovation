@@ -27,16 +27,16 @@ const ProjetRenovationSejour: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Projet Rénovation Séjour | Intérieur Haut de Gamme | BML Rénovation</title>
-        <meta name="description" content="Découvrez notre projet de rénovation complète d'un séjour avec reconfiguration d'espace, revêtements modernes, éclairage LED intégré et aménagement fonctionnel haut de gamme." />
-        <meta name="keywords" content="rénovation séjour, rénovation intérieure, salon moderne, aménagement séjour, décoration intérieure" />
+        <title>Projet Rénovation Peinture | Intérieur Haut de Gamme | BML Rénovation</title>
+        <meta name="description" content="Découvrez notre projet de rénovation complète de peinture avec reconfiguration d'espace, revêtements modernes, éclairage LED intégré et aménagement fonctionnel haut de gamme." />
+        <meta name="keywords" content="rénovation peinture, rénovation intérieure, salon moderne, aménagement séjour, décoration intérieure" />
       </Helmet>
 
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/G%20BML%20-%2002%20-%20Hero%20-%20After.png"
-            alt="Projet Rénovation Séjour"
+            alt="Projet Rénovation Peinture"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -50,10 +50,10 @@ const ProjetRenovationSejour: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-light text-white mb-6 leading-tight tracking-wide">
-              Rénovation Séjour
+              Rénovation Peinture
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 font-light">
-              Une rénovation complète du séjour avec reconfiguration d'espace et aménagement haut de gamme
+              Une rénovation complète de peinture avec reconfiguration d'espace et aménagement haut de gamme
             </p>
             <div className="w-24 h-1 bg-[#38bdf8] mx-auto rounded-full" />
           </motion.div>
@@ -89,11 +89,11 @@ const ProjetRenovationSejour: React.FC = () => {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  Les étapes de cette rénovation de séjour
+                  Les étapes de cette rénovation de peinture
                 </span>
               </h2>
               <p className="text-lg text-slate-700 leading-relaxed mb-6">
-                Cette rénovation de séjour haut de gamme a suivi un processus méthodique en plusieurs étapes clés. Nous avons d'abord procédé à l'analyse complète de l'espace existant, puis réalisé une reconfiguration intelligente pour optimiser la circulation et maximiser la luminosité. Les murs ont été restructurés pour créer une meilleure fluidité entre les zones de vie.
+                Cette rénovation de peinture haut de gamme a suivi un processus méthodique en plusieurs étapes clés. Nous avons d'abord procédé à l'analyse complète de l'espace existant, puis réalisé une reconfiguration intelligente pour optimiser la circulation et maximiser la luminosité. Les murs ont été restructurés pour créer une meilleure fluidité entre les zones de vie.
               </p>
               <p className="text-lg text-slate-700 leading-relaxed">
                 Ensuite, nous avons mis en place des revêtements modernes de qualité, installé un système d'éclairage LED intégré dans les faux plafonds pour créer une ambiance chaleureuse et fonctionnelle. Le projet s'est achevé avec la pose d'aménagements sur-mesure, le choix de mobilier harmonieux et tous les finitions de qualité premium pour un intérieur élégant et confortable. Délai total : 3 mois et demi pour un résultat d'exception.
@@ -119,7 +119,7 @@ const ProjetRenovationSejour: React.FC = () => {
                 <h3 className="text-2xl font-bold text-slate-900 mb-8">Les travaux réalisés</h3>
                 <div className="space-y-4 flex-1 overflow-y-auto pr-2">
                   {[
-                    'Restructuration complète de l\'espace du séjour',
+                    'Restructuration complète de l\'espace de peinture',
                     'Reconfiguration des zones de circulation et de vie',
                     'Démolition et reconstruction sélective de cloisons',
                     'Installation d\'un système d\'éclairage LED intégré',

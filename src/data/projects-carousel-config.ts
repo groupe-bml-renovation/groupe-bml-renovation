@@ -42,12 +42,12 @@ export const featuredProjects: Project[] = [
   },
   {
     id: 12,
-    title: "Rénovation séjour",
+    title: "Rénovation peinture",
     category: "Rénovation Intérieure",
     image: "/assets/remote/10db985a7efa1e15cf326e74d5a171ed.png",
     budget: "42 000€",
     duration: "2 mois et demi",
-    description: "Rénovation complète du séjour avec reconfiguration d'espace, revêtements modernes, éclairage LED intégré et aménagement fonctionnel pour un intérieur haut de gamme.",
+    description: "Rénovation complète de peinture avec revêtements modernes, finitions soignées et aménagement fonctionnel pour un intérieur haut de gamme.",
     route: "/projet-renovation-sejour"
   },
   {
