@@ -91,6 +91,12 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
                 Réalisations
               </button>
               <button
+                onClick={() => handleNavigation('/plaquette-realisation')}
+                className="block transition-colors hover:text-[#38bdf8] text-left"
+              >
+                Plaquette de réalisation
+              </button>
+              <button
                 onClick={() => handleNavigation('/blog')}
                 className="block transition-colors hover:text-[#38bdf8] text-left"
               >

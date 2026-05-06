@@ -54,6 +54,7 @@ const RenovationSejour = lazy(() => import('./pages/RenovationSejour'));
 const Realisations = lazy(() => import('./pages/Realisations'));
 const ProjetTerrasseExterieure = lazy(() => import('./pages/ProjetTerrasseExterieure'));
 const Amenagement = lazy(() => import('./pages/Amenagement'));
+const DigitalEbook = lazy(() => import('./pages/DigitalEbook'));
 
 import { initPhoneTracking } from './lib/phone-tracking';
 import { useVoiceflow } from './hooks/useVoiceflow';
@@ -152,6 +153,7 @@ const AppRouter = () => {
         <Route path="/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
         <Route path="/projet-terrasse-exterieure" element={<PageLayout currentPageName="projet-terrasse-exterieure"><ProjetTerrasseExterieure /></PageLayout>} />
         <Route path="/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
+        <Route path="/plaquette-realisation" element={<PageLayout currentPageName="plaquette-realisation"><DigitalEbook /></PageLayout>} />
 
         <Route path="/grenoble" element={<App />} />
         <Route path="/grenoble/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
@@ -199,6 +201,7 @@ const AppRouter = () => {
         <Route path="/grenoble/projet-renovation-salle-de-bain" element={<PageLayout currentPageName="projet-renovation-salle-de-bain"><ProjetRenovationSalleDeBain /></PageLayout>} />
         <Route path="/grenoble/projet-terrasse-exterieure" element={<PageLayout currentPageName="projet-terrasse-exterieure"><ProjetTerrasseExterieure /></PageLayout>} />
         <Route path="/grenoble/renovation-sejour" element={<PageLayout currentPageName="renovation-sejour"><RenovationSejour onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
+        <Route path="/grenoble/plaquette-realisation" element={<PageLayout currentPageName="plaquette-realisation"><DigitalEbook /></PageLayout>} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

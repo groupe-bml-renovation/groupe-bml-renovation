@@ -34,7 +34,7 @@ export default function EbookPresentationSection() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[3/4]">
                 <img
                   src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/Gemini_Generated_Image_62ic8262ic8262ic%20(1).png"
-                  alt="BML Rénovation - Book de Réalisations"
+                  alt="BML Rénovation - Plaquette de Réalisations"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -52,17 +52,17 @@ export default function EbookPresentationSection() {
             {/* Category Label */}
             <div>
               <span className="text-[#38bdf8] text-sm font-semibold uppercase tracking-wide">
-                Notre Book
+                Notre Plaquette
               </span>
               <h2 className="text-xl md:text-2xl font-bold mt-1 mb-2 leading-tight">
-                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">Le book des styles de rénovation et de décoration</span>
+                <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">La plaquette des styles de rénovation et de décoration</span>
               </h2>
             </div>
 
             {/* Description */}
             <div className="space-y-2">
               <p className="text-xs md:text-sm text-slate-700 leading-relaxed">
-                Découvrez notre style de rénovation et de décoration intérieure à travers notre ebook BML Rénovation – Styles de rénovation et de décoration.
+                Découvrez notre style de rénovation et de décoration intérieure à travers notre plaquette de réalisations BML Rénovation – Styles de rénovation et de décoration.
               </p>
 
               <p className="text-xs md:text-sm text-slate-700 leading-relaxed">
@@ -72,6 +72,19 @@ export default function EbookPresentationSection() {
               <p className="text-[10px] md:text-xs text-slate-500 italic">
                 Reçu automatiquement lors de votre demande de devis gratuit.
               </p>
+
+              <div className="pt-4">
+                <GradientCTAButton 
+                  onClick={() => {
+                    const isGrenoble = window.location.pathname.includes('/grenoble');
+                    window.location.href = isGrenoble ? '/grenoble/plaquette-realisation' : '/plaquette-realisation';
+                  }} 
+                  size="sm" 
+                  className="px-6"
+                >
+                  Consulter la plaquette digitale
+                </GradientCTAButton>
+              </div>
             </div>
           </motion.div>
         </div>
