@@ -125,7 +125,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Salle de Bain PMR",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en adaptation de salle de bain PMR à Grenoble" : "Entreprise spécialisée en accessibilité salle de bain haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

@@ -13,7 +13,7 @@ export const generateGlobalSeoSchemas = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': 'https://groupe-bml-renovation.com/#organization',
-    name: 'Groupe BML Rénovation',
+    name: 'Groupe BML Rénovation tout corps d\'état',
     alternateName: 'BML Rénovation',
     url: 'https://groupe-bml-renovation.com',
     logo: {
@@ -57,7 +57,7 @@ export const generateGlobalSeoSchemas = () => {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
     '@id': 'https://groupe-bml-renovation.com/#localbusiness',
-    name: 'Groupe BML Rénovation',
+    name: 'Groupe BML Rénovation tout corps d\'état',
     description: 'Expert en rénovation complète d’appartements et de maisons depuis plus de 10 ans. Travaux de rénovation clé en main avec interlocuteur unique, artisans qualifiés RGE et garantie décennale.',
     url: 'https://groupe-bml-renovation.com',
     telephone: '+33756915997',
@@ -88,8 +88,8 @@ export const generateGlobalSeoSchemas = () => {
           'Thursday',
           'Friday'
         ],
-        opens: '08:00',
-        closes: '18:00'
+        opens: '07:00',
+        closes: '19:00'
       }
     ],
     aggregateRating: {

@@ -125,7 +125,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Menuiserie",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Artisan menuisier d'art à Grenoble" : "Spécialiste en menuiserie et agencement bois haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

@@ -352,7 +352,7 @@ const ConfirmationDevis: React.FC<ConfirmationDevisProps> = ({ onBack, onNavigat
               <p className="text-gray-600 mb-3">
                 <span>07 56 91 59 97</span>
               </p>
-              <p className="text-sm text-gray-500">Disponible en semaine de 8h à 18h</p>
+              <p className="text-sm text-gray-500">Disponible en semaine de 7h à 19h</p>
             </a>
 
             <a

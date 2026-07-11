@@ -128,7 +128,7 @@ const TerrasseBois: React.FC<TerrasseBoisProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Terrasse Bois",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en terrasse bois à Grenoble and en Isère" : "Spécialiste en terrasses bois haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

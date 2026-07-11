@@ -76,8 +76,8 @@ export function getLocalBusinessSchema(additionalData?: {
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '18:00'
+        opens: '07:00',
+        closes: '19:00'
       }
     ],
     ...(additionalData?.services && { service: additionalData.services })

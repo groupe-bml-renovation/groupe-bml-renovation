@@ -124,7 +124,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Amiante",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert désamiantage certifié à Grenoble" : "Spécialiste en retrait d'amiante et gestion des risques sanitaires",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

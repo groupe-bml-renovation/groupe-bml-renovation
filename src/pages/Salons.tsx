@@ -150,7 +150,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en rénovation de salons à Grenoble" : "Entreprise spécialisée en rénovation de séjours d'exception",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

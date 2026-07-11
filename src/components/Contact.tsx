@@ -105,7 +105,7 @@ export function Contact() {
               <div className="space-y-2 text-sm text-slate-600">
                 <div className="flex justify-between">
                   <span>Lundi - Vendredi</span>
-                  <span className="font-medium">8h - 18h</span>
+                  <span className="font-medium">7h - 19h</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Samedi</span>

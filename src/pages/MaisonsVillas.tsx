@@ -152,7 +152,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en rénovation de maisons à Grenoble" : "Entreprise spécialisée en rénovation de villas",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

@@ -161,39 +161,32 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
 
             <div className="flex flex-row lg:flex-col items-center lg:w-[160px] shrink-0 -mt-[20px] sm:-mt-[35px] lg:-mt-[110px] relative z-40 gap-4 lg:gap-0">
-              <div className="w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] lg:w-[140px] lg:h-[140px] rounded-full shadow-xl overflow-hidden bg-white lg:mb-4 border border-slate-200 p-1 lg:p-1.5 relative shrink-0">
-                <OptimizedImage 
-                  src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" 
-                  alt="BML Rénovation" 
-                  className="w-full h-full object-cover rounded-full bg-slate-50 border border-slate-100" 
-                  priority={true}
-                />
+              <div className="flex flex-col items-center">
+                <div className="w-[90px] h-[90px] sm:w-[110px] sm:h-[110px] lg:w-[140px] lg:h-[140px] rounded-full shadow-xl overflow-hidden bg-white lg:mb-2 border border-slate-200 p-1 lg:p-1.5 relative shrink-0 z-20">
+                  <OptimizedImage 
+                    src="https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/1%20La%20prise%20de%20rendez%20vous.png" 
+                    alt="BML Rénovation" 
+                    className="w-full h-full object-cover rounded-full bg-slate-50 border border-slate-100" 
+                    priority={true}
+                  />
+                </div>
+                
+                {/* Team Members Stack */}
+                <div className="flex -space-x-3 sm:-space-x-3 mt-1 lg:-mt-1 mb-2 lg:mb-4 justify-center relative z-10 hover:space-x-0 transition-all duration-300 group cursor-pointer" title="L'Équipe BML Rénovation">
+                  <img className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 border-[2px] border-white rounded-full object-cover shadow-sm transition-transform group-hover:-translate-y-1" src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/ESPACES%20ALPINS%20image.jpeg" alt="Équipe" />
+                  <img className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 border-[2px] border-white rounded-full object-cover shadow-sm transition-transform group-hover:-translate-y-1 delay-75" src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Experts%20financiers.png" alt="Équipe" />
+                  <img className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 border-[2px] border-white rounded-full object-cover shadow-sm transition-transform group-hover:-translate-y-1 delay-100" src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/Untitled%20design%20(44).png" alt="Équipe" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 border-[2px] border-white rounded-full bg-slate-50 text-[#38bdf8] flex items-center justify-center text-[10px] sm:text-[11px] font-black shadow-sm z-10 transition-transform group-hover:-translate-y-1 delay-150">
+                    +15
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-col items-start lg:items-center mt-[20px] sm:mt-[35px] lg:mt-0">
+
+              <div className="flex flex-col items-start lg:items-center mt-[10px] sm:mt-[20px] lg:mt-0">
                 <h2 className="text-[16px] sm:text-[17px] font-black text-[#38bdf8] text-left lg:text-center mb-2 lg:mb-3 leading-tight tracking-wide">
                   Groupe BML <span className="lg:hidden">Rénovation</span><br className="hidden lg:block" />
                   <span className="hidden lg:inline">Rénovation</span>
                 </h2>
-
-                {/* Exact Stats List - Left Aligned, 2x2 on Mobile */}
-                <div className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2 mt-1 w-full">
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-base font-black text-[#38bdf8]">10 ans</span>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">D'EXPÉRIENCE</span>
-                  </div>
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-base font-black text-[#38bdf8]">+300</span>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">PROJETS RÉALISÉS</span>
-                  </div>
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-base font-black text-[#38bdf8]">+75</span>
-                    <span className="text-[10px] font-bold text-slate-500 mt-0.5">Artisans <span className="uppercase">PARTENAIRES</span></span>
-                  </div>
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-base font-black text-[#38bdf8]">01</span>
-                    <span className="text-[10px] font-bold text-slate-500 mt-0.5">Interlocuteur unique</span>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -231,7 +224,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <Clock className="w-6 h-6 text-[#38bdf8] shrink-0" strokeWidth={1.5} />
                   <div className="text-slate-800 text-sm lg:text-[15px] leading-snug">
                     <p className="font-black text-slate-900 mb-0.5">Nous sommes joignables</p>
-                    <p>Du lundi au vendredi : 08h00 - 18h00</p>
+                    <p>Du lundi au vendredi : 07h00 - 19h00</p>
                   </div>
                 </div>
               </div>
@@ -267,6 +260,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     alt="Certification RGE Qualibat" 
                     className="h-[44px] w-auto object-contain drop-shadow-sm hover:scale-105 transition-transform" 
                   />
+                </div>
+              </div>
+
+              {/* Exact Stats List - Moved to Right */}
+              <div className="grid grid-cols-2 gap-x-4 gap-y-5 pt-4 border-t border-slate-100 w-full">
+                <div className="flex flex-col items-start leading-none">
+                  <span className="text-[17px] font-black text-[#38bdf8]">10 ans</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-1">D'EXPÉRIENCE</span>
+                </div>
+                <div className="flex flex-col items-start leading-none">
+                  <span className="text-[17px] font-black text-[#38bdf8]">+300</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-1">PROJETS RÉALISÉS</span>
+                </div>
+                <div className="flex flex-col items-start leading-none">
+                  <span className="text-[17px] font-black text-[#38bdf8]">+75</span>
+                  <span className="text-[10px] font-bold text-slate-500 mt-1">Artisans <span className="uppercase">PARTENAIRES</span></span>
+                </div>
+                <div className="flex flex-col items-start leading-none">
+                  <span className="text-[17px] font-black text-[#38bdf8]">01</span>
+                  <span className="text-[10px] font-bold text-slate-500 mt-1">Interlocuteur unique</span>
                 </div>
               </div>
 

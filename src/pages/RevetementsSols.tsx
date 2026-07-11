@@ -124,7 +124,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Revêtements Sols",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert solier et parqueteur à Grenoble" : "Spécialiste en revêtements de sols haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

@@ -145,7 +145,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en rénovation de cuisines à Grenoble" : "Entreprise spécialisée en rénovation de cuisines haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

@@ -124,7 +124,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Chauffage",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert chauffagiste RGE à Grenoble" : "Spécialiste en génie thermique et chauffage haute performance",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

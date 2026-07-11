@@ -84,7 +84,7 @@ export const featuredProjects: Project[] = [
     image: "https://pub-b2e43cc835de44a7830034d539ae5fe1.r2.dev/WhatsApp_Image_2025-09-30_at_22.00.36_g9akl6%20(1).jpg",
     budget: "7 300€",
     duration: "2 semaines",
-    description: "Installation électrique complète with mise aux normes NF, borne de recharge électrique et système d'éclairage LED moderne et certifié Consuel."
+    description: "Installation électrique complète avec mise aux normes NF, borne de recharge électrique et système d'éclairage LED moderne et certifié Consuel."
   },
   {
     id: 6,

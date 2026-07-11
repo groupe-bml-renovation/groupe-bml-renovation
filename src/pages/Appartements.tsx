@@ -155,7 +155,7 @@ const Appartements: React.FC<AppartementsProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en rénovation d'appartements à Grenoble" : "Entreprise spécialisée en rénovation d'appartements",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

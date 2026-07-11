@@ -107,6 +107,8 @@ const AppRouter = () => {
     <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/entreprise-generale-batiment" element={<App />} />
+        <Route path="/entreprise-construction" element={<App />} />
         <Route path="/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/maisons-et-villas" element={<PageLayout currentPageName="maisons-et-villas"><MaisonsVillas onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/boutiques-bureaux" element={<PageLayout><BoutiquesBureaux onBack={() => navigate('/')} onNavigate={() => {}} /></PageLayout>} />
@@ -156,6 +158,8 @@ const AppRouter = () => {
         <Route path="/plaquette-realisation" element={<PageLayout currentPageName="plaquette-realisation"><DigitalEbook /></PageLayout>} />
 
         <Route path="/grenoble" element={<App />} />
+        <Route path="/grenoble/entreprise-generale-batiment" element={<App />} />
+        <Route path="/grenoble/entreprise-construction" element={<App />} />
         <Route path="/grenoble/appartements" element={<PageLayout currentPageName="appartements"><Appartements onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/maisons-et-villas" element={<PageLayout currentPageName="maisons-et-villas"><MaisonsVillas onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />
         <Route path="/grenoble/boutiques-bureaux" element={<PageLayout><BoutiquesBureaux onBack={() => navigate('/grenoble')} onNavigate={() => {}} /></PageLayout>} />

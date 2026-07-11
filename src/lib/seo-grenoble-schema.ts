@@ -3,7 +3,7 @@ export const generateGrenobleSeoSchemas = () => {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
     '@id': 'https://groupe-bml-renovation.com/grenoble/#localbusiness',
-    name: 'Groupe BML Rénovation Grenoble',
+    name: 'Groupe BML Rénovation tout corps d\'état',
     description: 'Expert en rénovation complète maison et appartement à Grenoble (38). Plus de 10 ans d\'expérience, 300+ chantiers réalisés en Isère. Interlocuteur unique, devis gratuit 24h, garantie décennale et certification RGE.',
     url: 'https://groupe-bml-renovation.com/grenoble',
     telephone: '+33756915997',
@@ -24,8 +24,8 @@ export const generateGrenobleSeoSchemas = () => {
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '18:00'
+        opens: '07:00',
+        closes: '19:00'
       }
     ],
     serviceArea: [

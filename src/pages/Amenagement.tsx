@@ -125,7 +125,7 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Aménagement",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert en aménagement sur mesure à Grenoble" : "Spécialiste en agencement intérieur d'exception",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

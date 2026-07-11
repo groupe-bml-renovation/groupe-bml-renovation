@@ -435,8 +435,26 @@ function App() {
 
     const selectedSectionsConfig = isGrenoble ? renovationSectionsConfigGrenoble : renovationSectionsConfig;
     const selectedHeroConfig = isGrenoble ? heroConfigs.grenoble : heroConfigs.bmlRenovation;
-    const canonicalUrl = isGrenoble ? 'https://groupe-bml-renovation.com/grenoble' : 'https://groupe-bml-renovation.com/';
+    
+    const isGeneralContractor = location.pathname.includes('/entreprise-generale-batiment');
+    const isConstructionCompany = location.pathname.includes('/entreprise-construction');
+
+    const canonicalUrl = isGrenoble 
+      ? (isGeneralContractor ? 'https://groupe-bml-renovation.com/grenoble/entreprise-generale-batiment' : isConstructionCompany ? 'https://groupe-bml-renovation.com/grenoble/entreprise-construction' : 'https://groupe-bml-renovation.com/grenoble')
+      : (isGeneralContractor ? 'https://groupe-bml-renovation.com/entreprise-generale-batiment' : isConstructionCompany ? 'https://groupe-bml-renovation.com/entreprise-construction' : 'https://groupe-bml-renovation.com/');
+    
     const geoRegion = isGrenoble ? 'FR-38' : 'FR';
+
+    let pageTitle = isGrenoble ? 'Entreprise générale de bâtiment à Grenoble | Groupe BML Rénovation tout corps d\'état' : 'Entreprise générale de bâtiment | Rénovation Maison Complète | Groupe BML Rénovation tout corps d\'état';
+    let pageDescription = isGrenoble ? 'Entreprise générale de bâtiment. Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.' : 'Entreprise générale de bâtiment, spécialisé dans la rénovation haut de gamme de maisons et d\'appartements depuis 10 ans dans tout la France.';
+
+    if (isGeneralContractor) {
+      pageTitle = isGrenoble ? 'Entreprise générale de bâtiment à Grenoble | Groupe BML Rénovation' : 'Entreprise générale de bâtiment | Groupe BML Rénovation';
+      pageDescription = isGrenoble ? 'Groupe BML Rénovation est votre entreprise générale de bâtiment à Grenoble. Spécialiste de la rénovation, nous coordonnons tous vos travaux.' : 'Groupe BML Rénovation est votre entreprise générale de bâtiment. Spécialiste de la rénovation, nous coordonnons tous vos travaux.';
+    } else if (isConstructionCompany) {
+      pageTitle = isGrenoble ? 'Entreprise de construction à Grenoble | Groupe BML Rénovation' : 'Entreprise de construction | Groupe BML Rénovation';
+      pageDescription = isGrenoble ? 'Groupe BML Rénovation est votre entreprise de construction à Grenoble. Nous réalisons vos projets d\'aménagement et de rénovation.' : 'Groupe BML Rénovation est votre entreprise de construction. Nous réalisons vos projets d\'aménagement et de rénovation.';
+    }
 
     const globalSeoSchemas = !isGrenoble ? generateGlobalSeoSchemas() : null;
     const grenobleSeoSchemas = isGrenoble ? generateGrenobleSeoSchemas() : null;
@@ -445,8 +463,8 @@ function App() {
       <Suspense fallback={<PageLoader />}>
         <div className="min-h-screen">
           <Helmet>
-            <title>{isGrenoble ? 'Rénovation de maison à Grenoble | Groupe BML Rénovation' : 'Rénovation Maison Complète | Entreprise de Rénovation Bâtiment | BML - Travaux Artisan'}</title>
-            <meta name="description" content={isGrenoble ? 'Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.' : 'Spécialisé dans la rénovation haut de gamme de maisons et d\'appartements depuis 10 ans dans tout la France.'} />
+            <title>{pageTitle}</title>
+            <meta name="description" content={pageDescription} />
             <meta name="keywords" content={isGrenoble ? 'rénovation maison grenoble, entreprise rénovation maison grenoble, rénovation appartement grenoble, entreprise rénovation appartement grenoble, rénovation clé en main grenoble, société rénovation maison, travaux maison grenoble, entreprise travaux appartement, rénovation intérieure grenoble, rénovation extérieure grenoble' : 'rénovation maison, renovation maison, rénover une maison, rénovation, rénovations, bâtiment travaux publics, peintre en bâtiment, peintre dans le bâtiment, travaux de rénovation maison, entreprise de rénovation, travaux maison, rénovation maison complète, rénovation maison ancienne, coût rénovation maison, prix rénovation maison, rénovation intérieure, rénovation extérieure, travaux de peinture bâtiment, artisan rénovation maison, entreprise bâtiment rénovation'} />
             <meta property="og:title" content={isGrenoble ? 'Rénovation Maison & Appartement Grenoble | 300+ Projets' : 'Rénovation Maison Complète | Entreprise de Rénovation'} />
             <meta property="og:description" content={isGrenoble ? 'Rénovation clé en main à Grenoble. 300+ projets, 10 ans d\'expérience. Devis gratuit, RDV 24h. Maison & appartement.' : 'Travaux de rénovation professionnels pour votre maison. Entreprise spécialisée en rénovation complète, intérieure et extérieure.'} />
@@ -505,7 +523,7 @@ function App() {
             posterUrl={selectedHeroConfig.posterUrl}
             badgeText={selectedHeroConfig.badgeText}
             mainHeadlinePrefix={selectedHeroConfig.mainHeadlinePrefix}
-            mainHeadlineLineBreak={selectedHeroConfig.mainHeadlineLineBreak}
+            mainHeadlineLineBreak={isGeneralContractor ? "Entreprise générale de bâtiment" : isConstructionCompany ? "Entreprise de construction" : selectedHeroConfig.mainHeadlineLineBreak}
             rotatingTitles={selectedHeroConfig.rotatingTitles}
             subheadline={selectedHeroConfig.subheadline}
             reviewText={selectedHeroConfig.reviewText}
@@ -514,7 +532,6 @@ function App() {
             primaryHeading={selectedHeroConfig.primaryHeading}
           />
           <PartnerCarouselOnly />
-          <UnifiedContactForm hideLogos={true} />
           <RenovationArchitectureSection content={selectedSectionsConfig[0]} />
           <ArchitectPartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />
           <FinancePartnershipSection onCtaClick={() => handleNavigate('home', 'contact-form')} />

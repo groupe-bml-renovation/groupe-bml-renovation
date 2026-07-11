@@ -126,7 +126,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Groupe BML Rénovation - Électricité",
+            "name": "Groupe BML Rénovation tout corps d'état",
             "description": isGrenoble ? "Expert électricien à Grenoble" : "Spécialiste en réseaux électriques et domotique haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",

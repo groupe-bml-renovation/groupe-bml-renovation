@@ -53,7 +53,7 @@ export function FooterSection({ onNavigateToServices, onNavigate }: FooterSectio
               loading="lazy"
             />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">BML Rénovation</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">Groupe BML Rénovation tout corps d'état</h2>
           <p className="text-slate-600 max-w-md">Votre partenaire de confiance pour tous vos projets de rénovation depuis 10 ans.</p>
         </motion.div>
 
