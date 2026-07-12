@@ -54,7 +54,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
 
   if (content.multiImageLayout && content.galleryImages && content.galleryImages.length > 0) {
     return (
-      <section className="pt-2 pb-6 bg-transparent">
+      <section className="pt-12 pb-6 bg-transparent">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:items-stretch">
             <div className="space-y-8 order-1 flex flex-col">
@@ -139,7 +139,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
 
   if (content.useAnimatedGallery && content.galleryImages && content.galleryImages.length > 0) {
     return (
-      <section className="pt-2 pb-6 bg-transparent">
+      <section className="pt-12 pb-6 bg-transparent">
         <div className="w-full px-6 md:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 lg:items-stretch gap-8 max-w-7xl mx-auto">
             <motion.div
@@ -197,7 +197,7 @@ export const RenovationArchitectureSection: React.FC<RenovationArchitectureSecti
   }
 
   return (
-    <section className="pt-2 pb-6 bg-transparent">
+    <section className="pt-12 pb-6 bg-transparent">
       <div className="w-full px-6 md:px-8 lg:px-12">
         <div className={`${content.hideImage ? '' : 'grid lg:grid-cols-2 lg:items-stretch'} gap-12 max-w-7xl mx-auto`}>
           {!content.hideImage && (
