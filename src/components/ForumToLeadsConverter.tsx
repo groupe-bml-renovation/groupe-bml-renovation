@@ -116,7 +116,7 @@ export function ForumToLeadsConverter() {
     <div className="w-full max-w-7xl mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Forum to Leads Converter</h1>
-        <p className="text-gray-600">Import forum posts, extract leads, and manage your pipeline</p>
+        <p className="text-gray-600">Import forum posts, extract leads, et manage your pipeline</p>
       </div>
 
       {error && (

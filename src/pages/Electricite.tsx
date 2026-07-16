@@ -140,7 +140,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Expertise Électricité & Domotique</h2>
-        <p>Mise en conformité and installation de réseaux électriques intelligents</p>
+        <p>Mise en conformité et installation de réseaux électriques intelligents</p>
         <h3>Électricien Grenoble</h3>
         <h3>Tableau Électrique NF C 15-100</h3>
         <h3>Domotique & Maison Connectée</h3>
@@ -172,7 +172,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "La sécurité électrique and l'intelligence de l'habitat à Grenoble" : "L'excellence technologique au service de votre confort futur"}
+              {isGrenoble ? "La sécurité électrique et l'intelligence de l'habitat à Grenoble" : "L'excellence technologique au service de votre confort futur"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -244,12 +244,12 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  L'électricité ne se limite plus à l'alimentation des appareils. Elle est devenue l'intelligence centrale de votre logement, gérant sécurité, économie d'énergie and scénarios lumineux. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple conformité.
+                  L'électricité ne se limite plus à l'alimentation des appareils. Elle est devenue l'intelligence centrale de votre logement, gérant sécurité, économie d'énergie et scénarios lumineux. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple conformité.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos techniciens grenoblois maîtrisent l'intégralité de la norme NF C 15-100. Du remplacement millimétré de tableau électrique à l'intégration de solutions domotiques complexes, nous sécurisons and connectons vos espaces de vie partout en Isère."
-                    : "Nous concevons des réseaux invisibles, protecteurs and évolutifs, utilisant les marques les plus prestigieuses (Legrand, Schneider, Hager) pour une intelligence domotique qui simplifie votre quotidien durablement."}
+                    ? "Nos techniciens grenoblois maîtrisent l'intégralité de la norme NF C 15-100. Du remplacement millimétré de tableau électrique à l'intégration de solutions domotiques complexes, nous sécurisons et connectons vos espaces de vie partout en Isère."
+                    : "Nous concevons des réseaux invisibles, protecteurs et évolutifs, utilisant les marques les plus prestigieuses (Legrand, Schneider, Hager) pour une intelligence domotique qui simplifie votre quotidien durablement."}
                 </p>
               </div>
 
@@ -291,7 +291,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos réalisations connectées</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision du câblage and la magie de l'éclairage architectural.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision du câblage et la magie de l'éclairage architectural.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -305,7 +305,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Activity className="w-6 h-6" />, 
                     title: "Audit Sécurité", 
-                    desc: "Mesure d'isolement, vérification de la terre and diagnostic de conformité totale Consuel." 
+                    desc: "Mesure d'isolement, vérification de la terre et diagnostic de conformité totale Consuel." 
                   },
                   { 
                     icon: <Lightbulb className="w-6 h-6" />, 
@@ -315,7 +315,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Cpu className="w-6 h-6" />, 
                     title: "Habitat Connecté", 
-                    desc: "Pilotage centralisé du chauffage, des ouvrants and de la sécurité par IP and scénarios." 
+                    desc: "Pilotage centralisé du chauffage, des ouvrants et de la sécurité par IP et scénarios." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -379,10 +379,10 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Audit", desc: "Test de terre, mesure d'isolement and relevé complet de l'existant." },
-              { step: "02", title: "Plans", desc: "Schémas électriques and implantation 3D des points de commande." },
-              { step: "03", title: "Pose", desc: "Câblage and montage par nos compagnons salariés qualifiés." },
-              { step: "04", title: "Contrôle", desc: "Remise du certificat Consuel and formation au pilotage domotique." }
+              { step: "01", title: "Audit", desc: "Test de terre, mesure d'isolement et relevé complet de l'existant." },
+              { step: "02", title: "Plans", desc: "Schémas électriques et implantation 3D des points de commande." },
+              { step: "03", title: "Pose", desc: "Câblage et montage par nos compagnons salariés qualifiés." },
+              { step: "04", title: "Contrôle", desc: "Remise du certificat Consuel et formation au pilotage domotique." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -417,7 +417,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une électricité réussie demande une vision esthétique autant que technique, nous scellons un partenariat avec <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour le choix de vos appareillages and la chorégraphie lumineuse de vos espaces.
+                  Parce qu'une électricité réussie demande une vision esthétique autant que technique, nous scellons un partenariat avec <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour le choix de vos appareillages et la chorégraphie lumineuse de vos espaces.
                 </p>
               </div>
 
@@ -442,7 +442,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -464,7 +464,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Anaïs</p>
-                    <p className="text-xl font-semibold">"La lumière sculpte l'espace and sécurise l'habitat."</p>
+                    <p className="text-xl font-semibold">"La lumière sculpte l'espace et sécurise l'habitat."</p>
                   </div>
                 </div>
               </div>
@@ -489,8 +489,8 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations électriques. Nous maîtrisons les systèmes complexes, la domotique de pointe, and la sécurisation absolue des réseaux pour des habitats intelligents."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations électriques. Nous maîtrisons les systèmes complexes, la domotique de pointe, and la sécurisation absolue des réseaux pour des habitats qui traversent le temps avec fiabilité."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations électriques. Nous maîtrisons les systèmes complexes, la domotique de pointe, et la sécurisation absolue des réseaux pour des habitats intelligents."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations électriques. Nous maîtrisons les systèmes complexes, la domotique de pointe, et la sécurisation absolue des réseaux pour des habitats qui traversent le temps avec fiabilité."}
               </p>
             </div>
 
@@ -592,7 +592,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -656,7 +656,7 @@ const Electricite: React.FC<ElectriciteProps> = ({ onBack, onNavigate }) => {
 
       <ServiceFAQ
         title="FAQ Électricité"
-        description="Les réponses de nos techniciens for sécuriser votre installation haut de gamme."
+        description="Les réponses de nos techniciens pour sécuriser votre installation haut de gamme."
         items={electriqueFAQs}
       />
 

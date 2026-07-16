@@ -49,7 +49,7 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({ onCtaClick }) => {
           <div className="md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 group">
             <OptimizedImage
               src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Pool and garden"
+              alt="Pool et garden"
               className="w-full h-full"
               loading="eager"
             />

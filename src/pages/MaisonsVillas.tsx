@@ -144,7 +144,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Rénovation de Maisons & Villas à Grenoble | BML" : "Rénovation de Maisons & Villas d'Exception | BML"}</title>
-        <meta name="description" content="Expert en rénovation complète de maisons et villas. Extensions, surélévations and aménagements extérieurs haut de gamme avec garantie décennale." />
+        <meta name="description" content="Expert en rénovation complète de maisons et villas. Extensions, surélévations et aménagements extérieurs haut de gamme avec garantie décennale." />
         <meta property="og:title" content="Rénovation de Maisons & Villas | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -258,17 +258,17 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Rénover une maison or une villa est un projet d'envergure qui nécessite une approche globale. Nous transformons votre propriété en gérant la structure, les volumes and les finitions avec une exigence de perfection.
+                Rénover une maison or une villa est un projet d'envergure qui nécessite une approche globale. Nous transformons votre propriété en gérant la structure, les volumes et les finitions avec une exigence de perfection.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}combine savoir-faire artisanal and expertise technique. De l'extension de votre séjour à la surélévation de votre toiture, nous gérant chaque phase du chantier.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}combine savoir-faire artisanal et expertise technique. De l'extension de votre séjour à la surélévation de votre toiture, nous gérant chaque phase du chantier.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos équipes interviennent dans toute la cuvette grenobloise and les massifs environnants pour valoriser vos villas d'architecte or maisons de caractère. Un interlocuteur unique pilote vos travaux pour une sérénité totale."
-                  : "Chaque projet est traité comme une œuvre unique, où nous intégrons performance énergétique, esthétique contemporaine and durabilité des matériaux."}
+                  ? "Nos équipes interviennent dans toute la cuvette grenobloise et les massifs environnants pour valoriser vos villas d'architecte or maisons de caractère. Un interlocuteur unique pilote vos travaux pour une sérénité totale."
+                  : "Chaque projet est traité comme une œuvre unique, où nous intégrons performance énergétique, esthétique contemporaine et durabilité des matériaux."}
               </p>
 
               <button
@@ -326,7 +326,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                La rénovation d'une maison individuelle permet d'explorer des solutions architecturales ambitieuses. Nous gérant l'interaction entre l'intérieur and l'extérieur pour créer une harmonie globale.
+                La rénovation d'une maison individuelle permet d'explorer des solutions architecturales ambitieuses. Nous gérant l'interaction entre l'intérieur et l'extérieur pour créer une harmonie globale.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
@@ -350,15 +350,15 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Surélévation de toiture and création d'étage</span>
+                      <span>Surélévation de toiture et création d'étage</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Rénovation énergétique globale and ITE</span>
+                      <span>Rénovation énergétique globale et ITE</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Réfection de façades and toitures</span>
+                      <span>Réfection de façades et toitures</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
@@ -379,7 +379,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale unique couvrant l'ensemble des lots, d'un respect strict des délais and d'une transparence budgétaire.
+                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale unique couvrant l'ensemble des lots, d'un respect strict des délais et d'une transparence budgétaire.
                   </p>
                 </div>
               </div>
@@ -394,7 +394,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                     : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
                 <p className="text-base mb-8 opacity-90">
-                  Visite conseil and chiffrage précis réalisés sous 72h.
+                  Visite conseil et chiffrage précis réalisés sous 72h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -436,17 +436,17 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
               {
                 step: "02",
                 title: "Structure",
-                desc: "Terrassement, maçonnerie de structure, extensions and ouvertures de porteurs."
+                desc: "Terrassement, maçonnerie de structure, extensions et ouvertures de porteurs."
               },
               {
                 step: "03",
                 title: "Technique",
-                desc: "Installation des réseaux, isolation haute performance and équipements."
+                desc: "Installation des réseaux, isolation haute performance et équipements."
               },
               {
                 step: "04",
                 title: "Finitions",
-                desc: "Finitions décoratives, menuiseries, équipements design and livraison."
+                desc: "Finitions décoratives, menuiseries, équipements design et livraison."
               }
             ].map((s, i) => (
               <motion.div 
@@ -498,7 +498,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
                   Pour une maison, la décoration est indissociable de la structure. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous offrons une vision d'ensemble grâce à notre <span className="text-black font-semibold">partenariat avec Anaïs</span>.
                 </p>
                 <p>
-                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser vos nouveaux volumes avec vos choix décoratifs. Matériaux, éclairages and palette chromatique sont étudiés pour un rendu exceptionnel.
+                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser vos nouveaux volumes avec vos choix décoratifs. Matériaux, éclairages et palette chromatique sont étudiés pour un rendu exceptionnel.
                 </p>
               </div>
 
@@ -578,7 +578,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos experts maçons, couvreurs, électriciens and décorateurs pour que votre chantier de maison soit une réussite totale.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos experts maçons, couvreurs, électriciens et décorateurs pour que votre chantier de maison soit une réussite totale.
               </p>
             </div>
 
@@ -645,7 +645,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
               </span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
             </p>
           </div>
 
@@ -765,7 +765,7 @@ const MaisonsVillas: React.FC<MaisonsVillasProps> = ({ onBack, onNavigate }) => 
       <ServiceFAQ 
         items={maisonFAQs} 
         title={isGrenoble ? "FAQ Rénovation Maison Grenoble" : "FAQ Rénovation Maison"}
-        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de maisons and villas à Grenoble." : "Retrouvez les réponses à vos questions sur la rénovation complète de maisons."}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de maisons et villas à Grenoble." : "Retrouvez les réponses à vos questions sur la rénovation complète de maisons."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

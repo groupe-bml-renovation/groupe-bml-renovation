@@ -119,14 +119,14 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Construction & Rénovation Piscine à Grenoble | Bassin & Design | BML" : "Piscines sur Mesure & Bassins d'Exception | Rénovation & Étanchéité | BML"}</title>
-        <meta name="description" content="Réalisation de piscines d'exception. De la structure béton aux finitions mosaïque, nous créons votre espace aquatique sur mesure with garantie décennale and architecte offert." />
+        <meta name="description" content="Réalisation de piscines d'exception. De la structure béton aux finitions mosaïque, nous créons votre espace aquatique sur mesure avec garantie décennale et architecte offert." />
         <meta property="og:title" content="Piscines & Bassins d'Exception | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation tout corps d'état",
-            "description": isGrenoble ? "Expert pisciniste à Grenoble and en Isère" : "Spécialiste en construction de piscines haut de gamme",
+            "description": isGrenoble ? "Expert pisciniste à Grenoble et en Isère" : "Spécialiste en construction de piscines haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
@@ -139,7 +139,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Expertise Piscine & Bassin</h2>
-        <p>Construction and rénovation de piscines en béton armé and étanchéité premium</p>
+        <p>Construction et rénovation de piscines en béton armé et étanchéité premium</p>
         <h3>Pisciniste Grenoble</h3>
         <h3>Piscine à Débordement Design</h3>
         <h3>Rénovation Liner & PVC Armé</h3>
@@ -171,7 +171,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Construction et rénovation de bassins d'exception en Isère" : "Conception architecturale d'espaces aquatiques and de bien-être"}
+              {isGrenoble ? "Construction et rénovation de bassins d'exception en Isère" : "Conception architecturale d'espaces aquatiques et de bien-être"}
             </p>
             <div className="w-24 h-0.5 bg-[#0891b2] mx-auto mb-8 shadow-[0_0_15px_rgba(8,145,178,0.5)]" />
             
@@ -243,12 +243,12 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Une piscine est bien plus qu'un simple bassin, c'est le cœur battant de votre jardin. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous marions expertise technique and esthétique d'exception for créer votre oasis personnelle.
+                  Une piscine est bien plus qu'un simple bassin, c'est le cœur battant de votre jardin. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous marions expertise technique et esthétique d'exception pour créer votre oasis personnelle.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts piscinistes à Grenoble interviennent for la construction monolithique en béton armé or la rénovation complète de votre étanchéité (PVC armé, liner, mosaïque). Nous maîtrisons les contraintes du sol isérois for vous garantir une structure pérenne and des plages de piscine aux finitions impeccables."
-                    : "De la conception d'une piscine à débordement minimaliste à la restauration d'un bassin ancien, nous appliquons une rigueur absolue. Chaque pièce technique est sélectionnée for sa performance and chaque finition est posée with une précision millimétrée."}
+                    ? "Nos experts piscinistes à Grenoble interviennent pour la construction monolithique en béton armé or la rénovation complète de votre étanchéité (PVC armé, liner, mosaïque). Nous maîtrisons les contraintes du sol isérois pour vous garantir une structure pérenne et des plages de piscine aux finitions impeccables."
+                    : "De la conception d'une piscine à débordement minimaliste à la restauration d'un bassin ancien, nous appliquons une rigueur absolue. Chaque pièce technique est sélectionnée pour sa performance et chaque finition est posée avec une précision millimétrée."}
                 </p>
               </div>
 
@@ -290,7 +290,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Réalisations Aquatiques</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la pureté and l'élégance de nos bassins et terrasses mobiles.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la pureté et l'élégance de nos bassins et terrasses mobiles.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -304,17 +304,17 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Waves className="w-6 h-6" />, 
                     title: "Structure Monolithe", 
-                    desc: "Construction en béton armé banché for une solidité à toute épreuve and une liberté totale de forme." 
+                    desc: "Construction en béton armé banché pour une solidité à toute épreuve et une liberté totale de forme." 
                   },
                   { 
                     icon: <Droplets className="w-6 h-6" />, 
                     title: "Étanchéité Premium", 
-                    desc: "PVC armé haute résistance or mosaïque d'exception for un rendu visuel and une durabilité optimisés." 
+                    desc: "PVC armé haute résistance or mosaïque d'exception pour un rendu visuel et une durabilité optimisés." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Équipements Élite", 
-                    desc: "Filtration haute performance, pompes à chaleur économes and domotique de bassin intégrée." 
+                    desc: "Filtration haute performance, pompes à chaleur économes et domotique de bassin intégrée." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,7 +342,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos orfèvres du bassin basés à Grenoble façonnent votre projet with une expertise certifiée."
+                    ? "Nos orfèvres du bassin basés à Grenoble façonnent votre projet avec une expertise certifiée."
                     : "L'art de vivre au bord de l'eau, sans compromis."}
                 </p>
                 <button
@@ -378,10 +378,10 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Implantation", desc: "Étude de sol and relevé laser for une intégration parfaite dans votre jardin." },
-              { step: "02", title: "Structure", desc: "Coulage du béton monolithique according to les règles de l'art du génie civil." },
-              { step: "03", title: "Appareillage", desc: "Installation des réseaux hydrauliques, filtration and systèmes de traitement automatisés." },
-              { step: "04", title: "Étanchéité", desc: "Pose millimétrée du revêtement final and mise en eau after séchage contrôlé." }
+              { step: "01", title: "Implantation", desc: "Étude de sol et relevé laser pour une intégration parfaite dans votre jardin." },
+              { step: "02", title: "Structure", desc: "Coulage du béton monolithique selon les règles de l'art du génie civil." },
+              { step: "03", title: "Appareillage", desc: "Installation des réseaux hydrauliques, filtration et systèmes de traitement automatisés." },
+              { step: "04", title: "Étanchéité", desc: "Pose millimétrée du revêtement final et mise en eau after séchage contrôlé." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#0891b2]/20 transition-colors uppercase">{s.step}</span>
@@ -416,7 +416,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une piscine sublime un paysage, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#0891b2]">Anaïs</span>. Bénéficiez des conseils d'un architecte paysager for harmoniser votre bassin with votre extérieur : choix des margelles, design des plages and scénographie lumineuse nocturne.
+                  Parce qu'une piscine sublime un paysage, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#0891b2]">Anaïs</span>. Bénéficiez des conseils d'un architecte paysager pour harmoniser votre bassin avec votre extérieur : choix des margelles, design des plages et scénographie lumineuse nocturne.
                 </p>
               </div>
 
@@ -441,7 +441,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+                * Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
               </p>
             </motion.div>
 
@@ -488,8 +488,8 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'art du bassin. Nous gérons terrassement, maçonnerie, filtration and finitions with une propreté de chantier and une rigueur exemplaires."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en construction aquatique. Nous coordonnons nos maçons, plombiers and électriciens for que vos piscines soient livrées with un niveau de fiabilité digne des plus grands domaines."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'art du bassin. Nous gérons terrassement, maçonnerie, filtration et finitions avec une propreté de chantier et une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en construction aquatique. Nous coordonnons nos maçons, plombiers et électriciens pour que vos piscines soient livrées avec un niveau de fiabilité digne des plus grands domaines."}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                Nos labels and qualifications
+                Nos labels et qualifications
               </span>
             </h2>
           </div>
@@ -587,11 +587,11 @@ const Piscine: React.FC<PiscineProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#0891b2] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 

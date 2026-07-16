@@ -65,7 +65,7 @@ const ServiceAreaVisualMap: React.FC = () => {
           {/* City markers */}
           {CITY_LOCATIONS.map(city => (
             <g key={city.name}>
-              {/* Connection line to Grenoble for secondary cities */}
+              {/* Connection line to Grenoble pour secondary cities */}
               {!city.isPrimary && (
                 <line
                   x1="50"

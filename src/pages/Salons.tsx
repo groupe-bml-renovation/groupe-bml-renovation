@@ -142,7 +142,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Rénovation de Salons & Séjours à Grenoble | BML" : "Rénovation de Salons & Séjours d'Exception | BML"}</title>
-        <meta name="description" content="Sublimez votre espace de vie. Rénovation complète de salons, agencement sur mesure and décoration d'intérieur haut de gamme avec architecte offert." />
+        <meta name="description" content="Sublimez votre espace de vie. Rénovation complète de salons, agencement sur mesure et décoration d'intérieur haut de gamme avec architecte offert." />
         <meta property="og:title" content="Rénovation de Salons | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -258,17 +258,17 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Le salon est le cœur battant de votre foyer, un lieu de rassemblement and de détente. Nous réinventons votre espace de vie en harmonisant volumes, lumière naturelle and matériaux nobles pour créer une atmosphère qui vous ressemble.
+                Le salon est le cœur battant de votre foyer, un lieu de rassemblement et de détente. Nous réinventons votre espace de vie en harmonisant volumes, lumière naturelle et matériaux nobles pour créer une atmosphère qui vous ressemble.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}fusionne architecture and décoration. De l'ouverture d'un mur porteur pour créer un salon-cathédrale à l'intégration d'un éclairage indirect sophistiqué, nous gérant chaque détail.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}fusionne architecture et décoration. De l'ouverture d'un mur porteur pour créer un salon-cathédrale à l'intégration d'un éclairage indirect sophistiqué, nous gérant chaque détail.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
                   ? "Nos experts grenoblois transforment vos appartements de centre-ville or villas de montagne. Nous optimisons chaque mètre carré pour valoriser votre patrimoine isérois avec une touche d'élégance intemporelle."
-                  : "Chaque projet est une exploration du confort moderne, où nous intégrons domotique discrète, isolation thermique performante and finitions artisanales de haute facture."}
+                  : "Chaque projet est une exploration du confort moderne, où nous intégrons domotique discrète, isolation thermique performante et finitions artisanales de haute facture."}
               </p>
 
               <button
@@ -292,7 +292,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
             >
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1588471980726-8346cb477a33?w=1200&q=80"
-                alt="Salon moderne avec parquet and grandes baies vitrées"
+                alt="Salon moderne avec parquet et grandes baies vitrées"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 width={800}
@@ -325,11 +325,11 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Un salon réussi repose sur l'équilibre entre fonctionnalité and esthétique. Nous gérant la redistribution des espaces pour créer des circulations fluides and des zones de vie distinctes.
+                Un salon réussi repose sur l'équilibre entre fonctionnalité et esthétique. Nous gérant la redistribution des espaces pour créer des circulations fluides et des zones de vie distinctes.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre expertise inclut la pose de parquets massifs, la création de bibliothèques sur mesure, l'installation de cheminées design and le traitement acoustique des grandes pièces.
+                Notre expertise inclut la pose de parquets massifs, la création de bibliothèques sur mesure, l'installation de cheminées design et le traitement acoustique des grandes pièces.
               </p>
             </div>
 
@@ -349,15 +349,15 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Pose de parquets and sols premium</span>
+                      <span>Pose de parquets et sols premium</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Plafonds tendus and corniches LED</span>
+                      <span>Plafonds tendus et corniches LED</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Peintures décoratives and stucco</span>
+                      <span>Peintures décoratives et stucco</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
@@ -378,7 +378,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais and d'un chantier propre and sécurisé du début à la fin.
+                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais et d'un chantier propre et sécurisé du début à la fin.
                   </p>
                 </div>
               </div>
@@ -393,7 +393,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                     : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
                 <p className="text-base mb-8 opacity-90">
-                  Visite conseil and chiffrage précis réalisés sous 72h.
+                  Visite conseil et chiffrage précis réalisés sous 72h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -430,22 +430,22 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               {
                 step: "01",
                 title: "Étude & Design",
-                desc: "Cahier des charges, choix chromatiques and plans d'aménagement 3D."
+                desc: "Cahier des charges, choix chromatiques et plans d'aménagement 3D."
               },
               {
                 step: "02",
                 title: "Préparation",
-                desc: "Protection des sols, curage sélectif and éventuelles modifications de cloisons."
+                desc: "Protection des sols, curage sélectif et éventuelles modifications de cloisons."
               },
               {
                 step: "03",
                 title: "Mise en Œuvre",
-                desc: "Électricité, faux-plafonds, peintures premium and pose des revêtements."
+                desc: "Électricité, faux-plafonds, peintures premium et pose des revêtements."
               },
               {
                 step: "04",
                 title: "Finitions",
-                desc: "Pose des accessoires, nettoyage fin de chantier and remise des clés impeccable."
+                desc: "Pose des accessoires, nettoyage fin de chantier et remise des clés impeccable."
               }
             ].map((s, i) => (
               <motion.div 
@@ -498,7 +498,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                   Un salon d'exception ne s'improvise pas. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que l'architecture d'intérieur doit être accessible. C'est pourquoi nous avons scellé un <span className="text-black font-semibold">partenariat avec Anaïs</span>.
                 </p>
                 <p>
-                  Pour chaque projet de rénovation complète de séjour, nous vous offrons un <span className="text-black font-semibold">coaching décoration personnalisé</span>. Un architecte d'intérieur vous accompagne dans l'optimisation des volumes and le <span className="text-black font-semibold">choix des finitions</span>.
+                  Pour chaque projet de rénovation complète de séjour, nous vous offrons un <span className="text-black font-semibold">coaching décoration personnalisé</span>. Un architecte d'intérieur vous accompagne dans l'optimisation des volumes et le <span className="text-black font-semibold">choix des finitions</span>.
                 </p>
               </div>
 
@@ -535,7 +535,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                 </button>
               </div>
               <p className="text-xs text-slate-400 italic mt-4">
-                * Accompagnement offert pour la décoration intérieure and le choix des matériaux pour tout devis signé.
+                * Accompagnement offert pour la décoration intérieure et le choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -559,7 +559,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Espace</p>
-                    <p className="text-xl font-semibold">"L'équilibre parfait entre lumière, matière and émotion."</p>
+                    <p className="text-xl font-semibold">"L'équilibre parfait entre lumière, matière et émotion."</p>
                   </div>
                 </div>
               </div>
@@ -583,7 +583,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos parqueteurs, peintres, électriciens and agenceurs pour que votre salon soit une réussite totale.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos parqueteurs, peintres, électriciens et agenceurs pour que votre salon soit une réussite totale.
               </p>
             </div>
 
@@ -646,11 +646,11 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications and qualifications
+                Nos certifications et qualifications
               </span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
             </p>
           </div>
 
@@ -783,7 +783,7 @@ const Salons: React.FC<SalonsProps> = ({ onBack, onNavigate }) => {
       <ServiceFAQ 
         items={salonFAQs} 
         title={isGrenoble ? "FAQ Rénovation Salon Grenoble" : "FAQ Rénovation Salon"}
-        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de salons and séjours à Grenoble." : "Retrouvez les réponses à vos questions sur le réaménagement de votre espace de vie."}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de salons et séjours à Grenoble." : "Retrouvez les réponses à vos questions sur le réaménagement de votre espace de vie."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

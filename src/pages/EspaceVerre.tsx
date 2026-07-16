@@ -119,7 +119,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Verrière sur Mesure à Grenoble | Espace Verre & Design | BML" : "Verrière Acier & Espace Verre | Créations sur Mesure Premium | BML"}</title>
-        <meta name="description" content="Sublimez vos intérieurs with l'élégance de l'acier and du verre. Verrières d'atelier, cloisons vitrées, design sur mesure. Architecte offert for vos projets haut de gamme." />
+        <meta name="description" content="Sublimez vos intérieurs avec l'élégance de l'acier et du verre. Verrières d'atelier, cloisons vitrées, design sur mesure. Architecte offert pour vos projets haut de gamme." />
         <meta property="og:title" content="Espace Verre & Verrière Premium | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -139,7 +139,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Expertise Verrière & Espace Verre</h2>
-        <p>Conception et installation de verrières d'atelier sur mesure en acier and aluminium</p>
+        <p>Conception et installation de verrières d'atelier sur mesure en acier et aluminium</p>
         <h3>Verrière Atelier Grenoble</h3>
         <h3>Cloison Vitrée Intérieure</h3>
         <h3>Agrandissement de Lumière</h3>
@@ -171,7 +171,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "L'élégance de l'acier et du verre au cœur de Grenoble" : "L'art de la lumière and de la transparence au service de votre intérieur"}
+              {isGrenoble ? "L'élégance de l'acier et du verre au cœur de Grenoble" : "L'art de la lumière et de la transparence au service de votre intérieur"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -237,18 +237,18 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
 
               <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                  L'acier and le verre for sublimer vos volumes
+                  L'acier et le verre pour sublimer vos volumes
                 </span>
               </h2>
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  La verrière n'est plus un simple élément de séparation, c'est une pièce maîtresse architecturale. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transformons votre habitat en créant des perspectives and en diffusant la lumière across chaque pièce.
+                  La verrière n'est plus un simple élément de séparation, c'est une pièce maîtresse architecturale. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transformons votre habitat en créant des perspectives et en diffusant la lumière across chaque pièce.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos artisans verriers à Grenoble façonnent l'acier with une précision millimétrée. Qu'il s'agisse d'une verrière style atelier for votre cuisine or d'une cloison vitrée for votre bureau within Grenoble, nous garantissons une pose parfaite within le respect des normes thermiques and acoustiques."
-                    : "Qu'il s'agisse de restaurer le cachet d'un appartement ancien with une verrière de style industriel or d'intégrer une cloison vitrée minimaliste within un intérieur moderne, nous appliquons une rigueur absolue for un résultat sans faille. Chaque soudure est polie, chaque vitrage est sécurisé."}
+                    ? "Nos artisans verriers à Grenoble façonnent l'acier avec une précision millimétrée. Qu'il s'agisse d'une verrière style atelier pour votre cuisine or d'une cloison vitrée pour votre bureau dans Grenoble, nous garantissons une pose parfaite dans le respect des normes thermiques et acoustiques."
+                    : "Qu'il s'agisse de restaurer le cachet d'un appartement ancien avec une verrière de style industriel or d'intégrer une cloison vitrée minimaliste dans un intérieur moderne, nous appliquons une rigueur absolue pour un résultat sans faille. Chaque soudure est polie, chaque vitrage est sécurisé."}
                 </p>
               </div>
 
@@ -290,7 +290,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Créations en Verre</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la transparence and l'élégance de nos verrières et cloisons vitrées.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la transparence et l'élégance de nos verrières et cloisons vitrées.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -304,17 +304,17 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Maximize className="w-6 h-6" />, 
                     title: "Amplitude Visuelle", 
-                    desc: "Donnez une impression d'espace with des cloisons qui laissent circuler le regard and la lumière." 
+                    desc: "Donnez une impression d'espace avec des cloisons qui laissent circuler le regard et la lumière." 
                   },
                   { 
                     icon: <Grid3X3 className="w-6 h-6" />, 
                     title: "Profilés Premium", 
-                    desc: "Acier thermolaqué or aluminium haute performance for des finitions durables and élégantes." 
+                    desc: "Acier thermolaqué or aluminium haute performance pour des finitions durables et élégantes." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Sécurité Maximale", 
-                    desc: "Vitrages feuilletés anti-effraction and isolation acoustique for un confort optimal." 
+                    desc: "Vitrages feuilletés anti-effraction et isolation acoustique pour un confort optimal." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,8 +342,8 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos experts de la lumière basés à Grenoble façonnent vos cloisons with une expertise certifiée."
-                    : "La transparence maîtrisée for un habitat d'exception."}
+                    ? "Nos experts de la lumière basés à Grenoble façonnent vos cloisons avec une expertise certifiée."
+                    : "La transparence maîtrisée pour un habitat d'exception."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -378,10 +378,10 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Mesure", desc: "Relevé laser millimétré for une intégration sans faille dans votre architecture." },
-              { step: "02", title: "Profil", desc: "Configuration des profilés, des sections and du type de vitrage according to vos besoins." },
-              { step: "03", title: "Atelier", desc: "Découpe, soudure and thermolaquage de votre structure by nos artisans spécialisés." },
-              { step: "04", title: "Pose", desc: "Installation rigoureuse, joints de finition and nettoyage complet for une transparence parfaite." }
+              { step: "01", title: "Mesure", desc: "Relevé laser millimétré pour une intégration sans faille dans votre architecture." },
+              { step: "02", title: "Profil", desc: "Configuration des profilés, des sections et du type de vitrage selon vos besoins." },
+              { step: "03", title: "Atelier", desc: "Découpe, soudure et thermolaquage de votre structure by nos artisans spécialisés." },
+              { step: "04", title: "Pose", desc: "Installation rigoureuse, joints de finition et nettoyage complet pour une transparence parfaite." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,7 +416,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une verrière est une pièce architecturale, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for définir l'implantation idéale, le rythme des profilés and l'harmonie with votre décoration.
+                  Parce qu'une verrière est une pièce architecturale, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour définir l'implantation idéale, le rythme des profilés et l'harmonie avec votre décoration.
                 </p>
               </div>
 
@@ -441,7 +441,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+                * Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
               </p>
             </motion.div>
 
@@ -488,8 +488,8 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'art de la verrière. Nous réalisons des structures en acier thermolaqué, des vitrages phoniques and des cloisons sur mesure with une propreté de chantier and une rigueur exemplaires."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en agencement vitré. Nous coordonnons nos verriers, peintres and électriciens for que vos espaces verres soient livrés with un niveau de finition digne des plus grands showrooms."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'art de la verrière. Nous réalisons des structures en acier thermolaqué, des vitrages phoniques et des cloisons sur mesure avec une propreté de chantier et une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en agencement vitré. Nous coordonnons nos verriers, peintres et électriciens pour que vos espaces verres soient livrés avec un niveau de finition digne des plus grands showrooms."}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for votre habitat
+                Nos labels pour votre habitat
               </span>
             </h2>
           </div>
@@ -587,11 +587,11 @@ const EspaceVerre: React.FC<EspaceVerreProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 

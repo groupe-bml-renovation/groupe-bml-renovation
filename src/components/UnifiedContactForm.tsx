@@ -89,7 +89,7 @@ export default function UnifiedContactForm({ hideLogos = false }: UnifiedContact
       />
       <div className="max-w-[1440px] mx-auto w-full">
 
-        {/* Form and Info Section - Responsive Reordering */}
+        {/* Form et Info Section - Responsive Reordering */}
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-12 lg:items-center ${hideLogos ? 'mb-8' : 'mb-12'}`}>
           
           {/* 1. Body Text (Top on Mobile, Top Right on Desktop) */}

@@ -119,7 +119,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Rénovation Boutiques & Bureaux à Grenoble | Agencement Pro | BML" : "Rénovation Boutiques & Bureaux Premium | Agencement Commercial | BML"}</title>
-        <meta name="description" content="Transformation d'espaces professionnels, boutiques and bureaux. Agencement commercial and mise aux normes ERP avec garantie décennale and architecte offert." />
+        <meta name="description" content="Transformation d'espaces professionnels, boutiques et bureaux. Agencement commercial et mise aux normes ERP avec garantie décennale et architecte offert." />
         <meta property="og:title" content="Rénovation d'Espaces Professionnels | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -139,7 +139,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
 
       <div className="sr-only">
         <h2>Expertise Rénovation Tertiaire & Commerciale</h2>
-        <p>Aménagement de bureaux, boutiques and espaces de vente for professionnels</p>
+        <p>Aménagement de bureaux, boutiques et espaces de vente pour professionnels</p>
         <h3>Agencement Boutique Grenoble</h3>
         <h3>Rénovation de Bureau Isère</h3>
         <h3>Mise aux Normes ERP RGE</h3>
@@ -171,7 +171,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Agencement commercial & tertiaire haute performance en Isère" : "L'excellence de la rénovation Tout Corps d'État for votre activité"}
+              {isGrenoble ? "Agencement commercial & tertiaire haute performance en Isère" : "L'excellence de la rénovation Tout Corps d'État pour votre activité"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -243,12 +243,12 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  L'agencement de vos locaux professionnels est le levier majeur de votre image de marque and de la productivité de vos équipes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transformons vos boutiques and bureaux en gérant l'optimisation des flux, l'esthétique contemporaine and le confort tertiaire.
+                  L'agencement de vos locaux professionnels est le levier majeur de votre image de marque et de la productivité de vos équipes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transformons vos boutiques et bureaux en gérant l'optimisation des flux, l'esthétique contemporaine et le confort tertiaire.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts en agencement commercial à Grenoble maîtrisent les contraintes ERP and tertiaires de l'Isère. De la mise aux normes PMR à la création de concepts 'Open Ready' within Grenoble, nous orchestrons votre transformation with une agilité maximale for limiter l'impact sur votre exploitation."
-                    : "Qu'il s'agisse de redynamiser une boutique de luxe or de restructurer un plateau de bureaux tertiaires, nous appliquons une rigueur de conduite de travaux absolue. Chaque lot technique est piloté with une précision industrielle for un résultat sans compromis."}
+                    ? "Nos experts en agencement commercial à Grenoble maîtrisent les contraintes ERP et tertiaires de l'Isère. De la mise aux normes PMR à la création de concepts 'Open Ready' within Grenoble, nous orchestrons votre transformation avec une agilité maximale pour limiter l'impact sur votre exploitation."
+                    : "Qu'il s'agisse de redynamiser une boutique de luxe or de restructurer un plateau de bureaux tertiaires, nous appliquons une rigueur de conduite de travaux absolue. Chaque lot technique est piloté avec une précision industrielle pour un résultat sans compromis."}
                 </p>
               </div>
 
@@ -290,7 +290,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Réalisations Professionnelles</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez comment nous réinventons les codes du tertiaire and du commerce.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez comment nous réinventons les codes du tertiaire et du commerce.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -304,17 +304,17 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
                   { 
                     icon: <Maximize className="w-6 h-6" />, 
                     title: "Agencement ERP", 
-                    desc: "Conception and mise aux normes for Établissements Recevant du Public (sécurité incendie, accessibilité)." 
+                    desc: "Conception et mise aux normes for Établissements Recevant du Public (sécurité incendie, accessibilité)." 
                   },
                   { 
                     icon: <Grid3X3 className="w-6 h-6" />, 
                     title: "Lots Techniques Pro", 
-                    desc: "Maîtrise de l'électricité tertiaire, climatisation réversible and courants faibles haute performance." 
+                    desc: "Maîtrise de l'électricité tertiaire, climatisation réversible et courants faibles haute performance." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Excellence Acoustique", 
-                    desc: "Solutions d'isolation and de traitement acoustique for des espaces de travail productifs and sereins." 
+                    desc: "Solutions d'isolation et de traitement acoustique pour des espaces de travail productifs et sereins." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,7 +342,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos experts tertiaires basés à Grenoble façonnent votre réussite within un délai record."
+                    ? "Nos experts tertiaires basés à Grenoble façonnent votre réussite dans un délai record."
                     : "L'art de l'agencement commercial, au service de votre rentabilité."}
                 </p>
                 <button
@@ -378,10 +378,10 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Audit ERP", desc: "Diagnostic technique and étude de faisabilité according to les normes de sécurité en vigueur." },
-              { step: "02", title: "Ingénierie", desc: "Étude des flux, conception des réseaux techniques and validation architecturale pro." },
-              { step: "03", title: "Célérité", desc: "Exécution millimétrée with coordination agile for minimiser votre arrêt d'activité." },
-              { step: "04", title: "Conformité", desc: "Contrôle final, levée des réserves and passage de la commission de sécurité ERP." }
+              { step: "01", title: "Audit ERP", desc: "Diagnostic technique et étude de faisabilité selon les normes de sécurité en vigueur." },
+              { step: "02", title: "Ingénierie", desc: "Étude des flux, conception des réseaux techniques et validation architecturale pro." },
+              { step: "03", title: "Célérité", desc: "Exécution millimétrée avec coordination agile pour minimiser votre arrêt d'activité." },
+              { step: "04", title: "Conformité", desc: "Contrôle final, levée des réserves et passage de la commission de sécurité ERP." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,7 +416,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'un espace pro doit allier performance and esthétique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur for co-concevoir votre concept : ergonomie des postes, scénographie de vente and identité de marque spatiale.
+                  Parce qu'un espace pro doit allier performance et esthétique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour co-concevoir votre concept : ergonomie des postes, scénographie de vente et identité de marque spatiale.
                 </p>
               </div>
 
@@ -441,7 +441,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+                * Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
               </p>
             </motion.div>
 
@@ -488,8 +488,8 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'agencement commercial. Nous coordonnons maçonnerie, électricité tertiaire and finitions haut de gamme with une propreté de chantier and une rigueur exemplaires."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en rénovation tertiaire. Nous coordonnons nos électriciens, plombiers and agenceurs for que vos espaces pro soient livrés with un niveau de fiabilité digne des plus grands standards pro."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'agencement commercial. Nous coordonnons maçonnerie, électricité tertiaire et finitions haut de gamme avec une propreté de chantier et une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en rénovation tertiaire. Nous coordonnons nos électriciens, plombiers et agenceurs pour que vos espaces pro soient livrés avec un niveau de fiabilité digne des plus grands standards pro."}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels and qualifications pro
+                Nos labels et qualifications pro
               </span>
             </h2>
           </div>
@@ -587,11 +587,11 @@ const BoutiquesBureaux: React.FC<BoutiquesBureauxProps> = ({ onBack, onNavigate 
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 

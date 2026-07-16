@@ -54,7 +54,7 @@ function useContainerScrollContext() {
   const context = React.useContext(ContainerScrollContext)
   if (!context) {
     throw new Error(
-      "useContainerScrollContext must be used within a ContainerScroll Component"
+      "useContainerScrollContext must be used dans a ContainerScroll Component"
     )
   }
   return context

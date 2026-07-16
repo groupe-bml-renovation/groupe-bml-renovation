@@ -118,7 +118,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Installation Borne Électrique à Grenoble | IRVE Expert BML" : "Bornes de Recharge Électrique Premium | Wallbox & IRVE | Groupe BML"}</title>
-        <meta name="description" content="L'énergie de demain chez vous. Installation certifiée IRVE de bornes de recharge rapide. Solutions intelligentes, aides d'État and sécurité maximale en Isère." />
+        <meta name="description" content="L'énergie de demain chez vous. Installation certifiée IRVE de bornes de recharge rapide. Solutions intelligentes, aides d'État et sécurité maximale en Isère." />
         <meta property="og:title" content="Installation Bornes Électriques Premium | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -138,7 +138,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
 
       <div className="sr-only">
         <h2>Installation Bornes de Recharge</h2>
-        <p>Expertise certifiée IRVE for véhicules électriques and hybrides</p>
+        <p>Expertise certifiée IRVE pour véhicules électriques et hybrides</p>
         <h3>Installateur IRVE Grenoble</h3>
         <h3>Bornes de Recharge Copropriété</h3>
         <h3>Wallbox 7.4kW & 22kW</h3>
@@ -170,7 +170,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Installation certifiée IRVE de bornes de recharge en Isère" : "Solutions de recharge intelligentes for une mobilité durable"}
+              {isGrenoble ? "Installation certifiée IRVE de bornes de recharge en Isère" : "Solutions de recharge intelligentes pour une mobilité durable"}
             </p>
             <div className="w-24 h-0.5 bg-[#f59e0b] mx-auto mb-8 shadow-[0_0_15px_rgba(245,158,11,0.5)]" />
             
@@ -242,12 +242,12 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Passer au véhicule électrique est un engagement fort for l'avenir. Pour en profiter pleinement, une infrastructure de recharge performante and sécurisée à domicile est indispensable. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous certifions votre transition.
+                  Passer au véhicule électrique est un engagement fort pour l'avenir. Pour en profiter pleinement, une infrastructure de recharge performante et sécurisée à domicile est indispensable. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous certifions votre transition.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos techniciens certifiés IRVE à Grenoble gèrent l'intégralité de votre projet. Du dimensionnement de votre tableau électrique à la mise en service de votre borne Wallbox, nous garantissons une recharge rapide and sécurisée within votre habitat grenoblois."
-                    : "Qu'il s'agisse de restaurer une installation ancienne or d'intégrer une borne de recharge intelligente with délestage dynamique, nous appliquons une rigueur absolue for un système sans faille. Chaque branchement est vérifié and chaque programmation est optimisée."}
+                    ? "Nos techniciens certifiés IRVE à Grenoble gèrent l'intégralité de votre projet. Du dimensionnement de votre tableau électrique à la mise en service de votre borne Wallbox, nous garantissons une recharge rapide et sécurisée dans votre habitat grenoblois."
+                    : "Qu'il s'agisse de restaurer une installation ancienne or d'intégrer une borne de recharge intelligente avec délestage dynamique, nous appliquons une rigueur absolue pour un système sans faille. Chaque branchement est vérifié et chaque programmation est optimisée."}
                 </p>
               </div>
 
@@ -289,7 +289,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Bornes de Recharge</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la technologie performante and l'intégration soignée de nos solutions IRVE.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la technologie performante et l'intégration soignée de nos solutions IRVE.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -303,17 +303,17 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
                   { 
                     icon: <Zap className="w-6 h-6" />, 
                     title: "Charge Rapide", 
-                    desc: "Wallbox de 7.4kW à 22kW for une autonomie retrouvée en quelques heures seulement." 
+                    desc: "Wallbox de 7.4kW à 22kW pour une autonomie retrouvée en quelques heures seulement." 
                   },
                   { 
                     icon: <Battery className="w-6 h-6" />, 
                     title: "Délestage Intelligent", 
-                    desc: "Gestion dynamique de la puissance for éviter toute surcharge de votre abonnement électrique." 
+                    desc: "Gestion dynamique de la puissance pour éviter toute surcharge de votre abonnement électrique." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Pilotage Mobile", 
-                    desc: "Suivez and programmez vos sessions de recharge directement from votre smartphone." 
+                    desc: "Suivez et programmez vos sessions de recharge directement from votre smartphone." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -341,8 +341,8 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos techniciens basés à Grenoble façonnent votre infrastructure with une expertise certifiée."
-                    : "L'énergie maîtrisée for un confort de conduite quotidien."}
+                    ? "Nos techniciens basés à Grenoble façonnent votre infrastructure avec une expertise certifiée."
+                    : "L'énergie maîtrisée pour un confort de conduite quotidien."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -377,10 +377,10 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Audit", desc: "Diagnostic de votre tableau électrique and vérification de la capacité disponible." },
-              { step: "02", title: "Étude", desc: "Calcul du dimensionnement optimal for vos besoins and choix de l'emplacement." },
-              { step: "03", title: "Pose", desc: "Câblage dédié from le tableau, installation des protections and fixation de la borne." },
-              { step: "04", title: "Certif", desc: "Tests de charge, configuration logicielle and remise de l'attestation Qualifelec." }
+              { step: "01", title: "Audit", desc: "Diagnostic de votre tableau électrique et vérification de la capacité disponible." },
+              { step: "02", title: "Étude", desc: "Calcul du dimensionnement optimal pour vos besoins et choix de l'emplacement." },
+              { step: "03", title: "Pose", desc: "Câblage dédié from le tableau, installation des protections et fixation de la borne." },
+              { step: "04", title: "Certif", desc: "Tests de charge, configuration logicielle et remise de l'attestation Qualifelec." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#f59e0b]/20 transition-colors uppercase">{s.step}</span>
@@ -415,14 +415,14 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une borne de recharge doit s'intégrer discrètement à votre habitat, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#f59e0b]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for l'implantation technique, le choix des matériaux and l'harmonie with votre architecture.
+                  Parce qu'une borne de recharge doit s'intégrer discrètement à votre habitat, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#f59e0b]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour l'implantation technique, le choix des matériaux et l'harmonie avec votre architecture.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#f59e0b]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Projets 3D for intégrer vos bornes proprement</span>
+                  <span className="italic">Projets 3D pour intégrer vos bornes proprement</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#f59e0b]"><Check className="w-5 h-5" /></div>
@@ -440,7 +440,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -487,8 +487,8 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les bornes de recharge rapide, les gestions d'énergie complexes and les normes IRVE with une précision and une propreté de chantier exemplaires for vos rénovations."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans l'installation IRVE. Nous maîtrisons les bornes premium, les équilibrages de charge complexes and la conformité Qualifelec for des habitats qui allient technologie and durabilité."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les bornes de recharge rapide, les gestions d'énergie complexes et les normes IRVE avec une précision et une propreté de chantier exemplaires pour vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans l'installation IRVE. Nous maîtrisons les bornes premium, les équilibrages de charge complexes et la conformité Qualifelec pour des habitats qui allient technologie et durabilité."}
               </p>
             </div>
 
@@ -545,7 +545,7 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#f59e0b] bg-clip-text text-transparent">
-                Nos labels for votre recharge
+                Nos labels pour votre recharge
               </span>
             </h2>
           </div>
@@ -586,11 +586,11 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -654,27 +654,27 @@ const BorneElectrique: React.FC<BorneElectriqueProps> = ({ onBack, onNavigate })
 
       <ServiceFAQ
         title="FAQ Bornes Électriques"
-        description="Les réponses de nos techniciens for charger votre mobilité with soin."
+        description="Les réponses de nos techniciens pour charger votre mobilité avec soin."
         items={[
           {
             id: "be1",
             question: "Est-il obligatoire de passer par un installateur IRVE ?",
-            answer: "Oui, la loi française impose qu'un professionnel certifié IRVE (Infrastructures de Recharge pour Véhicules Électriques) réalise l'installation for toute borne supérieure à 3.7kW. C'est une condition sine qua non for bénéficier des aides d'État and for être couvert par votre assurance."
+            answer: "Oui, la loi française impose qu'un professionnel certifié IRVE (Infrastructures de Recharge pour Véhicules Électriques) réalise l'installation pour toute borne supérieure à 3.7kW. C'est une condition sine qua non pour bénéficier des aides d'État et pour être couvert par votre assurance."
           },
           {
             id: "be2",
-            question: "Quelle puissance choisir for ma borne à domicile ?",
+            question: "Quelle puissance choisir pour ma borne à domicile ?",
             answer: "Pour une maison individuelle, une borne de 7.4kW est le standard idéal. Elle permet de recharger totalement une batterie de 50kWh en une nuit (environ 7h). Pour les besoins plus importants or professionnels, nous installons des bornes triphasées de 22kW."
           },
           {
             id: "be3",
             question: "Qu'est-ce que le délestage dynamique ?",
-            answer: "C'est une technologie qui permet à la borne de communiquer with votre compteur électrique. Si vous consommez beaucoup d'énergie dans votre maison (four, plaques, chauffage), la borne réduit automatiquement sa puissance for ne pas faire disjoncter votre installation."
+            answer: "C'est une technologie qui permet à la borne de communiquer avec votre compteur électrique. Si vous consommez beaucoup d'énergie dans votre maison (four, plaques, chauffage), la borne réduit automatiquement sa puissance pour ne pas faire disjoncter votre installation."
           },
           {
             id: "be4",
-            question: "De quelles aides puis-je bénéficier for mon installation ?",
-            answer: "Vous pouvez bénéficier d'un crédit d'impôt de 500€ par borne installée. De plus, for les copropriétés or les entreprises, le programme ADVENIR peut couvrir une partie importante du coût de l'installation. Nous vous accompagnons dans le montage de ces dossiers."
+            question: "De quelles aides puis-je bénéficier pour mon installation ?",
+            answer: "Vous pouvez bénéficier d'un crédit d'impôt de 500€ par borne installée. De plus, pour les copropriétés or les entreprises, le programme ADVENIR peut couvrir une partie importante du coût de l'installation. Nous vous accompagnons dans le montage de ces dossiers."
           },
           {
             id: "be5",

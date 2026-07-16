@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FooterSection } from '../components/footer-section';
 
+import { Helmet } from 'react-helmet-async';
+
 interface PolicyPageProps {
   onBack: () => void;
 }
@@ -9,6 +11,9 @@ interface PolicyPageProps {
 const PolitiqueConfidentialite: React.FC<PolicyPageProps> = ({ onBack }) => {
   return (
     <div className="min-h-screen bg-white pt-24">
+      <Helmet>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

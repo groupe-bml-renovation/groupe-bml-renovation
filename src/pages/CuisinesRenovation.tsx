@@ -137,7 +137,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Rénovation de Cuisines à Grenoble | Design & Agencement | BML" : "Rénovation de Cuisines Premium | Design & Convivialité | BML"}</title>
-        <meta name="description" content="Transformez votre cuisine. Rénovation complète, agencement sur mesure, plan de travail premium with architecte offert pour votre projet." />
+        <meta name="description" content="Transformez votre cuisine. Rénovation complète, agencement sur mesure, plan de travail premium avec architecte offert pour votre projet." />
         <meta property="og:title" content="Rénovation de Cuisines | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -161,7 +161,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
         <div className="absolute inset-0">
           <OptimizedImage
             src="/assets/remote/a86eb69490834e9fc9e90bacee5a818d.jpg"
-            alt="Cuisine moderne and lumineuse"
+            alt="Cuisine moderne et lumineuse"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -251,17 +251,17 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                La cuisine est bien plus qu'une pièce technique, c'est le pôle de vie de la maison. Nous transformons cet espace through un agencement intelligent, des matériaux durables and un design qui invite au partage.
+                La cuisine est bien plus qu'une pièce technique, c'est le pôle de vie de la maison. Nous transformons cet espace through un agencement intelligent, des matériaux durables et un design qui invite au partage.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}fusionne ergonomie and esthétique. De l'optimisation des flux de travail au choix de plans de travail d'exception (Quartz, Granit, Inox), nous gérant chaque lot technique.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}fusionne ergonomie et esthétique. De l'optimisation des flux de travail au choix de plans de travail d'exception (Quartz, Granit, Inox), nous gérant chaque lot technique.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos experts grenoblois gèrent l'intégralité de votre projet Isérois. De la plomberie invisible à la pose de meubles de haute facture, nous transformons votre cuisine en un espace de performance technique and d'élégance visuelle."
-                  : "Chaque projet est une exploration de la modernité, où nous intégrons électroménager haut de gamme, éclairages scénographiés and finitions irréprochables."}
+                  ? "Nos experts grenoblois gèrent l'intégralité de votre projet Isérois. De la plomberie invisible à la pose de meubles de haute facture, nous transformons votre cuisine en un espace de performance technique et d'élégance visuelle."
+                  : "Chaque projet est une exploration de la modernité, où nous intégrons électroménager haut de gamme, éclairages scénographiés et finitions irréprochables."}
               </p>
 
               <button
@@ -285,7 +285,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
             >
               <OptimizedImage
                 src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1200&q=80"
-                alt="Cuisine design with îlot central"
+                alt="Cuisine design avec îlot central"
                 className="w-full h-full object-cover"
                 loading="eager"
               />
@@ -316,11 +316,11 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                La rénovation d'une cuisine demande une coordination parfaite des corps d'état. Nous gérant simultanément la plomberie, l'électricité de puissance for l'électroménager and l'agencement de précision.
+                La rénovation d'une cuisine demande une coordination parfaite des corps d'état. Nous gérant simultanément la plomberie, l'électricité de puissance pour l'électroménager et l'agencement de précision.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre expertise inclut la mise en place de réseaux de gaz, l'installation de hottes à haute performance and la pose de crédences and plans de travail with une finition millimétrée.
+                Notre expertise inclut la mise en place de réseaux de gaz, l'installation de hottes à haute performance et la pose de crédences et plans de travail avec une finition millimétrée.
               </p>
             </div>
 
@@ -369,7 +369,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Nous gérant votre projet with une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais and d'un interlocuteur unique for piloter vos travaux de A à Z.
+                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais et d'un interlocuteur unique pour piloter vos travaux de A à Z.
                   </p>
                 </div>
               </div>
@@ -384,7 +384,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
                     : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
                 <p className="text-base mb-8 opacity-90">
-                  Chiffrage précis and plans 3D réalisés sous 72h.
+                  Chiffrage précis et plans 3D réalisés sous 72h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -421,22 +421,22 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
               {
                 step: "01",
                 title: "Étude & Métre",
-                desc: "Prise de côtes laser, plans d'implantation and validation des points techniques."
+                desc: "Prise de côtes laser, plans d'implantation et validation des points techniques."
               },
               {
                 step: "02",
                 title: "Dépose & Réseaux",
-                desc: "Enlèvement de l'existant, redistribution élec and plomberie for plaque, four and évier."
+                desc: "Enlèvement de l'existant, redistribution élec et plomberie pour plaque, four et évier."
               },
               {
                 step: "03",
                 title: "Pose & Ajustement",
-                desc: "Montage des caissons, réglages des façades and installation du plan de travail."
+                desc: "Montage des caissons, réglages des façades et installation du plan de travail."
               },
               {
                 step: "04",
                 title: "Équipement",
-                desc: "Raccordement électroménager, finitions joints and nettoyage fin de chantier."
+                desc: "Raccordement électroménager, finitions joints et nettoyage fin de chantier."
               }
             ].map((s, i) => (
               <motion.div 
@@ -486,10 +486,10 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Une cuisine réussie ne s'improvise pas. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que l'ergonomie culinaire doit être accessible. C'est pourquoi nous avons scellé un <span className="text-black font-semibold">partenariat with Anaïs</span>.
+                  Une cuisine réussie ne s'improvise pas. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous croyons que l'ergonomie culinaire doit être accessible. C'est pourquoi nous avons scellé un <span className="text-black font-semibold">partenariat avec Anaïs</span>.
                 </p>
                 <p>
-                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour optimiser l'espace, les flux and le <span className="text-black font-semibold">choix des matériaux</span>. Matériaux, ergonomie and identité visuelle sont travaillés en synergie through un coaching déco personnalisé.
+                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour optimiser l'espace, les flux et le <span className="text-black font-semibold">choix des matériaux</span>. Matériaux, ergonomie et identité visuelle sont travaillés en synergie through un coaching déco personnalisé.
                 </p>
               </div>
 
@@ -498,9 +498,9 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
                   { title: "Architecte Offert", desc: "Étude flux & ergonomie culinaire", icon: "📐" },
                   { title: "Plan de Travail Pro", desc: "Expertise Quartz, Granit & Inox", icon: "🧱" },
                   { title: "Réactivité Isère", desc: "Intervention rapide Savoie & Isère", icon: "⚡" },
-                  { title: "Garantie Décennale", desc: "Installation certifiée and assurée", icon: "🛡️" },
+                  { title: "Garantie Décennale", desc: "Installation certifiée et assurée", icon: "🛡️" },
                   { title: "Plans 3D", desc: "Visualisation immersive du projet", icon: "🖥️" },
-                  { title: "Experts Métiers", desc: "Poseurs and électriciens qualifiés", icon: "📍" }
+                  { title: "Experts Métiers", desc: "Poseurs et électriciens qualifiés", icon: "📍" }
                 ].map((usp, i) => (
                   <div key={i} className="flex gap-4 items-start">
                     <span className="text-2xl">{usp.icon}</span>
@@ -526,7 +526,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
                 </button>
               </div>
               <p className="text-xs text-slate-400 italic mt-4">
-                * Accompagnement offert pour la décoration intérieure and le choix des matériaux pour tout devis signé.
+                * Accompagnement offert pour la décoration intérieure et le choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -572,7 +572,7 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos cuisinistes, peintres, électriciens and plombiers pour que votre cuisine soit livrée sans compromis.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos cuisinistes, peintres, électriciens et plombiers pour que votre cuisine soit livrée sans compromis.
               </p>
             </div>
 
@@ -635,11 +635,11 @@ const CuisinesRenovation: React.FC<CuisinesRenovationProps> = ({ onBack, onNavig
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications and qualifications
+                Nos certifications et qualifications
               </span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
             </p>
           </div>
 

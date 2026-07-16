@@ -95,7 +95,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
       behavior: 'smooth'
     });
 
-    // Use requestAnimationFrame for a smoother, frame-synced update
+    // Use requestAnimationFrame pour a smoother, frame-synced update
     const updatePosition = () => {
       if (scrollContainerRef.current) {
         setCarouselPosition(scrollContainerRef.current.scrollLeft);
@@ -103,7 +103,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
     };
     
     requestAnimationFrame(updatePosition);
-    // Keep a small timeout as a safety fallback for the end of the smooth scroll
+    // Keep a small timeout as a safety fallback pour the end of the smooth scroll
     setTimeout(updatePosition, 300);
   };
 
@@ -166,7 +166,7 @@ export const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({
     setIsUserScrolling(false);
   };
 
-  // Intersection Observer for visibility detection
+  // Intersection Observer pour visibility detection
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 

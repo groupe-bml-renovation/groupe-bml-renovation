@@ -263,7 +263,7 @@ export const chauffageFAQs = [
   {
     id: "ch3",
     question: "C'est quoi le désembouage d'un circuit de chauffage ?",
-    answer: "Il s'agit d'un nettoyage haute pression and chimique du réseau pour éliminer les boues and dépôts qui s'accumulent. Un circuit propre améliore le rendement de 15% and évite les pannes de circulateurs or de vannes."
+    answer: "Il s'agit d'un nettoyage haute pression et chimique du réseau pour éliminer les boues et dépôts qui s'accumulent. Un circuit propre améliore le rendement de 15% and évite les pannes de circulateurs or de vannes."
   },
   {
     id: "ch4",
@@ -286,17 +286,17 @@ export const amianteFAQs = [
   {
     id: "am2",
     question: "Puis-je retirer moi-même du fibrociment ?",
-    answer: "C'est fortement déconseillé and réglementé. La manipulation de fibrociment libère des fibres d'amiante invisibles and cancérigènes. Un professionnel utilise des équipements de protection and des protocoles d'humidification pour neutraliser la poussière."
+    answer: "C'est fortement déconseillé et réglementé. La manipulation de fibrociment libère des fibres d'amiante invisibles et cancérigènes. Un professionnel utilise des équipements de protection et des protocoles d'humidification pour neutraliser la poussière."
   },
   {
     id: "am3",
     question: "Qu'est-ce qu'un Bordereau de Suivi des Déchets d'Amiante ?",
-    answer: "C'est le passeport de vos déchets. Il garantit que l'amiante retiré de chez vous a bien été transporté par un véhicule agréé and éliminé dans un centre de stockage certifié. Ce document vous dédouane de toute responsabilité pénale."
+    answer: "C'est le passeport de vos déchets. Il garantit que l'amiante retiré de chez vous a bien été transporté par un véhicule agréé et éliminé dans un centre de stockage certifié. Ce document vous dédouane de toute responsabilité pénale."
   },
   {
     id: "am4",
     question: "Combien de temps dure un désamiantage ?",
-    answer: "La phase préparatoire est la plus longue. Pour une pièce standard, comptez 3 à 5 jours incluant le temps de séchage du fixateur and les tests d'air libératoires obligatoires après retrait."
+    answer: "La phase préparatoire est la plus longue. Pour une pièce standard, comptez 3 à 5 jours incluant le temps de séchage du fixateur et les tests d'air libératoires obligatoires après retrait."
   },
   {
     id: "am5",
@@ -308,27 +308,27 @@ export const plomberieFAQs = [
   {
     id: "pl1",
     question: "Comment détecter une fuite d'eau invisible ?",
-    answer: "Nous utilisons des outils d'écoute acoustique and des caméras thermiques for localiser les fuites sans casser vos murs. Une surconsommation sur votre facture d'eau est souvent le premier signe d'alerte d'une fuite encastrée."
+    answer: "Nous utilisons des outils d'écoute acoustique et des caméras thermiques pour localiser les fuites sans casser vos murs. Une surconsommation sur votre facture d'eau est souvent le premier signe d'alerte d'une fuite encastrée."
   },
   {
     id: "pl2",
     question: "Peut-on installer une douche à l'italienne pendant une rénovation ?",
-    answer: "Oui, c'est notre spécialité. Cela demande une étude de la pente d'évacuation and une étanchéité parfaite (nappe d'étanchéité certifiée). Si le sol ne permet pas d'encastrer le receveur, nous créons une légère surélévation esthétique."
+    answer: "Oui, c'est notre spécialité. Cela demande une étude de la pente d'évacuation et une étanchéité parfaite (nappe d'étanchéité certifiée). Si le sol ne permet pas d'encastrer le receveur, nous créons une légère surélévation esthétique."
   },
   {
     id: "pl3",
-    question: "Qu'est-ce qu'un adoucisseur d'eau and est-ce nécessaire ?",
-    answer: "En Isère, l'eau est souvent calcaire. Un adoucisseur protège vos canalisations, votre chaudière and vos appareils ménagers contre l'entartrage, and améliore le confort de votre peau and de votre linge."
+    question: "Qu'est-ce qu'un adoucisseur d'eau et est-ce nécessaire ?",
+    answer: "En Isère, l'eau est souvent calcaire. Un adoucisseur protège vos canalisations, votre chaudière et vos appareils ménagers contre l'entartrage, et améliore le confort de votre peau et de votre linge."
   },
   {
     id: "pl4",
     question: "Pourquoi choisir le Multicouche plutôt que le Cuivre ?",
-    answer: "Le multicouche combine les avantages du plastique (pas de corrosion, pas d'entartrage) and de l'aluminium (mémoire de forme, barrière anti-oxygène). C'est plus rapide à poser, plus fiable and plus silencieux que le cuivre traditionnel."
+    answer: "Le multicouche combine les avantages du plastique (pas de corrosion, pas d'entartrage) and de l'aluminium (mémoire de forme, barrière anti-oxygène). C'est plus rapide à poser, plus fiable et plus silencieux que le cuivre traditionnel."
   },
   {
     id: "pl5",
     question: "Gérez-vous le débouchage d'urgence ?",
-    answer: "Oui, nous intervenons for les urgences sanitaires and les débouchages complexes demandant un hydrocurage ou une inspection vidéo des canalisations for identifier l'origine du blocage."
+    answer: "Oui, nous intervenons pour les urgences sanitaires et les débouchages complexes demandant un hydrocurage ou une inspection vidéo des canalisations pour identifier l'origine du blocage."
   }
 ];
 
@@ -336,27 +336,27 @@ export const electriqueFAQs = [
   {
     id: "el1",
     question: "Mon installation date des années 80, dois-je tout changer ?",
-    answer: "Une installation des années 80 manque souvent de dispositifs différentiels 30mA and de mise à la terre sur tous les circuits. Nous effectuons un audit complet for déterminer s'il faut une rénovation totale or une mise en sécurité (remplacement du tableau and ajout des protections vitales)."
+    answer: "Une installation des années 80 manque souvent de dispositifs différentiels 30mA et de mise à la terre sur tous les circuits. Nous effectuons un audit complet pour déterminer s'il faut une rénovation totale or une mise en sécurité (remplacement du tableau et ajout des protections vitales)."
   },
   {
     id: "el2",
     question: "Est-il possible d'ajouter de la domotique sans gros travaux ?",
-    answer: "Absolument. Grâce aux technologies sans fil (Zigbee, Bluetooth Mesh), nous pouvons automatiser votre éclairage, vos volets and votre chauffage sans créer de nouvelles saignées dans vos murs, en remplaçant simplement vos interrupteurs existants."
+    answer: "Absolument. Grâce aux technologies sans fil (Zigbee, Bluetooth Mesh), nous pouvons automatiser votre éclairage, vos volets et votre chauffage sans créer de nouvelles saignées dans vos murs, en remplaçant simplement vos interrupteurs existants."
   },
   {
     id: "el3",
-    question: "Installez-vous des prises de recharge for voitures électriques ?",
-    answer: "Oui, nous sommes certifiés IRVE (Infrastructure de Recharge for Véhicules Électriques). Nous installons des bornes (Wallbox) or des prises renforcées adaptées à la puissance de votre compteur and à votre usage quotidien."
+    question: "Installez-vous des prises de recharge pour voitures électriques ?",
+    answer: "Oui, nous sommes certifiés IRVE (Infrastructure de Recharge pour Véhicules Électriques). Nous installons des bornes (Wallbox) or des prises renforcées adaptées à la puissance de votre compteur et à votre usage quotidien."
   },
   {
     id: "el4",
-    question: "Comment gérez-vous le passage des câbles for que ce soit esthétique ?",
-    answer: "En rénovation haut de gamme, nous privilégions l'encastrement par saignées rebouchées with soin or le passage dans les faux-plafonds and doublages. Si l'apparent est inévitable, nous utilisons des goulottes design minimalistes parfaitement intégrées aux plinthes."
+    question: "Comment gérez-vous le passage des câbles pour que ce soit esthétique ?",
+    answer: "En rénovation haut de gamme, nous privilégions l'encastrement par saignées rebouchées avec soin or le passage dans les faux-plafonds et doublages. Si l'apparent est inévitable, nous utilisons des goulottes design minimalistes parfaitement intégrées aux plinthes."
   },
   {
     id: "el5",
     question: "Fournissez-vous l'attestation de conformité Consuel ?",
-    answer: "Oui, for toute rénovation totale with remplacement du tableau, nous gérons la visite du Consuel and la remise de l'attestation de conformité indispensable for vos assurances and votre fournisseur d'énergie."
+    answer: "Oui, pour toute rénovation totale avec remplacement du tableau, nous gérons la visite du Consuel et la remise de l'attestation de conformité indispensable pour vos assurances et votre fournisseur d'énergie."
   }
 ];
 
@@ -364,7 +364,7 @@ export const climFAQs = [
   {
     id: "cl1",
     question: "Qu'est-ce qu'une climatisation réversible ?",
-    answer: "Une climatisation réversible est une pompe à chaleur air-air. Elle capte les calories de l'air extérieur for chauffer votre intérieur en hiver, and inverse le cycle en été for évacuer la chaleur vers l'extérieur. C'est l'un des systèmes les plus économes car il restitue environ 4 fois plus d'énergie qu'il n'en consomme."
+    answer: "Une climatisation réversible est une pompe à chaleur air-air. Elle capte les calories de l'air extérieur pour chauffer votre intérieur en hiver, et inverse le cycle en été pour évacuer la chaleur vers l'extérieur. C'est l'un des systèmes les plus économes car il restitue environ 4 fois plus d'énergie qu'il n'en consomme."
   },
   {
     id: "cl2",
@@ -379,11 +379,11 @@ export const climFAQs = [
   {
     id: "cl4",
     question: "Est-ce que l'installation fait du bruit ?",
-    answer: "Les unités modernes sont extrêmement silencieuses. En mode 'nuit', le niveau sonore descend autour de 19dB(A), ce qui est à peine perceptible (plus silencieux qu'un chuchotement). Nous sélectionnons les emplacements for éviter toute nuisance sonore vis-à-vis des voisins."
+    answer: "Les unités modernes sont extrêmement silencieuses. En mode 'nuit', le niveau sonore descend autour de 19dB(A), ce qui est à peine perceptible (plus silencieux qu'un chuchotement). Nous sélectionnons les emplacements pour éviter toute nuisance sonore vis-à-vis des voisins."
   },
   {
     id: "cl5",
-    question: "Faut-il une autorisation for installer une unité extérieure ?",
+    question: "Faut-il une autorisation pour installer une unité extérieure ?",
     answer: "En copropriété or en lotissement, une déclaration préalable de travaux (DP) en mairie est généralement nécessaire car l'unité extérieure modifie l'aspect de la façade. Nous vous accompagnons dans la constitution de ce dossier technique."
   }
 ];
@@ -392,27 +392,27 @@ export const menuiserieFAQs = [
   {
     id: "me1",
     question: "Quelles sont les essences de bois que vous travaillez ?",
-    answer: "Nous travaillons une large gamme d'essences adaptées à chaque usage. Le CHÊNE for sa noblesse and résistance (parquets, escaliers), le FRÊNE for sa clarté contemporaine, le NOYER for son prestige, and des résineux comme le MÉLÈZE for les ouvrages extérieurs."
+    answer: "Nous travaillons une large gamme d'essences adaptées à chaque usage. Le CHÊNE pour sa noblesse et résistance (parquets, escaliers), le FRÊNE pour sa clarté contemporaine, le NOYER pour son prestige, et des résineux comme le MÉLÈZE pour les ouvrages extérieurs."
   },
   {
     id: "me2",
-    question: "Est-il possible de créer un dressing with des portes coulissantes invisibles ?",
-    answer: "Absolument. En tant qu'experts en agencement, nous installons des systèmes de rails encastrés and des finitions affleurantes qui permettent une intégration parfaite dans vos cloisons, for une esthétique minimaliste sans aucune visserie apparente."
+    question: "Est-il possible de créer un dressing avec des portes coulissantes invisibles ?",
+    answer: "Absolument. En tant qu'experts en agencement, nous installons des systèmes de rails encastrés et des finitions affleurantes qui permettent une intégration parfaite dans vos cloisons, pour une esthétique minimaliste sans aucune visserie apparente."
   },
   {
     id: "me3",
     question: "Réalisez-vous la pose de parquets sur d'anciens sols ?",
-    answer: "Oui, c'est possible après une préparation rigoureuse du support. Nous maîtrisons la pose de parquets massifs collés, de parquets contrecollés flottants and même la restauration de parquets anciens with ponçage and vitrification."
+    answer: "Oui, c'est possible après une préparation rigoureuse du support. Nous maîtrisons la pose de parquets massifs collés, de parquets contrecollés flottants et même la restauration de parquets anciens avec ponçage et vitrification."
   },
   {
     id: "me4",
-    question: "Combien de temps faut-il for fabriquer un meuble sur mesure ?",
-    answer: "La fabrication en atelier dépend de la complexité de l'ouvrage. Comptez généralement 4 à 6 semaines entre la validation des plans 3D and la pose finale. Ce délai garantit le temps nécessaire au séchage des finitions and à la précision de l'ajustage."
+    question: "Combien de temps faut-il pour fabriquer un meuble sur mesure ?",
+    answer: "La fabrication en atelier dépend de la complexité de l'ouvrage. Comptez généralement 4 à 6 semaines entre la validation des plans 3D et la pose finale. Ce délai garantit le temps nécessaire au séchage des finitions et à la précision de l'ajustage."
   },
   {
     id: "me5",
     question: "Gérez-vous également la peinture or le vernis des meubles ?",
-    answer: "Oui, nos ouvrages sont livrés totalement finis. Nous disposons d'une cabine de finition for l'application de laqués, de vernis polyuréthanes or d'huiles naturelles, selon le rendu souhaité (mat, satiné or brillant)."
+    answer: "Oui, nos ouvrages sont livrés totalement finis. Nous disposons d'une cabine de finition pour l'application de laqués, de vernis polyuréthanes or d'huiles naturelles, selon le rendu souhaité (mat, satiné or brillant)."
   }
 ];
 

@@ -22,14 +22,14 @@ export const MobileCarouselDemo: React.FC = () => {
 
       <div className="flex-1 flex flex-col p-4 gap-4">
         <div className="bg-neutral-900 rounded-lg p-4 border border-neutral-800">
-          <h2 className="text-lg font-semibold text-white mb-2">Features</h2>
+          <h2 className="text-lg font-semibold text-white mb-2">Fonctionnalités</h2>
           <ul className="text-neutral-300 text-sm space-y-1">
             <li>• Perfect single-image navigation</li>
             <li>• Touch/swipe gestures enabled</li>
             <li>• Centered image alignment</li>
             <li>• Smooth transitions (500ms)</li>
             <li>• Responsive across all devices</li>
-            <li>• Lazy loading for performance</li>
+            <li>• Lazy loading pour performance</li>
           </ul>
         </div>
 

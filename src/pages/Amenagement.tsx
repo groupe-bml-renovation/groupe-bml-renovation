@@ -119,7 +119,7 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Aménagement & Agencement sur Mesure à Grenoble | Dressing & Placard | BML" : "Aménagement & Agencement d'Exception Sur Mesure | Menuiserie Premium | BML"}</title>
-        <meta name="description" content="Sublimez vos volumes. Optimisation d'espace, dressing sur mesure, menuiserie premium and agencement d'exception. Architecte offert for vos projets haut de gamme." />
+        <meta name="description" content="Sublimez vos volumes. Optimisation d'espace, dressing sur mesure, menuiserie premium et agencement d'exception. Architecte offert pour vos projets haut de gamme." />
         <meta property="og:title" content="Aménagement sur Mesure | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -139,7 +139,7 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Aménagement Intérieur sur Mesure</h2>
-        <p>Expertise en agencement d'exception for maisons and appartements</p>
+        <p>Expertise en agencement d'exception pour maisons et appartements</p>
         <h3>Dressing sur Mesure Grenoble</h3>
         <h3>Bibliothèque & Agencement Design</h3>
         <h3>Optimisation d'Espace & Menuiserie</h3>
@@ -243,12 +243,12 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Chaque recoin de votre habitat recèle un potentiel inexploité. Nos solutions d'aménagement ne se contentent pas de ranger, elles transforment radicalement votre perception du volume and du confort. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous sculptons votre intérieur.
+                  Chaque recoin de votre habitat recèle un potentiel inexploité. Nos solutions d'aménagement ne se contentent pas de ranger, elles transforment radicalement votre perception du volume et du confort. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous sculptons votre intérieur.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts en agencement à Grenoble marient menuiserie de précision and design intelligent. Du dressing walk-in à la bibliothèque murale complexe integrating your home cinema, nous créons des espaces qui reflètent votre identité within le bassin grenoblois."
-                    : "Qu'il s'agisse de créer une suite parentale with placard invisible or d'organiser un bureau de télétravail inspirant, nous orchestrons tous les corps d'état for une réalisation sans couture. Chaque millimètre compte, chaque finition est orfèvrerie."}
+                    ? "Nos experts en agencement à Grenoble marient menuiserie de précision et design intelligent. Du dressing sur mesure à la bibliothèque murale complexe intégrant votre home cinema, nous créons des espaces qui reflètent votre identité dans le bassin grenoblois."
+                    : "Qu'il s'agisse de créer une suite parentale avec placard invisible or d'organiser un bureau de télétravail inspirant, nous orchestrons tous les corps d'état pour une réalisation sans couture. Chaque millimètre compte, chaque finition est orfèvrerie."}
                 </p>
               </div>
 
@@ -290,7 +290,7 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Créations d'Espace</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision and l'élégance de nos aménagements intégrés.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision et l'élégance de nos aménagements intégrés.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -304,17 +304,17 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Layers className="w-6 h-6" />, 
                     title: "Optimisation Verticale", 
-                    desc: "Exploitez chaque centimètre with des rangements toute hauteur and des solutions for combles." 
+                    desc: "Exploitez chaque centimètre avec des rangements toute hauteur et des solutions pour combles." 
                   },
                   { 
                     icon: <Grid3X3 className="w-6 h-6" />, 
                     title: "Matériaux d'Élite", 
-                    desc: "Bois massifs, placages précieux and miroiteries fondues dans l'agencement." 
+                    desc: "Bois massifs, placages précieux et miroiteries fondues dans l'agencement." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Finition Orfèvre", 
-                    desc: "Ajustements millimétrés and quincaillerie haut de gamme for un usage fluide and durable." 
+                    desc: "Ajustements millimétrés et quincaillerie haut de gamme pour un usage fluide et durable." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,8 +342,8 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos orfèvres de l'agencement basés à Grenoble façonnent vos mètres carrés with passion."
-                    : "L'intelligence de l'espace for une harmonie quotidienne."}
+                    ? "Nos orfèvres de l'agencement basés à Grenoble façonnent vos mètres carrés avec passion."
+                    : "L'intelligence de l'espace pour une harmonie quotidienne."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -378,10 +378,10 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Mesure", desc: "Relevé laser millimétré for une intégration sans faille dans l'existant." },
-              { step: "02", title: "Design", desc: "Co-conception with l'architecte for définir volumes, matières and lumière." },
+              { step: "01", title: "Mesure", desc: "Relevé laser millimétré pour une intégration sans faille dans l'existant." },
+              { step: "02", title: "Design", desc: "Co-conception avec l'architecte pour définir volumes, matières et lumière." },
               { step: "03", title: "Façonnage", desc: "Préparation des éléments en atelier by nos menuisiers compagnons." },
-              { step: "04", title: "Pose", desc: "Installation rigoureuse, ajustements finaux and nettoyage complet du site." }
+              { step: "04", title: "Pose", desc: "Installation rigoureuse, ajustements finaux et nettoyage complet du site." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,14 +416,14 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Optimiser une suite parentale or créer une bibliothèque murale de prestige exige un œil expert. Pour tout projet d'aménagement, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur for l'harmonie des matières, le choix des couleurs and la scénographie lumineuse.
+                  Optimiser une suite parentale or créer une bibliothèque murale de prestige exige un œil expert. Pour tout projet d'aménagement, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour l'harmonie des matières, le choix des couleurs et la scénographie lumineuse.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Modélisation 3D for valider chaque mètre carré</span>
+                  <span className="italic">Modélisation 3D pour valider chaque mètre carré</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
@@ -441,7 +441,7 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+                * Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
               </p>
             </motion.div>
 
@@ -488,8 +488,8 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état sublime vos intérieurs. Nous maîtrisons les bibliothèques sur mesure, les dressings haut de gamme and les agencements complexes with une propreté de chantier and une rigueur exemplaires."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en agencement d'exception. Nous coordonnons nos menuisiers, peintres and électriciens for que vos aménagements soient livrés with un niveau de finition digne des plus grands hôtels."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état sublime vos intérieurs. Nous maîtrisons les bibliothèques sur mesure, les dressings haut de gamme et les agencements complexes avec une propreté de chantier et une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en agencement d'exception. Nous coordonnons nos menuisiers, peintres et électriciens pour que vos aménagements soient livrés avec un niveau de finition digne des plus grands hôtels."}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for votre habitat
+                Nos labels pour votre habitat
               </span>
             </h2>
           </div>
@@ -587,11 +587,11 @@ const Amenagement: React.FC<AmenagementProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 

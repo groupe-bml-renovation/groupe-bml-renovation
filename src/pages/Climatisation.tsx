@@ -139,7 +139,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
 
       <div className="sr-only">
         <h2>Expertise Génie Climatique</h2>
-        <p>Installation and maintenance de systèmes de climatisation réversible and pompes à chaleur</p>
+        <p>Installation et maintenance de systèmes de climatisation réversible et pompes à chaleur</p>
         <h3>Climatisation Grenoble</h3>
         <h3>Système Gainable Invisible</h3>
         <h3>Pompe à Chaleur Air-Air</h3>
@@ -243,12 +243,12 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Une climatisation performante ne se contente plus de refroidir. Elle régule l'hygrométrie, purifie l'air and chauffe vos espaces with une efficacité énergétique record. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous maîtrisons l'art du climat intérieur.
+                  Une climatisation performante ne se contente plus de refroidir. Elle régule l'hygrométrie, purifie l'air et chauffe vos espaces avec une efficacité énergétique record. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous maîtrisons l'art du climat intérieur.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts grenoblois conçoivent des systèmes thermodynamiques sur mesure for les hivers and les étés alpins. Du split mural ultra-silencieux au système gainable totalement invisible, nous garantissons une intégration esthétique parfaite dans toute la métropole de Grenoble."
-                    : "Nous installons des solutions de génie climatique haut de gamme, utilisant les technologies Inverter les plus sobres du marché. Chaque projet est une étude millimétrée des flux d'air for un confort acoustique and thermique sans précédent."}
+                    ? "Nos experts grenoblois conçoivent des systèmes thermodynamiques sur mesure pour les hivers et les étés alpins. Du split mural ultra-silencieux au système gainable totalement invisible, nous garantissons une intégration esthétique parfaite dans toute la métropole de Grenoble."
+                    : "Nous installons des solutions de génie climatique haut de gamme, utilisant les technologies Inverter les plus sobres du marché. Chaque projet est une étude millimétrée des flux d'air pour un confort acoustique et thermique sans précédent."}
                 </p>
               </div>
 
@@ -304,17 +304,17 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
                   { 
                     icon: <Snowflake className="w-6 h-6" />, 
                     title: "Génie Climatique", 
-                    desc: "Étude thermique complète for dimensionner parfaitement vos besoins en puissance and en flux d'air." 
+                    desc: "Étude thermique complète pour dimensionner parfaitement vos besoins en puissance et en flux d'air." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Pose & Mise en Service", 
-                    desc: "Installation par nos propres techniciens certifiés with attestation de capacité for les fluides frigorigènes." 
+                    desc: "Installation par nos propres techniciens certifiés avec attestation de capacité pour les fluides frigorigènes." 
                   },
                   { 
                     icon: <CloudRain className="w-6 h-6" />, 
                     title: "Traitement de l'Air", 
-                    desc: "Systèmes de filtration active and de régulation d'hygrométrie for un air intérieur pur and sain." 
+                    desc: "Systèmes de filtration active et de régulation d'hygrométrie pour un air intérieur pur et sain." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -343,7 +343,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
                     ? "Nos techniciens basés en Isère assurent une installation millimétrée de votre génie climatique."
-                    : "Un accompagnement technique d'élite for une température parfaite."}
+                    : "Un accompagnement technique d'élite pour une température parfaite."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -378,10 +378,10 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Audit", desc: "Étude des volumes, de l'isolation and des apports solaires." },
-              { step: "02", title: "Projet", desc: "Plan d'implantation and sélection des unités Bi-Split ou Gainable." },
-              { step: "03", title: "Pose", desc: "Raccordements frigorifiques and électriques with mise sous vide." },
-              { step: "04", title: "Suivi", desc: "Mise en service, réglages and contrat d'entretien annuel." }
+              { step: "01", title: "Audit", desc: "Étude des volumes, de l'isolation et des apports solaires." },
+              { step: "02", title: "Projet", desc: "Plan d'implantation et sélection des unités Bi-Split ou Gainable." },
+              { step: "03", title: "Pose", desc: "Raccordements frigorifiques et électriques avec mise sous vide." },
+              { step: "04", title: "Suivi", desc: "Mise en service, réglages et contrat d'entretien annuel." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,7 +416,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  L'intégration réussie d'une climatisation est invisible. Grâce à notre partenariat with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>, bénéficiez de l'expertise d'un architecte d'intérieur for dissimuler élégamment vos unités and harmoniser les bouches de soufflage with votre décoration.
+                  L'intégration réussie d'une climatisation est invisible. Grâce à notre partenariat with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>, bénéficiez de l'expertise d'un architecte d'intérieur pour dissimuler élégamment vos unités et harmoniser les bouches de soufflage avec votre décoration.
                 </p>
               </div>
 
@@ -441,7 +441,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -488,8 +488,8 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation maîtrise l'intégralité du génie climatique. Nous installons des sytèmes de climatisation réversibles and pompes à chaleur de marques leaders (Daikin, Mitsubishi, Panasonic) with une rigueur de mise en service absolue for une longévité maximale."
-                  : "Groupe BML Rénovation maîtrise l'intégralité du génie climatique. Nous installons des sytèmes de climatisation réversibles and pompes à chaleur de marques leaders with une rigueur de mise en service absolue for une longévité maximale and un confort thermique sans compromis."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation maîtrise l'intégralité du génie climatique. Nous installons des sytèmes de climatisation réversibles et pompes à chaleur de marques leaders (Daikin, Mitsubishi, Panasonic) with une rigueur de mise en service absolue pour une longévité maximale."
+                  : "Groupe BML Rénovation maîtrise l'intégralité du génie climatique. Nous installons des sytèmes de climatisation réversibles et pompes à chaleur de marques leaders avec une rigueur de mise en service absolue pour une longévité maximale et un confort thermique sans compromis."}
               </p>
             </div>
 
@@ -591,7 +591,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -655,7 +655,7 @@ const Climatisation: React.FC<ClimatisationProps> = ({ onBack, onNavigate }) => 
 
       <ServiceFAQ
         title="FAQ Climatisation"
-        description="Les réponses de nos techniciens for sécuriser votre installation haut de gamme."
+        description="Les réponses de nos techniciens pour sécuriser votre installation haut de gamme."
         items={climFAQs}
       />
 

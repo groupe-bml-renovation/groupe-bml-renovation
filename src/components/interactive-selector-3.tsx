@@ -112,7 +112,7 @@ const InteractiveSelector3 = () => {
               }}
             ></div>
             
-            {/* Label with icon and info */}
+            {/* Label avec icon et info */}
             <div className="label absolute left-0 right-0 bottom-3 md:bottom-5 flex items-center justify-start h-10 md:h-12 z-2 pointer-events-none px-2 md:px-4 gap-2 md:gap-3 w-full">
               <div className="icon min-w-[32px] md:min-w-[44px] max-w-[32px] md:max-w-[44px] h-[32px] md:h-[44px] flex items-center justify-center rounded-full bg-[rgba(56,189,248,0.9)] backdrop-blur-[10px] shadow-[0_1px_4px_rgba(0,0,0,0.18)] border-2 border-[#38bdf8] flex-shrink-0 flex-grow-0 transition-all duration-200">
                 <div className="scale-75 md:scale-100">

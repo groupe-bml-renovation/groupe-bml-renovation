@@ -118,7 +118,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Revêtements Muraux & Décoration à Grenoble | Expert BML" : "Revêtements Muraux Premium | Papier Peint & Enduits | Groupe BML"}</title>
-        <meta name="description" content="Sublimez vos parois with des revêtements d'exception. Papier peint panoramique, stucs italiens and habillages bois. Finitions de prestige and conseil design en Isère." />
+        <meta name="description" content="Sublimez vos parois avec des revêtements d'exception. Papier peint panoramique, stucs italiens et habillages bois. Finitions de prestige et conseil design en Isère." />
         <meta property="og:title" content="Revêtements Muraux Premium | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -138,7 +138,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
 
       <div className="sr-only">
         <h2>Expertise Revêtements Muraux</h2>
-        <p>Pose de papiers peints design, enduits décoratifs and habillages muraux</p>
+        <p>Pose de papiers peints design, enduits décoratifs et habillages muraux</p>
         <h3>Papier Peint Grenoble</h3>
         <h3>Stuc Vénitien & Tadelakt</h3>
         <h3>Panneaux Muraux 3D</h3>
@@ -170,7 +170,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Texture and caractère for vos intérieurs d'exception en Isère" : "L'excellence des finitions au service de votre identité visuelle"}
+              {isGrenoble ? "Texture et caractère pour vos intérieurs d'exception en Isère" : "L'excellence des finitions au service de votre identité visuelle"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -242,12 +242,12 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Vos murs sont le visage de votre intérieur. Ils captent la lumière, créent la profondeur and apportent cette texture indispensable à une ambiance de caractère. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple surface.
+                  Vos murs sont le visage de votre intérieur. Ils captent la lumière, créent la profondeur et apportent cette texture indispensable à une ambiance de caractère. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple surface.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts en décoration murale à Grenoble maîtrisent l'intégralité du panel décoratif. Du stuc vénitien traditionnel au papier peint panoramique haute couture, nous transformons vos parois en véritables œuvres d'art within vos espaces grenoblois."
-                    : "Qu'il s'agisse de poser un habillage acoustique bois or d'appliquer un béton ciré mural, nous appliquons une rigueur millimétrée for un résultat premium. Chaque lé est aligné with soin and chaque passage de ferrage est une signature d'excellence."}
+                    ? "Nos experts en décoration murale à Grenoble maîtrisent l'intégralité du panel décoratif. Du stuc vénitien traditionnel au papier peint panoramique haute couture, nous transformons vos parois en véritables œuvres d'art dans vos espaces grenoblois."
+                    : "Qu'il s'agisse de poser un habillage acoustique bois or d'appliquer un béton ciré mural, nous appliquons une rigueur millimétrée pour un résultat premium. Chaque lé est aligné avec soin et chaque passage de ferrage est une signature d'excellence."}
                 </p>
               </div>
 
@@ -289,7 +289,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Design Mural</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Visualisez la finesse de nos enduits and la poésie de nos papiers peints.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Visualisez la finesse de nos enduits et la poésie de nos papiers peints.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -303,17 +303,17 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
                   { 
                     icon: <Layers className="w-6 h-6" />, 
                     title: "Enduits Minéraux", 
-                    desc: "Stucs, chaux and tadelakt ferrés à la main for une vibration organique and une profondeur unique." 
+                    desc: "Stucs, chaux et tadelakt ferrés à la main pour une vibration organique et une profondeur unique." 
                   },
                   { 
                     icon: <Grid3X3 className="w-6 h-6" />, 
                     title: "Papiers Peints Luxe", 
-                    desc: "Marouflage de précision de panoramiques and revêtements textiles des plus grandes manufactures." 
+                    desc: "Marouflage de précision de panoramiques et revêtements textiles des plus grandes manufactures." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Parements Design", 
-                    desc: "Habillages muraux en chêne, tasseaux acoustiques and béton ciré for une architecture affirmée." 
+                    desc: "Habillages muraux en chêne, tasseaux acoustiques et béton ciré pour une architecture affirmée." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -341,8 +341,8 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos applicateurs basés à Grenoble transforment vos parois with une maîtrise ancestrale."
-                    : "L'excellence artisanale for un intérieur d'exception."}
+                    ? "Nos applicateurs basés à Grenoble transforment vos parois avec une maîtrise ancestrale."
+                    : "L'excellence artisanale pour un intérieur d'exception."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -377,10 +377,10 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Lissage", desc: "Ratissage complet for une finition Q4 (sans aucun spectre visuel)." },
-              { step: "02", title: "Impression", desc: "Application d'un primaire spécifique for bloquer le support and optimiser l'accroche." },
+              { step: "01", title: "Lissage", desc: "Ratissage complet pour une finition Q4 (sans aucun spectre visuel)." },
+              { step: "02", title: "Impression", desc: "Application d'un primaire spécifique pour bloquer le support et optimiser l'accroche." },
               { step: "03", title: "Parure", desc: "Mise en œuvre du revêtement (papier peint or enduit) with une précision millimétrée." },
-              { step: "04", title: "Soin", desc: "Protection (vernis or cire) for garantir la durabilité and la lavabilité du décor." }
+              { step: "04", title: "Soin", desc: "Protection (vernis or cire) for garantir la durabilité et la lavabilité du décor." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -415,14 +415,14 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'un mur habillé with soin demande une vision décorative globale, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for le choix de vos textures, le calepinage and l'harmonie with votre mobilier.
+                  Parce qu'un mur habillé avec soin demande une vision décorative globale, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour le choix de vos textures, le calepinage et l'harmonie avec votre mobilier.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Projets 3D for visualiser vos futurs décors muraux</span>
+                  <span className="italic">Projets 3D pour visualiser vos futurs décors muraux</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
@@ -440,7 +440,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -487,8 +487,8 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les papiers peints panoramiques, les enduits vénitiens and les habillages bois with une précision and une propreté de chantier exemplaires for vos rénovations."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la pose de revêtements. Nous maîtrisons les manufactures de luxe, les enduits minéraux complexes and la finition haute for des habitats qui allient luxe and harmonie."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les papiers peints panoramiques, les enduits vénitiens et les habillages bois avec une précision et une propreté de chantier exemplaires pour vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la pose de revêtements. Nous maîtrisons les manufactures de luxe, les enduits minéraux complexes et la finition haute pour des habitats qui allient luxe et harmonie."}
               </p>
             </div>
 
@@ -545,7 +545,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for vos parois
+                Nos labels pour vos parois
               </span>
             </h2>
           </div>
@@ -586,11 +586,11 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -654,22 +654,22 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
 
       <ServiceFAQ
         title="FAQ Revêtements Muraux"
-        description="Les réponses de nos techniciens for sublimer vos parois with soin."
+        description="Les réponses de nos techniciens pour sublimer vos parois avec soin."
         items={[
           {
             id: "rm1",
             question: "Qu'est-ce qu'une finition Q4 par rapport à une finition standard ?",
-            answer: "La finition Q4 est le plus haut niveau de préparation de support. Elle exige un ratissage complet de la surface with un enduit de lissage extra-fin and un ponçage manuel méticuleux under lumière rasante. C'est le support indispensable for les papiers peints de luxe or les laques satinées."
+            answer: "La finition Q4 est le plus haut niveau de préparation de support. Elle exige un ratissage complet de la surface avec un enduit de lissage extra-fin et un ponçage manuel méticuleux under lumière rasante. C'est le support indispensable pour les papiers peints de luxe or les laques satinées."
           },
           {
             id: "rm2",
             question: "Le papier peint panoramique est-il adapté aux pièces humides ?",
-            answer: "Oui, à condition de choisir un support vinyle or intissé haute densité and d'appliquer une protection hydrofuge spécifique after la pose. Cela permet d'installer des décors majestueux dans vos salles de bain without risque de décollement."
+            answer: "Oui, à condition de choisir un support vinyle or intissé haute densité et d'appliquer une protection hydrofuge spécifique after la pose. Cela permet d'installer des décors majestueux dans vos salles de bain without risque de décollement."
           },
           {
             id: "rm3",
             question: "Réalisez-vous des enduits à la chaux traditionnels ?",
-            answer: "Absolument. Nous maîtrisons les techniques ancestrales du stuc vénitien, du tadelakt and des badigeons de chaux. Ces revêtements 'respirent', régulent l'humidité and offrent une vibration lumineuse incomparable."
+            answer: "Absolument. Nous maîtrisons les techniques ancestrales du stuc vénitien, du tadelakt et des badigeons de chaux. Ces revêtements 'respirent', régulent l'humidité et offrent une vibration lumineuse incomparable."
           },
           {
             id: "rm4",
@@ -679,7 +679,7 @@ const RevetementsMuraux: React.FC<RevetementsMurauxProps> = ({ onBack, onNavigat
           {
             id: "rm5",
             question: "Peut-on poser un nouveau revêtement sur une toile de verre existante ?",
-            answer: "Il est préférable de la retirer for une finition parfaite. Si cela n'est pas possible, nous pouvons réaliser un enduit de rebouchage spécifique for lisser totalement la maille before d'appliquer votre nouveau revêtement décoratif."
+            answer: "Il est préférable de la retirer pour une finition parfaite. Si cela n'est pas possible, nous pouvons réaliser un enduit de rebouchage spécifique pour lisser totalement la maille before d'appliquer votre nouveau revêtement décoratif."
           }
         ]}
       />

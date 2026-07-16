@@ -99,6 +99,7 @@ const ConfirmationDevis: React.FC<ConfirmationDevisProps> = ({ onBack, onNavigat
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
+        <meta name="robots" content="noindex" />
         <title>
           {isGrenoble
             ? 'Demande de Devis Confirmée Grenoble | Groupe BML Rénovation'

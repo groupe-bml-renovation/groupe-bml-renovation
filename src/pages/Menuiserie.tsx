@@ -119,7 +119,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Menuiserie Sur Mesure & Agencement à Grenoble | BML" : "Menuiserie & Agencement Bois Premium | Sur Mesure | Groupe BML"}</title>
-        <meta name="description" content="L'excellence artisanale for votre habitat. Agencements sur mesure, dressings, bibliothèques and parquets nobles. Travail du bois d'exception certifié en Isère." />
+        <meta name="description" content="L'excellence artisanale pour votre habitat. Agencements sur mesure, dressings, bibliothèques et parquets nobles. Travail du bois d'exception certifié en Isère." />
         <meta property="og:title" content="Menuiserie & Agencement d'Art | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -139,7 +139,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Expertise Menuiserie & Agencement</h2>
-        <p>Conception and fabrication d'ouvrages bois sur mesure and pose de menuiseries</p>
+        <p>Conception et fabrication d'ouvrages bois sur mesure et pose de menuiseries</p>
         <h3>Menuisier Grenoble</h3>
         <h3>Dressing Sur Mesure</h3>
         <h3>Bibliothèque Architecturale</h3>
@@ -243,12 +243,12 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Le bois est l'âme de votre intérieur. Vivant, chaleureux and intemporel, il exige une main experte for révéler tout son potentiel and s'ajuster parfaitement à vos volumes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons l'ébénisterie.
+                  Le bois est l'âme de votre intérieur. Vivant, chaleureux et intemporel, il exige une main experte pour révéler tout son potentiel et s'ajuster parfaitement à vos volumes. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons l'ébénisterie.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos menuisiers d'art grenoblois conçoivent des agencements uniques for valoriser votre patrimoine. Du dressing suspendu millimétré à la bibliothèque magistrale, nous marions essences nobles and finitions de prestige within tous vos projets alpins."
-                    : "Nous donnons vie à vos projets les plus complexes, de la restauration de menuiseries historiques à la création de mobilier contemporain épuré. Chaque coupe est une promesse de perfection and chaque assemblage une garantie de pérennité."}
+                    ? "Nos menuisiers d'art grenoblois conçoivent des agencements uniques pour valoriser votre patrimoine. Du dressing suspendu millimétré à la bibliothèque magistrale, nous marions essences nobles et finitions de prestige dans tous vos projets alpins."
+                    : "Nous donnons vie à vos projets les plus complexes, de la restauration de menuiseries historiques à la création de mobilier contemporain épuré. Chaque coupe est une promesse de perfection et chaque assemblage une garantie de pérennité."}
                 </p>
               </div>
 
@@ -290,7 +290,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Menuiserie</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la finesse de nos réalisations and l'élégance du travail du bois.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la finesse de nos réalisations et l'élégance du travail du bois.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -304,17 +304,17 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <TreePine className="w-6 h-6" />, 
                     title: "Essences Nobles", 
-                    desc: "Sélection rigoureuse de chênes, noyers and bois exotiques certifiés for une stabilité dimensionnelle absolue." 
+                    desc: "Sélection rigoureuse de chênes, noyers et bois exotiques certifiés pour une stabilité dimensionnelle absolue." 
                   },
                   { 
                     icon: <Ruler className="w-6 h-6" />, 
                     title: "Usinage de Précision", 
-                    desc: "Assemblages traditionnels and découpes numériques for un ajustage parfait au millimètre près." 
+                    desc: "Assemblages traditionnels et découpes numériques pour un ajustage parfait au millimètre près." 
                   },
                   { 
                     icon: <DoorOpen className="w-6 h-6" />, 
                     title: "Menuiserie Intérieure", 
-                    desc: "Portes, chambranles and claustras conçus comme des éléments d'architecture décorative." 
+                    desc: "Portes, chambranles et claustras conçus comme des éléments d'architecture décorative." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,8 +342,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos menuisiers basés à Grenoble façonnent vos rêves with une précision ancestrale."
-                    : "L'excellence artisanale for un intérieur d'exception."}
+                    ? "Nos menuisiers basés à Grenoble façonnent vos rêves avec une précision ancestrale."
+                    : "L'excellence artisanale pour un intérieur d'exception."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -378,10 +378,10 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Cote", desc: "Prise de mesures laser and relevé architectural des supports." },
-              { step: "02", title: "Trace", desc: "Modélisation 3D and validation des essences and des quincailleries." },
-              { step: "03", title: "Grain", desc: "Usinage en atelier, ponçage haute finition and pré-montage." },
-              { step: "04", title: "Pose", desc: "Installation millimétrée, ajustages and jointoiements invisibles." }
+              { step: "01", title: "Cote", desc: "Prise de mesures laser et relevé architectural des supports." },
+              { step: "02", title: "Trace", desc: "Modélisation 3D et validation des essences et des quincailleries." },
+              { step: "03", title: "Grain", desc: "Usinage en atelier, ponçage haute finition et pré-montage." },
+              { step: "04", title: "Pose", desc: "Installation millimétrée, ajustages et jointoiements invisibles." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -416,7 +416,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une menuiserie réussie demande une vision architecturale autant que technique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for la conception de vos meubles sur mesure and l'harmonisation with votre décoration.
+                  Parce qu'une menuiserie réussie demande une vision architecturale autant que technique, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour la conception de vos meubles sur mesure et l'harmonisation avec votre décoration.
                 </p>
               </div>
 
@@ -427,7 +427,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Sélection d'échantillons and d'essences en showroom</span>
+                  <span className="italic">Sélection d'échantillons et d'essences en showroom</span>
                 </div>
               </div>
 
@@ -441,7 +441,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -463,7 +463,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Anaïs</p>
-                    <p className="text-xl font-semibold">"Le bois sculpte la lumière and définit l'espace."</p>
+                    <p className="text-xl font-semibold">"Le bois sculpte la lumière et définit l'espace."</p>
                   </div>
                 </div>
               </div>
@@ -488,8 +488,8 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède un atelier de menuiserie de pointe. Nous maîtrisons les essences nobles, les agencements complexes and la pose millimétrée de vos ouvrages bois for des intérieurs d'exception."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'ouvrages menuisés. Nous maîtrisons les essences nobles, les agencements complexes and la finition haute for des habitats qui allient luxe and fonctionnalité."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède un atelier de menuiserie de pointe. Nous maîtrisons les essences nobles, les agencements complexes et la pose millimétrée de vos ouvrages bois pour des intérieurs d'exception."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'ouvrages menuisés. Nous maîtrisons les essences nobles, les agencements complexes et la finition haute pour des habitats qui allient luxe et fonctionnalité."}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for vos bois
+                Nos labels pour vos bois
               </span>
             </h2>
           </div>
@@ -587,11 +587,11 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -655,7 +655,7 @@ const Menuiserie: React.FC<MenuiserieProps> = ({ onBack, onNavigate }) => {
 
       <ServiceFAQ
         title="FAQ Menuiserie"
-        description="Les réponses de nos artisans for vos projets d'agencement bois."
+        description="Les réponses de nos artisans pour vos projets d'agencement bois."
         items={menuiserieFAQs}
       />
 

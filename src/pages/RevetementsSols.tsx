@@ -118,7 +118,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Pose de Parquet & Carrelage à Grenoble | Expert BML" : "Revêtements de Sols Premium | Parquet, Carrelage & LVT | Groupe BML"}</title>
-        <meta name="description" content="L'excellence des sols for votre habitat. Pose de parquet Point de Hongrie, carrelage grand format and sols nobles. Finitions de prestige and durabilité en Isère." />
+        <meta name="description" content="L'excellence des sols pour votre habitat. Pose de parquet Point de Hongrie, carrelage grand format et sols nobles. Finitions de prestige et durabilité en Isère." />
         <meta property="og:title" content="Revêtements de Sols Premium | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -138,7 +138,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
 
       <div className="sr-only">
         <h2>Expertise Revêtements de Sols</h2>
-        <p>Pose de parquets, carrelages and revêtements souples haut de gamme</p>
+        <p>Pose de parquets, carrelages et revêtements souples haut de gamme</p>
         <h3>Parqueteur Grenoble</h3>
         <h3>Carreleur Grand Format</h3>
         <h3>Parquet Point de Hongrie & Bâtons Rompus</h3>
@@ -242,12 +242,12 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Le sol est la toile de fond de votre décoration. Il définit les volumes, apporte de la chaleur and doit supporter l'épreuve du temps sans perdre sa superbe. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple pose.
+                  Le sol est la toile de fond de votre décoration. Il définit les volumes, apporte de la chaleur et doit supporter l'épreuve du temps sans perdre sa superbe. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple pose.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos soliers experts à Grenoble maîtrisent toutes les techniques de pose, du carrelage grand format millimétré au parquet Point de Hongrie traditionnel. Nous sélectionnons des matériaux nobles for une pérennité absolue within vos intérieurs grenoblois."
-                    : "Qu'il s'agisse de restaurer un parquet ancien or de poser un grès cérame de prestige, nous appliquons une rigueur absolue for un résultat sans défaut. Chaque découpe est calculée and chaque jointoiement est une promesse d'harmonie."}
+                    ? "Nos soliers experts à Grenoble maîtrisent toutes les techniques de pose, du carrelage grand format millimétré au parquet Point de Hongrie traditionnel. Nous sélectionnons des matériaux nobles pour une pérennité absolue dans vos intérieurs grenoblois."
+                    : "Qu'il s'agisse de restaurer un parquet ancien or de poser un grès cérame de prestige, nous appliquons une rigueur absolue pour un résultat sans défaut. Chaque découpe est calculée et chaque jointoiement est une promesse d'harmonie."}
                 </p>
               </div>
 
@@ -289,7 +289,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Galerie Sols & Parquets</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision de nos calepinages and la noblesse de nos bois.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision de nos calepinages et la noblesse de nos bois.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -303,17 +303,17 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
                   { 
                     icon: <Layers className="w-6 h-6" />, 
                     title: "Supports Parfaits", 
-                    desc: "Ragréages fibrés and barrières anti-remontées d'humidité for une stabilité totale des revêtements." 
+                    desc: "Ragréages fibrés et barrières anti-remontées d'humidité pour une stabilité totale des revêtements." 
                   },
                   { 
                     icon: <Grid3X3 className="w-6 h-6" />, 
                     title: "Calepinage Design", 
-                    desc: "Étude géométrique des poses for optimiser les perspectives and minimiser les découpes visibles." 
+                    desc: "Étude géométrique des poses pour optimiser les perspectives et minimiser les découpes visibles." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Finitions Palais", 
-                    desc: "Pose de plinthes assorties, seuils encastrés and vitrifications haute résistance." 
+                    desc: "Pose de plinthes assorties, seuils encastrés et vitrifications haute résistance." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -341,8 +341,8 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos soliers basés à Grenoble façonnent vos surfaces with une précision millimétrée."
-                    : "L'excellence artisanale for un sol qui valorise votre patrimoine."}
+                    ? "Nos soliers basés à Grenoble façonnent vos surfaces avec une précision millimétrée."
+                    : "L'excellence artisanale pour un sol qui valorise votre patrimoine."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -377,10 +377,10 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Support", desc: "Diagnostic d'humidité, test de cohésion and ragréage auto-lissant." },
-              { step: "02", title: "Tracé", desc: "Calepinage laser for une symétrie parfaite and des découpes équilibrées." },
+              { step: "01", title: "Support", desc: "Diagnostic d'humidité, test de cohésion et ragréage auto-lissant." },
+              { step: "02", title: "Tracé", desc: "Calepinage laser pour une symétrie parfaite et des découpes équilibrées." },
               { step: "03", title: "Pose", desc: "Double encollage or pose flottante acoustique selon les standards DTU." },
-              { step: "04", title: "Soin", desc: "Jointoiement haute résistance, pose de plinthes and nettoyage fin de chantier." }
+              { step: "04", title: "Soin", desc: "Jointoiement haute résistance, pose de plinthes et nettoyage fin de chantier." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -415,14 +415,14 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'un sol définit l'âme de votre intérieur, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for le choix de vos matériaux, le calepinage and l'harmonie with votre décoration.
+                  Parce qu'un sol définit l'âme de votre intérieur, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour le choix de vos matériaux, le calepinage et l'harmonie avec votre décoration.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Projets 3D for visualiser vos futurs sols</span>
+                  <span className="italic">Projets 3D pour visualiser vos futurs sols</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
@@ -440,7 +440,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -487,8 +487,8 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les grands formats, les parquets anciens and les résines décoratives with une précision and une propreté de chantier exemplaires for vos rénovations."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la pose de revêtements. Nous maîtrisons les matériaux nobles, les calepinages complexes and la finition haute for des habitats qui allient luxe and durabilité."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une expertise reconnue. Nous maîtrisons les grands formats, les parquets anciens et les résines décoratives avec une précision et une propreté de chantier exemplaires pour vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la pose de revêtements. Nous maîtrisons les matériaux nobles, les calepinages complexes et la finition haute pour des habitats qui allient luxe et durabilité."}
               </p>
             </div>
 
@@ -545,7 +545,7 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for vos surfaces
+                Nos labels pour vos surfaces
               </span>
             </h2>
           </div>
@@ -586,11 +586,11 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -654,22 +654,22 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
 
       <ServiceFAQ
         title="FAQ Sols & Parquets"
-        description="Les réponses de nos techniciens for sublimer vos surfaces."
+        description="Les réponses de nos techniciens pour sublimer vos surfaces."
         items={[
           {
             id: "rs1",
             question: "Peut-on poser du carrelage sur un ancien carrelage ?",
-            answer: "Oui, c'est possible after avoir vérifié la parfaite adhésion du support. Nous appliquons un primaire d'accrochage spécifique and utilisons un mortier-colle haute performance. Cela permet une rénovation rapide without démolition lourde."
+            answer: "Oui, c'est possible after avoir vérifié la parfaite adhésion du support. Nous appliquons un primaire d'accrochage spécifique et utilisons un mortier-colle haute performance. Cela permet une rénovation rapide without démolition lourde."
           },
           {
             id: "rs2",
-            question: "Quelle est la différence entre un parquet massif and contrecollé ?",
-            answer: "Le massif est composé d'une seule essence de bois sur toute son épaisseur, offrant une longévité multigénérationnelle. Le contrecollé est composé de trois couches, dont un parement en bois noble, offrant une meilleure stabilité dimensionnelle and une compatibilité optimale with le chauffage au sol."
+            question: "Quelle est la différence entre un parquet massif et contrecollé ?",
+            answer: "Le massif est composé d'une seule essence de bois sur toute son épaisseur, offrant une longévité multigénérationnelle. Le contrecollé est composé de trois couches, dont un parement en bois noble, offrant une meilleure stabilité dimensionnelle et une compatibilité optimale avec le chauffage au sol."
           },
           {
             id: "rs3",
             question: "Pourquoi choisir un carrelage grand format ?",
-            answer: "Les dalles XXL (type 120x120cm or plus) réduisent drastiquement le nombre de joints, créant une sensation d'espace and de continuité majestueuse. Elles exigent cependant une planéité de support parfaite and une technique de double encollage maîtrisée."
+            answer: "Les dalles XXL (type 120x120cm or plus) réduisent drastiquement le nombre de joints, créant une sensation d'espace et de continuité majestueuse. Elles exigent cependant une planéité de support parfaite et une technique de double encollage maîtrisée."
           },
           {
             id: "rs4",
@@ -678,8 +678,8 @@ const RevetementsSols: React.FC<RevetementsSolsProps> = ({ onBack, onNavigate })
           },
           {
             id: "rs5",
-            question: "Combien de temps faut-il for la pose d'un sol ?",
-            answer: "Pour une pièce de 30m², comptez généralement 2 à 3 jours de travail, incluant la préparation du support, la pose and les finitions (plinthes, seuils). Ce délai peut varier selon la complexité du calepinage (Point de Hongrie, motifs)."
+            question: "Combien de temps faut-il pour la pose d'un sol ?",
+            answer: "Pour une pièce de 30m², comptez généralement 2 à 3 jours de travail, incluant la préparation du support, la pose et les finitions (plinthes, seuils). Ce délai peut varier selon la complexité du calepinage (Point de Hongrie, motifs)."
           }
         ]}
       />

@@ -119,7 +119,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Salle de Bain PMR à Grenoble | Accessibilité & Sécurité | BML" : "Salles de Bain PMR & Accessibilité de Prestige | Rénovation Handicap | BML"}</title>
-        <meta name="description" content="Sublimez votre autonomie. Rénovation PMR, douche sécurisée, agencement ergonomique haut de gamme with architecte offert for votre confort and sécurité." />
+        <meta name="description" content="Sublimez votre autonomie. Rénovation PMR, douche sécurisée, agencement ergonomique haut de gamme avec architecte offert pour votre confort et sécurité." />
         <meta property="og:title" content="Salle de Bain PMR & Accessibilité | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -139,7 +139,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
 
       <div className="sr-only">
         <h2>Expertise Salle de Bain PMR & Senior</h2>
-        <p>Adaptation and rénovation de salles de bains for Personnes à Mobilité Réduite and Seniors</p>
+        <p>Adaptation et rénovation de salles de bains pour Personnes à Mobilité Réduite et Seniors</p>
         <h3>Douche PMR Grenoble</h3>
         <h3>Installation MaPrimeAdapt'</h3>
         <h3>Accessibilité RGE Qualibat</h3>
@@ -171,7 +171,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "La sécurité and l'autonomie au cœur de l'Isère" : "L'excellence au service de votre indépendance and de votre confort"}
+              {isGrenoble ? "La sécurité et l'autonomie au cœur de l'Isère" : "L'excellence au service de votre indépendance et de votre confort"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -243,12 +243,12 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Rendre une salle de bain accessible ne signifie pas sacrifier l'esthétique. Nous concevons des espaces ergonomiques qui allient design contemporain and sécurité maximale. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous redonnons du plaisir aux gestes du quotidien.
+                  Rendre une salle de bain accessible ne signifie pas sacrifier l'esthétique. Nous concevons des espaces ergonomiques qui allient design contemporain et sécurité maximale. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous redonnons du plaisir aux gestes du quotidien.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts en adaptation PMR à Grenoble maîtrisent les normes les plus strictes for sécuriser votre habitat. De la douche à l'italienne sans ressaut à l'installation de WC surélevés within Grenoble, nous orchestrons votre transformation with une propreté de chantier exemplaire and un accompagnement for les aides (MaPrimeAdapt')."
-                    : "Qu'il s'agisse de transformer une baignoire encombrante en une douche de plain-pied sécurisée or d'agencer une suite parentale ergonomique, nous appliquons une rigueur absolue. Chaque barre d'appui est fixée with renfort, chaque sol est certifié antidérapant PN24."}
+                    ? "Nos experts en adaptation PMR à Grenoble maîtrisent les normes les plus strictes pour sécuriser votre habitat. De la douche à l'italienne sans ressaut à l'installation de WC surélevés dans Grenoble, nous orchestrons votre transformation avec une propreté de chantier exemplaire et un accompagnement pour les aides (MaPrimeAdapt')."
+                    : "Qu'il s'agisse de transformer une baignoire encombrante en une douche de plain-pied sécurisée or d'agencer une suite parentale ergonomique, nous appliquons une rigueur absolue. Chaque barre d'appui est fixée avec renfort, chaque sol est certifié antidérapant PN24."}
                 </p>
               </div>
 
@@ -290,7 +290,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos Réalisations Adaptées</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez comment nous marions sécurité and élégance within nos projets PMR.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez comment nous marions sécurité et élégance dans nos projets PMR.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -304,17 +304,17 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
                   { 
                     icon: <Accessibility className="w-6 h-6" />, 
                     title: "Ergonomie Totale", 
-                    desc: "Étude des rayons de giration and des hauteurs d'usage for une autonomie sans compromis." 
+                    desc: "Étude des rayons de giration et des hauteurs d'usage pour une autonomie sans compromis." 
                   },
                   { 
                     icon: <Grid3X3 className="w-6 h-6" />, 
                     title: "Matériaux Sécurisés", 
-                    desc: "Grès cérame antidérapant and profilés de douche extra-plats for limiter tout risque de chute." 
+                    desc: "Grès cérame antidérapant et profilés de douche extra-plats pour limiter tout risque de chute." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Domotique Confort", 
-                    desc: "Détection de présence, éclairage nocturne automatique and robinetteries thermostatiques sécurisées." 
+                    desc: "Détection de présence, éclairage nocturne automatique et robinetteries thermostatiques sécurisées." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,8 +342,8 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
                 </h2>
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
-                    ? "Nos experts de l'adaptation basés à Grenoble sécurisent votre habitat with bienveillance."
-                    : "Redonner de la dignité and du confort across un agencement intelligent."}
+                    ? "Nos experts de l'adaptation basés à Grenoble sécurisent votre habitat avec bienveillance."
+                    : "Redonner de la dignité et du confort across un agencement intelligent."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -378,9 +378,9 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Audit", desc: "Analyse d'ergonomie and des besoins spécifiques by nos techniciens certifiés." },
-              { step: "02", title: "Conception", desc: "Planification des circulations and sélection des équipements certifiés PMR." },
-              { step: "03", title: "Chantier", desc: "Pose with renforts structurels for les barres d'appui and étanchéité absolue." },
+              { step: "01", title: "Audit", desc: "Analyse d'ergonomie et des besoins spécifiques by nos techniciens certifiés." },
+              { step: "02", title: "Conception", desc: "Planification des circulations et sélection des équipements certifiés PMR." },
+              { step: "03", title: "Chantier", desc: "Pose avec renforts structurels pour les barres d'appui et étanchéité absolue." },
               { step: "04", title: "Support", desc: "Aide au montage du dossier MaPrimeAdapt' and service après-vente réactif." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
@@ -416,7 +416,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce que l'accessibilité exige une précision d'orfèvre, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for co-concevoir votre espace : ergonomie des flux, harmonie chromatique apaisante and éclairage sécurisant sans zone d'ombre.
+                  Parce que l'accessibilité exige une précision d'orfèvre, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour co-concevoir votre espace : ergonomie des flux, harmonie chromatique apaisante et éclairage sécurisant sans zone d'ombre.
                 </p>
               </div>
 
@@ -441,7 +441,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+                * Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
               </p>
             </motion.div>
 
@@ -488,8 +488,8 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'adaptation handicap. Nous coordonnons maçonnerie, plomberie spécialisée and finitions antidérapantes with une propreté de chantier and une rigueur exemplaires."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en accessibilité. Nous coordonnons nos plombiers, carreleurs and électriciens for que vos salles de bains PMR soient livrées with un niveau de fiabilité digne des plus grands standards de santé."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état maîtrise l'adaptation handicap. Nous coordonnons maçonnerie, plomberie spécialisée et finitions antidérapantes avec une propreté de chantier et une rigueur exemplaires."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience en accessibilité. Nous coordonnons nos plombiers, carreleurs et électriciens pour que vos salles de bains PMR soient livrées avec un niveau de fiabilité digne des plus grands standards de santé."}
               </p>
             </div>
 
@@ -546,7 +546,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos labels for votre habitat
+                Nos labels pour votre habitat
               </span>
             </h2>
           </div>
@@ -587,11 +587,11 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -656,7 +656,7 @@ const SallesDeBainPMR: React.FC<SallesDeBainPMRProps> = ({ onBack, onNavigate })
       <ServiceFAQ 
         items={salleDeBainPMRFAQs} 
         title={isGrenoble ? "FAQ SDB PMR à Grenoble" : "FAQ Salle de Bain PMR & Senior"}
-        description={isGrenoble ? "Retrouvez les réponses de nos experts sur l'adaptation and l'accessibilité à Grenoble." : "Retrouvez les réponses de nos experts sur la sécurisation de votre pièce d'eau."}
+        description={isGrenoble ? "Retrouvez les réponses de nos experts sur l'adaptation et l'accessibilité à Grenoble." : "Retrouvez les réponses de nos experts sur la sécurisation de votre pièce d'eau."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

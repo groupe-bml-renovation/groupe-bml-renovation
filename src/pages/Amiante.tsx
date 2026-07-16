@@ -117,8 +117,8 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>{isGrenoble ? "Désamiantage & Retrait Amiante à Grenoble | Expert BML" : "Désamiantage Certifié & Sécurité Sanitaire | Groupe BML"}</title>
-        <meta name="description" content="Expertise en retrait d'amiante and dépose sécurisée (SS3/SS4). Protocoles de confinement and traçabilité des déchets. Sécurité sanitaire garantie en Isère." />
+        <title>{isGrenoble ? "Désamiantage Grenoble : Retrait Sécurisé & Certifié | BML" : "Désamiantage Certifié & Sécurité Sanitaire | Groupe BML"}</title>
+        <meta name="description" content="Expertise en retrait d'amiante et dépose sécurisée (SS3/SS4). Protocoles de confinement et traçabilité des déchets. Sécurité sanitaire garantie en Isère." />
         <meta property="og:title" content="Désamiantage & Sécurité Sanitaire | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -138,7 +138,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Expertise Désamiantage & Sécurité</h2>
-        <p>Retrait de matériaux amiantés, dépose sécurisée and gestion des déchets dangereux</p>
+        <p>Retrait de matériaux amiantés, dépose sécurisée et gestion des déchets dangereux</p>
         <h3>Désamiantage Grenoble</h3>
         <h3>Retrait Fibrociment & Dalles de Sol</h3>
         <h3>Intervention Sous Section 4 (SS4)</h3>
@@ -170,7 +170,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "La maîtrise absolue des risques sanitaires pour votre habitat en Isère" : "L'excellence technique au service d'un habitat sain and conforme"}
+              {isGrenoble ? "La maîtrise absolue des risques sanitaires pour votre habitat en Isère" : "L'excellence technique au service d'un habitat sain et conforme"}
             </p>
             <div className="w-24 h-0.5 bg-[#ef4444] mx-auto mb-8 shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
             
@@ -242,12 +242,12 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Le désamiantage n'est pas une simple dépose. C'est une opération critique qui demande un confinement hermétique, des protocoles de décontamination and une traçabilité absolue. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous protégeons votre avenir.
+                  Le désamiantage n'est pas une simple dépose. C'est une opération critique qui demande un confinement hermétique, des protocoles de décontamination et une traçabilité absolue. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous protégeons votre avenir.
                 </p>
                 <p>
                   {isGrenoble 
-                    ? "Nos experts certifiés basés à Grenoble interviennent within toute la métropole Isèroise with une rigueur millimétrée. Nous maîtrisons les interventions en Sous-Section 4 (SS4) for vos travaux de rénovation, garantissant l'absence totale de fibres d'amiante after notre passage."
-                    : "Nous appliquons les protocoles les plus stricts de la filière amiante. De l'étude du diagnostic (DTA ou RAT) à l'édition du Bordereau de Suivi des Déchets (BSDA), chaque étape est verrouillée for votre sécurité and celle de nos compagnons."}
+                    ? "Nos experts certifiés basés à Grenoble interviennent dans toute la métropole Isèroise avec une rigueur millimétrée. Nous maîtrisons les interventions en Sous-Section 4 (SS4) for vos travaux de rénovation, garantissant l'absence totale de fibres d'amiante after notre passage."
+                    : "Nous appliquons les protocoles les plus stricts de la filière amiante. De l'étude du diagnostic (DTA ou RAT) à l'édition du Bordereau de Suivi des Déchets (BSDA), chaque étape est verrouillée pour votre sécurité et celle de nos compagnons."}
                 </p>
               </div>
 
@@ -289,7 +289,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Signature Sécurité</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Visualisez la rigueur de nos protocoles de protection and de dépose.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Visualisez la rigueur de nos protocoles de protection et de dépose.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -303,17 +303,17 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <ShieldAlert className="w-6 h-6" />, 
                     title: "Gestion SS4", 
-                    desc: "Analyse du risque and mode opératoire validé for chaque intervention impactant des matériaux amiantés." 
+                    desc: "Analyse du risque et mode opératoire validé pour chaque intervention impactant des matériaux amiantés." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Dépose Sécurisée", 
-                    desc: "Humidification à cœur and aspiration par filtre HEPA for éviter toute envolée de fibres." 
+                    desc: "Humidification à cœur et aspiration par filtre HEPA pour éviter toute envolée de fibres." 
                   },
                   { 
                     icon: <Trash2 className="w-6 h-6" />, 
                     title: "Filière Déchets", 
-                    desc: "Double ensachage and transport vers centres de traitement agréés with traçabilité Trackdéchets." 
+                    desc: "Double ensachage et transport vers centres de traitement agréés avec traçabilité Trackdéchets." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,7 +342,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
                     ? "Nos techniciens basés en Isère assurent une dépose conforme under 24/48h."
-                    : "L'expertise certifiée for une rénovation without danger."}
+                    : "L'expertise certifiée pour une rénovation without danger."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -378,9 +378,9 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
           <div className="grid md:grid-cols-4 gap-8">
             {[
               { step: "01", title: "Audit", desc: "Analyse du diagnostic (RAT/DTA) and identification des zones à risque." },
-              { step: "02", title: "Isolant", desc: "Confinement de la zone, signalisation and installation d'extracteurs." },
-              { step: "03", title: "Retrait", desc: "Dépose humide, aspiration cyclonique and nettoyage libératoire." },
-              { step: "04", title: "Déchet", desc: "Conditionnement hermétique and remise du certificat de traitement." }
+              { step: "02", title: "Isolant", desc: "Confinement de la zone, signalisation et installation d'extracteurs." },
+              { step: "03", title: "Retrait", desc: "Dépose humide, aspiration cyclonique et nettoyage libératoire." },
+              { step: "04", title: "Déchet", desc: "Conditionnement hermétique et remise du certificat de traitement." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#ef4444]/20 transition-colors uppercase">{s.step}</span>
@@ -415,7 +415,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'un chantier de désamiantage impacte souvent votre décoration, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#ef4444]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur for repenser vos volumes after la dépose and harmoniser vos nouveaux matériaux.
+                  Parce qu'un chantier de désamiantage impacte souvent votre décoration, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#ef4444]">Anaïs</span>. Bénéficiez de l'expertise d'un architecte d'intérieur pour repenser vos volumes after la dépose et harmoniser vos nouveaux matériaux.
                 </p>
               </div>
 
@@ -426,7 +426,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#ef4444]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Choix de matériaux de substitution sains and design</span>
+                  <span className="italic">Choix de matériaux de substitution sains et design</span>
                 </div>
               </div>
 
@@ -440,7 +440,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -487,8 +487,8 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une habilitation SS4 complète. Nous gérons le retrait des dalles de sol, des conduits fibrociment and des enduits amiantés with une discrétion and une propreté de chantier exemplaires for vos rénovations."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la gestion de l'amiante. Nous maîtrisons les interventions Sous-Section 4, les techniques de confinement and la traçabilité Trackdéchets for des habitats qui retrouvent leur pureté originelle."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une habilitation SS4 complète. Nous gérons le retrait des dalles de sol, des conduits fibrociment et des enduits amiantés avec une discrétion et une propreté de chantier exemplaires pour vos rénovations."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la gestion de l'amiante. Nous maîtrisons les interventions Sous-Section 4, les techniques de confinement et la traçabilité Trackdéchets pour des habitats qui retrouvent leur pureté originelle."}
               </p>
             </div>
 
@@ -545,7 +545,7 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#ef4444] bg-clip-text text-transparent">
-                Nos habilitations for votre sérénité
+                Nos habilitations pour votre sérénité
               </span>
             </h2>
           </div>
@@ -586,11 +586,11 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#ef4444] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -654,27 +654,27 @@ const Amiante: React.FC<AmianteProps> = ({ onBack, onNavigate }) => {
 
       <ServiceFAQ
         title="FAQ Désamiantage"
-        description="Les réponses de nos techniciens experts for sécuriser votre environnement."
+        description="Les réponses de nos techniciens experts pour sécuriser votre environnement."
         items={[
           {
             id: "am1",
             question: "Que signifie une intervention en Sous-Section 4 (SS4) ?",
-            answer: "La SS4 concerne les interventions de courte durée limited for assurer la maintenance ou la rénovation de matériaux amiantés (par exemple : percer une dalle de sol ou déposer un conduit fibrociment). C'est le protocole le plus strict for les entreprises de rénovation, with formation obligatoire and mode opératoire validé par la CARSAT."
+            answer: "La SS4 concerne les interventions de courte durée limited pour assurer la maintenance ou la rénovation de matériaux amiantés (par exemple : percer une dalle de sol ou déposer un conduit fibrociment). C'est le protocole le plus strict pour les entreprises de rénovation, avec formation obligatoire et mode opératoire validé par la CARSAT."
           },
           {
             id: "am2",
             question: "L'amiante est-il dangereux s'il n'est pas manipulé ?",
-            answer: "L'amiante est dangereux uniquement when ses fibres sont libérées dans l'air and inhalées. Tant que les matériaux sont en bon état and non sollicités (pas de ponçage, perçage ou casse), le risque est minimal. C'est lors des travaux que le risque devient critique without mesures de protection."
+            answer: "L'amiante est dangereux uniquement when ses fibres sont libérées dans l'air et inhalées. Tant que les matériaux sont en bon état et non sollicités (pas de ponçage, perçage ou casse), le risque est minimal. C'est lors des travaux que le risque devient critique without mesures de protection."
           },
           {
             id: "am3",
-            question: "Qu'est-ce qu'un BSDA and pourquoi est-il indispensable ?",
-            answer: "Le Bordereau de Suivi des Déchets d'Amiante (BSDA) est le certificat légal qui prouve que vos déchets ont été transportés and traités dans une filière agréée. Sans ce document, vous restez responsable de vos déchets à vie. Nous gérons toute la procédure via la plateforme gouvernementale Trackdéchets."
+            question: "Qu'est-ce qu'un BSDA et pourquoi est-il indispensable ?",
+            answer: "Le Bordereau de Suivi des Déchets d'Amiante (BSDA) est le certificat légal qui prouve que vos déchets ont été transportés et traités dans une filière agréée. Sans ce document, vous restez responsable de vos déchets à vie. Nous gérons toute la procédure via la plateforme gouvernementale Trackdéchets."
           },
           {
             id: "am4",
             question: "Peut-on rester dans le logement pendant le désamiantage ?",
-            answer: "Cela dépend de l'ampleur and de la localisation du retrait. Pour des déposes localisées correctly confinées with sas de décontamination and extracteurs, une occupation partielle est possible. Pour des déposes massives, nous recommandons une vacance des lieux for une sécurité absolue."
+            answer: "Cela dépend de l'ampleur et de la localisation du retrait. Pour des déposes localisées correctly confinées avec sas de décontamination et extracteurs, une occupation partielle est possible. Pour des déposes massives, nous recommandons une vacance des lieux pour une sécurité absolue."
           },
           {
             id: "am5",

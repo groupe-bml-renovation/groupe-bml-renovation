@@ -244,12 +244,12 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  La plomberie est le système circulatoire de votre logement. Une installation invisible mais cruciale qui exige une précision absolue pour garantir confort thermique and sérénité durable. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple pose technique.
+                  La plomberie est le système circulatoire de votre logement. Une installation invisible mais cruciale qui exige une précision absolue pour garantir confort thermique et sérénité durable. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous transcendons la simple pose technique.
                 </p>
                 <p>
                   {isGrenoble 
                     ? "Nos équipes grenobloises maîtrisent l'intégralité du cycle de l'eau. De la distribution des réseaux en multicouche à l'installation des équipements sanitaires les plus sophistiqués, nous garantissons une étanchéité millimétrée partout en Isère."
-                    : "Nous concevons des réseaux intelligents, silencieux and parfaitement isolés, utilisant les techniques les plus avancées (PER, Multicouche, Cuivre) pour une fiabilité qui traverse les décennies."}
+                    : "Nous concevons des réseaux intelligents, silencieux et parfaitement isolés, utilisant les techniques les plus avancées (PER, Multicouche, Cuivre) pour une fiabilité qui traverse les décennies."}
                 </p>
               </div>
 
@@ -291,7 +291,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Nos réalisations réseaux</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la rigeur technique derrière chaque paroi and chaque équipement.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la rigeur technique derrière chaque paroi et chaque équipement.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -305,17 +305,17 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Activity className="w-6 h-6" />, 
                     title: "Diagnostic Réseau", 
-                    desc: "Analyse laser des réseaux existants, tests de pression and diagnostic de conformité DTU." 
+                    desc: "Analyse laser des réseaux existants, tests de pression et diagnostic de conformité DTU." 
                   },
                   { 
                     icon: <ShieldCheck className="w-6 h-6" />, 
                     title: "Étanchéité Absolue", 
-                    desc: "Soudure orbitale and raccords à sertir haute résistance pour une sérénité totale contre les fuites." 
+                    desc: "Soudure orbitale et raccords à sertir haute résistance pour une sérénité totale contre les fuites." 
                   },
                   { 
                     icon: <Ruler className="w-6 h-6" />, 
                     title: "Sur Mesure Technique", 
-                    desc: "Dimensionnement précis des débits and pressions pour un confort acoustique and thermique optimal." 
+                    desc: "Dimensionnement précis des débits et pressions pour un confort acoustique et thermique optimal." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -379,10 +379,10 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Diagnostic", desc: "Étude des pressions, débits and relevé laser des réseaux existants." },
-              { step: "02", title: "Conception", desc: "Plan de distribution optimisé and sélection des équipements premium." },
+              { step: "01", title: "Diagnostic", desc: "Étude des pressions, débits et relevé laser des réseaux existants." },
+              { step: "02", title: "Conception", desc: "Plan de distribution optimisé et sélection des équipements premium." },
               { step: "03", title: "Installation", desc: "Pose des réseaux par nos compagnons salariés certifiés." },
-              { step: "04", title: "Réception", desc: "Tests de mise en eau sous pression and remise du dossier technique." }
+              { step: "04", title: "Réception", desc: "Tests de mise en eau sous pression et remise du dossier technique." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -417,14 +417,14 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'une plomberie réussie demande une vision esthétique autant que technique, nous scellons un partenariat avec <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour le choix de vos robinetteries and l'agencement de vos sanitaires.
+                  Parce qu'une plomberie réussie demande une vision esthétique autant que technique, nous scellons un partenariat avec <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour le choix de vos robinetteries et l'agencement de vos sanitaires.
                 </p>
               </div>
 
               <div className="space-y-4 mb-12">
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
-                  <span className="italic">Étude de style and agencement 3D</span>
+                  <span className="italic">Étude de style et agencement 3D</span>
                 </div>
                 <div className="flex items-center gap-4 text-slate-800 font-medium">
                   <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-[#38bdf8]"><Check className="w-5 h-5" /></div>
@@ -442,7 +442,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -489,8 +489,8 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de plomberie. Nous maîtrisons les réseaux complexes, la gestion des fluides, and la pose millimétrée des équipements de chauffage pour des habitats performants."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de plomberie. Nous maîtrisons les réseaux complexes, la gestion des fluides, and la pose millimétrée des équipements de chauffage pour des habitats qui traversent le temps avec fiabilité."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de plomberie. Nous maîtrisons les réseaux complexes, la gestion des fluides, et la pose millimétrée des équipements de chauffage pour des habitats performants."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de plomberie. Nous maîtrisons les réseaux complexes, la gestion des fluides, et la pose millimétrée des équipements de chauffage pour des habitats qui traversent le temps avec fiabilité."}
               </p>
             </div>
 
@@ -547,7 +547,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications and engagements
+                Nos certifications et engagements
               </span>
             </h2>
           </div>
@@ -592,7 +592,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -656,7 +656,7 @@ const Plomberie: React.FC<PlomberieProps> = ({ onBack, onNavigate }) => {
 
       <ServiceFAQ
         title="FAQ Plomberie"
-        description="Les réponses de nos techniciens for sécuriser votre installation."
+        description="Les réponses de nos techniciens pour sécuriser votre installation."
         items={plomberieFAQs}
       />
 

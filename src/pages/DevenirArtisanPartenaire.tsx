@@ -9,7 +9,7 @@ interface DevenirArtisanPartenairePageProps {
   onBack: () => void;
   onNavigate?: (page: string) => void;
 }
-// ... rest of imports and types ...
+// ... rest of imports et types ...
 
 const DevenirArtisanPartenairePage: React.FC<DevenirArtisanPartenairePageProps> = ({ onBack, onNavigate = onBack }) => {
   const benefits = [

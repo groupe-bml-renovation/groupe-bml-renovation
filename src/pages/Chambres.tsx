@@ -138,7 +138,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Rénovation de Chambres à Grenoble | Suites Parentales | BML" : "Rénovation de Chambres & Suites d'Exception | BML"}</title>
-        <meta name="description" content="Créez votre havre de paix. Rénovation complète de chambres, suites parentales, dressings sur mesure with architecte offert." />
+        <meta name="description" content="Créez votre havre de paix. Rénovation complète de chambres, suites parentales, dressings sur mesure avec architecte offert." />
         <meta property="og:title" content="Rénovation de Chambres | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -162,7 +162,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=1920&q=80"
-            alt="Suite parentale élégante and apaisante"
+            alt="Suite parentale élégante et apaisante"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -252,7 +252,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Chaque chambre est une promesse de sérénité. Nous concevons vos espaces de nuit comme de véritables écrins de confort, où l'acoustique, la lumière and les matières s'allient pour un repos absolu.
+                Chaque chambre est une promesse de sérénité. Nous concevons vos espaces de nuit comme de véritables écrins de confort, où l'acoustique, la lumière et les matières s'allient pour un repos absolu.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
@@ -261,8 +261,8 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos orfèvres du bâtiment grenoblois interviennent avec une minutie extrême. Nous optimisons vos volumes sous combles or transformons vos plateaux en suites de prestige with une isolation phonique and thermique renforcée."
-                  : "Chaque projet est une quête de douceur, où nous intégrons des solutions domotiques discrètes, un éclairage circadien and des finitions artisanales aux teintes apaisantes."}
+                  ? "Nos orfèvres du bâtiment grenoblois interviennent avec une minutie extrême. Nous optimisons vos volumes sous combles or transformons vos plateaux en suites de prestige avec une isolation phonique et thermique renforcée."
+                  : "Chaque projet est une quête de douceur, où nous intégrons des solutions domotiques discrètes, un éclairage circadien et des finitions artisanales aux teintes apaisantes."}
               </p>
 
               <button
@@ -317,11 +317,11 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Une chambre réussie est avant tout une chambre saine. Nous accordons une importance capitale à la qualité de l'air through l'utilisation de matériaux éco-certifiés and une ventilation optimisée.
+                Une chambre réussie est avant tout une chambre saine. Nous accordons une importance capitale à la qualité de l'air through l'utilisation de matériaux éco-certifiés et une ventilation optimisée.
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre expertise inclut l'installation de dressings intelligents, la pose de revêtements muraux textiles and le traitement acoustique haute performance pour un silence souverain.
+                Notre expertise inclut l'installation de dressings intelligents, la pose de revêtements muraux textiles et le traitement acoustique haute performance pour un silence souverain.
               </p>
             </div>
 
@@ -337,7 +337,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                   <ul className="space-y-2 text-sm text-slate-600">
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
-                      <span>Suites parentales with salles d'eau</span>
+                      <span>Suites parentales avec salles d'eau</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#38bdf8]">–</span>
@@ -370,7 +370,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Nous gérant votre projet with une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais and d'un chantier propre and sécurisé pour protéger vos espaces de vie.
+                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais et d'un chantier propre et sécurisé pour protéger vos espaces de vie.
                   </p>
                 </div>
               </div>
@@ -385,7 +385,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                     : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
                 <p className="text-base mb-8 opacity-90">
-                  Chiffrage précis and plans d'agencement réalisés sous 72h.
+                  Chiffrage précis et plans d'agencement réalisés sous 72h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -422,22 +422,22 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               {
                 step: "01",
                 title: "Étude Volumes",
-                desc: "Analyse des circulations, étude d'ensoleillement and plans 3D de l'agencement."
+                desc: "Analyse des circulations, étude d'ensoleillement et plans 3D de l'agencement."
               },
               {
                 step: "02",
                 title: "Préparation",
-                desc: "Protection totale des zones habitées, curage sélectif and réseaux plomberie/élec."
+                desc: "Protection totale des zones habitées, curage sélectif et réseaux plomberie/élec."
               },
               {
                 step: "03",
                 title: "Second Œuvre",
-                desc: "Plâtrerie acoustique, pose des menuiseries and préparation soignée des supports."
+                desc: "Plâtrerie acoustique, pose des menuiseries et préparation soignée des supports."
               },
               {
                 step: "04",
                 title: "Mise en Beauté",
-                desc: "Revêtements de sols, peintures déco, pose dressings and mise en lumière."
+                desc: "Revêtements de sols, peintures déco, pose dressings et mise en lumière."
               }
             ].map((s, i) => (
               <motion.div 
@@ -487,10 +487,10 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Concevoir une suite parentale requiert une vision d'ensemble, de l'ergonomie du dressing à l'acoustique de la cloison. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous scellons un <span className="text-black font-semibold">partenariat with Anaïs</span> pour sublimer vos nuits.
+                  Concevoir une suite parentale requiert une vision d'ensemble, de l'ergonomie du dressing à l'acoustique de la cloison. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous scellons un <span className="text-black font-semibold">partenariat avec Anaïs</span> pour sublimer vos nuits.
                 </p>
                 <p>
-                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser matières, couleurs and lumière. Votre espace est pensé pour votre bien-être through un <span className="text-black font-semibold">coaching décoration personnalisé</span>.
+                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser matières, couleurs et lumière. Votre espace est pensé pour votre bien-être through un <span className="text-black font-semibold">coaching décoration personnalisé</span>.
                 </p>
               </div>
 
@@ -527,7 +527,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
                 </button>
               </div>
               <p className="text-xs text-slate-400 italic mt-4">
-                * Accompagnement offert pour la décoration intérieure and le choix des matériaux pour tout devis signé.
+                * Accompagnement offert pour la décoration intérieure et le choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -573,7 +573,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos parqueteurs, peintres déco, électriciens and agenceurs pour que votre chambre soit un lieu de sérénité absolue.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos parqueteurs, peintres déco, électriciens et agenceurs pour que votre chambre soit un lieu de sérénité absolue.
               </p>
             </div>
 
@@ -636,11 +636,11 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications and qualifications
+                Nos certifications et qualifications
               </span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
             </p>
           </div>
 
@@ -759,7 +759,7 @@ const Chambres: React.FC<ChambresProps> = ({ onBack, onNavigate }) => {
       <ServiceFAQ 
         items={chambreFAQs} 
         title={isGrenoble ? "FAQ Rénovation Chambre Grenoble" : "FAQ Rénovation Chambre"}
-        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de chambres and suites à Grenoble." : "Retrouvez les réponses à vos questions sur l'aménagement de vos espaces de nuit."}
+        description={isGrenoble ? "Retrouvez les réponses à vos questions sur la rénovation de chambres et suites à Grenoble." : "Retrouvez les réponses à vos questions sur l'aménagement de vos espaces de nuit."}
       />
 
       <FooterSection onNavigate={onNavigate} onNavigateToServices={() => onBack()} />

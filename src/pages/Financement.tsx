@@ -141,8 +141,8 @@ const Financement: React.FC<FAQPageProps> = ({ onBack, onNavigate = () => {} }) 
 
   const SEO = {
     title: isGrenoble
-      ? 'Financement Rénovation Maison Grenoble & Isère | Prêts et Aides | BML'
-      : 'Financement Rénovation Maison | Solutions de Crédit et Aides | Groupe BML',
+      ? 'Financement Rénovation Isère : Aides, Prêts & MaPrimeRénov\''
+      : 'Aides & Financement Rénovation : Maximisez vos Prêts',
     description: isGrenoble
       ? 'Solutions de financement pour rénovation maison à Grenoble et Isère. Prêts travaux, éco-PTZ, aides gouvernementales. Accompagnement gratuit et sans engagement. Expert en financement de rénovation en Isère.'
       : 'Financement flexible pour vos rénovations maison. Découvrez prêts travaux, éco-PTZ, aides gouvernementales, et solutions de crédit adaptées. Accompagnement gratuit jusqu\'à déblocage du prêt.',

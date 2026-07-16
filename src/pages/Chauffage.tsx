@@ -118,7 +118,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Chauffage & Pompe à Chaleur à Grenoble | Expert BML" : "Rénovation Chauffage & Confort Thermique Haute Performance | Groupe BML"}</title>
-        <meta name="description" content="Solution de chauffage éco-responsable and haute performance. Installation de PAC air-eau, chaudières THPE and planchers chauffants. Expertise certifiée RGE en Isère." />
+        <meta name="description" content="Solution de chauffage éco-responsable et haute performance. Installation de PAC air-eau, chaudières THPE et planchers chauffants. Expertise certifiée RGE en Isère." />
         <meta property="og:title" content="Chauffage & Ingénierie Thermique | Groupe BML" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -138,7 +138,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
 
       <div className="sr-only">
         <h2>Expertise Génie Thermique</h2>
-        <p>Installation and rénovation de systèmes de chauffage central and pompes à chaleur</p>
+        <p>Installation et rénovation de systèmes de chauffage central et pompes à chaleur</p>
         <h3>Chauffagiste Grenoble</h3>
         <h3>Pompe à Chaleur Air-Eau</h3>
         <h3>Chaudière Gaz Condensation THPE</h3>
@@ -170,7 +170,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
               )}
             </h1>
             <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-8 uppercase tracking-[0.3em] font-light">
-              {isGrenoble ? "Ingénierie thermique certifiée RGE and économies d'énergie à Grenoble" : "Conception de systèmes thermiques haute performance for un habitat serein"}
+              {isGrenoble ? "Ingénierie thermique certifiée RGE et économies d'énergie à Grenoble" : "Conception de systèmes thermiques haute performance pour un habitat serein"}
             </p>
             <div className="w-24 h-0.5 bg-[#38bdf8] mx-auto mb-8 shadow-[0_0_15px_rgba(56,189,248,0.5)]" />
             
@@ -242,12 +242,12 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
 
               <div className="space-y-6 text-slate-600 leading-relaxed text-lg italic">
                 <p>
-                  Le chauffage est le pilier du bien-être domestique. Au-delà de la simple température, il s'agit d'une gestion intelligente de l'énergie for un confort constant and des factures maîtrisées. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous concevons des cœurs thermiques d'exception.
+                  Le chauffage est le pilier du bien-être domestique. Au-delà de la simple température, il s'agit d'une gestion intelligente de l'énergie pour un confort constant et des factures maîtrisées. Chez <span className="text-slate-900 font-semibold italic">Groupe BML Rénovation</span>, nous concevons des cœurs thermiques d'exception.
                 </p>
                 <p>
                   {isGrenoble 
                     ? "Nos techniciens RGE basés à Grenoble maîtrisent l'intégralité des systèmes haute performance adaptés au climat montagnard. De la pompe à chaleur air-eau dernière génération à la chaudière gaz THPE, nous garantissons une installation thermodynamique millimétrée partout en Isère."
-                    : "Nous installons des solutions de génie thermique d'élite, utilisant les technologies les plus sobres and les plus durables du marché. Chaque projet est une étude de déperdition précise for un confort acoustique and thermique qui respecte votre architecture."}
+                    : "Nous installons des solutions de génie thermique d'élite, utilisant les technologies les plus sobres et les plus durables du marché. Chaque projet est une étude de déperdition précise pour un confort acoustique et thermique qui respecte votre architecture."}
                 </p>
               </div>
 
@@ -289,7 +289,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
       <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-6 italic">Signature Thermique</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision de nos chaufferies and la discrétion de nos émetteurs design.</p>
+          <p className="text-slate-600 max-w-2xl mx-auto italic">Découvrez la précision de nos chaufferies et la discrétion de nos émetteurs design.</p>
         </div>
         <ImageCarousel />
       </section>
@@ -303,17 +303,17 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
                   { 
                     icon: <Flame className="w-6 h-6" />, 
                     title: "Audit Thermique", 
-                    desc: "Analyse des déperditions and calcul de puissance calorifique for un système dimensionné au plus juste." 
+                    desc: "Analyse des déperditions et calcul de puissance calorifique pour un système dimensionné au plus juste." 
                   },
                   { 
                     icon: <Check className="w-6 h-6" />, 
                     title: "Pose & Raccordement", 
-                    desc: "Installation par nos compagnons chauffagistes with raccordements certifiés and désembouage systématique." 
+                    desc: "Installation par nos compagnons chauffagistes avec raccordements certifiés et désembouage systématique." 
                   },
                   { 
                     icon: <Activity className="w-6 h-6" />, 
                     title: "Gestion Connectée", 
-                    desc: "Régulation intelligente par pièce and pilotage à distance for une efficacité énergétique maximale." 
+                    desc: "Régulation intelligente par pièce et pilotage à distance pour une efficacité énergétique maximale." 
                   }
                 ].map((item, i) => (
                   <motion.div 
@@ -342,7 +342,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
                 <p className="text-lg mb-8 opacity-90">
                   {isGrenoble
                     ? "Nos techniciens basés en Isère assurent une installation millimétrée de votre génie thermique."
-                    : "Un accompagnement technique d'élite for une chaleur durable."}
+                    : "Un accompagnement technique d'élite pour une chaleur durable."}
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -377,10 +377,10 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "01", title: "Audit", desc: "Diagnostic des conduits, isolation and calcul des besoins calorifiques." },
+              { step: "01", title: "Audit", desc: "Diagnostic des conduits, isolation et calcul des besoins calorifiques." },
               { step: "02", title: "Étude", desc: "Choix de l'énergie (PAC, Gaz THPE) and plan d'implantation du réseau." },
-              { step: "03", title: "Mise en œuvre", desc: "Pose des générateurs, colonnes and émetteurs par nos salariés." },
-              { step: "04", title: "Optimisation", desc: "Mise en service certifiée, équilibrage and contrat d'entretien." }
+              { step: "03", title: "Mise en œuvre", desc: "Pose des générateurs, colonnes et émetteurs par nos salariés." },
+              { step: "04", title: "Optimisation", desc: "Mise en service certifiée, équilibrage et contrat d'entretien." }
             ].map((s, i) => (
               <div key={i} className="relative p-10 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all duration-500">
                 <span className="text-7xl font-black text-white/5 absolute -top-4 right-4 group-hover:text-[#38bdf8]/20 transition-colors uppercase">{s.step}</span>
@@ -415,7 +415,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg italic">
                 <p>
-                  Parce qu'un chauffage réussi doit se faire discret, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur for l'implantation de vos radiateurs design ou l'intégration invisible de vos planchers chauffants.
+                  Parce qu'un chauffage réussi doit se faire discret, nous collaborons with <span className="font-bold text-slate-900 underline decoration-[#38bdf8]">Anaïs</span>. Bénéficiez des conseils d'un architecte d'intérieur pour l'implantation de vos radiateurs design ou l'intégration invisible de vos planchers chauffants.
                 </p>
               </div>
 
@@ -440,7 +440,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 
@@ -462,7 +462,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/20 border border-white/30 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Partenariat Anaïs</p>
-                    <p className="text-xl font-semibold">"La chaleur sculpte l'espace and rassure l'habitant."</p>
+                    <p className="text-xl font-semibold">"La chaleur sculpte l'espace et rassure l'habitant."</p>
                   </div>
                 </div>
               </div>
@@ -487,8 +487,8 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
 
               <p className="text-slate-700 leading-relaxed italic font-medium">
                 {isGrenoble
-                  ? "À Grenoble and en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception de chaufferies. Nous maîtrisons les systèmes complexes (PAC, Gaz THPE), les planchers chauffants hydrauliques and la régulation de pointe for des habitats économes."
-                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de chauffage. Nous maîtrisons les systèmes complexes, les planchers chauffants hydrauliques and la régulation de pointe for des habitats qui traversent les hivers with fiabilité."}
+                  ? "À Grenoble et en Isère, Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception de chaufferies. Nous maîtrisons les systèmes complexes (PAC, Gaz THPE), les planchers chauffants hydrauliques et la régulation de pointe pour des habitats économes."
+                  : "Groupe BML Rénovation Tout Corps D'état possède une solide expérience dans la conception d'installations de chauffage. Nous maîtrisons les systèmes complexes, les planchers chauffants hydrauliques et la régulation de pointe pour des habitats qui traversent les hivers avec fiabilité."}
               </p>
             </div>
 
@@ -545,7 +545,7 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications for votre confort
+                Nos certifications pour votre confort
               </span>
             </h2>
           </div>
@@ -586,11 +586,11 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight italic">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos partenaires for des produits d'élite
+                Nos partenaires pour des produits d'élite
               </span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto italic">
-              Nous collaborons exclusivement with les plus grandes enseignes de matériaux and d'équipements for garantir la perfection de vos projets.
+              Nous collaborons exclusivement avec les plus grandes enseignes de matériaux et d'équipements pour garantir la perfection de vos projets.
             </p>
           </div>
 
@@ -654,12 +654,12 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
 
       <ServiceFAQ
         title="FAQ Chauffage"
-        description="Les réponses de nos techniciens for sécuriser votre installation thermique haut de gamme."
+        description="Les réponses de nos techniciens pour sécuriser votre installation thermique haut de gamme."
         items={[
           {
             id: "ch1",
             question: "Pompe à chaleur ou chaudière gaz THPE : comment choisir ?",
-            answer: "Le choix dépend de votre isolation, de vos émetteurs (radiateurs ou plancher) and de vos objectifs d'économies. La PAC est idéale for la rénovation globale with basse température, tandis que la chaudière gaz THPE reste performante for des besoins en haute température and un investissement initial moindre."
+            answer: "Le choix dépend de votre isolation, de vos émetteurs (radiateurs ou plancher) and de vos objectifs d'économies. La PAC est idéale pour la rénovation globale avec basse température, tandis que la chaudière gaz THPE reste performante pour des besoins en haute température et un investissement initial moindre."
           },
           {
             id: "ch2",
@@ -669,17 +669,17 @@ const Chauffage: React.FC<ChauffageProps> = ({ onBack, onNavigate }) => {
           {
             id: "ch3",
             question: "Pourquoi faire un désembouage avant de changer de chaudière ?",
-            answer: "Un réseau emboué réduit l'efficacité de 20 à 30% and risque d'endommager prématurément votre nouvel équipement. Nous effectuons systématiquement un désembouage hydrodynamique for garantir la performance and la garantie constructeur."
+            answer: "Un réseau emboué réduit l'efficacité de 20 à 30% and risque d'endommager prématurément votre nouvel équipement. Nous effectuons systématiquement un désembouage hydrodynamique pour garantir la performance et la garantie constructeur."
           },
           {
             id: "ch4",
-            question: "Quelles sont les aides disponibles with le label RGE ?",
-            answer: "En tant qu'entreprise certifiée RGE, nos installations ouvrent droit à MaPrimeRénov', aux Certificats d'Économie d'Énergie (CEE) and à l'Éco-PTZ. Nous vous accompagnons for maximiser ces financements."
+            question: "Quelles sont les aides disponibles avec le label RGE ?",
+            answer: "En tant qu'entreprise certifiée RGE, nos installations ouvrent droit à MaPrimeRénov', aux Certificats d'Économie d'Énergie (CEE) and à l'Éco-PTZ. Nous vous accompagnons pour maximiser ces financements."
           },
           {
             id: "ch5",
             question: "Proposez-vous des contrats d'entretien ?",
-            answer: "Oui, la maintenance annuelle est obligatoire and cruciale for la sécurité and la longévité. Nos contrats incluent le nettoyage, les réglages de combustion and le dépannage prioritaire."
+            answer: "Oui, la maintenance annuelle est obligatoire et cruciale pour la sécurité et la longévité. Nos contrats incluent le nettoyage, les réglages de combustion et le dépannage prioritaire."
           }
         ]}
       />

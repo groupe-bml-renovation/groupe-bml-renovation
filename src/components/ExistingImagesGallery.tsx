@@ -4,21 +4,21 @@
  * This component provides two distinct viewing experiences:
  *
  * MOBILE VIEW (< 768px):
- * - Horizontal auto-scrolling carousel with infinite loop
- * - Images are perfectly centered and aligned at 85vw width (max 400px)
+ * - Horizontal auto-scrolling carousel avec infinite loop
+ * - Images are perfectly centered et aligned at 85vw width (max 400px)
  * - Smooth CSS animation moves exactly one image at a time
- * - Touch/swipe gestures work naturally with browser scroll behavior
- * - Auto-pause on hover for better UX
+ * - Touch/swipe gestures work naturally avec browser scroll behavior
+ * - Auto-pause on hover pour better UX
  *
  * DESKTOP VIEW (>= 768px):
  * - Traditional responsive grid layout (1-3 columns based on screen size)
- * - Hover effects and smooth transitions
+ * - Hover effects et smooth transitions
  *
  * TECHNICAL IMPLEMENTATION:
  *
  * 1. ALIGNMENT & CENTERING (Mobile):
- *    - Container uses flexbox with justify-center for perfect centering
- *    - Each image card is 85vw with max-width:400px for consistent sizing
+ *    - Container uses flexbox avec justify-center pour perfect centering
+ *    - Each image card is 85vw avec max-width:400px pour consistent sizing
  *    - Gap of 24px (gap-6) provides visual separation
  *
  * 2. INFINITE SCROLL MECHANISM:
@@ -28,9 +28,9 @@
  *    - Creates illusion of endless loop without JavaScript overhead
  *
  * 3. RESPONSIVE DESIGN:
- *    - Media query at 768px switches between carousel and grid
- *    - Mobile-first approach with progressive enhancement
- *    - Optimized image loading with lazy loading
+ *    - Media query at 768px switches between carousel et grid
+ *    - Mobile-first approach avec progressive enhancement
+ *    - Optimized image loading avec lazy loading
  *
  * 4. TOUCH OPTIMIZATION:
  *    - Native browser scroll handling (no custom touch events needed)
@@ -42,10 +42,10 @@
  * - Fallback to static display if animations unsupported
  *
  * TESTING INSTRUCTIONS:
- * 1. Mobile (320-767px): Verify auto-scroll with perfect centering
+ * 1. Mobile (320-767px): Verify auto-scroll avec perfect centering
  * 2. Tablet (768-1023px): Check grid layout transitions
- * 3. Desktop (1024px+): Verify hover effects and grid spacing
- * 4. Touch devices: Test swipe gestures and scroll momentum
+ * 3. Desktop (1024px+): Verify hover effects et grid spacing
+ * 4. Touch devices: Test swipe gestures et scroll momentum
  */
 
 import React, { useState } from 'react';
@@ -326,7 +326,7 @@ export default function ExistingImagesGallery() {
           ))}
         </motion.div>
 
-        {/* Mobile Carousel for screens < 768px */}
+        {/* Mobile Carousel pour screens < 768px */}
         <div className="md:hidden">
           <div className="relative w-full overflow-hidden flex items-center justify-center group">
             <div className="relative z-10 w-full flex items-center justify-center py-0">
@@ -394,7 +394,7 @@ export default function ExistingImagesGallery() {
           </div>
         </div>
 
-        {/* Desktop Grid for screens >= 768px */}
+        {/* Desktop Grid pour screens >= 768px */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory}

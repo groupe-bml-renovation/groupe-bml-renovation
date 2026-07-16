@@ -129,7 +129,7 @@ const TerrasseBois: React.FC<TerrasseBoisProps> = ({ onBack, onNavigate }) => {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Groupe BML Rénovation tout corps d'état",
-            "description": isGrenoble ? "Expert en terrasse bois à Grenoble and en Isère" : "Spécialiste en terrasses bois haut de gamme",
+            "description": isGrenoble ? "Expert en terrasse bois à Grenoble et en Isère" : "Spécialiste en terrasses bois haut de gamme",
             "url": "https://groupe-bml-renovation.com",
             "telephone": "+33756915997",
             "address": {
@@ -470,7 +470,7 @@ const TerrasseBois: React.FC<TerrasseBoisProps> = ({ onBack, onNavigate }) => {
               </button>
               
               <p className="mt-8 text-xs text-slate-400 italic">
-                * Accompagnement d’architecte offert for décoration intérieure and choix des matériaux for tout devis signé.
+                * Accompagnement d’architecte offert pour décoration intérieure et choix des matériaux pour tout devis signé.
               </p>
             </motion.div>
 

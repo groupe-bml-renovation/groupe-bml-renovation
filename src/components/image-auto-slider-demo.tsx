@@ -1,5 +1,5 @@
-// This is file with demos of your component
-// Each export is one usecase for your component
+// This is file avec demos of your component
+// Each export is one usecase pour your component
 
 import { Component } from "@/components/ui/image-auto-slider";
 

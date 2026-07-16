@@ -205,7 +205,7 @@ export const ServicesTabbedCarousel: React.FC<ServicesTabbedCarouselProps> = ({
     }, 100);
   };
 
-  // Intersection Observer for visibility detection
+  // Intersection Observer pour visibility detection
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 

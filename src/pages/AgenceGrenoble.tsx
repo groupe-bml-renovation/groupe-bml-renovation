@@ -48,7 +48,7 @@ const AgenceGrenoble: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Hero Section with Title Overlay */}
+                {/* Hero Section avec Title Overlay */}
                 <section className="relative h-[450px] md:h-[550px] overflow-hidden">
                     <OptimizedImage 
                       src={images.hero} 
@@ -132,7 +132,7 @@ const AgenceGrenoble: React.FC = () => {
                     </div>
                 </section>
 
-                {/* Presentation Section with Slider-like Layout */}
+                {/* Presentation Section avec Slider-like Layout */}
                 <section className="py-20 bg-white">
                     <div className="max-w-7xl mx-auto px-6">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">

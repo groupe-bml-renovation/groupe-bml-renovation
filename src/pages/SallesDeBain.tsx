@@ -138,7 +138,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>{isGrenoble ? "Rénovation de Salle de Bain à Grenoble | Douche Italienne | BML" : "Rénovation de Salles de Bain d'Exception | BML"}</title>
-        <meta name="description" content="Sublimez votre espace bien-être. Rénovation complète de salle de bain, douche à l'italienne, carrelage haut de gamme with architecte offert." />
+        <meta name="description" content="Sublimez votre espace bien-être. Rénovation complète de salle de bain, douche à l'italienne, carrelage haut de gamme avec architecte offert." />
         <meta property="og:title" content="Rénovation Salle de Bain | Groupe BML" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -162,7 +162,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
         <div className="absolute inset-0">
           <OptimizedImage
             src="https://pub-2855f49daf4b4b1aa34aaa1cf596e77b.r2.dev/SDB%20PMR%2001.png"
-            alt="Salle de bain moderne and raffinée"
+            alt="Salle de bain moderne et raffinée"
             className="w-full h-full object-cover"
             priority={true}
           />
@@ -252,17 +252,17 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                Transformer une salle de bain est l'un des projets de rénovation les plus complexes. Cela exige une coordination parfaite entre plomberie, électricité, étanchéité and finitions esthétiques.
+                Transformer une salle de bain est l'un des projets de rénovation les plus complexes. Cela exige une coordination parfaite entre plomberie, électricité, étanchéité et finitions esthétiques.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-6">
-                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}gère votre <span className="text-black font-semibold">rénovation globale de salle de bain</span>. De la dépose de l'ancien carrelage à la pose minutieuse de votre douche à l'italienne, nous garantissons un résultat durable and raffiné.
+                <span className="text-black font-semibold">Groupe BML Rénovation</span> {isGrenoble ? "à Grenoble " : ""}gère votre <span className="text-black font-semibold">rénovation globale de salle de bain</span>. De la dépose de l'ancien carrelage à la pose minutieuse de votre douche à l'italienne, nous garantissons un résultat durable et raffiné.
               </p>
 
               <p className="text-slate-700 leading-relaxed mb-8">
                 {isGrenoble
-                  ? "Nos orfèvres du bâtiment grenoblois interviennent avec une minutie extrême. Nous maîtrisons les dernières tendances en carrelage grand format for créer votre sanctuaire de bien-être."
-                  : "Chaque projet est une quête de pureté, où nous orchestrons tous les corps d'état sous une responsabilité unique pour une sérénité totale and un confort absolu."}
+                  ? "Nos orfèvres du bâtiment grenoblois interviennent avec une minutie extrême. Nous maîtrisons les dernières tendances en carrelage grand format pour créer votre sanctuaire de bien-être."
+                  : "Chaque projet est une quête de pureté, où nous orchestrons tous les corps d'état sous une responsabilité unique pour une sérénité totale et un confort absolu."}
               </p>
 
               <button
@@ -321,7 +321,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               </p>
 
               <p className="text-slate-700 leading-relaxed">
-                Notre expertise inclut la maîtrise des réseaux de plomberie complexes, l'installation de douches à l'italienne sans ressaut and la pose millimétrée de carrelages grand format.
+                Notre expertise inclut la maîtrise des réseaux de plomberie complexes, l'installation de douches à l'italienne sans ressaut et la pose millimétrée de carrelages grand format.
               </p>
             </div>
 
@@ -370,7 +370,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                     <h3 className="text-xl font-bold text-[#38bdf8]">Nos engagements</h3>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Nous gérant votre projet with une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais and d'un chantier propre and sécurisé pour protéger vos espaces de vie.
+                    Nous gérant votre projet avec une approche Tout Corps d'État (TCE) intégrée. Vous bénéficiez d'une garantie décennale, d'un respect strict des délais et d'un chantier propre et sécurisé pour protéger vos espaces de vie.
                   </p>
                 </div>
               </div>
@@ -385,7 +385,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                     : "Un seul interlocuteur pour piloter l'ensemble de vos corps d'état."}
                 </p>
                 <p className="text-base mb-8 opacity-90">
-                  Chiffrage précis and visite technique réalisée sous 48h.
+                  Chiffrage précis et visite technique réalisée sous 48h.
                 </p>
                 <button
                   onClick={scrollToContactForm}
@@ -422,22 +422,22 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               {
                 step: "01",
                 title: "Diagnostic technique",
-                desc: "Analyse des pressions, évacuations and plan d'implantation électrique (norme NF C 15-100)."
+                desc: "Analyse des pressions, évacuations et plan d'implantation électrique (norme NF C 15-100)."
               },
               {
                 step: "02",
                 title: "Dépose & Réseaux",
-                desc: "Retrait soigneux de l'existant, modification des tuyauteries and mise en place des structures de douche."
+                desc: "Retrait soigneux de l'existant, modification des tuyauteries et mise en place des structures de douche."
               },
               {
                 step: "03",
                 title: "Étanchéité & Pose",
-                desc: "Application des membranes d'étanchéité, pose millimétrée du carrelage and des sanitaires."
+                desc: "Application des membranes d'étanchéité, pose millimétrée du carrelage et des sanitaires."
               },
               {
                 step: "04",
                 title: "Finition & Tests",
-                desc: "Jointoiement, installation des accessoires, tests d'étanchéité and mise en service immédiate."
+                desc: "Jointoiement, installation des accessoires, tests d'étanchéité et mise en service immédiate."
               }
             ].map((s, i) => (
               <motion.div 
@@ -487,10 +487,10 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               
               <div className="space-y-6 text-slate-700 leading-relaxed text-lg">
                 <p>
-                  Optimiser une petite surface ou choisir l'harmonie parfaite entre faïence and meubles vasques nécessite un œil expert. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous scellons un <span className="text-black font-semibold">partenariat with Anaïs</span> pour sublimer vos espaces.
+                  Optimiser une petite surface ou choisir l'harmonie parfaite entre faïence et meubles vasques nécessite un œil expert. Chez <span className="text-black font-semibold">Groupe BML Rénovation</span>, nous scellons un <span className="text-black font-semibold">partenariat avec Anaïs</span> pour sublimer vos espaces.
                 </p>
                 <p>
-                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser matières, couleurs and lumière. Votre espace est pensé pour votre bien-être through un <span className="text-black font-semibold">coaching décoration personnalisé</span>.
+                  Nous vous offrons un <span className="text-black font-semibold">accompagnement d'architecte d'intérieur</span> pour harmoniser matières, couleurs et lumière. Votre espace est pensé pour votre bien-être through un <span className="text-black font-semibold">coaching décoration personnalisé</span>.
                 </p>
               </div>
 
@@ -527,7 +527,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                 </button>
               </div>
               <p className="text-xs text-slate-400 italic mt-4">
-                * Accompagnement d’architecte pour la décoration intérieure and le choix des matériaux offert pour tout devis signé.
+                * Accompagnement d’architecte pour la décoration intérieure et le choix des matériaux offert pour tout devis signé.
               </p>
             </motion.div>
 
@@ -549,7 +549,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 rounded-2xl text-white">
                     <p className="text-sm font-medium opacity-80 uppercase tracking-widest mb-2">Signature Espace</p>
-                    <p className="text-xl font-semibold">"L'harmonie de l'eau and du design."</p>
+                    <p className="text-xl font-semibold">"L'harmonie de l'eau et du design."</p>
                   </div>
                 </div>
               </div>
@@ -573,7 +573,7 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
               </h2>
 
               <p className="text-slate-700 leading-relaxed">
-                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos plombiers, carreleurs, électriciens and agenceurs pour que votre salle de bain soit livrée sans compromis técnica.
+                Choisir Groupe BML Rénovation, c'est choisir la puissance d'une entreprise Tout Corps d'État. Nous coordonnons nos plombiers, carreleurs, électriciens et agenceurs pour que votre salle de bain soit livrée sans compromis técnica.
               </p>
             </div>
 
@@ -636,11 +636,11 @@ const SallesDeBain: React.FC<SallesDeBainProps> = ({ onBack, onNavigate }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight">
               <span className="bg-gradient-to-r from-black to-[#38bdf8] bg-clip-text text-transparent">
-                Nos certifications and qualifications
+                Nos certifications et qualifications
               </span>
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Nous nous engageons sur la qualité and la sécurité de chacun de vos chantiers grâce à des labels reconnus and des assurances solides.
+              Nous nous engageons sur la qualité et la sécurité de chacun de vos chantiers grâce à des labels reconnus et des assurances solides.
             </p>
           </div>
 

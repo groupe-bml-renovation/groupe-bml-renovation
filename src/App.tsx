@@ -445,8 +445,8 @@ function App() {
     
     const geoRegion = isGrenoble ? 'FR-38' : 'FR';
 
-    let pageTitle = isGrenoble ? 'Entreprise générale de bâtiment à Grenoble | Groupe BML Rénovation tout corps d\'état' : 'Entreprise générale de bâtiment | Rénovation Maison Complète | Groupe BML Rénovation tout corps d\'état';
-    let pageDescription = isGrenoble ? 'Entreprise générale de bâtiment. Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h avec un interlocuteur unique. Demandez un devis gratuit.' : 'Entreprise générale de bâtiment, spécialisé dans la rénovation haut de gamme de maisons et d\'appartements depuis 10 ans dans tout la France.';
+    let pageTitle = isGrenoble ? 'Rénovation Maison Grenoble : Devis Gratuit 24h | BML' : 'Entreprise Générale de Bâtiment | Rénovation Clé en Main';
+    let pageDescription = isGrenoble ? 'Entreprise générale de bâtiment. Projet de rénovation de maison à Grenoble ? Artisan certifié RGE & Décennale. RDV pour devis sous 24h.' : 'Expert en Rénovation Globale & Bâtiment. Projets de rénovation clé en main, intérieurs et extérieurs. Demandez votre devis gratuit.';
 
     if (isGeneralContractor) {
       pageTitle = isGrenoble ? 'Entreprise générale de bâtiment à Grenoble | Groupe BML Rénovation' : 'Entreprise générale de bâtiment | Groupe BML Rénovation';

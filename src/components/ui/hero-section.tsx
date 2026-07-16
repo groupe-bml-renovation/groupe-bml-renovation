@@ -92,7 +92,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <source src={videoUrl} type="video/mp4" />
         </video>
 
-        {/* Gradient Overlay for Text Readability in the center */}
+        {/* Gradient Overlay pour Text Readability in the center */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
         {/* Banner Content (Centered Text over Video) */}
@@ -212,7 +212,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Right content: Contact + Reviews + Stats */}
             <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-8 pt-2">
 
-              {/* Address and Contact Block */}
+              {/* Address et Contact Block */}
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-[#38bdf8] shrink-0" strokeWidth={1.5} />
